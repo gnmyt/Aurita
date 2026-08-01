@@ -4,7 +4,16 @@ import {useTranslation} from 'react-i18next';
 import {useNavigate, useParams, useSearchParams} from 'react-router-dom';
 import Hls from 'hls.js';
 import {SkipForward} from 'lucide-react';
-import {DIRECT_STALL_MS, HLS_CONFIG, parseVtt, SPEEDS, UPNEXT_LEAD} from './utils';
+import {
+    DIRECT_STALL_MS,
+    HLS_CONFIG,
+    parseVtt,
+    SEEK_READY_TIMEOUT,
+    SPEEDS,
+    SYNC_TOLERANCE,
+    UNPAUSE_DRIFT,
+    UPNEXT_LEAD
+} from './utils';
 import {TrackMenu} from './components/TrackMenu';
 import {SpeedPanel} from './components/SpeedPanel';
 import {UpNext} from './components/UpNext';
@@ -22,6 +31,7 @@ import {
     getNextEpisode,
     getSeasons,
     getPlaybackInfo,
+    playbackQueueIds,
     QUALITY_LEVELS,
     reportProgress,
     reportStart,
@@ -58,7 +68,10 @@ import {
     spSeek,
     spSetNewQueue,
     spUnpause,
-    takePendingQueue,
+    getQueue,
+    getQueueItemId,
+    getPlaylistItemIdFor,
+    spSetPlaylistItem,
 } from '@/common/utils/syncplay';
 
 const segmentAt = (segments, sec) => {
@@ -184,7 +197,10 @@ export const Player = () => {
     const speedRef = useRef(1);
     const versionRef = useRef(0);
     const subStreamRef = useRef(null);
-    const unpauseTimerRef = useRef(null);
+    const seekReadyRef = useRef(null);
+    const readyPendingRef = useRef(null);
+    const idRef = useRef(id);
+    idRef.current = id;
 
     const [item, setItem] = useState(null);
     const [streamInfo, setStreamInfo] = useState(null);
@@ -199,12 +215,12 @@ export const Player = () => {
     const [nextEp, setNextEp] = useState(null);
     const [trick, setTrick] = useState(null);
     const [group, setGroupState] = useState(getGroup());
+    const [syncBusy, setSyncBusy] = useState(false);
     const [scrubbing, setScrubbing] = useState(false);
     const [scrubTime, setScrubTime] = useState(0);
     const scrubAccel = useRef({last: 0, step: 10});
     const scrubTimeRef = useRef(0);
     const scrubbingRef = useRef(false);
-    const initiatedRef = useRef(false);
 
     const [playing, setPlaying] = useState(true);
     const [time, setTime] = useState(0);
@@ -254,6 +270,21 @@ export const Player = () => {
             }
         }
         setBuffered(end);
+    }, []);
+
+    const reportReady = useCallback((isPlaying) => {
+        if (getQueueItemId() !== idRef.current || !getPlaylistItemId()) {
+            readyPendingRef.current = {isPlaying: !!isPlaying};
+            return;
+        }
+        readyPendingRef.current = null;
+        const v = videoRef.current;
+        spReady({
+            When: serverNowIso(),
+            PositionTicks: Math.floor((v?.currentTime || 0) * TICKS_PER_SEC),
+            IsPlaying: !!isPlaying,
+            PlaylistItemId: getPlaylistItemId(),
+        });
     }, []);
 
     const loadStream = useCallback(async (it, qkey, seekTo = 0, audioIdx = audioRef.current, applyPrefs = false, forceTranscode = false) => {
@@ -334,12 +365,19 @@ export const Player = () => {
             setTrick(trickplayInfo(it, it.MediaSources?.[0]?.Id));
             let resumeSecs = restart ? 0 : (it.UserData?.PlaybackPositionTicks || 0) / TICKS_PER_SEC;
             if (isInGroup()) {
-                const pq = takePendingQueue();
-                const inQueue = pq?.Playlist?.some((p) => p.ItemId === it.Id);
-                if (inQueue) resumeSecs = (pq.StartPositionTicks || 0) / TICKS_PER_SEC;
-                else {
-                    initiatedRef.current = true;
-                    spSetNewQueue([it.Id], 0, restart ? 0 : (it.UserData?.PlaybackPositionTicks || 0));
+                const q = getQueue();
+                if (getQueueItemId() === it.Id) {
+                    resumeSecs = (q.StartPositionTicks || 0) / TICKS_PER_SEC;
+                } else {
+                    readyPendingRef.current = null;
+                    setSyncBusy(true);
+                    const queued = getPlaylistItemIdFor(it.Id);
+                    if (queued) spSetPlaylistItem(queued);
+                    else {
+                        const ids = await playbackQueueIds(it);
+                        if (!alive) return;
+                        spSetNewQueue(ids, 0, restart ? 0 : (it.UserData?.PlaybackPositionTicks || 0));
+                    }
                 }
             }
             reportStart(it.Id, restart ? 0 : (it.UserData?.PlaybackPositionTicks || 0));
@@ -374,17 +412,7 @@ export const Player = () => {
             v.playbackRate = speedRef.current;
             if (isInGroup()) {
                 v.pause();
-                spReady({
-                    When: serverNowIso(),
-                    PositionTicks: Math.floor((v.currentTime || 0) * TICKS_PER_SEC),
-                    IsPlaying: false,
-                    PlaylistItemId: getPlaylistItemId()
-                });
-                if (initiatedRef.current) {
-                    initiatedRef.current = false;
-                    clearTimeout(unpauseTimerRef.current);
-                    unpauseTimerRef.current = setTimeout(() => spUnpause(), 400);
-                }
+                reportReady(false);
             } else {
                 v.play().catch(() => {
                 });
@@ -435,6 +463,7 @@ export const Player = () => {
         }
         return () => {
             clearTimeout(stallTimerRef.current);
+            seekReadyRef.current?.();
             if (hlsRef.current) {
                 hlsRef.current.destroy();
                 hlsRef.current = null;
@@ -462,7 +491,6 @@ export const Player = () => {
     useEffect(() => () => {
         clearTimeout(bufTimerRef.current);
         clearTimeout(stallTimerRef.current);
-        clearTimeout(unpauseTimerRef.current);
     }, []);
 
     useEffect(() => {
@@ -556,6 +584,36 @@ export const Player = () => {
         setPop('speed');
         reveal();
     }, [reveal]);
+
+    const syncSeek = useCallback((posSec) => {
+        const v = videoRef.current;
+        if (!v) return;
+        clearTimeout(bufTimerRef.current);
+        seekReadyRef.current?.();
+        bufferingRef.current = false;
+        setSyncBusy(true);
+        v.pause();
+        if (Math.abs(v.currentTime - posSec) < SYNC_TOLERANCE) {
+            reportReady(false);
+            return;
+        }
+        let timer = null;
+        const done = () => {
+            clearTimeout(timer);
+            v.removeEventListener('seeked', done);
+            seekReadyRef.current = null;
+            v.pause();
+            reportReady(false);
+        };
+        seekReadyRef.current = () => {
+            clearTimeout(timer);
+            v.removeEventListener('seeked', done);
+            seekReadyRef.current = null;
+        };
+        v.addEventListener('seeked', done);
+        timer = setTimeout(done, SEEK_READY_TIMEOUT);
+        v.currentTime = posSec;
+    }, [reportReady]);
 
     const togglePlay = useCallback(() => {
         const v = videoRef.current;
@@ -900,7 +958,10 @@ export const Player = () => {
         reveal();
         return () => clearTimeout(hideTimer.current);
     }, [reveal]);
-    useEffect(() => onSync('group', setGroupState), []);
+    useEffect(() => onSync('group', (g) => {
+        setGroupState(g);
+        if (!g || g.State !== 'Waiting') setSyncBusy(false);
+    }), []);
 
     useEffect(() => {
         const offPs = onRemote('playstate', (d) => {
@@ -964,24 +1025,24 @@ export const Player = () => {
             const v = videoRef.current;
             if (!v) return;
             const localWhen = serverToLocal(cmd.When);
-            const DRIFT = 1.5;
             const apply = () => {
                 const lateSec = Math.max(0, (Date.now() - localWhen) / 1000);
                 const posSec = (cmd.PositionTicks || 0) / TICKS_PER_SEC;
                 switch (cmd.Command) {
                     case 'Unpause': {
+                        setSyncBusy(false);
                         const want = posSec + lateSec;
-                        if (Math.abs(v.currentTime - want) > DRIFT) v.currentTime = want;
+                        if (Math.abs(v.currentTime - want) > UNPAUSE_DRIFT) v.currentTime = want;
                         v.play().catch(() => {
                         });
                         break;
                     }
                     case 'Pause':
-                        if (Math.abs(v.currentTime - posSec) > DRIFT) v.currentTime = posSec;
                         v.pause();
+                        if (Math.abs(v.currentTime - posSec) > SYNC_TOLERANCE) v.currentTime = posSec;
                         break;
                     case 'Seek':
-                        v.currentTime = posSec;
+                        syncSeek(posSec);
                         break;
                     case 'Stop':
                         exit();
@@ -996,20 +1057,26 @@ export const Player = () => {
         });
         const offQueue = onSync('queue', (q) => {
             const cur = q.Playlist?.[q.PlayingItemIndex] || q.Playlist?.[0];
-            if (cur && cur.ItemId !== id) navigate(`/play/${cur.ItemId}`, {replace: true});
+            if (!cur) return;
+            if (cur.ItemId !== id) {
+                navigate(`/play/${cur.ItemId}`, {replace: true});
+                return;
+            }
+            if (readyPendingRef.current) reportReady(readyPendingRef.current.isPlaying);
         });
         return () => {
             offCmd();
             offQueue();
         };
-    }, [id, navigate, exit, reveal]);
+    }, [id, navigate, exit, reveal, syncSeek, reportReady]);
 
     const segLabel = activeSegment?.Type === 'Outro' ? t('player.skipOutro') : t('player.skipIntro');
     const qualityKey = QUALITY_LEVELS.find((q) => q.key === quality)?.labelKey || 'media.quality.auto';
     const modeBadge = streamInfo?.mode === 'transcode' ? t(qualityKey) : t('player.original');
     const currentCue = subCues.find((c) => time >= c.start && time <= c.end)?.text || '';
     const epLine = episodeLine(item, t);
-    const showPausedCard = !playing && !pop && !scrubbing && !buffering;
+    const syncWaiting = !!group && (group.State === 'Waiting' || syncBusy);
+    const showPausedCard = !playing && !pop && !scrubbing && !buffering && !syncWaiting;
 
     return (
         <div className="player-root" onMouseMove={reveal}>
@@ -1058,17 +1125,12 @@ export const Player = () => {
                 onPlaying={() => {
                     setBuffering(false);
                     setPlaying(true);
+                    setSyncBusy(false);
                     clearTimeout(bufTimerRef.current);
                     clearTimeout(stallTimerRef.current);
                     if (isInGroup() && bufferingRef.current) {
                         bufferingRef.current = false;
-                        const v = videoRef.current;
-                        spReady({
-                            When: serverNowIso(),
-                            PositionTicks: Math.floor((v?.currentTime || 0) * TICKS_PER_SEC),
-                            IsPlaying: true,
-                            PlaylistItemId: getPlaylistItemId()
-                        });
+                        reportReady(true);
                     }
                 }}
                 onPlay={() => setPlaying(true)}
@@ -1125,10 +1187,11 @@ export const Player = () => {
             )}
 
             <div
-                className={`player-overlay${showControls || scrubbing || zone === 'controls' || pop ? '' : ' hidden'}`}>
+                className={`player-overlay${showControls || scrubbing || syncWaiting || zone === 'controls' || pop ? '' : ' hidden'}`}>
                 <ScrubBar zone={zone} duration={duration} time={time} buffered={buffered}
                           scrubbing={scrubbing} scrubTime={scrubTime}
-                          chapters={chapters} chapterAt={(sec) => chapterAt(chapters, sec)} trick={trick}/>
+                          chapters={chapters} chapterAt={(sec) => chapterAt(chapters, sec)} trick={trick}
+                          syncWaiting={syncWaiting}/>
 
                 <ControlBar controls={controls} zone={zone} ctrlIdx={ctrlIdx}
                             playing={playing} speed={speed} item={item} group={group} nextEp={nextEp}

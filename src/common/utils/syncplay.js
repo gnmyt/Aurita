@@ -5,7 +5,10 @@ import {BRAND} from '@/common/utils/brand';
 const post = (path, body) => api(path, {}, {
     method: 'POST',
     body: body ? JSON.stringify(body) : undefined,
-}).catch(() => null);
+}).catch((e) => {
+    console.warn('[syncplay]', path, e);
+    return null;
+});
 
 let offset = 0;
 let timeSyncTimer = null;
@@ -58,7 +61,7 @@ const stopTimeSync = () => {
 
 let group = null;
 let playlistItemId = null;
-let pendingQueue = null;
+let queue = null;
 
 const subs = {group: new Set(), queue: new Set(), command: new Set(), state: new Set()};
 
@@ -88,8 +91,20 @@ export const getPlaylistItemId = () => {
     return playlistItemId;
 }
 
-export const takePendingQueue = () => {
-    return pendingQueue;
+export const getQueue = () => {
+    return queue;
+}
+
+const currentQueueItem = () => {
+    return queue?.Playlist?.[queue.PlayingItemIndex] || queue?.Playlist?.[0] || null;
+}
+
+export const getQueueItemId = () => {
+    return currentQueueItem()?.ItemId || null;
+}
+
+export const getPlaylistItemIdFor = (itemId) => {
+    return queue?.Playlist?.find((p) => p.ItemId === itemId)?.PlaylistItemId || null;
 }
 
 const refreshGroup = async () => {
@@ -112,7 +127,7 @@ const handleGroupUpdate = (d) => {
         case 'GroupLeft':
             group = null;
             playlistItemId = null;
-            pendingQueue = null;
+            queue = null;
             emit('group', null);
             stopTimeSync();
             break;
@@ -128,9 +143,8 @@ const handleGroupUpdate = (d) => {
             }
             break;
         case 'PlayQueue': {
-            pendingQueue = d.Data;
-            const cur = d.Data.Playlist?.[d.Data.PlayingItemIndex] || d.Data.Playlist?.[0];
-            playlistItemId = cur?.PlaylistItemId || null;
+            queue = d.Data;
+            playlistItemId = currentQueueItem()?.PlaylistItemId || null;
             emit('queue', d.Data);
             break;
         }
@@ -172,6 +186,7 @@ export const joinGroup = (id) => post('/SyncPlay/Join', {GroupId: id});
 export const leaveGroup = () => post('/SyncPlay/Leave');
 export const spSetNewQueue = (itemIds, pos = 0, startTicks = 0) =>
     post('/SyncPlay/SetNewQueue', {PlayingQueue: itemIds, PlayingItemPosition: pos, StartPositionTicks: startTicks});
+export const spSetPlaylistItem = (id) => post('/SyncPlay/SetPlaylistItem', {PlaylistItemId: id});
 export const spUnpause = () => post('/SyncPlay/Unpause');
 export const spPause = () => post('/SyncPlay/Pause');
 export const spSeek = (ticks) => post('/SyncPlay/Seek', {PositionTicks: Math.max(0, Math.floor(ticks))});

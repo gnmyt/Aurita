@@ -77,6 +77,14 @@ export const getNextEpisode = async (seriesId, episodeId) => {
     return null;
 }
 
+export const playbackQueueIds = async (item) => {
+    if (item?.Type !== 'Episode' || !item.SeriesId) return [item.Id];
+    const eps = await getEpisodes(item.SeriesId).catch(() => null);
+    const idx = eps?.findIndex((e) => e.Id === item.Id) ?? -1;
+    if (idx < 0) return [item.Id];
+    return eps.slice(idx).map((e) => e.Id);
+}
+
 const _folderCache = new Map();
 
 const fetchFolder = (id) => {

@@ -53,6 +53,10 @@ export const HLS_CONFIG = {
 
 export const DIRECT_STALL_MS = 12000;
 
+export const SYNC_TOLERANCE = 0.4;
+export const UNPAUSE_DRIFT = 1.5;
+export const SEEK_READY_TIMEOUT = 5000;
+
 export const thumbStyle = (info, sec) => {
     if (!info) return null;
     const idx = Math.min(info.ThumbnailCount - 1, Math.max(0, Math.floor((sec * 1000) / info.Interval)));

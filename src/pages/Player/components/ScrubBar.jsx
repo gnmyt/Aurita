@@ -1,13 +1,13 @@
 import {fmtClock as fmt, TICKS_PER_SEC} from '@/common/utils/time';
 import {thumbStyle} from '../utils';
 
-export const ScrubBar = ({zone, duration, time, buffered, scrubbing, scrubTime, chapters, chapterAt, trick}) => {
+export const ScrubBar = ({zone, duration, time, buffered, scrubbing, scrubTime, chapters, chapterAt, trick, syncWaiting}) => {
     const pct = duration ? (time / duration) * 100 : 0;
     const bufPct = duration ? Math.min(100, (buffered / duration) * 100) : 0;
     const scrubPct = duration ? (scrubTime / duration) * 100 : 0;
     return (
         <div className="nf-scrubber">
-            <div className={`nf-track${zone === 'scrub' ? ' focused' : ''}`}>
+            <div className={`nf-track${zone === 'scrub' ? ' focused' : ''}${syncWaiting ? ' waiting' : ''}`}>
                 <div className="nf-buffer" style={{width: `${bufPct}%`}}/>
                 <div className="nf-fill" style={{width: `${pct}%`}}/>
                 {chapters.map((c) => {
@@ -16,7 +16,8 @@ export const ScrubBar = ({zone, duration, time, buffered, scrubbing, scrubTime, 
                         ? <div key={c.StartPositionTicks} className="nf-chap" style={{left: `${p}%`}}/>
                         : null;
                 })}
-                <div className="nf-knob" style={{left: `${scrubbing ? scrubPct : pct}%`}}/>
+                {syncWaiting && <div className="nf-sync-sweep"/>}
+                {!syncWaiting && <div className="nf-knob" style={{left: `${scrubbing ? scrubPct : pct}%`}}/>}
                 {scrubbing && duration > 0 && (
                     <>
                         <div className="scrub-preview" style={{left: `${Math.min(92, Math.max(8, scrubPct))}%`}}>

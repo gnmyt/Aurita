@@ -116,6 +116,35 @@
   text-overflow: ellipsis
   white-space: nowrap
 
+.nf-track.waiting .nf-fill,
+.nf-track.waiting .nf-buffer,
+.nf-track.waiting .nf-chap
+  opacity: 0
+
+.nf-sync-sweep
+  position: absolute
+  inset: 0
+  border-radius: 3px
+  overflow: hidden
+  z-index: 2
+  pointer-events: none
+
+  &::after
+    content: ''
+    position: absolute
+    top: 0
+    bottom: 0
+    width: 32%
+    border-radius: 3px
+    background: var(--accent)
+    animation: nf-sync-sweep 1.15s cubic-bezier(.65, .05, .36, 1) infinite
+
+@keyframes nf-sync-sweep
+  from
+    transform: translateX(-100%)
+  to
+    transform: translateX(312.5%)
+
 .nf-chap
   position: absolute
   top: 50%

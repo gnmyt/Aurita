@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {LogOut, Plus, Users} from 'lucide-react';
+import {LoaderCircle, LogOut, Plus, Users, UserX} from 'lucide-react';
 import {useAutoFocusFirst} from '@/common/contexts/SpatialNav';
 import {getGroup, joinGroup, leaveGroup, listGroups, newGroup, onSync} from '@/common/utils/syncplay';
 import SettingRow from '@/common/components/SettingRow';
@@ -85,9 +85,13 @@ export const SyncPlay = () => {
                     <div className="settings-section">{t('syncPlay.availableGroups')}</div>
                     <div className="settings-card">
                         {loading ? (
-                            <SettingRow title={t('syncPlay.loading')}/>
+                            <SettingRow
+                                icon={<LoaderCircle size={26} className="spin"/>}
+                                title={t('syncPlay.loading')}
+                            />
                         ) : groups.length === 0 ? (
                             <SettingRow
+                                icon={<UserX size={26}/>}
                                 title={t('syncPlay.noGroups')}
                                 subtitle={t('syncPlay.noGroupsSub')}
                             />
