@@ -8,7 +8,8 @@
 
 A highly opinionated TV-friendly frontend for Jellyfin, built for the living room.
 
-![Screenshot](./.github/screenshot.png)
+![Screenshot 1](.github/screenshot_1.png)
+![Screenshot 2](.github/screenshot_2.png)
 
 ## Motivation
 
