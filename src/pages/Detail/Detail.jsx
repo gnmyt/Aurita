@@ -33,11 +33,14 @@ const extraLabel = (extra, base, fallback) => {
     return name === base ? fallback : name;
 }
 
+const FILLABLE_ICONS = new Set([Play, Heart]);
+
 const Button = ({label, Icon, primary, active, onSelect, focusKey}) => {
     const {handlers} = useFocusable({onSelect, focusKey});
+    const filled = FILLABLE_ICONS.has(Icon) && (primary || active);
     return (
         <div className={`btn${primary ? ' primary' : ''}${active ? ' active' : ''}`} {...handlers}>
-            {Icon && <Icon size={22} strokeWidth={2.5} fill={primary || active ? 'currentColor' : 'none'}/>}
+            {Icon && <Icon size={22} strokeWidth={2.5} fill={filled ? 'currentColor' : 'none'}/>}
             <span>{label}</span>
         </div>
     );
