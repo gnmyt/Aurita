@@ -4,6 +4,7 @@ import HttpApi from 'i18next-http-backend';
 
 export const languages = [
     {name: 'English', code: 'en'},
+    {name: 'Deutsch', code: 'de_DE'},
 ];
 
 const STORAGE_KEY = 'jf_lang';
