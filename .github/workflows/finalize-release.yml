@@ -30,17 +30,35 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update version files
-        run: |
-          jq ".version = \"${{ inputs.version }}\"" package.json > package.json.tmp
-          mv package.json.tmp package.json
-
-      - name: Commit & push
+      - name: Commit version bump to main
+        continue-on-error: true
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git diff-index --quiet HEAD || (git commit -m "chore: bump version to ${{ inputs.version }}" && git push origin HEAD:main)
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git checkout -B version-bump origin/main
+
+            jq ".version = \"${{ inputs.version }}\"" package.json > package.json.tmp
+            mv package.json.tmp package.json
+
+            if git diff --quiet -- package.json; then
+              echo "package.json is already at ${{ inputs.version }} — nothing to commit"
+              exit 0
+            fi
+
+            git add package.json
+            git commit -m "chore: bump version to ${{ inputs.version }}"
+            if git push origin HEAD:main; then
+              echo "Pushed version bump to main"
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt) — main moved, retrying"
+          done
+
+          echo "::warning::Could not push the version bump to main; publishing the release anyway"
+          exit 1
 
       - name: Get previous tag
         id: prev
