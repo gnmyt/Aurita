@@ -1,0 +1,157 @@
+.pin-screen
+  position: fixed
+  inset: 0
+  z-index: 350
+  background: #000
+  display: flex
+  align-items: center
+  justify-content: center
+  animation: ssFade .2s ease
+
+.pinpad
+  display: flex
+  flex-direction: row
+  align-items: center
+  gap: 70px
+  padding: 40px
+  text-align: left
+
+.pin-dpad
+  flex: 0 0 auto
+
+.pin-info
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+
+.pinpad.shake
+  animation: pinShake .45s ease
+
+@keyframes pinShake
+  0%, 100%
+    transform: translateX(0)
+  20%
+    transform: translateX(-12px)
+  40%
+    transform: translateX(12px)
+  60%
+    transform: translateX(-8px)
+  80%
+    transform: translateX(8px)
+
+.pin-eyebrow
+  color: var(--text-dim)
+  font-size: 16px
+  margin-bottom: 10px
+  letter-spacing: .3px
+
+.pin-title
+  font-size: clamp(30px, 3vw, 42px)
+  font-weight: 800
+
+.pin-sub
+  color: var(--text-dim)
+  font-size: 17px
+  margin-top: 10px
+  max-width: 460px
+
+.pin-boxes
+  display: flex
+  gap: 18px
+  margin-top: 30px
+
+.pin-box
+  width: 92px
+  height: 92px
+  border-radius: 8px
+  border: 2px solid rgba(255, 255, 255, .35)
+  display: flex
+  align-items: center
+  justify-content: center
+  transition: border-color .15s, box-shadow .15s, background .15s
+
+.pin-box.active
+  border-color: #fff
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .18)
+
+.pin-box.filled
+  border-color: #fff
+  background: rgba(255, 255, 255, .05)
+
+.pin-dot
+  width: 20px
+  height: 20px
+  border-radius: 50%
+  background: #fff
+  animation: pinPop .2s ease
+
+@keyframes pinPop
+  from
+    transform: scale(.2)
+    opacity: .4
+  to
+    transform: scale(1)
+    opacity: 1
+
+.pin-caret
+  width: 2px
+  height: 40px
+  background: #fff
+  animation: pinBlink 1s steps(1) infinite
+
+@keyframes pinBlink
+  50%
+    opacity: 0
+
+.pin-error
+  color: #ff6b6b
+  font-size: 15px
+  height: 20px
+  margin-top: 16px
+  opacity: 0
+  transition: opacity .15s
+
+.pin-error.show
+  opacity: 1
+
+.pin-forgot
+  color: #7c8694
+  font-size: 14px
+  margin-top: 28px
+
+.pin-forgot b
+  color: var(--text-dim)
+
+.dpad
+  width: 140px
+  height: auto
+  display: block
+
+.dpad-ring
+  fill: #1b2027
+  stroke: #2c333d
+  stroke-width: 2
+
+.dpad-sector
+  fill: transparent
+  transition: fill .12s ease
+
+.dpad-sector.on
+  fill: var(--accent)
+  filter: drop-shadow(0 0 7px rgba(242, 92, 168, .75))
+
+.dpad-chevron
+  fill: none
+  stroke: #8b94a0
+  stroke-width: 2.4
+  stroke-linecap: round
+  stroke-linejoin: round
+  transition: stroke .12s
+
+.dpad-chevron.on
+  stroke: #fff
+
+.dpad-select
+  fill: #232b34
+  stroke: #3a434e
+  stroke-width: 2

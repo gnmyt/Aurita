@@ -1,0 +1,94 @@
+.app
+  height: 100vh
+  width: 100vw
+
+.main
+  height: 100vh
+  overflow-y: auto
+  overflow-x: hidden
+
+.page
+  padding: var(--topnav-h) 0 80px
+
+
+.page-title
+  font-size: 30px
+  font-weight: 700
+  padding: 24px 48px 20px
+
+.empty
+  padding: 80px 48px
+  color: var(--text-dim)
+  font-size: 20px
+  text-align: center
+
+.loading-screen
+  position: fixed
+  inset: 0
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  gap: 24px
+  background: var(--bg)
+
+.loading-screen .yt-big
+  display: flex
+  align-items: center
+  justify-content: center
+
+.spinner
+  width: 48px
+  height: 48px
+  border: 4px solid rgba(255, 255, 255, .2)
+  border-top-color: #fff
+  border-radius: 50%
+  animation: spin2 .9s linear infinite
+
+@keyframes spin2
+  to
+    transform: rotate(360deg)
+
+.page-loader
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  gap: 18px
+  padding: 22vh 48px
+  color: var(--text-dim)
+
+.page-loader-text
+  font-size: 18px
+
+.page-error
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  gap: 10px
+  padding: 20vh 48px
+  text-align: center
+
+.page-error-title
+  font-size: 26px
+  font-weight: 800
+
+.page-error-sub
+  font-size: 17px
+  color: var(--text-dim)
+  margin-bottom: 18px
+  max-width: 460px
+
+.page-error-actions
+  display: flex
+  gap: 12px
+
+.inline-ico
+  vertical-align: -0.18em
+  margin: 0 1px
+
+.bc-arrow
+  vertical-align: -0.18em
+  margin: 0 2px
+  opacity: .7

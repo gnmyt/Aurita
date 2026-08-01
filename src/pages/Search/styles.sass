@@ -1,0 +1,74 @@
+.search-page
+  display: flex
+  gap: clamp(24px, 3vw, 40px)
+  padding: calc(var(--topnav-h) + 2vh) 48px 3vh
+  align-items: flex-start
+
+.keyboard
+  width: clamp(380px, 34vw, 520px)
+  flex: 0 0 auto
+
+.search-box
+  background: rgba(255, 255, 255, .08)
+  border-radius: 8px
+  padding: 0 20px
+  font-size: clamp(18px, 3vh, 24px)
+  backdrop-filter: blur(18px) saturate(150%)
+  -webkit-backdrop-filter: blur(18px) saturate(150%)
+  margin-bottom: 2.4vh
+  height: clamp(48px, 8vh, 64px)
+  display: flex
+  align-items: center
+  border: 1px solid rgba(255, 255, 255, .2)
+
+.search-box .cursor
+  display: inline-block
+  width: 2px
+  height: 1em
+  background: var(--accent)
+  margin-left: 2px
+  animation: blink 1s steps(1) infinite
+
+@keyframes blink
+  50%
+    opacity: 0
+
+.search-box .ph
+  color: var(--text-dim)
+
+.kb-grid
+  display: grid
+  grid-template-columns: repeat(6, 1fr)
+  gap: clamp(6px, 1.1vh, 10px)
+
+.key
+  height: clamp(38px, 7.6vh, 60px)
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 8px
+  background: rgba(255, 255, 255, .08)
+  border-radius: 8px
+  font-size: clamp(15px, 2.6vh, 21px)
+  text-transform: uppercase
+  backdrop-filter: blur(14px) saturate(140%)
+  -webkit-backdrop-filter: blur(14px) saturate(140%)
+  border: 1px solid rgba(255, 255, 255, .1)
+  transition: transform .1s, background .12s
+  font-weight: 500
+
+.key.wide
+  grid-column: span 2
+  padding: 0 10px
+  font-size: clamp(12px, 1.9vh, 15px)
+  text-transform: none
+
+.key[data-focused]
+  background: #fff
+  color: #141414
+  transform: scale(1.08)
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .3)
+
+.search-results
+  flex: 1
+  min-width: 0

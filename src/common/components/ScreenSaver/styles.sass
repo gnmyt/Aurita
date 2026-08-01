@@ -1,0 +1,53 @@
+.screensaver
+  position: fixed
+  inset: 0
+  z-index: 400
+  background: #000
+  overflow: hidden
+
+.screensaver-bg
+  position: absolute
+  inset: 0
+  background-size: cover
+  background-position: center
+  animation: ssFade 1.6s ease
+
+@keyframes ssFade
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+.screensaver::after
+  content: ''
+  position: absolute
+  inset: 0
+  background: linear-gradient(0deg, rgba(0, 0, 0, .75) 0%, rgba(0, 0, 0, .15) 45%, rgba(0, 0, 0, .35) 100%)
+
+.screensaver-clock
+  position: absolute
+  left: 64px
+  bottom: 60px
+  z-index: 1
+
+.screensaver-time
+  font-size: clamp(64px, 11vw, 130px)
+  font-weight: 800
+  line-height: 1
+  letter-spacing: -2px
+
+.screensaver-date
+  font-size: clamp(18px, 2.6vw, 30px)
+  color: #ddd
+  margin-top: 10px
+  text-transform: capitalize
+
+.screensaver-title
+  position: absolute
+  right: 64px
+  bottom: 70px
+  z-index: 1
+  color: #ddd
+  font-size: clamp(16px, 2vw, 22px)
+  max-width: 40%
+  text-align: right

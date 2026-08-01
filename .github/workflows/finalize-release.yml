@@ -1,0 +1,111 @@
+name: Finalize Release
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+      semver:
+        required: true
+        type: string
+      release_id:
+        required: true
+        type: string
+      release_tag:
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    name: "Commit Version & Publish"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update version files
+        run: |
+          jq ".version = \"${{ inputs.version }}\"" package.json > package.json.tmp
+          mv package.json.tmp package.json
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff-index --quiet HEAD || (git commit -m "chore: bump version to ${{ inputs.version }}" && git push origin HEAD:main)
+
+      - name: Get previous tag
+        id: prev
+        run: |
+          PREV=$(git tag --sort=-creatordate | grep -v "^${{ inputs.release_tag }}$" | head -1)
+          echo "tag=$PREV" >> "$GITHUB_OUTPUT"
+
+      - name: Publish release notes
+        uses: actions/github-script@v7
+        env:
+          VERSION: ${{ inputs.version }}
+          TAG: ${{ inputs.release_tag }}
+          PREV_TAG: ${{ steps.prev.outputs.tag }}
+          RELEASE_ID: ${{ inputs.release_id }}
+        with:
+          script: |
+            const { VERSION: v, TAG: tag, PREV_TAG: prev, RELEASE_ID: rid } = process.env;
+            const repo = { owner: context.repo.owner, repo: context.repo.repo };
+            const repoUrl = `https://github.com/${repo.owner}/${repo.repo}`;
+            const image = `ghcr.io/${repo.owner.toLowerCase()}/aurita`;
+
+            let changes = [];
+            let truncated = 0;
+            if (prev) {
+              try {
+                const { data } = await github.rest.repos.compareCommits({ ...repo, base: prev, head: tag, per_page: 250 });
+                truncated = Math.max(0, data.total_commits - data.commits.length);
+                changes = data.commits
+                  .filter(c => c.parents.length < 2)
+                  .map(c => ({
+                    sha: c.sha,
+                    title: c.commit.message.split('\n')[0].trim(),
+                    user: c.author?.login,
+                  }))
+                  .filter(c => !/^chore: bump version to /.test(c.title))
+                  .reverse();
+              } catch (e) { console.log('Commit fetch error:', e.message); }
+            }
+
+            const link = (label, file) => `[${label}](../../releases/download/${tag}/${file})`;
+
+            let body = '## 📦 Downloads\n\n';
+            body += '### Android TV\n\n';
+            body += '| Format | Use for | Download |\n';
+            body += '| :-- | :-- | :-- |\n';
+            body += `| **APK** | Sideloading onto a TV / stick | ${link('aurita-tv-' + v + '.apk', `aurita-tv-${v}.apk`)} |\n`;
+            body += `| **AAB** | Play Store upload | ${link('aurita-tv-' + v + '.aab', `aurita-tv-${v}.aab`)} |\n`;
+            body += '\n### Docker\n\n';
+            body += '```bash\n';
+            body += `docker pull ${image}:${v}\n`;
+            body += '```\n\n';
+            body += `Multi-arch (\`linux/amd64\`, \`linux/arm64\`). Also tagged \`:${v.split('-')[0]}\`` +
+                    (v.includes('-') ? '.\n' : ' and `:latest`.\n');
+
+            if (changes.length) {
+              body += `\n---\n\n## What's Changed\n\n`;
+              body += changes.map(c => {
+                const sha = `[\`${c.sha.slice(0, 7)}\`](${repoUrl}/commit/${c.sha})`;
+                return `* ${c.title} (${sha}${c.user ? ` by @${c.user}` : ''})`;
+              }).join('\n');
+              if (truncated) body += `\n* …and ${truncated} more commit${truncated === 1 ? '' : 's'}`;
+            }
+            if (prev) {
+              body += `\n\n**Full Changelog**: ${repoUrl}/compare/${prev}...${tag}`;
+            }
+
+            await github.rest.repos.updateRelease({ ...repo, release_id: parseInt(rid, 10), body, draft: false });
+            console.log('Published with', changes.length, 'commits');

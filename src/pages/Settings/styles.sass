@@ -1,0 +1,105 @@
+.settings-note
+  color: #ccc
+  font-size: 16px
+  line-height: 1.55
+  margin-top: 18px
+  padding: 0 4px
+  max-width: 680px
+
+.settings
+  max-width: 820px
+  margin: 0 auto
+  padding: calc(var(--topnav-h) + 28px) 24px 80px
+
+.settings-head
+  font-size: clamp(30px, 3vw, 44px)
+  font-weight: 800
+  letter-spacing: .2px
+  margin-bottom: 32px
+
+.settings-section
+  color: var(--text-dim)
+  font-size: 17px
+  font-weight: 600
+  margin: 30px 4px 12px
+
+.settings-card
+  background: var(--bg-elev)
+  border: 1px solid rgba(255, 255, 255, .07)
+  border-radius: 16px
+  overflow: hidden
+
+.set-row
+  display: flex
+  align-items: center
+  gap: 20px
+  padding: 20px 24px
+  position: relative
+  transition: background .14s
+
+.set-row + .set-row::before
+  content: ''
+  position: absolute
+  top: 0
+  left: 24px
+  right: 24px
+  height: 1px
+  background: rgba(255, 255, 255, .08)
+
+.set-row-lead
+  display: flex
+  align-items: center
+  justify-content: center
+  flex: 0 0 auto
+  width: 48px
+  color: var(--text)
+
+.set-row-lead .avatar
+  border-radius: 10px
+
+.set-row-text
+  flex: 1
+  min-width: 0
+
+.set-row-title
+  font-size: 19px
+  font-weight: 700
+  line-height: 1.25
+
+.set-row-sub
+  font-size: 14px
+  color: var(--text-dim)
+  margin-top: 3px
+
+.set-row-value
+  color: var(--text-dim)
+  font-size: 16px
+  font-weight: 600
+  flex: 0 0 auto
+
+.set-row-chev
+  color: #8b94a0
+  flex: 0 0 auto
+
+.set-row.actionable[data-focused]
+  background: rgba(255, 255, 255, .12)
+
+.set-row.actionable[data-focused] .set-row-chev
+  color: #fff
+
+.set-row.danger .set-row-lead
+  color: #ff6b6b
+
+.set-row.danger.actionable[data-focused]
+  background: rgba(229, 9, 20, .85)
+
+.set-row.danger.actionable[data-focused] .set-row-lead,
+.set-row.danger.actionable[data-focused] .set-row-sub,
+.set-row.danger.actionable[data-focused] .set-row-chev
+  color: #fff
+
+.settings-foot
+  margin-top: 40px
+  padding: 0 4px
+  color: #666
+  font-size: 14px

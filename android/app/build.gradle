@@ -1,0 +1,74 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+def buildVersionCode = (System.getenv('VERSION_CODE') ?: '1').toInteger()
+def buildVersionName = System.getenv('VERSION_NAME') ?: '1.0.0'
+
+// Signing comes from the environment (CI) or from an untracked key.properties (local).
+def keyProps = new Properties()
+def keyPropsFile = rootProject.file('key.properties')
+if (keyPropsFile.exists()) {
+    keyPropsFile.withInputStream { keyProps.load(it) }
+}
+def signing = { String env, String prop ->
+    System.getenv(env) ?: keyProps.getProperty(prop)
+}
+
+android {
+    namespace 'dev.gnm.aurita'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'dev.gnm.aurita'
+        minSdk 22
+        targetSdk 34
+        versionCode buildVersionCode
+        versionName buildVersionName
+        multiDexEnabled true
+        resValue 'string', 'dev_server_url', ''
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(signing('KEYSTORE_FILE', 'storeFile') ?: 'aurita-release.jks')
+            storePassword signing('KEYSTORE_PASSWORD', 'storePassword')
+            keyAlias signing('KEY_ALIAS', 'keyAlias')
+            keyPassword signing('KEY_PASSWORD', 'keyPassword')
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+
+        // DEV_SERVER_URL makes the WebView load the Vite dev server instead of
+        // the bundled assets, so `npm run dev:tv` gets hot reload on the TV.
+        debug {
+            resValue 'string', 'dev_server_url', System.getenv('DEV_SERVER_URL') ?: ''
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    androidResources {
+        noCompress 'mp4'
+    }
+}
+
+dependencies {
+    implementation 'androidx.webkit:webkit:1.11.0'
+    implementation 'androidx.core:core:1.13.1'
+    implementation 'androidx.tvprovider:tvprovider:1.0.0'
+    implementation 'androidx.work:work-runtime:2.9.1'
+}

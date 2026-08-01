@@ -1,0 +1,245 @@
+.wizard
+  position: fixed
+  inset: 0
+  z-index: 300
+  display: flex
+  align-items: center
+  justify-content: center
+  background: var(--bg)
+  overflow: hidden
+
+.wizard-bg
+  position: absolute
+  inset: 0
+  z-index: 0
+  background: radial-gradient(circle at 18% 22%, rgba(242, 92, 168, .28), transparent 46%), radial-gradient(circle at 85% 80%, rgba(108, 59, 224, .26), transparent 52%), #0b0e12
+
+.wizard-card
+  position: relative
+  z-index: 1
+  width: min(1040px, 88vw)
+  padding: 56px 64px
+
+.wizard-card.welcome
+  max-width: 720px
+  text-align: center
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.wizard-logo
+  margin-bottom: 28px
+  filter: drop-shadow(0 6px 28px rgba(242, 92, 168, .40))
+
+.wizard-title
+  font-size: 44px
+  font-weight: 800
+  line-height: 1.08
+  margin-bottom: 18px
+
+.wizard-sub
+  font-size: 19px
+  color: var(--text-dim)
+  line-height: 1.5
+  max-width: 560px
+  margin-bottom: 36px
+
+.wizard-actions
+  display: flex
+  gap: 14px
+  margin-top: 8px
+  flex-wrap: wrap
+
+.wizard-card.welcome .wizard-actions
+  justify-content: center
+
+.wizard-server
+  margin-top: 40px
+  color: #777
+  font-size: 14px
+  letter-spacing: .5px
+
+.wizard-error
+  background: rgba(255, 51, 51, .12)
+  border: 1px solid rgba(255, 51, 51, .4)
+  color: #ff9c9c
+  padding: 16px 22px
+  border-radius: 12px
+  font-size: 16px
+  max-width: 520px
+
+.wizard-card.choose
+  max-width: 720px
+  display: flex
+  flex-direction: column
+  align-items: center
+  text-align: center
+
+.wizard-servers
+  display: flex
+  flex-direction: column
+  gap: 14px
+  width: min(560px, 100%)
+  margin-bottom: 28px
+
+.server-choice
+  display: flex
+  align-items: center
+  gap: 18px
+  padding: 18px 22px
+  border-radius: 14px
+  background: rgba(255, 255, 255, .06)
+  border: 1px solid rgba(255, 255, 255, .12)
+  text-align: left
+  transition: all .15s
+
+.server-choice[data-focused]
+  background: #fff
+  border-color: #fff
+  color: #141414
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .35)
+
+.server-choice-icon
+  flex: 0 0 auto
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 48px
+  height: 48px
+  border-radius: 12px
+  background: rgba(255, 255, 255, .08)
+
+.server-choice[data-focused] .server-choice-icon
+  background: rgba(0, 0, 0, .08)
+
+.server-choice-text
+  flex: 1
+  display: flex
+  flex-direction: column
+  gap: 2px
+  min-width: 0
+
+.server-choice-name
+  font-size: 19px
+  font-weight: 600
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+.server-choice-url
+  font-size: 14px
+  color: var(--text-dim)
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+.server-choice[data-focused] .server-choice-url
+  color: rgba(0, 0, 0, .55)
+
+.server-choice-badge
+  flex: 0 0 auto
+  font-size: 13px
+  letter-spacing: .4px
+  padding: 5px 12px
+  border-radius: 999px
+  border: 1px solid rgba(255, 255, 255, .3)
+  color: var(--text-dim)
+
+.server-choice[data-focused] .server-choice-badge
+  border-color: rgba(0, 0, 0, .35)
+  color: rgba(0, 0, 0, .65)
+
+.wizard-card.pairing
+  display: flex
+  gap: 64px
+  align-items: center
+
+.pairing-left
+  flex: 1
+
+.wizard-steps
+  list-style: none
+  counter-reset: step
+  margin: 22px 0 8px
+  padding: 0
+
+.wizard-steps li
+  position: relative
+  counter-increment: step
+  padding: 0 0 16px 46px
+  font-size: 17px
+  color: #ddd
+  line-height: 1.45
+  max-width: 540px
+
+.wizard-steps li::before
+  content: counter(step)
+  position: absolute
+  left: 0
+  top: -2px
+  width: 30px
+  height: 30px
+  border-radius: 50%
+  background: var(--bg-elev2)
+  color: #fff
+  font-weight: 700
+  font-size: 15px
+  display: flex
+  align-items: center
+  justify-content: center
+
+.wizard-steps strong
+  color: #fff
+  font-weight: 600
+
+.pairing-code
+  font-size: 64px
+  font-weight: 800
+  letter-spacing: 8px
+  font-variant-numeric: tabular-nums
+  color: #fff
+  margin: 14px 0 22px
+  display: inline-block
+  padding: 10px 22px
+  border-radius: 12px
+  background: rgba(255, 255, 255, .08)
+  border: 1px solid rgba(255, 255, 255, .16)
+  backdrop-filter: blur(20px) saturate(160%)
+  -webkit-backdrop-filter: blur(20px) saturate(160%)
+
+.pairing-status
+  display: flex
+  align-items: center
+  gap: 10px
+  font-size: 17px
+  color: var(--text-dim)
+  min-height: 26px
+  margin-bottom: 28px
+
+.pairing-status .status-warn
+  color: #ffb84d
+
+.pairing-right
+  flex: 0 0 auto
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 14px
+
+.qr-wrap
+  background: #fff
+  padding: 16px
+  border-radius: 16px
+  line-height: 0
+
+.qr-hint
+  display: flex
+  align-items: center
+  gap: 8px
+  color: var(--text-dim)
+  font-size: 14px
+
+.spinner.small
+  width: 20px
+  height: 20px
+  border-width: 3px

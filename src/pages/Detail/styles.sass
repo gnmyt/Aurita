@@ -1,0 +1,100 @@
+@use "../../common/styles/mixins" as *
+
+.detail-hero
+  position: relative
+  min-height: 70vh
+  padding: 6vh 48px 4vh
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+
+.detail-hero .bg
+  position: absolute
+  inset: 0
+  background-size: cover
+  background-position: center top
+  z-index: 0
+
+.detail-hero .bg::after
+  content: ''
+  position: absolute
+  inset: 0
+  background: linear-gradient(90deg, rgba(15, 15, 15, .97) 0%, rgba(15, 15, 15, .7) 40%, rgba(15, 15, 15, .4) 100%), linear-gradient(0deg, var(--bg) 2%, transparent 60%)
+
+.detail-hero
+  padding-top: var(--topnav-h)
+
+.detail-content
+  position: relative
+  z-index: 1
+  max-width: 60%
+
+.detail-logo
+  max-width: min(460px, 50vw)
+  max-height: 18vh
+  object-fit: contain
+  object-position: left bottom
+  margin-bottom: 18px
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, .6))
+
+.detail-title
+  font-size: clamp(30px, 4vw, 50px)
+  font-weight: 800
+  line-height: 1.05
+  margin-bottom: 16px
+
+.detail-meta
+  display: flex
+  gap: 14px
+  color: #fff
+  font-weight: 600
+  font-size: clamp(14px, 1.6vw, 16px)
+  margin-bottom: 18px
+  align-items: center
+  flex-wrap: wrap
+
+.detail-meta .pill
+  background: rgba(255, 255, 255, .14)
+  backdrop-filter: blur(10px)
+  -webkit-backdrop-filter: blur(10px)
+  padding: 2px 9px
+  border-radius: 5px
+  font-size: 13px
+
+.detail-overview
+  +line-clamp(4)
+  font-size: clamp(15px, 1.7vw, 17px)
+  line-height: 1.5
+  color: #ddd
+  margin-bottom: 2.5vh
+  max-width: 760px
+
+.detail-actions
+  display: flex
+  gap: 12px
+  margin-bottom: 12px
+
+.season-tabs
+  display: flex
+  gap: 12px
+  padding: 24px 48px 8px
+  flex-wrap: wrap
+
+.season-tab
+  +glass-pill
+  padding: 10px 20px
+  transition: background .15s, color .15s
+
+.season-tab.active
+  background: #fff
+  color: #141414
+  border-color: transparent
+
+.season-tab[data-focused]
+  color: #141414
+  background: #fff
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .35)
+
+.season-tab.active[data-focused]
+  color: #141414
+  background: #fff

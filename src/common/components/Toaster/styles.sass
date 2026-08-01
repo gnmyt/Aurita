@@ -1,0 +1,36 @@
+.app-toast
+  position: fixed
+  left: 50%
+  bottom: 56px
+  transform: translateX(-50%)
+  z-index: 400
+  display: flex
+  align-items: center
+  gap: 12px
+  background: rgba(30, 30, 30, .6)
+  border: 1px solid rgba(255, 255, 255, .16)
+  backdrop-filter: blur(40px) saturate(160%)
+  -webkit-backdrop-filter: blur(40px) saturate(160%)
+  color: #fff
+  font-size: 17px
+  font-weight: 700
+  padding: 14px 22px
+  border-radius: 14px
+  box-shadow: 0 16px 56px rgba(0, 0, 0, .7)
+  animation: toastUp .2s ease
+
+.app-toast svg
+  color: var(--accent)
+
+.app-toast-head
+  font-size: 18px
+  line-height: 1.2
+  margin-bottom: 2px
+
+@keyframes toastUp
+  from
+    opacity: 0
+    transform: translate(-50%, 12px)
+  to
+    opacity: 1
+    transform: translate(-50%, 0)

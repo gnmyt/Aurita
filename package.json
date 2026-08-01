@@ -1,0 +1,35 @@
+{
+  "name": "aurita",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:tv": "bash scripts/dev-tv.sh",
+    "build": "vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "android:apk": "bash scripts/build-android.sh apk",
+    "android:aab": "bash scripts/build-android.sh aab",
+    "android:all": "bash scripts/build-android.sh both",
+    "docker:build": "docker build -t aurita:local .",
+    "docker:up": "docker compose up -d --build",
+    "docker:down": "docker compose down"
+  },
+  "dependencies": {
+    "hls.js": "^1.6.16",
+    "lucide-react": "^1.21.0",
+    "qrcode.react": "^4.2.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-router-dom": "^7.18.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "oxlint": "^1.69.0",
+    "sass-embedded": "^1.100.0",
+    "vite": "^8.1.0"
+  }
+}
