@@ -1,0 +1,30 @@
+@use "../../common/styles/mixins" as *
+
+.alpha-picker
+  display: flex
+  flex-wrap: wrap
+  gap: 8px
+  padding: 0 48px 24px
+  align-items: center
+
+.alpha-letter
+  +glass-pill
+  min-width: 44px
+  padding: 8px 12px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  font-size: 15px
+  font-weight: 700
+  font-variant-numeric: tabular-nums
+  transition: transform .1s, background .15s, color .15s
+
+.alpha-letter.active
+  background: #fff
+  color: #141414
+
+.alpha-letter[data-focused]
+  background: #fff
+  color: #141414
+  transform: scale(1.05)
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .3)

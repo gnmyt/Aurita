@@ -695,3 +695,48 @@
 
 .nf-row, .ep-row, .ep-season, .speed-stop
   cursor: pointer
+
+.pop-offset
+  width: min(460px, 46vw)
+
+.offset-row
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 14px
+
+.offset-btn
+  width: 54px
+  height: 54px
+  border-radius: 50%
+  background: rgba(255, 255, 255, .16)
+  color: #fff
+  display: flex
+  align-items: center
+  justify-content: center
+  transition: transform .12s, background .12s
+
+.offset-btn[data-focused]
+  background: rgba(255, 255, 255, .92)
+  color: #141414
+  transform: scale(1.1)
+
+.offset-btn.reset
+  margin-left: 10px
+
+.offset-value
+  min-width: 120px
+  text-align: center
+  font-size: 30px
+  font-weight: 800
+  font-variant-numeric: tabular-nums
+  color: #fff
+
+.offset-hint
+  margin-top: 16px
+  text-align: center
+  font-size: 14px
+  color: var(--text-dim)
+
+.nf-btn.on
+  background: rgba(255, 255, 255, .38)

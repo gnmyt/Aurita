@@ -16,6 +16,7 @@ import {
 } from './utils';
 import {TrackMenu} from './components/TrackMenu';
 import {SpeedPanel} from './components/SpeedPanel';
+import {SubtitleOffsetPanel} from './components/SubtitleOffsetPanel';
 import {UpNext} from './components/UpNext';
 import {PausedCard} from './components/PausedCard';
 import {ScrubBar} from './components/ScrubBar';
@@ -43,7 +44,14 @@ import {
     trickplayInfo,
 } from '@/common/utils/jellyfin';
 import {onRemote} from '@/common/utils/remote';
-import {getNativeVideo, isNativePlayerAvailable, releaseNativeVideo} from '@/common/utils/nativePlayer';
+import {
+    enterPip,
+    getNativeVideo,
+    isNativePlayerAvailable,
+    isPipAvailable,
+    onPipChange,
+    releaseNativeVideo,
+} from '@/common/utils/nativePlayer';
 import {isBackKey} from '@/common/contexts/SpatialNav';
 import {
     getAudioLang,
@@ -202,6 +210,7 @@ export const Player = () => {
     const streamRef = useRef(null);
     const itemRef = useRef(null);
     const segmentsRef = useRef([]);
+    const nativeVideoRef = useRef(null);
     const autoplayNextRef = useRef(false);
     const goNextRef = useRef(null);
     const exitRef = useRef(null);
@@ -239,6 +248,28 @@ export const Player = () => {
     const [playbackError, setPlaybackError] = useState(false);
     const [showControls, setShowControls] = useState(true);
     const [pop, setPop] = useState(null);
+    const [subOffset, setSubOffset] = useState(0);
+    const [aspectFill, setAspectFill] = useState(false);
+    const [inPip, setInPip] = useState(false);
+
+    const toggleAspect = useCallback(() => {
+        setAspectFill((prev) => {
+            const next = !prev;
+            nativeVideoRef.current?.setAspectFill(next);
+            return next;
+        });
+    }, []);
+
+    const pipAvailable = isPipAvailable();
+
+    const [videoAspect, setVideoAspect] = useState(0);
+    const screenAspect = typeof window !== 'undefined' && window.innerHeight
+        ? window.innerWidth / window.innerHeight : 16 / 9;
+    const canFill = videoAspect > 0 && Math.abs(videoAspect - screenAspect) > 0.02;
+
+    const openPip = useCallback(() => {
+        enterPip(videoRef.current instanceof HTMLVideoElement ? videoRef.current : null);
+    }, []);
     const [speed, setSpeed] = useState(1);
     const [speedIdx, setSpeedIdx] = useState(2);
     const [menuCol, setMenuCol] = useState(0);
@@ -426,6 +457,11 @@ export const Player = () => {
                         if (seg) nativeVideo.currentTime = (seg.EndTicks / TICKS_PER_SEC) - 0.2;
                     }
                     break;
+                case 'resize':
+                    if (nativeVideo.videoHeight > 0) {
+                        setVideoAspect(nativeVideo.videoWidth / nativeVideo.videoHeight);
+                    }
+                    break;
                 case 'loadedmetadata':
                     setDuration(nativeVideo.duration);
                     setBuffering(false);
@@ -480,7 +516,7 @@ export const Player = () => {
                     break;
             }
         };
-        const types = ['timeupdate', 'loadedmetadata', 'playing', 'pause', 'waiting', 'ended', 'error', 'seeked'];
+        const types = ['timeupdate', 'loadedmetadata', 'playing', 'pause', 'waiting', 'ended', 'error', 'seeked', 'resize'];
         types.forEach((t) => nativeVideo.addEventListener(t, onEvent));
         nativeVideo.playbackRate = speedRef.current;
         nativeVideo.load(streamInfo.url, {
@@ -583,6 +619,12 @@ export const Player = () => {
     useEffect(() => {
         segmentsRef.current = segments;
     }, [segments]);
+
+    useEffect(() => {
+        nativeVideoRef.current = nativeVideo;
+    }, [nativeVideo]);
+
+    useEffect(() => onPipChange(setInPip), []);
 
     useEffect(() => {
         const it = itemRef.current;
@@ -874,6 +916,9 @@ export const Player = () => {
         ...(nextEp ? [{key: 'next', act: goNext}] : []),
         ...(item?.Type === 'Episode' ? [{key: 'eps', act: openEpisodes}] : []),
         {key: 'cc', act: () => openMenu('tracks')},
+        {key: 'offset', act: () => setPop('offset')},
+        ...(canFill ? [{key: 'aspect', act: toggleAspect}] : []),
+        ...(pipAvailable ? [{key: 'pip', act: openPip}] : []),
         {key: 'speed', act: openSpeed},
         {key: 'gear', act: () => openMenu('quality')},
     ];
@@ -1203,7 +1248,8 @@ export const Player = () => {
     const segLabel = activeSegment?.Type === 'Outro' ? t('player.skipOutro') : t('player.skipIntro');
     const qualityKey = QUALITY_LEVELS.find((q) => q.key === quality)?.labelKey || 'media.quality.auto';
     const modeBadge = streamInfo?.mode === 'transcode' ? t(qualityKey) : t('player.original');
-    const currentCue = subCues.find((c) => time >= c.start && time <= c.end)?.text || '';
+    const cueTime = time - subOffset;
+    const currentCue = subCues.find((c) => cueTime >= c.start && cueTime <= c.end)?.text || '';
     const epLine = episodeLine(item, t);
     const syncWaiting = !!group && (group.State === 'Waiting' || syncBusy);
     const showPausedCard = !playing && !pop && !scrubbing && !buffering && !syncWaiting;
@@ -1212,6 +1258,7 @@ export const Player = () => {
         <div className={`player-root${nativeVideo ? ' native' : ''}`} onMouseMove={reveal}>
             {!nativeVideo && <video
                 ref={videoRef}
+                style={{objectFit: aspectFill ? 'cover' : 'contain'}}
                 crossOrigin="anonymous"
                 preload="auto"
                 poster={BLANK_POSTER}
@@ -1304,6 +1351,9 @@ export const Player = () => {
             {upNextActive && !pop && <UpNext nextEp={nextEp} secondsLeft={Math.ceil(duration - time)}/>}
 
             {pop === 'speed' && <SpeedPanel anchor="speed" speedIdx={speedIdx} onPick={pickSpeed}/>}
+            {pop === 'offset' && (
+                <SubtitleOffsetPanel anchor="offset" offset={subOffset} onChange={setSubOffset}/>
+            )}
 
             {(pop === 'tracks' || pop === 'quality') && (
                 <TrackMenu anchor={pop === 'quality' ? 'gear' : 'cc'} cols={cols}
@@ -1317,7 +1367,7 @@ export const Player = () => {
             )}
 
             <div
-                className={`player-overlay${showControls || scrubbing || syncWaiting || zone === 'controls' || pop ? '' : ' hidden'}`}>
+                className={`player-overlay${!inPip && (showControls || scrubbing || syncWaiting || zone === 'controls' || pop) ? '' : ' hidden'}`}>
                 <ScrubBar zone={zone} duration={duration} time={time} buffered={buffered}
                           scrubbing={scrubbing} scrubTime={scrubTime}
                           chapters={chapters} chapterAt={(sec) => chapterAt(chapters, sec)} trick={trick}
@@ -1325,9 +1375,11 @@ export const Player = () => {
 
                 <ControlBar controls={controls} zone={zone} ctrlIdx={ctrlIdx}
                             playing={playing} speed={speed} item={item} group={group} nextEp={nextEp}
-                            modeBadge={modeBadge}
+                            modeBadge={modeBadge} aspectFill={aspectFill} canPip={pipAvailable} canFill={canFill}
                             onTogglePlay={togglePlay} onSeek={seek} onNext={goNext} onOpenMenu={openMenu}
-                            onOpenSpeed={openSpeed} onOpenEpisodes={openEpisodes}/>
+                            onOpenSpeed={openSpeed} onOpenEpisodes={openEpisodes}
+                            onOpenOffset={() => setPop('offset')} onToggleAspect={toggleAspect}
+                            onPip={openPip}/>
             </div>
         </div>
     );

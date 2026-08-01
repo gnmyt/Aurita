@@ -129,6 +129,26 @@ public class MainActivity extends Activity {
         scheduleTvSync();
     }
 
+    private boolean enterPip() {
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.O) return false;
+        try {
+            android.app.PictureInPictureParams.Builder b = new android.app.PictureInPictureParams.Builder();
+            b.setAspectRatio(new android.util.Rational(16, 9));
+            return enterPictureInPictureMode(b.build());
+        } catch (Throwable t) {
+            android.util.Log.w("Aurita", "PiP unavailable", t);
+            return false;
+        }
+    }
+
+    @Override
+    public void onPictureInPictureModeChanged(boolean inPip, android.content.res.Configuration cfg) {
+        super.onPictureInPictureModeChanged(inPip, cfg);
+        if (webView == null) return;
+        webView.evaluateJavascript(
+                "window.__auritaPipChanged && window.__auritaPipChanged(" + inPip + ")", null);
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && webView != null) {
@@ -282,6 +302,16 @@ public class MainActivity extends Activity {
         @JavascriptInterface
         public void videoRelease() {
             nativeVideo.release();
+        }
+
+        @JavascriptInterface
+        public void videoAspectFill(boolean fill) {
+            nativeVideo.setAspectFill(fill);
+        }
+
+        @JavascriptInterface
+        public boolean enterPictureInPicture() {
+            return MainActivity.this.enterPip();
         }
     }
 

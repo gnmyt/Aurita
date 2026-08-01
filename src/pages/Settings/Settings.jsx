@@ -1,7 +1,19 @@
 import "./styles.sass";
 import {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {FastForward, Gauge, Images, Languages, Lock, LogOut, SkipForward, Square, Subtitles} from 'lucide-react';
+import {
+    Clock,
+    FastForward,
+    Gauge,
+    Images,
+    Languages,
+    Lock,
+    LogOut,
+    MonitorPlay,
+    SkipForward,
+    Square,
+    Subtitles
+} from 'lucide-react';
 import {useAutoFocusFirst} from '@/common/contexts/SpatialNav';
 import {
     accountHasPin,
@@ -43,6 +55,8 @@ export const Settings = () => {
         autoplayNext: getPref('autoplayNext'),
         autoSkipSegments: getPref('autoSkipSegments'),
         autoplayPreviews: getPref('autoplayPreviews'),
+        screensaver: getPref('screensaver'),
+        showClock: getPref('showClock'),
     }));
 
     const togglePref = (key) => {
@@ -190,6 +204,20 @@ export const Settings = () => {
                     subtitle={t('settings.autoplayPreviewsSub')}
                     value={onOff(prefs.autoplayPreviews)}
                     onSelect={() => togglePref('autoplayPreviews')}
+                />
+                <SettingRow
+                    icon={<MonitorPlay size={26}/>}
+                    title={t('settings.screensaver')}
+                    subtitle={t('settings.screensaverSub')}
+                    value={onOff(prefs.screensaver)}
+                    onSelect={() => togglePref('screensaver')}
+                />
+                <SettingRow
+                    icon={<Clock size={26}/>}
+                    title={t('settings.showClock')}
+                    subtitle={t('settings.showClockSub')}
+                    value={onOff(prefs.showClock)}
+                    onSelect={() => togglePref('showClock')}
                 />
                 <SettingRow
                     icon={<Gauge size={26}/>}

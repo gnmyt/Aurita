@@ -134,8 +134,13 @@
     "filter": {
       "all": "Wszystko",
       "unplayed": "Nieobejrzane",
-      "fav": "Ulubione"
-    }
+      "fav": "Ulubione",
+      "year": "Rok",
+      "rating": "Kategoria",
+      "studio": "Studio",
+      "any": "Dowolne"
+    },
+    "alphaAll": "Wszystkie"
   },
   "browse": {
     "person": "Osoba",
@@ -233,7 +238,11 @@
     "toast": {
       "pinEnabled": "Blokada profilu włączona",
       "pinDisabled": "Blokada profilu wyłączona"
-    }
+    },
+    "screensaver": "Wygaszacz ekranu",
+    "screensaverSub": "Pokazuje grafiki po pięciu minutach bezczynności",
+    "showClock": "Zegar",
+    "showClockSub": "Pokaż godzinę na pasku nawigacji"
   },
   "player": {
     "errorTitle": "Odtwarzanie niemożliwe",
@@ -259,7 +268,10 @@
       "audioAndSubtitles": "Dźwięk i napisy",
       "playbackSpeed": "Prędkość odtwarzania",
       "quality": "Jakość",
-      "episodes": "Odcinki"
+      "episodes": "Odcinki",
+      "subtitleOffset": "Opóźnienie napisów",
+      "aspect": "Wypełnij ekran",
+      "pip": "Obraz w obrazie"
     },
     "upNext": {
       "label": "Następnie za {{seconds}} s",
@@ -269,7 +281,11 @@
       "title": "Odcinki",
       "empty": "Nie znaleziono odcinków",
       "remaining": "Pozostało {{minutes}} min"
-    }
+    },
+    "subtitleOffset": "Opóźnienie napisów",
+    "subtitleOffsetHint": "Przesuwa napisy bez zmiany odtwarzania.",
+    "offsetNone": "Bez opóźnienia",
+    "offsetReset": "Resetuj"
   },
   "media": {
     "quality": {

@@ -62,6 +62,9 @@ export const HLS_CONFIG = {
 
 export const DIRECT_STALL_MS = 12000;
 
+export const SUB_OFFSET_STEP = 0.1;
+export const SUB_OFFSET_MAX = 30;
+
 export const SYNC_TOLERANCE = 0.4;
 export const UNPAUSE_DRIFT = 1.5;
 export const SEEK_READY_TIMEOUT = 5000;

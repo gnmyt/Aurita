@@ -133,8 +133,13 @@
     "filter": {
       "all": "Tout",
       "unplayed": "Non vus",
-      "fav": "Favoris"
-    }
+      "fav": "Favoris",
+      "year": "Année",
+      "rating": "Classification",
+      "studio": "Studio",
+      "any": "Tous"
+    },
+    "alphaAll": "Tous"
   },
   "browse": {
     "person": "Personne",
@@ -232,7 +237,11 @@
     "toast": {
       "pinEnabled": "Verrouillage du profil activé",
       "pinDisabled": "Verrouillage du profil désactivé"
-    }
+    },
+    "screensaver": "Écran de veille",
+    "screensaverSub": "Affiche des visuels après cinq minutes d’inactivité",
+    "showClock": "Horloge",
+    "showClockSub": "Afficher l’heure dans la barre de navigation"
   },
   "player": {
     "errorTitle": "Lecture impossible",
@@ -258,7 +267,10 @@
       "audioAndSubtitles": "Audio et sous-titres",
       "playbackSpeed": "Vitesse de lecture",
       "quality": "Qualité",
-      "episodes": "Épisodes"
+      "episodes": "Épisodes",
+      "subtitleOffset": "Décalage des sous-titres",
+      "aspect": "Remplir l’écran",
+      "pip": "Image dans l’image"
     },
     "upNext": {
       "label": "À suivre dans {{seconds}} s",
@@ -268,7 +280,11 @@
       "title": "Épisodes",
       "empty": "Aucun épisode trouvé",
       "remaining": "{{minutes}} min restantes"
-    }
+    },
+    "subtitleOffset": "Décalage des sous-titres",
+    "subtitleOffsetHint": "Décale les sous-titres sans modifier la lecture.",
+    "offsetNone": "Aucun décalage",
+    "offsetReset": "Réinitialiser"
   },
   "media": {
     "quality": {

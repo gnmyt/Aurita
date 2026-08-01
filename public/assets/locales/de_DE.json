@@ -132,8 +132,13 @@
     "filter": {
       "all": "Alle",
       "unplayed": "Ungesehen",
-      "fav": "Favoriten"
-    }
+      "fav": "Favoriten",
+      "year": "Jahr",
+      "rating": "Freigabe",
+      "studio": "Studio",
+      "any": "Alle"
+    },
+    "alphaAll": "Alle"
   },
   "browse": {
     "person": "Person",
@@ -231,7 +236,11 @@
     "toast": {
       "pinEnabled": "Profilsperre aktiviert",
       "pinDisabled": "Profilsperre deaktiviert"
-    }
+    },
+    "screensaver": "Bildschirmschoner",
+    "screensaverSub": "Zeigt Artwork nach fünf Minuten ohne Eingabe",
+    "showClock": "Uhr",
+    "showClockSub": "Uhrzeit in der Navigationsleiste anzeigen"
   },
   "player": {
     "errorTitle": "Wiedergabe nicht möglich",
@@ -257,7 +266,10 @@
       "audioAndSubtitles": "Audio & Untertitel",
       "playbackSpeed": "Wiedergabegeschwindigkeit",
       "quality": "Qualität",
-      "episodes": "Folgen"
+      "episodes": "Folgen",
+      "subtitleOffset": "Untertitel-Verzögerung",
+      "aspect": "Bildschirm füllen",
+      "pip": "Bild im Bild"
     },
     "upNext": {
       "label": "Als Nächstes in {{seconds}}s",
@@ -267,7 +279,11 @@
       "title": "Folgen",
       "empty": "Keine Folgen gefunden",
       "remaining": "Noch {{minutes}} Min."
-    }
+    },
+    "subtitleOffset": "Untertitel-Verzögerung",
+    "subtitleOffsetHint": "Verschiebt Untertitel, ohne die Wiedergabe zu ändern.",
+    "offsetNone": "Keine Verzögerung",
+    "offsetReset": "Zurücksetzen"
   },
   "media": {
     "quality": {

@@ -132,8 +132,13 @@
     "filter": {
       "all": "Alla",
       "unplayed": "Osedda",
-      "fav": "Favoriter"
-    }
+      "fav": "Favoriter",
+      "year": "År",
+      "rating": "Åldersgräns",
+      "studio": "Studio",
+      "any": "Alla"
+    },
+    "alphaAll": "Alla"
   },
   "browse": {
     "person": "Person",
@@ -231,7 +236,11 @@
     "toast": {
       "pinEnabled": "Profillås aktiverat",
       "pinDisabled": "Profillås inaktiverat"
-    }
+    },
+    "screensaver": "Skärmsläckare",
+    "screensaverSub": "Visar bilder efter fem minuters inaktivitet",
+    "showClock": "Klocka",
+    "showClockSub": "Visa tiden i navigeringsfältet"
   },
   "player": {
     "errorTitle": "Uppspelning är inte möjlig",
@@ -257,7 +266,10 @@
       "audioAndSubtitles": "Ljud och undertexter",
       "playbackSpeed": "Uppspelningshastighet",
       "quality": "Kvalitet",
-      "episodes": "Avsnitt"
+      "episodes": "Avsnitt",
+      "subtitleOffset": "Undertextfördröjning",
+      "aspect": "Fyll skärmen",
+      "pip": "Bild i bild"
     },
     "upNext": {
       "label": "Nästa om {{seconds}} s",
@@ -267,7 +279,11 @@
       "title": "Avsnitt",
       "empty": "Inga avsnitt hittades",
       "remaining": "{{minutes}} min kvar"
-    }
+    },
+    "subtitleOffset": "Undertextfördröjning",
+    "subtitleOffsetHint": "Förskjuter undertexter utan att ändra uppspelningen.",
+    "offsetNone": "Ingen fördröjning",
+    "offsetReset": "Återställ"
   },
   "media": {
     "quality": {

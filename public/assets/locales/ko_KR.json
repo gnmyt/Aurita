@@ -131,8 +131,13 @@
     "filter": {
       "all": "전체",
       "unplayed": "시청 안 함",
-      "fav": "즐겨찾기"
-    }
+      "fav": "즐겨찾기",
+      "year": "연도",
+      "rating": "등급",
+      "studio": "스튜디오",
+      "any": "전체"
+    },
+    "alphaAll": "전체"
   },
   "browse": {
     "person": "인물",
@@ -230,7 +235,11 @@
     "toast": {
       "pinEnabled": "프로필 잠금을 활성화했습니다",
       "pinDisabled": "프로필 잠금을 비활성화했습니다"
-    }
+    },
+    "screensaver": "화면 보호기",
+    "screensaverSub": "5분간 조작이 없으면 아트워크 표시",
+    "showClock": "시계",
+    "showClockSub": "내비게이션 바에 시간 표시"
   },
   "player": {
     "errorTitle": "재생할 수 없습니다",
@@ -256,7 +265,10 @@
       "audioAndSubtitles": "오디오 및 자막",
       "playbackSpeed": "재생 속도",
       "quality": "화질",
-      "episodes": "에피소드"
+      "episodes": "에피소드",
+      "subtitleOffset": "자막 지연",
+      "aspect": "화면 채우기",
+      "pip": "PIP"
     },
     "upNext": {
       "label": "{{seconds}}초 후 다음 에피소드",
@@ -266,7 +278,11 @@
       "title": "에피소드",
       "empty": "에피소드를 찾을 수 없습니다",
       "remaining": "{{minutes}}분 남음"
-    }
+    },
+    "subtitleOffset": "자막 지연",
+    "subtitleOffsetHint": "재생을 바꾸지 않고 자막을 이동합니다.",
+    "offsetNone": "지연 없음",
+    "offsetReset": "초기화"
   },
   "media": {
     "quality": {

@@ -132,8 +132,13 @@
     "filter": {
       "all": "All",
       "unplayed": "Unwatched",
-      "fav": "Favorites"
-    }
+      "fav": "Favorites",
+      "year": "Year",
+      "rating": "Rating",
+      "studio": "Studio",
+      "any": "Any"
+    },
+    "alphaAll": "All"
   },
   "browse": {
     "person": "Person",
@@ -231,7 +236,11 @@
     "toast": {
       "pinEnabled": "Profile lock enabled",
       "pinDisabled": "Profile lock disabled"
-    }
+    },
+    "screensaver": "Screensaver",
+    "screensaverSub": "Shows artwork after five idle minutes",
+    "showClock": "Clock",
+    "showClockSub": "Show the time in the navigation bar"
   },
   "player": {
     "errorTitle": "Playback not possible",
@@ -257,7 +266,10 @@
       "audioAndSubtitles": "Audio & subtitles",
       "playbackSpeed": "Playback speed",
       "quality": "Quality",
-      "episodes": "Episodes"
+      "episodes": "Episodes",
+      "subtitleOffset": "Subtitle delay",
+      "aspect": "Fill screen",
+      "pip": "Picture in picture"
     },
     "upNext": {
       "label": "Up next in {{seconds}}s",
@@ -267,7 +279,11 @@
       "title": "Episodes",
       "empty": "No episodes found",
       "remaining": "{{minutes}} min left"
-    }
+    },
+    "subtitleOffset": "Subtitle delay",
+    "subtitleOffsetHint": "Shifts subtitles without changing playback.",
+    "offsetNone": "No delay",
+    "offsetReset": "Reset"
   },
   "media": {
     "quality": {

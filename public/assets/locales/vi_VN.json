@@ -131,8 +131,13 @@
     "filter": {
       "all": "Tất cả",
       "unplayed": "Chưa xem",
-      "fav": "Yêu thích"
-    }
+      "fav": "Yêu thích",
+      "year": "Năm",
+      "rating": "Xếp hạng",
+      "studio": "Hãng phim",
+      "any": "Bất kỳ"
+    },
+    "alphaAll": "Tất cả"
   },
   "browse": {
     "person": "Nhân vật",
@@ -230,7 +235,11 @@
     "toast": {
       "pinEnabled": "Đã bật khoá hồ sơ",
       "pinDisabled": "Đã tắt khoá hồ sơ"
-    }
+    },
+    "screensaver": "Trình bảo vệ màn hình",
+    "screensaverSub": "Hiển thị ảnh sau năm phút không dùng",
+    "showClock": "Đồng hồ",
+    "showClockSub": "Hiển thị giờ trên thanh điều hướng"
   },
   "player": {
     "errorTitle": "Không thể phát",
@@ -256,7 +265,10 @@
       "audioAndSubtitles": "Âm thanh và phụ đề",
       "playbackSpeed": "Tốc độ phát",
       "quality": "Chất lượng",
-      "episodes": "Các tập"
+      "episodes": "Các tập",
+      "subtitleOffset": "Độ trễ phụ đề",
+      "aspect": "Lấp đầy màn hình",
+      "pip": "Ảnh trong ảnh"
     },
     "upNext": {
       "label": "Tiếp theo sau {{seconds}} giây",
@@ -266,7 +278,11 @@
       "title": "Các tập",
       "empty": "Không tìm thấy tập nào",
       "remaining": "Còn {{minutes}} phút"
-    }
+    },
+    "subtitleOffset": "Độ trễ phụ đề",
+    "subtitleOffsetHint": "Dịch phụ đề mà không đổi phát lại.",
+    "offsetNone": "Không trễ",
+    "offsetReset": "Đặt lại"
   },
   "media": {
     "quality": {

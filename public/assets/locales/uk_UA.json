@@ -134,8 +134,13 @@
     "filter": {
       "all": "Усі",
       "unplayed": "Непереглянуті",
-      "fav": "Обране"
-    }
+      "fav": "Обране",
+      "year": "Рік",
+      "rating": "Рейтинг",
+      "studio": "Студія",
+      "any": "Будь-який"
+    },
+    "alphaAll": "Усі"
   },
   "browse": {
     "person": "Персона",
@@ -233,7 +238,11 @@
     "toast": {
       "pinEnabled": "Блокування профілю увімкнено",
       "pinDisabled": "Блокування профілю вимкнено"
-    }
+    },
+    "screensaver": "Заставка",
+    "screensaverSub": "Показує обкладинки після п’яти хвилин бездіяльності",
+    "showClock": "Годинник",
+    "showClockSub": "Показувати час у панелі навігації"
   },
   "player": {
     "errorTitle": "Відтворення неможливе",
@@ -259,7 +268,10 @@
       "audioAndSubtitles": "Аудіо та субтитри",
       "playbackSpeed": "Швидкість відтворення",
       "quality": "Якість",
-      "episodes": "Серії"
+      "episodes": "Серії",
+      "subtitleOffset": "Затримка субтитрів",
+      "aspect": "Заповнити екран",
+      "pip": "Картинка в картинці"
     },
     "upNext": {
       "label": "Далі через {{seconds}} с",
@@ -269,7 +281,11 @@
       "title": "Серії",
       "empty": "Серій не знайдено",
       "remaining": "Залишилось {{minutes}} хв"
-    }
+    },
+    "subtitleOffset": "Затримка субтитрів",
+    "subtitleOffsetHint": "Зсуває субтитри, не змінюючи відтворення.",
+    "offsetNone": "Без затримки",
+    "offsetReset": "Скинути"
   },
   "media": {
     "quality": {

@@ -131,8 +131,13 @@
     "filter": {
       "all": "Semua",
       "unplayed": "Belum ditonton",
-      "fav": "Favorit"
-    }
+      "fav": "Favorit",
+      "year": "Tahun",
+      "rating": "Rating",
+      "studio": "Studio",
+      "any": "Semua"
+    },
+    "alphaAll": "Semua"
   },
   "browse": {
     "person": "Orang",
@@ -230,7 +235,11 @@
     "toast": {
       "pinEnabled": "Kunci profil diaktifkan",
       "pinDisabled": "Kunci profil dinonaktifkan"
-    }
+    },
+    "screensaver": "Screensaver",
+    "screensaverSub": "Menampilkan gambar setelah lima menit tanpa aktivitas",
+    "showClock": "Jam",
+    "showClockSub": "Tampilkan waktu di bilah navigasi"
   },
   "player": {
     "errorTitle": "Tidak dapat diputar",
@@ -256,7 +265,10 @@
       "audioAndSubtitles": "Audio & subtitel",
       "playbackSpeed": "Kecepatan pemutaran",
       "quality": "Kualitas",
-      "episodes": "Episode"
+      "episodes": "Episode",
+      "subtitleOffset": "Penundaan subtitel",
+      "aspect": "Penuhi layar",
+      "pip": "Picture in picture"
     },
     "upNext": {
       "label": "Berikutnya dalam {{seconds}} dtk",
@@ -266,7 +278,11 @@
       "title": "Episode",
       "empty": "Tidak ada episode ditemukan",
       "remaining": "Sisa {{minutes}} mnt"
-    }
+    },
+    "subtitleOffset": "Penundaan subtitel",
+    "subtitleOffsetHint": "Menggeser subtitel tanpa mengubah pemutaran.",
+    "offsetNone": "Tanpa penundaan",
+    "offsetReset": "Atur ulang"
   },
   "media": {
     "quality": {

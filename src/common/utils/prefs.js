@@ -33,6 +33,8 @@ const BOOL_DEFAULTS = {
     autoplayNext: true,
     autoSkipSegments: false,
     autoplayPreviews: true,
+    screensaver: true,
+    showClock: true,
 };
 
 export const getPref = (key) => {

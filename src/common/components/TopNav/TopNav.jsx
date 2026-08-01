@@ -7,6 +7,7 @@ import {useFocusable} from '@/common/contexts/SpatialNav';
 import AuritaLogo from '@/common/components/AuritaLogo';
 import Avatar from '@/common/components/Avatar';
 import {getActiveAccount} from '@/common/utils/jellyfin';
+import {getPref} from '@/common/utils/prefs';
 
 const NavItem = ({label, icon, active, onSelect, focusKey}) => {
     const {handlers} = useFocusable({onSelect, focusKey});
@@ -25,6 +26,24 @@ const ProfileButton = ({account, onSelect}) => {
             <ChevronDown size={16} strokeWidth={2.5}/>
         </div>
     );
+}
+
+const Clock = () => {
+    const [now, setNow] = useState(() => new Date());
+    useEffect(() => {
+        let interval;
+        const timeout = setTimeout(() => {
+            setNow(new Date());
+            interval = setInterval(() => setNow(new Date()), 60000);
+        }, (60 - new Date().getSeconds()) * 1000);
+        return () => {
+            clearTimeout(timeout);
+            clearInterval(interval);
+        };
+    }, []);
+    const hh = String(now.getHours()).padStart(2, '0');
+    const mm = String(now.getMinutes()).padStart(2, '0');
+    return <div className="tn-clock">{`${hh}:${mm}`}</div>;
 }
 
 export const TopNav = ({views, onOpenProfiles}) => {
@@ -69,6 +88,7 @@ export const TopNav = ({views, onOpenProfiles}) => {
                 ))}
             </nav>
             <div className="tn-brand">
+                {getPref('showClock') && <Clock/>}
                 <AuritaLogo size={36}/>
             </div>
         </div>

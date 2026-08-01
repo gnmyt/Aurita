@@ -136,8 +136,13 @@
     "filter": {
       "all": "الكل",
       "unplayed": "غير مُشاهَد",
-      "fav": "المفضلة"
-    }
+      "fav": "المفضلة",
+      "year": "السنة",
+      "rating": "التصنيف",
+      "studio": "الاستوديو",
+      "any": "الكل"
+    },
+    "alphaAll": "الكل"
   },
   "browse": {
     "person": "شخص",
@@ -235,7 +240,11 @@
     "toast": {
       "pinEnabled": "تم تفعيل قفل الملف الشخصي",
       "pinDisabled": "تم إيقاف قفل الملف الشخصي"
-    }
+    },
+    "screensaver": "شاشة التوقف",
+    "screensaverSub": "يعرض الصور بعد خمس دقائق من الخمول",
+    "showClock": "الساعة",
+    "showClockSub": "إظهار الوقت في شريط التنقل"
   },
   "player": {
     "errorTitle": "التشغيل غير ممكن",
@@ -261,7 +270,10 @@
       "audioAndSubtitles": "الصوت والترجمة",
       "playbackSpeed": "سرعة التشغيل",
       "quality": "الجودة",
-      "episodes": "الحلقات"
+      "episodes": "الحلقات",
+      "subtitleOffset": "تأخير الترجمة",
+      "aspect": "ملء الشاشة",
+      "pip": "صورة داخل صورة"
     },
     "upNext": {
       "label": "التالي بعد {{seconds}} ثانية",
@@ -271,7 +283,11 @@
       "title": "الحلقات",
       "empty": "لم يتم العثور على حلقات",
       "remaining": "بقيت {{minutes}} دقيقة"
-    }
+    },
+    "subtitleOffset": "تأخير الترجمة",
+    "subtitleOffsetHint": "يزيح الترجمة دون تغيير التشغيل.",
+    "offsetNone": "بدون تأخير",
+    "offsetReset": "إعادة تعيين"
   },
   "media": {
     "quality": {

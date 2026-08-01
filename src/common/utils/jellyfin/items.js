@@ -211,6 +211,21 @@ export const getGenres = (parentId) => {
     }).then((d) => d.Items || []).catch(() => []);
 }
 
+export const getLibraryFilters = (parentId) => {
+    return api('/Items/Filters', {userId: getUserId(), parentId})
+        .then((d) => ({
+            years: (d?.Years || []).slice().sort((a, b) => b - a),
+            officialRatings: d?.OfficialRatings || [],
+            tags: d?.Tags || [],
+        }))
+        .catch(() => ({years: [], officialRatings: [], tags: []}));
+}
+
+export const getStudios = (parentId) => {
+    return api('/Studios', {userId: getUserId(), parentId, SortBy: 'SortName', Limit: 40})
+        .then((d) => d.Items || []).catch(() => []);
+}
+
 export const getMediaSegments = (itemId) => {
     return api(`/MediaSegments/${itemId}`, {includeSegmentTypes: 'Intro,Outro'})
         .then((d) => d.Items || []).catch(() => []);

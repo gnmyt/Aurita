@@ -132,8 +132,13 @@
     "filter": {
       "all": "सभी",
       "unplayed": "बिना देखे",
-      "fav": "पसंदीदा"
-    }
+      "fav": "पसंदीदा",
+      "year": "वर्ष",
+      "rating": "रेटिंग",
+      "studio": "स्टूडियो",
+      "any": "कोई भी"
+    },
+    "alphaAll": "सभी"
   },
   "browse": {
     "person": "व्यक्ति",
@@ -231,7 +236,11 @@
     "toast": {
       "pinEnabled": "प्रोफ़ाइल लॉक सक्षम",
       "pinDisabled": "प्रोफ़ाइल लॉक अक्षम"
-    }
+    },
+    "screensaver": "स्क्रीनसेवर",
+    "screensaverSub": "पाँच मिनट निष्क्रिय रहने पर आर्टवर्क दिखाता है",
+    "showClock": "घड़ी",
+    "showClockSub": "नेविगेशन बार में समय दिखाएँ"
   },
   "player": {
     "errorTitle": "प्लेबैक संभव नहीं",
@@ -257,7 +266,10 @@
       "audioAndSubtitles": "ऑडियो और उपशीर्षक",
       "playbackSpeed": "प्लेबैक गति",
       "quality": "गुणवत्ता",
-      "episodes": "एपिसोड"
+      "episodes": "एपिसोड",
+      "subtitleOffset": "उपशीर्षक विलंब",
+      "aspect": "स्क्रीन भरें",
+      "pip": "पिक्चर इन पिक्चर"
     },
     "upNext": {
       "label": "{{seconds}} सेकंड में आगे",
@@ -267,7 +279,11 @@
       "title": "एपिसोड",
       "empty": "कोई एपिसोड नहीं मिला",
       "remaining": "{{minutes}} मिनट बाकी"
-    }
+    },
+    "subtitleOffset": "उपशीर्षक विलंब",
+    "subtitleOffsetHint": "प्लेबैक बदले बिना उपशीर्षक खिसकाता है।",
+    "offsetNone": "कोई विलंब नहीं",
+    "offsetReset": "रीसेट"
   },
   "media": {
     "quality": {

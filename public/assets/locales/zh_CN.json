@@ -131,8 +131,13 @@
     "filter": {
       "all": "全部",
       "unplayed": "未观看",
-      "fav": "收藏"
-    }
+      "fav": "收藏",
+      "year": "年份",
+      "rating": "分级",
+      "studio": "制片厂",
+      "any": "不限"
+    },
+    "alphaAll": "全部"
   },
   "browse": {
     "person": "人物",
@@ -230,7 +235,11 @@
     "toast": {
       "pinEnabled": "已启用配置文件锁",
       "pinDisabled": "已停用配置文件锁"
-    }
+    },
+    "screensaver": "屏幕保护",
+    "screensaverSub": "闲置五分钟后显示剧照",
+    "showClock": "时钟",
+    "showClockSub": "在导航栏显示时间"
   },
   "player": {
     "errorTitle": "无法播放",
@@ -256,7 +265,10 @@
       "audioAndSubtitles": "音轨与字幕",
       "playbackSpeed": "播放速度",
       "quality": "画质",
-      "episodes": "剧集"
+      "episodes": "剧集",
+      "subtitleOffset": "字幕延迟",
+      "aspect": "填满屏幕",
+      "pip": "画中画"
     },
     "upNext": {
       "label": "{{seconds}} 秒后播放下一集",
@@ -266,7 +278,11 @@
       "title": "剧集",
       "empty": "未找到剧集",
       "remaining": "还剩 {{minutes}} 分钟"
-    }
+    },
+    "subtitleOffset": "字幕延迟",
+    "subtitleOffsetHint": "在不改变播放的情况下平移字幕。",
+    "offsetNone": "无延迟",
+    "offsetReset": "重置"
   },
   "media": {
     "quality": {

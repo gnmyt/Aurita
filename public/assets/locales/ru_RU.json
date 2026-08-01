@@ -134,8 +134,13 @@
     "filter": {
       "all": "Все",
       "unplayed": "Непросмотренные",
-      "fav": "Избранное"
-    }
+      "fav": "Избранное",
+      "year": "Год",
+      "rating": "Рейтинг",
+      "studio": "Студия",
+      "any": "Любой"
+    },
+    "alphaAll": "Все"
   },
   "browse": {
     "person": "Персона",
@@ -233,7 +238,11 @@
     "toast": {
       "pinEnabled": "Блокировка профиля включена",
       "pinDisabled": "Блокировка профиля отключена"
-    }
+    },
+    "screensaver": "Заставка",
+    "screensaverSub": "Показывает обложки после пяти минут простоя",
+    "showClock": "Часы",
+    "showClockSub": "Показывать время в панели навигации"
   },
   "player": {
     "errorTitle": "Воспроизведение невозможно",
@@ -259,7 +268,10 @@
       "audioAndSubtitles": "Аудио и субтитры",
       "playbackSpeed": "Скорость воспроизведения",
       "quality": "Качество",
-      "episodes": "Серии"
+      "episodes": "Серии",
+      "subtitleOffset": "Задержка субтитров",
+      "aspect": "Заполнить экран",
+      "pip": "Картинка в картинке"
     },
     "upNext": {
       "label": "Далее через {{seconds}} с",
@@ -269,7 +281,11 @@
       "title": "Серии",
       "empty": "Серии не найдены",
       "remaining": "Осталось {{minutes}} мин"
-    }
+    },
+    "subtitleOffset": "Задержка субтитров",
+    "subtitleOffsetHint": "Сдвигает субтитры, не меняя воспроизведение.",
+    "offsetNone": "Без задержки",
+    "offsetReset": "Сбросить"
   },
   "media": {
     "quality": {

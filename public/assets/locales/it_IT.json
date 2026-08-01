@@ -133,8 +133,13 @@
     "filter": {
       "all": "Tutti",
       "unplayed": "Non visti",
-      "fav": "Preferiti"
-    }
+      "fav": "Preferiti",
+      "year": "Anno",
+      "rating": "Classificazione",
+      "studio": "Studio",
+      "any": "Qualsiasi"
+    },
+    "alphaAll": "Tutti"
   },
   "browse": {
     "person": "Persona",
@@ -232,7 +237,11 @@
     "toast": {
       "pinEnabled": "Blocco profilo attivato",
       "pinDisabled": "Blocco profilo disattivato"
-    }
+    },
+    "screensaver": "Salvaschermo",
+    "screensaverSub": "Mostra le immagini dopo cinque minuti di inattività",
+    "showClock": "Orologio",
+    "showClockSub": "Mostra l’ora nella barra di navigazione"
   },
   "player": {
     "errorTitle": "Riproduzione non possibile",
@@ -258,7 +267,10 @@
       "audioAndSubtitles": "Audio e sottotitoli",
       "playbackSpeed": "Velocità di riproduzione",
       "quality": "Qualità",
-      "episodes": "Episodi"
+      "episodes": "Episodi",
+      "subtitleOffset": "Ritardo sottotitoli",
+      "aspect": "Riempi schermo",
+      "pip": "Picture in picture"
     },
     "upNext": {
       "label": "Prossimo tra {{seconds}} s",
@@ -268,7 +280,11 @@
       "title": "Episodi",
       "empty": "Nessun episodio trovato",
       "remaining": "{{minutes}} min rimanenti"
-    }
+    },
+    "subtitleOffset": "Ritardo sottotitoli",
+    "subtitleOffsetHint": "Sposta i sottotitoli senza alterare la riproduzione.",
+    "offsetNone": "Nessun ritardo",
+    "offsetReset": "Reimposta"
   },
   "media": {
     "quality": {

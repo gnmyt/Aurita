@@ -131,8 +131,13 @@
     "filter": {
       "all": "すべて",
       "unplayed": "未視聴",
-      "fav": "お気に入り"
-    }
+      "fav": "お気に入り",
+      "year": "年",
+      "rating": "レーティング",
+      "studio": "スタジオ",
+      "any": "すべて"
+    },
+    "alphaAll": "すべて"
   },
   "browse": {
     "person": "人物",
@@ -230,7 +235,11 @@
     "toast": {
       "pinEnabled": "プロフィールロックを有効にしました",
       "pinDisabled": "プロフィールロックを無効にしました"
-    }
+    },
+    "screensaver": "スクリーンセーバー",
+    "screensaverSub": "5分間操作がないとアートワークを表示",
+    "showClock": "時計",
+    "showClockSub": "ナビゲーションバーに時刻を表示"
   },
   "player": {
     "errorTitle": "再生できません",
@@ -256,7 +265,10 @@
       "audioAndSubtitles": "音声と字幕",
       "playbackSpeed": "再生速度",
       "quality": "画質",
-      "episodes": "エピソード"
+      "episodes": "エピソード",
+      "subtitleOffset": "字幕の遅延",
+      "aspect": "画面いっぱい",
+      "pip": "ピクチャインピクチャ"
     },
     "upNext": {
       "label": "{{seconds}}秒後に次のエピソード",
@@ -266,7 +278,11 @@
       "title": "エピソード",
       "empty": "エピソードが見つかりません",
       "remaining": "残り{{minutes}}分"
-    }
+    },
+    "subtitleOffset": "字幕の遅延",
+    "subtitleOffsetHint": "再生を変えずに字幕をずらします。",
+    "offsetNone": "遅延なし",
+    "offsetReset": "リセット"
   },
   "media": {
     "quality": {

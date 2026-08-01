@@ -17,6 +17,8 @@ class NativeVideoShim {
     constructor() {
         this._listeners = new Map();
         this._state = {currentTime: 0, duration: 0, paused: true, buffered: 0, ready: false};
+        this.videoWidth = 0;
+        this.videoHeight = 0;
         this._rate = 1;
         this._volume = 1;
         this._muted = false;
@@ -90,11 +92,17 @@ class NativeVideoShim {
 
     load(url, {positionSeconds = 0, isHls = false} = {}) {
         this._state = {currentTime: positionSeconds, duration: 0, paused: false, buffered: 0, ready: false};
+        this.videoWidth = 0;
+        this.videoHeight = 0;
         window.AuritaNative?.videoLoad?.(url, positionSeconds, !!isHls, getToken() || '');
     }
 
     release() {
         window.AuritaNative?.videoRelease?.();
+    }
+
+    setAspectFill(fill) {
+        window.AuritaNative?.videoAspectFill?.(!!fill);
     }
 
     addEventListener(type, fn) {
@@ -108,6 +116,8 @@ class NativeVideoShim {
 
     _dispatch(payload) {
         const {type} = payload;
+        if (payload.videoWidth) this.videoWidth = payload.videoWidth;
+        if (payload.videoHeight) this.videoHeight = payload.videoHeight;
         this._state = {
             currentTime: payload.currentTime ?? this._state.currentTime,
             duration: payload.duration || this._state.duration,
@@ -137,4 +147,29 @@ export const getNativeVideo = () => {
 
 export const releaseNativeVideo = () => {
     shim?.release();
+}
+
+export const isPipAvailable = () => typeof window.AuritaNative?.enterPictureInPicture === 'function'
+    || (typeof document !== 'undefined' && !!document.pictureInPictureEnabled);
+
+export const enterPip = async (videoEl) => {
+    if (typeof window.AuritaNative?.enterPictureInPicture === 'function') {
+        return !!window.AuritaNative.enterPictureInPicture();
+    }
+    if (videoEl?.requestPictureInPicture && document.pictureInPictureEnabled) {
+        try {
+            await videoEl.requestPictureInPicture();
+            return true;
+        } catch {
+            return false;
+        }
+    }
+    return false;
+}
+
+export const onPipChange = (fn) => {
+    window.__auritaPipChanged = (inPip) => fn(!!inPip);
+    return () => {
+        window.__auritaPipChanged = undefined;
+    };
 }

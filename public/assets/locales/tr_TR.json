@@ -132,8 +132,13 @@
     "filter": {
       "all": "Tümü",
       "unplayed": "İzlenmemiş",
-      "fav": "Favoriler"
-    }
+      "fav": "Favoriler",
+      "year": "Yıl",
+      "rating": "Yaş sınırı",
+      "studio": "Stüdyo",
+      "any": "Herhangi"
+    },
+    "alphaAll": "Tümü"
   },
   "browse": {
     "person": "Kişi",
@@ -231,7 +236,11 @@
     "toast": {
       "pinEnabled": "Profil kilidi etkinleştirildi",
       "pinDisabled": "Profil kilidi devre dışı bırakıldı"
-    }
+    },
+    "screensaver": "Ekran koruyucu",
+    "screensaverSub": "Beş dakika işlem yapılmazsa görseller gösterir",
+    "showClock": "Saat",
+    "showClockSub": "Gezinme çubuğunda saati göster"
   },
   "player": {
     "errorTitle": "Oynatma mümkün değil",
@@ -257,7 +266,10 @@
       "audioAndSubtitles": "Ses ve altyazılar",
       "playbackSpeed": "Oynatma hızı",
       "quality": "Kalite",
-      "episodes": "Bölümler"
+      "episodes": "Bölümler",
+      "subtitleOffset": "Altyazı gecikmesi",
+      "aspect": "Ekranı doldur",
+      "pip": "Resim içinde resim"
     },
     "upNext": {
       "label": "{{seconds}} sn içinde sırada",
@@ -267,7 +279,11 @@
       "title": "Bölümler",
       "empty": "Bölüm bulunamadı",
       "remaining": "{{minutes}} dk kaldı"
-    }
+    },
+    "subtitleOffset": "Altyazı gecikmesi",
+    "subtitleOffsetHint": "Oynatmayı değiştirmeden altyazıları kaydırır.",
+    "offsetNone": "Gecikme yok",
+    "offsetReset": "Sıfırla"
   },
   "media": {
     "quality": {

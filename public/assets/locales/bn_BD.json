@@ -132,8 +132,13 @@
     "filter": {
       "all": "সব",
       "unplayed": "না দেখা",
-      "fav": "প্রিয়"
-    }
+      "fav": "প্রিয়",
+      "year": "বছর",
+      "rating": "রেটিং",
+      "studio": "স্টুডিও",
+      "any": "যেকোনো"
+    },
+    "alphaAll": "সব"
   },
   "browse": {
     "person": "ব্যক্তি",
@@ -231,7 +236,11 @@
     "toast": {
       "pinEnabled": "প্রোফাইল লক চালু হয়েছে",
       "pinDisabled": "প্রোফাইল লক বন্ধ হয়েছে"
-    }
+    },
+    "screensaver": "স্ক্রিনসেভার",
+    "screensaverSub": "পাঁচ মিনিট নিষ্ক্রিয় থাকলে আর্টওয়ার্ক দেখায়",
+    "showClock": "ঘড়ি",
+    "showClockSub": "নেভিগেশন বারে সময় দেখান"
   },
   "player": {
     "errorTitle": "চালানো যাচ্ছে না",
@@ -257,7 +266,10 @@
       "audioAndSubtitles": "অডিও ও সাবটাইটেল",
       "playbackSpeed": "প্লেব্যাক গতি",
       "quality": "মান",
-      "episodes": "পর্বসমূহ"
+      "episodes": "পর্বসমূহ",
+      "subtitleOffset": "সাবটাইটেল বিলম্ব",
+      "aspect": "স্ক্রিন পূর্ণ করুন",
+      "pip": "পিকচার ইন পিকচার"
     },
     "upNext": {
       "label": "{{seconds}} সেকেন্ড পর এরপর",
@@ -267,7 +279,11 @@
       "title": "পর্বসমূহ",
       "empty": "কোনো পর্ব পাওয়া যায়নি",
       "remaining": "{{minutes}} মিনিট বাকি"
-    }
+    },
+    "subtitleOffset": "সাবটাইটেল বিলম্ব",
+    "subtitleOffsetHint": "প্লেব্যাক না বদলে সাবটাইটেল সরায়।",
+    "offsetNone": "কোনো বিলম্ব নেই",
+    "offsetReset": "রিসেট"
   },
   "media": {
     "quality": {

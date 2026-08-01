@@ -132,8 +132,13 @@
     "filter": {
       "all": "Alles",
       "unplayed": "Niet bekeken",
-      "fav": "Favorieten"
-    }
+      "fav": "Favorieten",
+      "year": "Jaar",
+      "rating": "Kijkwijzer",
+      "studio": "Studio",
+      "any": "Alle"
+    },
+    "alphaAll": "Alle"
   },
   "browse": {
     "person": "Persoon",
@@ -231,7 +236,11 @@
     "toast": {
       "pinEnabled": "Profielvergrendeling ingeschakeld",
       "pinDisabled": "Profielvergrendeling uitgeschakeld"
-    }
+    },
+    "screensaver": "Schermbeveiliging",
+    "screensaverSub": "Toont artwork na vijf minuten inactiviteit",
+    "showClock": "Klok",
+    "showClockSub": "Toon de tijd in de navigatiebalk"
   },
   "player": {
     "errorTitle": "Afspelen niet mogelijk",
@@ -257,7 +266,10 @@
       "audioAndSubtitles": "Audio en ondertiteling",
       "playbackSpeed": "Afspeelsnelheid",
       "quality": "Kwaliteit",
-      "episodes": "Afleveringen"
+      "episodes": "Afleveringen",
+      "subtitleOffset": "Ondertitelvertraging",
+      "aspect": "Scherm vullen",
+      "pip": "Beeld in beeld"
     },
     "upNext": {
       "label": "Hierna over {{seconds}} s",
@@ -267,7 +279,11 @@
       "title": "Afleveringen",
       "empty": "Geen afleveringen gevonden",
       "remaining": "Nog {{minutes}} min"
-    }
+    },
+    "subtitleOffset": "Ondertitelvertraging",
+    "subtitleOffsetHint": "Verschuift ondertitels zonder het afspelen te wijzigen.",
+    "offsetNone": "Geen vertraging",
+    "offsetReset": "Herstellen"
   },
   "media": {
     "quality": {

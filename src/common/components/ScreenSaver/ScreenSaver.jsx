@@ -4,6 +4,7 @@ import {useTranslation} from 'react-i18next';
 import {useLocation} from 'react-router-dom';
 import {useCached} from '@/common/utils/cache';
 import {backdropUrl, getSpotlight} from '@/common/utils/jellyfin';
+import {getPref} from '@/common/utils/prefs';
 
 const IDLE_MS = 5 * 60 * 1000;
 const SLIDE_MS = 9000;
@@ -28,6 +29,7 @@ export const ScreenSaver = () => {
         let t;
         const arm = () => {
             clearTimeout(t);
+            if (!getPref('screensaver')) return;
             t = setTimeout(() => {
                 if (!stateRef.current.immersive) setActive(true);
             }, IDLE_MS);

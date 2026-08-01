@@ -1,9 +1,25 @@
 import {useTranslation} from 'react-i18next';
-import {Gauge, ListVideo, Pause, Play, RotateCcw, RotateCw, Settings, SkipForward, Subtitles, Users} from 'lucide-react';
+import {
+    Captions,
+    Gauge,
+    ListVideo,
+    Proportions,
+    Pause,
+    PictureInPicture,
+    Play,
+    RotateCcw,
+    RotateCw,
+    Settings,
+    SkipForward,
+    Subtitles,
+    Users
+} from 'lucide-react';
 
 export const ControlBar = ({
                                controls, zone, ctrlIdx, playing, speed, item, group, nextEp, modeBadge,
+                               aspectFill, canPip, canFill,
                                onTogglePlay, onSeek, onNext, onOpenMenu, onOpenSpeed, onOpenEpisodes,
+                               onOpenOffset, onToggleAspect, onPip,
                            }) => {
     const {t} = useTranslation();
     const idxOf = (k) => controls.findIndex((c) => c.key === k);
@@ -43,6 +59,17 @@ export const ControlBar = ({
                 <button data-ctrl="cc" className={`nf-btn${cf('cc')}`} onClick={() => onOpenMenu('tracks')}
                         title={t('player.controls.audioAndSubtitles')}>
                     <Subtitles size={26}/></button>
+                <button data-ctrl="offset" className={`nf-btn${cf('offset')}`} onClick={onOpenOffset}
+                        title={t('player.controls.subtitleOffset')}><Captions size={26}/></button>
+                {canFill && (
+                    <button data-ctrl="aspect" className={`nf-btn${cf('aspect')}${aspectFill ? ' on' : ''}`}
+                            onClick={onToggleAspect} title={t('player.controls.aspect')}>
+                        <Proportions size={24}/></button>
+                )}
+                {canPip && (
+                    <button data-ctrl="pip" className={`nf-btn${cf('pip')}`} onClick={onPip}
+                            title={t('player.controls.pip')}><PictureInPicture size={24}/></button>
+                )}
                 <button data-ctrl="speed" className={`nf-btn${cf('speed')}`} onClick={onOpenSpeed}
                         title={t('player.controls.playbackSpeed')}>
                     {speed === 1 ? <Gauge size={26}/> : <span className="nf-speedval">{speed}x</span>}

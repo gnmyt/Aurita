@@ -28,6 +28,9 @@ class NativeVideo(
 ) {
     private var player: ExoPlayer? = null
     private var ticker: Runnable? = null
+    private var videoWidth = 0
+    private var videoHeight = 0
+    private var fillEnabled = false
 
     private fun ensurePlayer(): ExoPlayer {
         player?.let { return it }
@@ -132,8 +135,36 @@ class NativeVideo(
         player?.volume = volume.coerceIn(0f, 1f)
     }
 
+    fun setAspectFill(fill: Boolean) = activity.runOnUiThread {
+        fillEnabled = fill
+        applyScale()
+    }
+
+    private fun applyScale() {
+        val vw = videoWidth
+        val vh = videoHeight
+        val availW = surfaceView.width
+        val availH = surfaceView.height
+        if (vw <= 0 || vh <= 0 || availW <= 0 || availH <= 0) return
+
+        val scale = if (!fillEnabled) {
+            1f
+        } else {
+            val videoAr = vw.toFloat() / vh
+            val viewAr = availW.toFloat() / availH
+            maxOf(videoAr / viewAr, viewAr / videoAr)
+        }
+        surfaceView.scaleX = scale
+        surfaceView.scaleY = scale
+    }
+
     fun release() = activity.runOnUiThread {
         stopTicker()
+        videoWidth = 0
+        videoHeight = 0
+        fillEnabled = false
+        surfaceView.scaleX = 1f
+        surfaceView.scaleY = 1f
         surfaceView.visibility = SurfaceView.GONE
         player?.removeListener(listener)
         player?.setVideoSurfaceView(null)
@@ -160,6 +191,13 @@ class NativeVideo(
 
         override fun onPlayerError(error: PlaybackException) {
             emit("error", JSONObject().put("message", error.errorCodeName))
+        }
+
+        override fun onVideoSizeChanged(size: androidx.media3.common.VideoSize) {
+            videoWidth = size.width
+            videoHeight = size.height
+            applyScale()
+            emit("resize")
         }
 
         override fun onPositionDiscontinuity(
@@ -197,6 +235,8 @@ class NativeVideo(
             put("paused", !exo.playWhenReady)
             put("buffered", exo.bufferedPosition / 1000.0)
             put("ready", exo.playbackState == Player.STATE_READY)
+            put("videoWidth", videoWidth)
+            put("videoHeight", videoHeight)
         }
         val js = "window.__auritaNativeVideoEvent && window.__auritaNativeVideoEvent($payload)"
         webView.evaluateJavascript(js, null)
