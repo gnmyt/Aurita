@@ -164,8 +164,13 @@
       "markedWatched": "Als gesehen markiert",
       "markedUnwatched": "Als ungesehen markiert",
       "addedToWatchlist": "Zur Merkliste hinzugefügt",
-      "removedFromWatchlist": "Aus Merkliste entfernt"
-    }
+      "removedFromWatchlist": "Aus Merkliste entfernt",
+      "downloadStarted_one": "{{count}} Titel wird geladen",
+      "downloadStarted_other": "{{count}} Titel werden geladen"
+    },
+    "download": "Herunterladen",
+    "downloading": "Lädt {{percent}} %",
+    "downloaded": "Heruntergeladen"
   },
   "search": {
     "placeholder": "Suchen…",
@@ -240,7 +245,21 @@
     "screensaver": "Bildschirmschoner",
     "screensaverSub": "Zeigt Artwork nach fünf Minuten ohne Eingabe",
     "showClock": "Uhr",
-    "showClockSub": "Uhrzeit in der Navigationsleiste anzeigen"
+    "showClockSub": "Uhrzeit in der Navigationsleiste anzeigen",
+    "matchFrameRate": "Bildrate anpassen",
+    "matchFrameRateSub": "Stellt den Bildschirm auf die Bildrate des Films um und vermeidet Ruckeln",
+    "resumePreroll": "Etwas früher fortsetzen",
+    "resumePrerollSub": "Spult beim Fortsetzen ein paar Sekunden zurück",
+    "stillWatching": "Schaust du noch?",
+    "stillWatchingSub": "Nach so vielen automatisch gestarteten Folgen nachfragen",
+    "segmentIntro": "Vorspann",
+    "segmentOutro": "Abspann",
+    "segmentActionSub": "Was passiert, wenn dieser Teil erreicht wird",
+    "segment": {
+      "skip": "Überspringen",
+      "ask": "Fragen",
+      "none": "Ignorieren"
+    }
   },
   "player": {
     "errorTitle": "Wiedergabe nicht möglich",
@@ -267,7 +286,6 @@
       "playbackSpeed": "Wiedergabegeschwindigkeit",
       "quality": "Qualität",
       "episodes": "Folgen",
-      "subtitleOffset": "Untertitel-Verzögerung",
       "aspect": "Bildschirm füllen",
       "pip": "Bild im Bild"
     },
@@ -280,10 +298,9 @@
       "empty": "Keine Folgen gefunden",
       "remaining": "Noch {{minutes}} Min."
     },
-    "subtitleOffset": "Untertitel-Verzögerung",
-    "subtitleOffsetHint": "Verschiebt Untertitel, ohne die Wiedergabe zu ändern.",
-    "offsetNone": "Keine Verzögerung",
-    "offsetReset": "Zurücksetzen"
+    "stillWatching": "Schaust du noch?",
+    "stillWatchingSub": "Die nächste Folge wartet auf dich.",
+    "continue": "Weiterschauen"
   },
   "media": {
     "quality": {
@@ -347,5 +364,15 @@
     "quickConnectStart": "Quick Connect konnte nicht gestartet werden ({{status}})",
     "quickConnectPoll": "Quick Connect Fehler ({{status}})",
     "quickConnectAuth": "Anmeldung fehlgeschlagen ({{status}})"
+  },
+  "downloads": {
+    "title": "Downloads",
+    "empty": "Nichts heruntergeladen",
+    "emptySub": "Wähle bei einem Film, einer Folge oder Serie „Herunterladen“.",
+    "ready": "Offline verfügbar",
+    "progress": "Lädt {{percent}} %",
+    "failed": "Download fehlgeschlagen",
+    "hint": "Wähle einen fertigen Download zum Abspielen oder einen laufenden zum Entfernen.",
+    "unsupported": "Downloads sind auf diesem Gerät nicht verfügbar."
   }
 }

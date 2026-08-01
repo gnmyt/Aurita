@@ -163,8 +163,13 @@
       "markedWatched": "Ditandai sudah ditonton",
       "markedUnwatched": "Ditandai belum ditonton",
       "addedToWatchlist": "Ditambahkan ke daftar tonton",
-      "removedFromWatchlist": "Dihapus dari daftar tonton"
-    }
+      "removedFromWatchlist": "Dihapus dari daftar tonton",
+      "downloadStarted_one": "Mengunduh {{count}} item",
+      "downloadStarted_other": "Mengunduh {{count}} item"
+    },
+    "download": "Unduh",
+    "downloading": "Mengunduh {{percent}}%",
+    "downloaded": "Terunduh"
   },
   "search": {
     "placeholder": "Cari…",
@@ -239,7 +244,21 @@
     "screensaver": "Screensaver",
     "screensaverSub": "Menampilkan gambar setelah lima menit tanpa aktivitas",
     "showClock": "Jam",
-    "showClockSub": "Tampilkan waktu di bilah navigasi"
+    "showClockSub": "Tampilkan waktu di bilah navigasi",
+    "matchFrameRate": "Samakan frame rate",
+    "matchFrameRateSub": "Mengalihkan layar ke frame rate film agar tidak tersendat",
+    "resumePreroll": "Lanjutkan sedikit lebih awal",
+    "resumePrerollSub": "Mundur beberapa detik saat melanjutkan",
+    "stillWatching": "Masih menonton?",
+    "stillWatchingSub": "Tanya setelah sekian episode otomatis",
+    "segmentIntro": "Intro",
+    "segmentOutro": "Kredit akhir",
+    "segmentActionSub": "Yang dilakukan saat mencapai bagian ini",
+    "segment": {
+      "skip": "Lewati",
+      "ask": "Tanya",
+      "none": "Abaikan"
+    }
   },
   "player": {
     "errorTitle": "Tidak dapat diputar",
@@ -266,7 +285,6 @@
       "playbackSpeed": "Kecepatan pemutaran",
       "quality": "Kualitas",
       "episodes": "Episode",
-      "subtitleOffset": "Penundaan subtitel",
       "aspect": "Penuhi layar",
       "pip": "Picture in picture"
     },
@@ -279,10 +297,9 @@
       "empty": "Tidak ada episode ditemukan",
       "remaining": "Sisa {{minutes}} mnt"
     },
-    "subtitleOffset": "Penundaan subtitel",
-    "subtitleOffsetHint": "Menggeser subtitel tanpa mengubah pemutaran.",
-    "offsetNone": "Tanpa penundaan",
-    "offsetReset": "Atur ulang"
+    "stillWatching": "Masih menonton?",
+    "stillWatchingSub": "Episode berikutnya sudah siap.",
+    "continue": "Lanjutkan"
   },
   "media": {
     "quality": {
@@ -346,5 +363,15 @@
     "quickConnectStart": "Quick Connect tidak dapat dimulai ({{status}})",
     "quickConnectPoll": "Kesalahan Quick Connect ({{status}})",
     "quickConnectAuth": "Gagal masuk ({{status}})"
+  },
+  "downloads": {
+    "title": "Unduhan",
+    "empty": "Belum ada unduhan",
+    "emptySub": "Pilih Unduh pada film, episode, atau serial mana pun.",
+    "ready": "Siap ditonton offline",
+    "progress": "Mengunduh {{percent}}%",
+    "failed": "Unduhan gagal",
+    "hint": "Pilih unduhan selesai untuk memutar, atau yang berjalan untuk menghapus.",
+    "unsupported": "Unduhan tidak tersedia di perangkat ini."
   }
 }

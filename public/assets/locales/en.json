@@ -164,8 +164,13 @@
       "markedWatched": "Marked as watched",
       "markedUnwatched": "Marked as unwatched",
       "addedToWatchlist": "Added to watchlist",
-      "removedFromWatchlist": "Removed from watchlist"
-    }
+      "removedFromWatchlist": "Removed from watchlist",
+      "downloadStarted_one": "Downloading {{count}} item",
+      "downloadStarted_other": "Downloading {{count}} items"
+    },
+    "download": "Download",
+    "downloading": "Downloading {{percent}}%",
+    "downloaded": "Downloaded"
   },
   "search": {
     "placeholder": "Search…",
@@ -240,7 +245,21 @@
     "screensaver": "Screensaver",
     "screensaverSub": "Shows artwork after five idle minutes",
     "showClock": "Clock",
-    "showClockSub": "Show the time in the navigation bar"
+    "showClockSub": "Show the time in the navigation bar",
+    "matchFrameRate": "Match frame rate",
+    "matchFrameRateSub": "Switches the display to the film’s frame rate to remove judder",
+    "resumePreroll": "Resume slightly earlier",
+    "resumePrerollSub": "Rewinds a few seconds when you continue watching",
+    "stillWatching": "Still watching?",
+    "stillWatchingSub": "Ask after this many episodes play automatically",
+    "segmentIntro": "Intro",
+    "segmentOutro": "End credits",
+    "segmentActionSub": "What to do when this part is reached",
+    "segment": {
+      "skip": "Skip",
+      "ask": "Ask",
+      "none": "Ignore"
+    }
   },
   "player": {
     "errorTitle": "Playback not possible",
@@ -267,7 +286,6 @@
       "playbackSpeed": "Playback speed",
       "quality": "Quality",
       "episodes": "Episodes",
-      "subtitleOffset": "Subtitle delay",
       "aspect": "Fill screen",
       "pip": "Picture in picture"
     },
@@ -280,10 +298,9 @@
       "empty": "No episodes found",
       "remaining": "{{minutes}} min left"
     },
-    "subtitleOffset": "Subtitle delay",
-    "subtitleOffsetHint": "Shifts subtitles without changing playback.",
-    "offsetNone": "No delay",
-    "offsetReset": "Reset"
+    "stillWatching": "Still watching?",
+    "stillWatchingSub": "The next episode is ready when you are.",
+    "continue": "Continue"
   },
   "media": {
     "quality": {
@@ -347,5 +364,15 @@
     "quickConnectStart": "Quick Connect could not be started ({{status}})",
     "quickConnectPoll": "Quick Connect error ({{status}})",
     "quickConnectAuth": "Sign-in failed ({{status}})"
+  },
+  "downloads": {
+    "title": "Downloads",
+    "empty": "Nothing downloaded",
+    "emptySub": "Pick Download on any film, episode or series.",
+    "ready": "Ready to watch offline",
+    "progress": "Downloading {{percent}}%",
+    "failed": "Download failed",
+    "hint": "Select a finished download to play it, or an unfinished one to remove it.",
+    "unsupported": "Downloads are not available on this device."
   }
 }

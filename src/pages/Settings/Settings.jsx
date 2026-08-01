@@ -3,15 +3,17 @@ import {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {
     Clock,
-    FastForward,
+    Eye,
     Gauge,
     Images,
     Languages,
     Lock,
     LogOut,
     MonitorPlay,
+    Rewind,
     SkipForward,
     Square,
+    Tv,
     Subtitles
 } from 'lucide-react';
 import {useAutoFocusFirst} from '@/common/contexts/SpatialNav';
@@ -26,10 +28,12 @@ import {
     signOut,
 } from '@/common/utils/jellyfin';
 import {
+    getChoice,
     getPref,
     getQuality,
     getSubBg,
     getSubSize,
+    setChoice,
     setPref,
     setQuality as saveQuality,
     setSubBg,
@@ -53,11 +57,24 @@ export const Settings = () => {
     const [quality, setQuality] = useState(getQuality);
     const [prefs, setPrefs] = useState(() => ({
         autoplayNext: getPref('autoplayNext'),
-        autoSkipSegments: getPref('autoSkipSegments'),
         autoplayPreviews: getPref('autoplayPreviews'),
         screensaver: getPref('screensaver'),
         showClock: getPref('showClock'),
     }));
+    const [choices, setChoices] = useState(() => ({
+        matchFrameRate: getChoice('matchFrameRate'),
+        stillWatching: getChoice('stillWatching'),
+        resumePreroll: getChoice('resumePreroll'),
+        segmentIntro: getChoice('segmentIntro'),
+        segmentOutro: getChoice('segmentOutro'),
+    }));
+
+    const cycleChoice = (key, values) => {
+        const i = values.indexOf(choices[key]);
+        const next = values[(i + 1) % values.length];
+        setChoice(key, next);
+        setChoices((c) => ({...c, [key]: next}));
+    };
 
     const togglePref = (key) => {
         const next = !prefs[key];
@@ -192,18 +209,46 @@ export const Settings = () => {
                     onSelect={() => togglePref('autoplayNext')}
                 />
                 <SettingRow
-                    icon={<FastForward size={26}/>}
-                    title={t('settings.autoSkipSegments')}
-                    subtitle={t('settings.autoSkipSegmentsSub')}
-                    value={onOff(prefs.autoSkipSegments)}
-                    onSelect={() => togglePref('autoSkipSegments')}
-                />
-                <SettingRow
                     icon={<Images size={26}/>}
                     title={t('settings.autoplayPreviews')}
                     subtitle={t('settings.autoplayPreviewsSub')}
                     value={onOff(prefs.autoplayPreviews)}
                     onSelect={() => togglePref('autoplayPreviews')}
+                />
+                <SettingRow
+                    icon={<Tv size={26}/>}
+                    title={t('settings.matchFrameRate')}
+                    subtitle={t('settings.matchFrameRateSub')}
+                    value={onOff(choices.matchFrameRate === 'on')}
+                    onSelect={() => cycleChoice('matchFrameRate', ['on', 'off'])}
+                />
+                <SettingRow
+                    icon={<Rewind size={26}/>}
+                    title={t('settings.resumePreroll')}
+                    subtitle={t('settings.resumePrerollSub')}
+                    value={choices.resumePreroll === '0' ? t('settings.off') : `${choices.resumePreroll}s`}
+                    onSelect={() => cycleChoice('resumePreroll', ['0', '5', '10', '15'])}
+                />
+                <SettingRow
+                    icon={<Eye size={26}/>}
+                    title={t('settings.stillWatching')}
+                    subtitle={t('settings.stillWatchingSub')}
+                    value={choices.stillWatching === '0' ? t('settings.off') : choices.stillWatching}
+                    onSelect={() => cycleChoice('stillWatching', ['0', '2', '3', '4', '5'])}
+                />
+                <SettingRow
+                    icon={<SkipForward size={26}/>}
+                    title={t('settings.segmentIntro')}
+                    subtitle={t('settings.segmentActionSub')}
+                    value={t(`settings.segment.${choices.segmentIntro}`)}
+                    onSelect={() => cycleChoice('segmentIntro', ['skip', 'ask', 'none'])}
+                />
+                <SettingRow
+                    icon={<SkipForward size={26}/>}
+                    title={t('settings.segmentOutro')}
+                    subtitle={t('settings.segmentActionSub')}
+                    value={t(`settings.segment.${choices.segmentOutro}`)}
+                    onSelect={() => cycleChoice('segmentOutro', ['skip', 'ask', 'none'])}
                 />
                 <SettingRow
                     icon={<MonitorPlay size={26}/>}

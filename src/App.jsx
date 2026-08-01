@@ -5,6 +5,7 @@ import {SpatialProvider, useSpatial} from '@/common/contexts/SpatialNav';
 import TopNav from '@/common/components/TopNav';
 import Home from '@/pages/Home';
 import Library from '@/pages/Library';
+import Downloads from '@/pages/Downloads';
 import Detail from '@/pages/Detail';
 import Player from '@/pages/Player';
 import Search from '@/pages/Search';
@@ -137,6 +138,7 @@ const Shell = () => {
                         <Route path="/genre/:id/:name" element={<Browse mode="genre"/>}/>
                         <Route path="/settings" element={<Settings/>}/>
                         <Route path="/syncplay" element={<SyncPlay/>}/>
+                        <Route path="/downloads" element={<Downloads/>}/>
                         <Route path="/shorts" element={<Shorts/>}/>
                     </Routes>
                 </div>

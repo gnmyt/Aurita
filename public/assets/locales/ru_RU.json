@@ -166,8 +166,13 @@
       "markedWatched": "Отмечено как просмотренное",
       "markedUnwatched": "Отмечено как непросмотренное",
       "addedToWatchlist": "Добавлено в список",
-      "removedFromWatchlist": "Убрано из списка"
-    }
+      "removedFromWatchlist": "Убрано из списка",
+      "downloadStarted_one": "Загрузка {{count}} элемента",
+      "downloadStarted_other": "Загрузка {{count}} элементов"
+    },
+    "download": "Загрузить",
+    "downloading": "Загрузка {{percent}} %",
+    "downloaded": "Загружено"
   },
   "search": {
     "placeholder": "Поиск…",
@@ -242,7 +247,21 @@
     "screensaver": "Заставка",
     "screensaverSub": "Показывает обложки после пяти минут простоя",
     "showClock": "Часы",
-    "showClockSub": "Показывать время в панели навигации"
+    "showClockSub": "Показывать время в панели навигации",
+    "matchFrameRate": "Подстраивать частоту",
+    "matchFrameRateSub": "Переключает экран на частоту кадров фильма и убирает рывки",
+    "resumePreroll": "Продолжать чуть раньше",
+    "resumePrerollSub": "Отматывает несколько секунд при продолжении",
+    "stillWatching": "Ещё смотрите?",
+    "stillWatchingSub": "Спрашивать после стольких автоматических серий",
+    "segmentIntro": "Заставка",
+    "segmentOutro": "Финальные титры",
+    "segmentActionSub": "Что делать в этом месте",
+    "segment": {
+      "skip": "Пропустить",
+      "ask": "Спросить",
+      "none": "Игнорировать"
+    }
   },
   "player": {
     "errorTitle": "Воспроизведение невозможно",
@@ -269,7 +288,6 @@
       "playbackSpeed": "Скорость воспроизведения",
       "quality": "Качество",
       "episodes": "Серии",
-      "subtitleOffset": "Задержка субтитров",
       "aspect": "Заполнить экран",
       "pip": "Картинка в картинке"
     },
@@ -282,10 +300,9 @@
       "empty": "Серии не найдены",
       "remaining": "Осталось {{minutes}} мин"
     },
-    "subtitleOffset": "Задержка субтитров",
-    "subtitleOffsetHint": "Сдвигает субтитры, не меняя воспроизведение.",
-    "offsetNone": "Без задержки",
-    "offsetReset": "Сбросить"
+    "stillWatching": "Ещё смотрите?",
+    "stillWatchingSub": "Следующая серия готова.",
+    "continue": "Продолжить"
   },
   "media": {
     "quality": {
@@ -349,5 +366,15 @@
     "quickConnectStart": "Не удалось запустить Quick Connect ({{status}})",
     "quickConnectPoll": "Ошибка Quick Connect ({{status}})",
     "quickConnectAuth": "Не удалось войти ({{status}})"
+  },
+  "downloads": {
+    "title": "Загрузки",
+    "empty": "Ничего не загружено",
+    "emptySub": "Выберите «Загрузить» у фильма, серии или сериала.",
+    "ready": "Доступно офлайн",
+    "progress": "Загрузка {{percent}} %",
+    "failed": "Не удалось загрузить",
+    "hint": "Выберите завершённую загрузку для просмотра или текущую, чтобы удалить.",
+    "unsupported": "Загрузки недоступны на этом устройстве."
   }
 }

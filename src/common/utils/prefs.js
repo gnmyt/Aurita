@@ -31,7 +31,6 @@ export const setSubBg = (on) => {
 
 const BOOL_DEFAULTS = {
     autoplayNext: true,
-    autoSkipSegments: false,
     autoplayPreviews: true,
     screensaver: true,
     showClock: true,
@@ -45,6 +44,27 @@ export const getPref = (key) => {
 export const setPref = (key, on) => {
     localStorage.setItem('jf_pref_' + key, on ? '1' : '0');
 }
+
+const CHOICE_DEFAULTS = {
+    matchFrameRate: 'on',
+    segmentIntro: 'skip',
+    segmentOutro: 'skip',
+    segmentRecap: 'ask',
+    segmentPreview: 'ask',
+    segmentCommercial: 'skip',
+    stillWatching: '3',
+    resumePreroll: '5',
+};
+
+export const getChoice = (key) => {
+    return localStorage.getItem('jf_choice_' + key) ?? CHOICE_DEFAULTS[key];
+}
+
+export const setChoice = (key, value) => {
+    localStorage.setItem('jf_choice_' + key, String(value));
+}
+
+export const getChoiceNum = (key) => Number(getChoice(key)) || 0;
 
 export const getQuality = () => {
     return localStorage.getItem('jf_quality') || 'auto';

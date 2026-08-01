@@ -168,8 +168,13 @@
       "markedWatched": "تم التحديد كمُشاهَد",
       "markedUnwatched": "تم التحديد كغير مُشاهَد",
       "addedToWatchlist": "تمت الإضافة إلى قائمتي",
-      "removedFromWatchlist": "تمت الإزالة من قائمتي"
-    }
+      "removedFromWatchlist": "تمت الإزالة من قائمتي",
+      "downloadStarted_one": "جارٍ تنزيل {{count}} عنصر",
+      "downloadStarted_other": "جارٍ تنزيل {{count}} عناصر"
+    },
+    "download": "تنزيل",
+    "downloading": "جارٍ التنزيل {{percent}}٪",
+    "downloaded": "تم التنزيل"
   },
   "search": {
     "placeholder": "بحث…",
@@ -244,7 +249,21 @@
     "screensaver": "شاشة التوقف",
     "screensaverSub": "يعرض الصور بعد خمس دقائق من الخمول",
     "showClock": "الساعة",
-    "showClockSub": "إظهار الوقت في شريط التنقل"
+    "showClockSub": "إظهار الوقت في شريط التنقل",
+    "matchFrameRate": "مطابقة معدل الإطارات",
+    "matchFrameRateSub": "يبدّل الشاشة إلى معدل إطارات الفيلم لإزالة التقطيع",
+    "resumePreroll": "استئناف أبكر قليلاً",
+    "resumePrerollSub": "يرجع بضع ثوانٍ عند المتابعة",
+    "stillWatching": "هل ما زلت تشاهد؟",
+    "stillWatchingSub": "اسأل بعد هذا العدد من الحلقات التلقائية",
+    "segmentIntro": "المقدمة",
+    "segmentOutro": "شارة النهاية",
+    "segmentActionSub": "ما يحدث عند الوصول إلى هذا الجزء",
+    "segment": {
+      "skip": "تخطٍ",
+      "ask": "اسأل",
+      "none": "تجاهل"
+    }
   },
   "player": {
     "errorTitle": "التشغيل غير ممكن",
@@ -271,7 +290,6 @@
       "playbackSpeed": "سرعة التشغيل",
       "quality": "الجودة",
       "episodes": "الحلقات",
-      "subtitleOffset": "تأخير الترجمة",
       "aspect": "ملء الشاشة",
       "pip": "صورة داخل صورة"
     },
@@ -284,10 +302,9 @@
       "empty": "لم يتم العثور على حلقات",
       "remaining": "بقيت {{minutes}} دقيقة"
     },
-    "subtitleOffset": "تأخير الترجمة",
-    "subtitleOffsetHint": "يزيح الترجمة دون تغيير التشغيل.",
-    "offsetNone": "بدون تأخير",
-    "offsetReset": "إعادة تعيين"
+    "stillWatching": "هل ما زلت تشاهد؟",
+    "stillWatchingSub": "الحلقة التالية جاهزة.",
+    "continue": "متابعة"
   },
   "media": {
     "quality": {
@@ -351,5 +368,15 @@
     "quickConnectStart": "تعذّر بدء Quick Connect ({{status}})",
     "quickConnectPoll": "خطأ في Quick Connect ({{status}})",
     "quickConnectAuth": "فشل تسجيل الدخول ({{status}})"
+  },
+  "downloads": {
+    "title": "التنزيلات",
+    "empty": "لا توجد تنزيلات",
+    "emptySub": "اختر «تنزيل» في أي فيلم أو حلقة أو مسلسل.",
+    "ready": "جاهز للمشاهدة دون اتصال",
+    "progress": "جارٍ التنزيل {{percent}}٪",
+    "failed": "فشل التنزيل",
+    "hint": "اختر تنزيلاً مكتملاً لتشغيله، أو قيد التنفيذ لإزالته.",
+    "unsupported": "التنزيلات غير متاحة على هذا الجهاز."
   }
 }

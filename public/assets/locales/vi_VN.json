@@ -163,8 +163,13 @@
       "markedWatched": "Đã đánh dấu là đã xem",
       "markedUnwatched": "Đã đánh dấu là chưa xem",
       "addedToWatchlist": "Đã thêm vào danh sách xem",
-      "removedFromWatchlist": "Đã xoá khỏi danh sách xem"
-    }
+      "removedFromWatchlist": "Đã xoá khỏi danh sách xem",
+      "downloadStarted_one": "Đang tải {{count}} mục",
+      "downloadStarted_other": "Đang tải {{count}} mục"
+    },
+    "download": "Tải xuống",
+    "downloading": "Đang tải {{percent}}%",
+    "downloaded": "Đã tải"
   },
   "search": {
     "placeholder": "Tìm kiếm…",
@@ -239,7 +244,21 @@
     "screensaver": "Trình bảo vệ màn hình",
     "screensaverSub": "Hiển thị ảnh sau năm phút không dùng",
     "showClock": "Đồng hồ",
-    "showClockSub": "Hiển thị giờ trên thanh điều hướng"
+    "showClockSub": "Hiển thị giờ trên thanh điều hướng",
+    "matchFrameRate": "Khớp tốc độ khung hình",
+    "matchFrameRateSub": "Chuyển màn hình sang tốc độ khung hình của phim để hết giật",
+    "resumePreroll": "Tiếp tục sớm hơn một chút",
+    "resumePrerollSub": "Tua lại vài giây khi tiếp tục",
+    "stillWatching": "Vẫn đang xem?",
+    "stillWatchingSub": "Hỏi sau ngần này tập tự động",
+    "segmentIntro": "Nhạc mở đầu",
+    "segmentOutro": "Credit cuối",
+    "segmentActionSub": "Làm gì khi đến đoạn này",
+    "segment": {
+      "skip": "Bỏ qua",
+      "ask": "Hỏi",
+      "none": "Bỏ qua hẳn"
+    }
   },
   "player": {
     "errorTitle": "Không thể phát",
@@ -266,7 +285,6 @@
       "playbackSpeed": "Tốc độ phát",
       "quality": "Chất lượng",
       "episodes": "Các tập",
-      "subtitleOffset": "Độ trễ phụ đề",
       "aspect": "Lấp đầy màn hình",
       "pip": "Ảnh trong ảnh"
     },
@@ -279,10 +297,9 @@
       "empty": "Không tìm thấy tập nào",
       "remaining": "Còn {{minutes}} phút"
     },
-    "subtitleOffset": "Độ trễ phụ đề",
-    "subtitleOffsetHint": "Dịch phụ đề mà không đổi phát lại.",
-    "offsetNone": "Không trễ",
-    "offsetReset": "Đặt lại"
+    "stillWatching": "Vẫn đang xem?",
+    "stillWatchingSub": "Tập tiếp theo đã sẵn sàng.",
+    "continue": "Tiếp tục"
   },
   "media": {
     "quality": {
@@ -346,5 +363,15 @@
     "quickConnectStart": "Không thể khởi động Quick Connect ({{status}})",
     "quickConnectPoll": "Lỗi Quick Connect ({{status}})",
     "quickConnectAuth": "Đăng nhập thất bại ({{status}})"
+  },
+  "downloads": {
+    "title": "Tải xuống",
+    "empty": "Chưa tải gì",
+    "emptySub": "Chọn Tải xuống ở phim, tập hoặc series bất kỳ.",
+    "ready": "Sẵn sàng xem ngoại tuyến",
+    "progress": "Đang tải {{percent}}%",
+    "failed": "Tải xuống thất bại",
+    "hint": "Chọn mục đã tải xong để phát, hoặc mục đang tải để xoá.",
+    "unsupported": "Thiết bị này không hỗ trợ tải xuống."
   }
 }

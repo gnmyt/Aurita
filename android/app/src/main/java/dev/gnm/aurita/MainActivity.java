@@ -305,6 +305,27 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public void downloadItem(String itemId, String url, String posterUrl,
+                                 String itemJson, String container) {
+            Downloads.INSTANCE.enqueue(getApplicationContext(), itemId, url, posterUrl, itemJson, container);
+        }
+
+        @JavascriptInterface
+        public void downloadRemove(String itemId) {
+            Downloads.INSTANCE.remove(getApplicationContext(), itemId);
+        }
+
+        @JavascriptInterface
+        public String downloadStatus() {
+            return Downloads.INSTANCE.status(getApplicationContext());
+        }
+
+        @JavascriptInterface
+        public void videoMatchFrameRate(boolean enabled) {
+            nativeVideo.setMatchFrameRate(enabled);
+        }
+
+        @JavascriptInterface
         public void videoAspectFill(boolean fill) {
             nativeVideo.setAspectFill(fill);
         }

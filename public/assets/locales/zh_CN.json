@@ -163,8 +163,13 @@
       "markedWatched": "已标记为已观看",
       "markedUnwatched": "已标记为未观看",
       "addedToWatchlist": "已添加到待看列表",
-      "removedFromWatchlist": "已从待看列表移除"
-    }
+      "removedFromWatchlist": "已从待看列表移除",
+      "downloadStarted_one": "正在下载 {{count}} 项",
+      "downloadStarted_other": "正在下载 {{count}} 项"
+    },
+    "download": "下载",
+    "downloading": "正在下载 {{percent}}%",
+    "downloaded": "已下载"
   },
   "search": {
     "placeholder": "搜索…",
@@ -239,7 +244,21 @@
     "screensaver": "屏幕保护",
     "screensaverSub": "闲置五分钟后显示剧照",
     "showClock": "时钟",
-    "showClockSub": "在导航栏显示时间"
+    "showClockSub": "在导航栏显示时间",
+    "matchFrameRate": "匹配帧率",
+    "matchFrameRateSub": "将显示切换到影片帧率以消除卡顿",
+    "resumePreroll": "稍早一点继续",
+    "resumePrerollSub": "继续观看时回退几秒",
+    "stillWatching": "还在看吗？",
+    "stillWatchingSub": "自动播放这么多集后询问",
+    "segmentIntro": "片头",
+    "segmentOutro": "片尾",
+    "segmentActionSub": "到达该片段时的处理",
+    "segment": {
+      "skip": "跳过",
+      "ask": "询问",
+      "none": "忽略"
+    }
   },
   "player": {
     "errorTitle": "无法播放",
@@ -266,7 +285,6 @@
       "playbackSpeed": "播放速度",
       "quality": "画质",
       "episodes": "剧集",
-      "subtitleOffset": "字幕延迟",
       "aspect": "填满屏幕",
       "pip": "画中画"
     },
@@ -279,10 +297,9 @@
       "empty": "未找到剧集",
       "remaining": "还剩 {{minutes}} 分钟"
     },
-    "subtitleOffset": "字幕延迟",
-    "subtitleOffsetHint": "在不改变播放的情况下平移字幕。",
-    "offsetNone": "无延迟",
-    "offsetReset": "重置"
+    "stillWatching": "还在看吗？",
+    "stillWatchingSub": "下一集已准备好。",
+    "continue": "继续"
   },
   "media": {
     "quality": {
@@ -346,5 +363,15 @@
     "quickConnectStart": "无法启动 Quick Connect（{{status}}）",
     "quickConnectPoll": "Quick Connect 错误（{{status}}）",
     "quickConnectAuth": "登录失败（{{status}}）"
+  },
+  "downloads": {
+    "title": "下载",
+    "empty": "暂无下载",
+    "emptySub": "在影片、剧集或剧集系列上选择下载。",
+    "ready": "可离线观看",
+    "progress": "正在下载 {{percent}}%",
+    "failed": "下载失败",
+    "hint": "选择已完成的下载即可播放，选择进行中的即可移除。",
+    "unsupported": "此设备不支持下载。"
   }
 }

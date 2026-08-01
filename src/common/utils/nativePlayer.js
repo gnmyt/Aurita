@@ -105,6 +105,10 @@ class NativeVideoShim {
         window.AuritaNative?.videoAspectFill?.(!!fill);
     }
 
+    setMatchFrameRate(enabled) {
+        window.AuritaNative?.videoMatchFrameRate?.(!!enabled);
+    }
+
     addEventListener(type, fn) {
         if (!this._listeners.has(type)) this._listeners.set(type, new Set());
         this._listeners.get(type).add(fn);

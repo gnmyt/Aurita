@@ -166,8 +166,13 @@
       "markedWatched": "Позначено як переглянуте",
       "markedUnwatched": "Позначено як непереглянуте",
       "addedToWatchlist": "Додано до списку",
-      "removedFromWatchlist": "Прибрано зі списку"
-    }
+      "removedFromWatchlist": "Прибрано зі списку",
+      "downloadStarted_one": "Завантаження {{count}} елемента",
+      "downloadStarted_other": "Завантаження {{count}} елементів"
+    },
+    "download": "Завантажити",
+    "downloading": "Завантаження {{percent}} %",
+    "downloaded": "Завантажено"
   },
   "search": {
     "placeholder": "Пошук…",
@@ -242,7 +247,21 @@
     "screensaver": "Заставка",
     "screensaverSub": "Показує обкладинки після п’яти хвилин бездіяльності",
     "showClock": "Годинник",
-    "showClockSub": "Показувати час у панелі навігації"
+    "showClockSub": "Показувати час у панелі навігації",
+    "matchFrameRate": "Підлаштовувати частоту",
+    "matchFrameRateSub": "Перемикає екран на частоту кадрів фільму та прибирає ривки",
+    "resumePreroll": "Продовжувати трохи раніше",
+    "resumePrerollSub": "Відмотує кілька секунд під час продовження",
+    "stillWatching": "Ще дивитесь?",
+    "stillWatchingSub": "Питати після стількох автоматичних серій",
+    "segmentIntro": "Заставка",
+    "segmentOutro": "Фінальні титри",
+    "segmentActionSub": "Що робити в цьому місці",
+    "segment": {
+      "skip": "Пропустити",
+      "ask": "Запитати",
+      "none": "Ігнорувати"
+    }
   },
   "player": {
     "errorTitle": "Відтворення неможливе",
@@ -269,7 +288,6 @@
       "playbackSpeed": "Швидкість відтворення",
       "quality": "Якість",
       "episodes": "Серії",
-      "subtitleOffset": "Затримка субтитрів",
       "aspect": "Заповнити екран",
       "pip": "Картинка в картинці"
     },
@@ -282,10 +300,9 @@
       "empty": "Серій не знайдено",
       "remaining": "Залишилось {{minutes}} хв"
     },
-    "subtitleOffset": "Затримка субтитрів",
-    "subtitleOffsetHint": "Зсуває субтитри, не змінюючи відтворення.",
-    "offsetNone": "Без затримки",
-    "offsetReset": "Скинути"
+    "stillWatching": "Ще дивитесь?",
+    "stillWatchingSub": "Наступна серія готова.",
+    "continue": "Продовжити"
   },
   "media": {
     "quality": {
@@ -349,5 +366,15 @@
     "quickConnectStart": "Не вдалося запустити Quick Connect ({{status}})",
     "quickConnectPoll": "Помилка Quick Connect ({{status}})",
     "quickConnectAuth": "Не вдалося увійти ({{status}})"
+  },
+  "downloads": {
+    "title": "Завантаження",
+    "empty": "Нічого не завантажено",
+    "emptySub": "Виберіть «Завантажити» у фільмі, серії чи серіалі.",
+    "ready": "Доступно офлайн",
+    "progress": "Завантаження {{percent}} %",
+    "failed": "Не вдалося завантажити",
+    "hint": "Виберіть завершене завантаження для перегляду або поточне, щоб видалити.",
+    "unsupported": "Завантаження недоступні на цьому пристрої."
   }
 }

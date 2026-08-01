@@ -9,6 +9,7 @@ import {
     HLS_CONFIG,
     parseVtt,
     SEEK_READY_TIMEOUT,
+    SEGMENT_PREFS,
     SPEEDS,
     SYNC_TOLERANCE,
     UNPAUSE_DRIFT,
@@ -16,7 +17,6 @@ import {
 } from './utils';
 import {TrackMenu} from './components/TrackMenu';
 import {SpeedPanel} from './components/SpeedPanel';
-import {SubtitleOffsetPanel} from './components/SubtitleOffsetPanel';
 import {UpNext} from './components/UpNext';
 import {PausedCard} from './components/PausedCard';
 import {ScrubBar} from './components/ScrubBar';
@@ -44,6 +44,7 @@ import {
     trickplayInfo,
 } from '@/common/utils/jellyfin';
 import {onRemote} from '@/common/utils/remote';
+import {localPathFor} from '@/common/utils/downloads';
 import {
     enterPip,
     getNativeVideo,
@@ -52,13 +53,15 @@ import {
     onPipChange,
     releaseNativeVideo,
 } from '@/common/utils/nativePlayer';
-import {isBackKey} from '@/common/contexts/SpatialNav';
+import {isBackKey, useFocusable} from '@/common/contexts/SpatialNav';
 import {
     getAudioLang,
     getPref,
     getQuality,
     getSubLang,
     setAudioLang,
+    getChoice,
+    getChoiceNum,
     setQuality as saveQuality,
     setSubLang
 } from '@/common/utils/prefs';
@@ -84,12 +87,27 @@ import {
     spSetIgnoreWait,
 } from '@/common/utils/syncplay';
 
+const StillWatchingButton = ({label, primary, onSelect}) => {
+    const {handlers} = useFocusable({onSelect});
+    return <button type="button" className={`btn${primary ? ' primary' : ''}`} {...handlers}>{label}</button>;
+}
+
 const segmentAt = (segments, sec) => {
     return segments.find((s) => {
         const start = (s.StartTicks || 0) / TICKS_PER_SEC;
         const end = (s.EndTicks || 0) / TICKS_PER_SEC;
         return sec >= start + 0.2 && sec < end - 0.5;
     });
+}
+
+const segmentAction = (segment) => {
+    const key = SEGMENT_PREFS[segment?.Type];
+    return key ? getChoice(key) : 'none';
+}
+
+const autoSkipTarget = (segments, sec) => {
+    const seg = segmentAt(segments, sec);
+    return seg && segmentAction(seg) === 'skip' ? seg : null;
 }
 
 const chapterAt = (chapters, sec) => {
@@ -214,6 +232,7 @@ export const Player = () => {
     const autoplayNextRef = useRef(false);
     const goNextRef = useRef(null);
     const exitRef = useRef(null);
+    const advanceAutoRef = useRef(null);
     const seekReadyRef = useRef(null);
     const readyPendingRef = useRef(null);
     const [nativeVideo] = useState(() => (isNativePlayerAvailable() ? getNativeVideo() : null));
@@ -248,7 +267,6 @@ export const Player = () => {
     const [playbackError, setPlaybackError] = useState(false);
     const [showControls, setShowControls] = useState(true);
     const [pop, setPop] = useState(null);
-    const [subOffset, setSubOffset] = useState(0);
     const [aspectFill, setAspectFill] = useState(false);
     const [inPip, setInPip] = useState(false);
 
@@ -336,6 +354,15 @@ export const Player = () => {
             sessionRef.current = null;
         }
         try {
+            const local = localPathFor(it.Id);
+            if (local) {
+                const localStream = {url: `file://${local}`, isHls: false, mode: 'direct', local: true};
+                streamRef.current = localStream;
+                setSubs(subtitleTracks(ms0, it.Id));
+                setAudios(audioTracks(ms0));
+                setStreamInfo(localStream);
+                return;
+            }
             const info = await getPlaybackInfo(it.Id, {
                 maxBitrate: bitrateForQuality(qkey),
                 mediaSourceId: ms0?.Id,
@@ -408,7 +435,9 @@ export const Player = () => {
                 setSeasons([]);
             }
             setTrick(trickplayInfo(it, it.MediaSources?.[0]?.Id));
-            let resumeSecs = restart ? 0 : (it.UserData?.PlaybackPositionTicks || 0) / TICKS_PER_SEC;
+            const savedSecs = (it.UserData?.PlaybackPositionTicks || 0) / TICKS_PER_SEC;
+            const preroll = savedSecs > 0 ? getChoiceNum('resumePreroll') : 0;
+            let resumeSecs = restart ? 0 : Math.max(0, savedSecs - preroll);
             if (isInGroup()) {
                 const q = getQueue();
                 if (getQueueItemId() === it.Id) {
@@ -452,10 +481,8 @@ export const Player = () => {
                 case 'timeupdate':
                     setTime(nativeVideo.currentTime);
                     setBuffered(nativeVideo.buffered.end(0) || 0);
-                    if (getPref('autoSkipSegments')) {
-                        const seg = segmentAt(segmentsRef.current, nativeVideo.currentTime);
-                        if (seg) nativeVideo.currentTime = (seg.EndTicks / TICKS_PER_SEC) - 0.2;
-                    }
+                    const skipTo = autoSkipTarget(segmentsRef.current, nativeVideo.currentTime);
+                    if (skipTo) nativeVideo.currentTime = (skipTo.EndTicks / TICKS_PER_SEC) - 0.2;
                     break;
                 case 'resize':
                     if (nativeVideo.videoHeight > 0) {
@@ -507,7 +534,7 @@ export const Player = () => {
                     }, 800);
                     break;
                 case 'ended':
-                    if (autoplayNextRef.current) goNextRef.current?.(); else exitRef.current?.();
+                    if (autoplayNextRef.current) advanceAutoRef.current?.(); else exitRef.current?.();
                     break;
                 case 'error':
                     if (!fallbackRef.current()) setPlaybackError(true);
@@ -519,6 +546,7 @@ export const Player = () => {
         const types = ['timeupdate', 'loadedmetadata', 'playing', 'pause', 'waiting', 'ended', 'error', 'seeked', 'resize'];
         types.forEach((t) => nativeVideo.addEventListener(t, onEvent));
         nativeVideo.playbackRate = speedRef.current;
+        nativeVideo.setMatchFrameRate(getChoice('matchFrameRate') === 'on');
         nativeVideo.load(streamInfo.url, {
             positionSeconds: seekRef.current || 0,
             isHls: !!streamInfo.isHls,
@@ -839,10 +867,30 @@ export const Player = () => {
 
     const exit = useCallback(() => navigate(-1), [navigate]);
 
+    const [stillWatching, setStillWatching] = useState(false);
+    const autoAdvancesRef = useRef(0);
+
     const goNext = useCallback(() => {
         if (nextEp) navigate(`/play/${nextEp.Id}`, {replace: true});
         else exit();
     }, [nextEp, navigate, exit]);
+
+    const advanceAuto = useCallback(() => {
+        const limit = getChoiceNum('stillWatching');
+        autoAdvancesRef.current += 1;
+        if (limit > 0 && autoAdvancesRef.current >= limit) {
+            autoAdvancesRef.current = 0;
+            videoRef.current?.pause();
+            setStillWatching(true);
+            return;
+        }
+        goNextRef.current?.();
+    }, []);
+
+    const continueWatching = useCallback(() => {
+        setStillWatching(false);
+        goNextRef.current?.();
+    }, []);
 
     const changeQuality = useCallback((qkey) => {
         setQuality(qkey);
@@ -874,7 +922,8 @@ export const Player = () => {
         setSubLang(i < 0 ? 'off' : (subs[i]?.lang || 'off'));
     }, [subs]);
 
-    const activeSegment = segmentAt(segments, time);
+    const segmentHere = segmentAt(segments, time);
+    const activeSegment = segmentAction(segmentHere) === 'ask' ? segmentHere : null;
     const skipSegment = () => {
         const v = videoRef.current;
         if (v && activeSegment) {
@@ -887,6 +936,7 @@ export const Player = () => {
     autoplayNextRef.current = autoplayNext;
     goNextRef.current = goNext;
     exitRef.current = exit;
+    advanceAutoRef.current = advanceAuto;
     const upNextActive = isUpNextActive({autoplayNext, nextEp, upNextDismissed, duration, time});
 
     const versions = versionLabels(item, t);
@@ -916,7 +966,6 @@ export const Player = () => {
         ...(nextEp ? [{key: 'next', act: goNext}] : []),
         ...(item?.Type === 'Episode' ? [{key: 'eps', act: openEpisodes}] : []),
         {key: 'cc', act: () => openMenu('tracks')},
-        {key: 'offset', act: () => setPop('offset')},
         ...(canFill ? [{key: 'aspect', act: toggleAspect}] : []),
         ...(pipAvailable ? [{key: 'pip', act: openPip}] : []),
         {key: 'speed', act: openSpeed},
@@ -994,7 +1043,7 @@ export const Player = () => {
         };
 
         const primaryAction = () => {
-            if (upNextActive) goNext();
+            if (upNextActive) advanceAuto();
             else if (activeSegment) skipSegment();
             else togglePlay();
         };
@@ -1248,11 +1297,10 @@ export const Player = () => {
     const segLabel = activeSegment?.Type === 'Outro' ? t('player.skipOutro') : t('player.skipIntro');
     const qualityKey = QUALITY_LEVELS.find((q) => q.key === quality)?.labelKey || 'media.quality.auto';
     const modeBadge = streamInfo?.mode === 'transcode' ? t(qualityKey) : t('player.original');
-    const cueTime = time - subOffset;
-    const currentCue = subCues.find((c) => cueTime >= c.start && cueTime <= c.end)?.text || '';
+    const currentCue = subCues.find((c) => time >= c.start && time <= c.end)?.text || '';
     const epLine = episodeLine(item, t);
     const syncWaiting = !!group && (group.State === 'Waiting' || syncBusy);
-    const showPausedCard = !playing && !pop && !scrubbing && !buffering && !syncWaiting;
+    const showPausedCard = !playing && !pop && !scrubbing && !buffering && !syncWaiting && !stillWatching;
 
     return (
         <div className={`player-root${nativeVideo ? ' native' : ''}`} onMouseMove={reveal}>
@@ -1267,10 +1315,8 @@ export const Player = () => {
                     if (!v) return;
                     setTime(v.currentTime || 0);
                     updateBuffered();
-                    if (getPref('autoSkipSegments')) {
-                        const seg = segmentAt(segments, v.currentTime);
-                        if (seg) v.currentTime = (seg.EndTicks / TICKS_PER_SEC) - 0.2;
-                    }
+                    const skipTo = autoSkipTarget(segments, v.currentTime);
+                    if (skipTo) v.currentTime = (skipTo.EndTicks / TICKS_PER_SEC) - 0.2;
                 }}
                 onProgress={updateBuffered}
                 onDurationChange={() => setDuration(videoRef.current?.duration || 0)}
@@ -1313,7 +1359,7 @@ export const Player = () => {
                 onPlay={() => setPlaying(true)}
                 onPause={() => setPlaying(false)}
                 onEnded={() => {
-                    if (autoplayNext) goNext(); else exit();
+                    if (autoplayNext) advanceAuto(); else exit();
                 }}
                 onError={() => {
                     if (!streamInfo) return;
@@ -1334,6 +1380,19 @@ export const Player = () => {
                 </div>
             )}
 
+            {stillWatching && (
+                <div className="still-watching" data-modal>
+                    <div className="sw-panel">
+                        <div className="sw-title">{t('player.stillWatching')}</div>
+                        <div className="sw-sub">{t('player.stillWatchingSub')}</div>
+                        <div className="sw-actions">
+                            <StillWatchingButton label={t('player.continue')} primary onSelect={continueWatching}/>
+                            <StillWatchingButton label={t('common.actions.back')} onSelect={exit}/>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {showPausedCard && <PausedCard item={item} epLine={epLine}/>}
 
             {currentCue && (
@@ -1351,9 +1410,6 @@ export const Player = () => {
             {upNextActive && !pop && <UpNext nextEp={nextEp} secondsLeft={Math.ceil(duration - time)}/>}
 
             {pop === 'speed' && <SpeedPanel anchor="speed" speedIdx={speedIdx} onPick={pickSpeed}/>}
-            {pop === 'offset' && (
-                <SubtitleOffsetPanel anchor="offset" offset={subOffset} onChange={setSubOffset}/>
-            )}
 
             {(pop === 'tracks' || pop === 'quality') && (
                 <TrackMenu anchor={pop === 'quality' ? 'gear' : 'cc'} cols={cols}
@@ -1378,7 +1434,7 @@ export const Player = () => {
                             modeBadge={modeBadge} aspectFill={aspectFill} canPip={pipAvailable} canFill={canFill}
                             onTogglePlay={togglePlay} onSeek={seek} onNext={goNext} onOpenMenu={openMenu}
                             onOpenSpeed={openSpeed} onOpenEpisodes={openEpisodes}
-                            onOpenOffset={() => setPop('offset')} onToggleAspect={toggleAspect}
+                            onToggleAspect={toggleAspect}
                             onPip={openPip}/>
             </div>
         </div>

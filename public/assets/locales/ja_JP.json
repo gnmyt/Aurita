@@ -163,8 +163,13 @@
       "markedWatched": "視聴済みにしました",
       "markedUnwatched": "未視聴にしました",
       "addedToWatchlist": "マイリストに追加しました",
-      "removedFromWatchlist": "マイリストから削除しました"
-    }
+      "removedFromWatchlist": "マイリストから削除しました",
+      "downloadStarted_one": "{{count}} 件をダウンロード中",
+      "downloadStarted_other": "{{count}} 件をダウンロード中"
+    },
+    "download": "ダウンロード",
+    "downloading": "ダウンロード中 {{percent}}%",
+    "downloaded": "ダウンロード済み"
   },
   "search": {
     "placeholder": "検索…",
@@ -239,7 +244,21 @@
     "screensaver": "スクリーンセーバー",
     "screensaverSub": "5分間操作がないとアートワークを表示",
     "showClock": "時計",
-    "showClockSub": "ナビゲーションバーに時刻を表示"
+    "showClockSub": "ナビゲーションバーに時刻を表示",
+    "matchFrameRate": "フレームレートを合わせる",
+    "matchFrameRateSub": "映像のフレームレートに画面を切り替えてカクつきを解消",
+    "resumePreroll": "少し前から再開",
+    "resumePrerollSub": "再開時に数秒巻き戻します",
+    "stillWatching": "まだ見ていますか？",
+    "stillWatchingSub": "自動再生がこの本数続いたら確認",
+    "segmentIntro": "イントロ",
+    "segmentOutro": "エンドクレジット",
+    "segmentActionSub": "この部分に来たときの動作",
+    "segment": {
+      "skip": "スキップ",
+      "ask": "確認",
+      "none": "無視"
+    }
   },
   "player": {
     "errorTitle": "再生できません",
@@ -266,7 +285,6 @@
       "playbackSpeed": "再生速度",
       "quality": "画質",
       "episodes": "エピソード",
-      "subtitleOffset": "字幕の遅延",
       "aspect": "画面いっぱい",
       "pip": "ピクチャインピクチャ"
     },
@@ -279,10 +297,9 @@
       "empty": "エピソードが見つかりません",
       "remaining": "残り{{minutes}}分"
     },
-    "subtitleOffset": "字幕の遅延",
-    "subtitleOffsetHint": "再生を変えずに字幕をずらします。",
-    "offsetNone": "遅延なし",
-    "offsetReset": "リセット"
+    "stillWatching": "まだ見ていますか？",
+    "stillWatchingSub": "次のエピソードの準備ができています。",
+    "continue": "続ける"
   },
   "media": {
     "quality": {
@@ -346,5 +363,15 @@
     "quickConnectStart": "Quick Connectを開始できませんでした（{{status}}）",
     "quickConnectPoll": "Quick Connectエラー（{{status}}）",
     "quickConnectAuth": "サインインに失敗しました（{{status}}）"
+  },
+  "downloads": {
+    "title": "ダウンロード",
+    "empty": "ダウンロードなし",
+    "emptySub": "映画・エピソード・シリーズでダウンロードを選びます。",
+    "ready": "オフラインで視聴可能",
+    "progress": "ダウンロード中 {{percent}}%",
+    "failed": "ダウンロードに失敗",
+    "hint": "完了した項目は再生、未完了の項目は削除されます。",
+    "unsupported": "この端末ではダウンロードを利用できません。"
   }
 }

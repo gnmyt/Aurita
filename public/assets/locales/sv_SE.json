@@ -164,8 +164,13 @@
       "markedWatched": "Markerad som sedd",
       "markedUnwatched": "Markerad som osedd",
       "addedToWatchlist": "Tillagd i listan",
-      "removedFromWatchlist": "Borttagen från listan"
-    }
+      "removedFromWatchlist": "Borttagen från listan",
+      "downloadStarted_one": "Laddar ner {{count}} objekt",
+      "downloadStarted_other": "Laddar ner {{count}} objekt"
+    },
+    "download": "Ladda ner",
+    "downloading": "Laddar ner {{percent}} %",
+    "downloaded": "Nedladdad"
   },
   "search": {
     "placeholder": "Sök…",
@@ -240,7 +245,21 @@
     "screensaver": "Skärmsläckare",
     "screensaverSub": "Visar bilder efter fem minuters inaktivitet",
     "showClock": "Klocka",
-    "showClockSub": "Visa tiden i navigeringsfältet"
+    "showClockSub": "Visa tiden i navigeringsfältet",
+    "matchFrameRate": "Matcha bildfrekvens",
+    "matchFrameRateSub": "Ställer skärmen på filmens bildfrekvens och tar bort ryck",
+    "resumePreroll": "Återuppta lite tidigare",
+    "resumePrerollSub": "Spolar tillbaka några sekunder när du fortsätter",
+    "stillWatching": "Tittar du än?",
+    "stillWatchingSub": "Fråga efter så här många automatiska avsnitt",
+    "segmentIntro": "Vinjett",
+    "segmentOutro": "Eftertexter",
+    "segmentActionSub": "Vad som händer här",
+    "segment": {
+      "skip": "Hoppa över",
+      "ask": "Fråga",
+      "none": "Ignorera"
+    }
   },
   "player": {
     "errorTitle": "Uppspelning är inte möjlig",
@@ -267,7 +286,6 @@
       "playbackSpeed": "Uppspelningshastighet",
       "quality": "Kvalitet",
       "episodes": "Avsnitt",
-      "subtitleOffset": "Undertextfördröjning",
       "aspect": "Fyll skärmen",
       "pip": "Bild i bild"
     },
@@ -280,10 +298,9 @@
       "empty": "Inga avsnitt hittades",
       "remaining": "{{minutes}} min kvar"
     },
-    "subtitleOffset": "Undertextfördröjning",
-    "subtitleOffsetHint": "Förskjuter undertexter utan att ändra uppspelningen.",
-    "offsetNone": "Ingen fördröjning",
-    "offsetReset": "Återställ"
+    "stillWatching": "Tittar du än?",
+    "stillWatchingSub": "Nästa avsnitt är redo.",
+    "continue": "Fortsätt"
   },
   "media": {
     "quality": {
@@ -347,5 +364,15 @@
     "quickConnectStart": "Quick Connect kunde inte startas ({{status}})",
     "quickConnectPoll": "Quick Connect-fel ({{status}})",
     "quickConnectAuth": "Inloggningen misslyckades ({{status}})"
+  },
+  "downloads": {
+    "title": "Nedladdningar",
+    "empty": "Inget nedladdat",
+    "emptySub": "Välj Ladda ner på en film, ett avsnitt eller en serie.",
+    "ready": "Klar offline",
+    "progress": "Laddar ner {{percent}} %",
+    "failed": "Nedladdningen misslyckades",
+    "hint": "Välj en färdig nedladdning för att spela, eller en pågående för att ta bort.",
+    "unsupported": "Nedladdningar är inte tillgängliga på den här enheten."
   }
 }

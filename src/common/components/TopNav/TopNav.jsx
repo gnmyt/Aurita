@@ -8,6 +8,7 @@ import AuritaLogo from '@/common/components/AuritaLogo';
 import Avatar from '@/common/components/Avatar';
 import {getActiveAccount} from '@/common/utils/jellyfin';
 import {getPref} from '@/common/utils/prefs';
+import {downloadsSupported} from '@/common/utils/downloads';
 
 const NavItem = ({label, icon, active, onSelect, focusKey}) => {
     const {handlers} = useFocusable({onSelect, focusKey});
@@ -58,6 +59,9 @@ export const TopNav = ({views, onOpenProfiles}) => {
         {label: t('common.topNav.shorts'), to: '/shorts', match: '/shorts'},
         ...(views || []).map((v) => ({label: v.Name, to: `/library/${v.Id}`, match: `/library/${v.Id}`})),
         {label: t('common.topNav.syncPlay'), to: '/syncplay', match: '/syncplay'},
+        ...(downloadsSupported()
+            ? [{label: t('downloads.title'), to: '/downloads', match: '/downloads'}]
+            : []),
     ];
 
     const itemsRef = useRef(null);

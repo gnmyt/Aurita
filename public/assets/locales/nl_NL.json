@@ -164,8 +164,13 @@
       "markedWatched": "Gemarkeerd als bekeken",
       "markedUnwatched": "Gemarkeerd als niet bekeken",
       "addedToWatchlist": "Aan kijklijst toegevoegd",
-      "removedFromWatchlist": "Uit kijklijst verwijderd"
-    }
+      "removedFromWatchlist": "Uit kijklijst verwijderd",
+      "downloadStarted_one": "{{count}} item wordt gedownload",
+      "downloadStarted_other": "{{count}} items worden gedownload"
+    },
+    "download": "Downloaden",
+    "downloading": "Downloaden {{percent}} %",
+    "downloaded": "Gedownload"
   },
   "search": {
     "placeholder": "Zoeken…",
@@ -240,7 +245,21 @@
     "screensaver": "Schermbeveiliging",
     "screensaverSub": "Toont artwork na vijf minuten inactiviteit",
     "showClock": "Klok",
-    "showClockSub": "Toon de tijd in de navigatiebalk"
+    "showClockSub": "Toon de tijd in de navigatiebalk",
+    "matchFrameRate": "Beeldsnelheid volgen",
+    "matchFrameRateSub": "Zet het scherm op de beeldsnelheid van de film om schokken te voorkomen",
+    "resumePreroll": "Iets eerder hervatten",
+    "resumePrerollSub": "Spoelt bij hervatten een paar seconden terug",
+    "stillWatching": "Kijk je nog?",
+    "stillWatchingSub": "Vraag na dit aantal automatische afleveringen",
+    "segmentIntro": "Intro",
+    "segmentOutro": "Aftiteling",
+    "segmentActionSub": "Wat te doen bij dit deel",
+    "segment": {
+      "skip": "Overslaan",
+      "ask": "Vragen",
+      "none": "Negeren"
+    }
   },
   "player": {
     "errorTitle": "Afspelen niet mogelijk",
@@ -267,7 +286,6 @@
       "playbackSpeed": "Afspeelsnelheid",
       "quality": "Kwaliteit",
       "episodes": "Afleveringen",
-      "subtitleOffset": "Ondertitelvertraging",
       "aspect": "Scherm vullen",
       "pip": "Beeld in beeld"
     },
@@ -280,10 +298,9 @@
       "empty": "Geen afleveringen gevonden",
       "remaining": "Nog {{minutes}} min"
     },
-    "subtitleOffset": "Ondertitelvertraging",
-    "subtitleOffsetHint": "Verschuift ondertitels zonder het afspelen te wijzigen.",
-    "offsetNone": "Geen vertraging",
-    "offsetReset": "Herstellen"
+    "stillWatching": "Kijk je nog?",
+    "stillWatchingSub": "De volgende aflevering staat klaar.",
+    "continue": "Doorgaan"
   },
   "media": {
     "quality": {
@@ -347,5 +364,15 @@
     "quickConnectStart": "Quick Connect kon niet worden gestart ({{status}})",
     "quickConnectPoll": "Quick Connect-fout ({{status}})",
     "quickConnectAuth": "Aanmelden mislukt ({{status}})"
+  },
+  "downloads": {
+    "title": "Downloads",
+    "empty": "Niets gedownload",
+    "emptySub": "Kies Downloaden bij een film, aflevering of serie.",
+    "ready": "Offline beschikbaar",
+    "progress": "Downloaden {{percent}} %",
+    "failed": "Download mislukt",
+    "hint": "Kies een voltooide download om af te spelen, of een lopende om te verwijderen.",
+    "unsupported": "Downloads zijn niet beschikbaar op dit apparaat."
   }
 }

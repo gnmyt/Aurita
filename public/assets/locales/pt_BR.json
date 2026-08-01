@@ -165,8 +165,13 @@
       "markedWatched": "Marcado como assistido",
       "markedUnwatched": "Marcado como não assistido",
       "addedToWatchlist": "Adicionado à minha lista",
-      "removedFromWatchlist": "Removido da minha lista"
-    }
+      "removedFromWatchlist": "Removido da minha lista",
+      "downloadStarted_one": "Baixando {{count}} item",
+      "downloadStarted_other": "Baixando {{count}} itens"
+    },
+    "download": "Baixar",
+    "downloading": "Baixando {{percent}} %",
+    "downloaded": "Baixado"
   },
   "search": {
     "placeholder": "Pesquisar…",
@@ -241,7 +246,21 @@
     "screensaver": "Protetor de tela",
     "screensaverSub": "Mostra imagens após cinco minutos de inatividade",
     "showClock": "Relógio",
-    "showClockSub": "Mostrar a hora na barra de navegação"
+    "showClockSub": "Mostrar a hora na barra de navegação",
+    "matchFrameRate": "Ajustar taxa de quadros",
+    "matchFrameRateSub": "Muda a tela para a taxa do filme e evita trepidação",
+    "resumePreroll": "Retomar um pouco antes",
+    "resumePrerollSub": "Volta alguns segundos ao continuar",
+    "stillWatching": "Ainda está aí?",
+    "stillWatchingSub": "Perguntar após estes episódios automáticos",
+    "segmentIntro": "Abertura",
+    "segmentOutro": "Créditos finais",
+    "segmentActionSub": "O que fazer ao chegar nesta parte",
+    "segment": {
+      "skip": "Pular",
+      "ask": "Perguntar",
+      "none": "Ignorar"
+    }
   },
   "player": {
     "errorTitle": "Reprodução indisponível",
@@ -268,7 +287,6 @@
       "playbackSpeed": "Velocidade de reprodução",
       "quality": "Qualidade",
       "episodes": "Episódios",
-      "subtitleOffset": "Atraso das legendas",
       "aspect": "Preencher tela",
       "pip": "Picture in picture"
     },
@@ -281,10 +299,9 @@
       "empty": "Nenhum episódio encontrado",
       "remaining": "Faltam {{minutes}} min"
     },
-    "subtitleOffset": "Atraso das legendas",
-    "subtitleOffsetHint": "Desloca as legendas sem alterar a reprodução.",
-    "offsetNone": "Sem atraso",
-    "offsetReset": "Redefinir"
+    "stillWatching": "Ainda está aí?",
+    "stillWatchingSub": "O próximo episódio está pronto.",
+    "continue": "Continuar"
   },
   "media": {
     "quality": {
@@ -348,5 +365,15 @@
     "quickConnectStart": "Não foi possível iniciar o Quick Connect ({{status}})",
     "quickConnectPoll": "Erro do Quick Connect ({{status}})",
     "quickConnectAuth": "Falha ao entrar ({{status}})"
+  },
+  "downloads": {
+    "title": "Downloads",
+    "empty": "Nada baixado",
+    "emptySub": "Escolha Baixar em um filme, episódio ou série.",
+    "ready": "Pronto para assistir offline",
+    "progress": "Baixando {{percent}} %",
+    "failed": "Falha no download",
+    "hint": "Selecione um download concluído para reproduzir, ou um em andamento para remover.",
+    "unsupported": "Downloads não estão disponíveis neste dispositivo."
   }
 }

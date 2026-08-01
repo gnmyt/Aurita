@@ -165,8 +165,13 @@
       "markedWatched": "Marqué comme vu",
       "markedUnwatched": "Marqué comme non vu",
       "addedToWatchlist": "Ajouté à ma liste",
-      "removedFromWatchlist": "Retiré de ma liste"
-    }
+      "removedFromWatchlist": "Retiré de ma liste",
+      "downloadStarted_one": "{{count}} élément en cours",
+      "downloadStarted_other": "{{count}} éléments en cours"
+    },
+    "download": "Télécharger",
+    "downloading": "Téléchargement {{percent}} %",
+    "downloaded": "Téléchargé"
   },
   "search": {
     "placeholder": "Rechercher…",
@@ -241,7 +246,21 @@
     "screensaver": "Écran de veille",
     "screensaverSub": "Affiche des visuels après cinq minutes d’inactivité",
     "showClock": "Horloge",
-    "showClockSub": "Afficher l’heure dans la barre de navigation"
+    "showClockSub": "Afficher l’heure dans la barre de navigation",
+    "matchFrameRate": "Adapter la fréquence",
+    "matchFrameRateSub": "Règle l’écran sur la fréquence du film pour éviter les saccades",
+    "resumePreroll": "Reprendre un peu avant",
+    "resumePrerollSub": "Recule de quelques secondes à la reprise",
+    "stillWatching": "Toujours là ?",
+    "stillWatchingSub": "Demander après ce nombre d’épisodes automatiques",
+    "segmentIntro": "Générique de début",
+    "segmentOutro": "Générique de fin",
+    "segmentActionSub": "Que faire à cet endroit",
+    "segment": {
+      "skip": "Passer",
+      "ask": "Demander",
+      "none": "Ignorer"
+    }
   },
   "player": {
     "errorTitle": "Lecture impossible",
@@ -268,7 +287,6 @@
       "playbackSpeed": "Vitesse de lecture",
       "quality": "Qualité",
       "episodes": "Épisodes",
-      "subtitleOffset": "Décalage des sous-titres",
       "aspect": "Remplir l’écran",
       "pip": "Image dans l’image"
     },
@@ -281,10 +299,9 @@
       "empty": "Aucun épisode trouvé",
       "remaining": "{{minutes}} min restantes"
     },
-    "subtitleOffset": "Décalage des sous-titres",
-    "subtitleOffsetHint": "Décale les sous-titres sans modifier la lecture.",
-    "offsetNone": "Aucun décalage",
-    "offsetReset": "Réinitialiser"
+    "stillWatching": "Toujours là ?",
+    "stillWatchingSub": "L’épisode suivant vous attend.",
+    "continue": "Continuer"
   },
   "media": {
     "quality": {
@@ -348,5 +365,15 @@
     "quickConnectStart": "Impossible de démarrer Quick Connect ({{status}})",
     "quickConnectPoll": "Erreur Quick Connect ({{status}})",
     "quickConnectAuth": "Échec de la connexion ({{status}})"
+  },
+  "downloads": {
+    "title": "Téléchargements",
+    "empty": "Rien de téléchargé",
+    "emptySub": "Choisissez Télécharger sur un film, un épisode ou une série.",
+    "ready": "Disponible hors ligne",
+    "progress": "Téléchargement {{percent}} %",
+    "failed": "Échec du téléchargement",
+    "hint": "Sélectionnez un téléchargement terminé pour le lire, ou un autre pour le supprimer.",
+    "unsupported": "Les téléchargements ne sont pas disponibles sur cet appareil."
   }
 }

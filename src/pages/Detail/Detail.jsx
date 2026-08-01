@@ -1,8 +1,26 @@
 import "./styles.sass";
 import {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
+import {
+    download,
+    downloadsSupported,
+    downloadState,
+    onDownloads,
+    removeDownload,
+} from '@/common/utils/downloads';
 import {useNavigate, useParams} from 'react-router-dom';
-import {Check, Clapperboard, Heart, Play, Plus, RotateCcw, Star} from 'lucide-react';
+import {
+    Check,
+    CheckCircle2,
+    Clapperboard,
+    Download,
+    Heart,
+    LoaderCircle as Downloading,
+    Play,
+    Plus,
+    RotateCcw,
+    Star
+} from 'lucide-react';
 import Card from '@/common/components/Card';
 import PersonCard from '@/common/components/PersonCard';
 import TrailerOverlay from '@/common/components/TrailerOverlay';
@@ -72,6 +90,25 @@ export const Detail = () => {
     const [played, setPlayedState] = useState(() => !!getCache(`item:${id}`)?.UserData?.Played);
     const [fav, setFavState] = useState(() => !!getCache(`item:${id}`)?.UserData?.IsFavorite);
     const [showTrailer, setShowTrailer] = useState(false);
+    const [dl, setDl] = useState(() => downloadState(id));
+
+    useEffect(() => onDownloads(() => setDl(downloadState(id))), [id]);
+
+    const dlIcon = dl?.state === 1 ? CheckCircle2 : dl ? Downloading : Download;
+    const dlLabel = dl?.state === 1
+        ? t('detail.downloaded')
+        : dl
+            ? t('detail.downloading', {percent: Math.round((dl.progress || 0) * 100)})
+            : t('detail.download');
+
+    const toggleDownload = async () => {
+        if (dl) {
+            removeDownload(id);
+            return;
+        }
+        const queued = await download(item || id);
+        if (queued) toast(t('detail.toast.downloadStarted', {count: queued}));
+    };
     const [loadError, setLoadError] = useState(false);
     const [reloadKey, setReloadKey] = useState(0);
 
@@ -241,6 +278,9 @@ export const Detail = () => {
                                 label={played ? t('detail.watched') : t('detail.markWatched')} onSelect={toggleWatched}/>
                         <Button Icon={Heart} active={fav}
                                 label={fav ? t('detail.onWatchlist') : t('detail.watchlist')} onSelect={toggleFav}/>
+                        {downloadsSupported() && (
+                            <Button Icon={dlIcon} active={dl?.state === 1} label={dlLabel} onSelect={toggleDownload}/>
+                        )}
                     </div>
                 </div>
             </div>

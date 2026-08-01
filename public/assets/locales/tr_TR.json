@@ -164,8 +164,13 @@
       "markedWatched": "İzlendi olarak işaretlendi",
       "markedUnwatched": "İzlenmedi olarak işaretlendi",
       "addedToWatchlist": "Listeme eklendi",
-      "removedFromWatchlist": "Listemden kaldırıldı"
-    }
+      "removedFromWatchlist": "Listemden kaldırıldı",
+      "downloadStarted_one": "{{count}} öğe indiriliyor",
+      "downloadStarted_other": "{{count}} öğe indiriliyor"
+    },
+    "download": "İndir",
+    "downloading": "İndiriliyor %{{percent}}",
+    "downloaded": "İndirildi"
   },
   "search": {
     "placeholder": "Ara…",
@@ -240,7 +245,21 @@
     "screensaver": "Ekran koruyucu",
     "screensaverSub": "Beş dakika işlem yapılmazsa görseller gösterir",
     "showClock": "Saat",
-    "showClockSub": "Gezinme çubuğunda saati göster"
+    "showClockSub": "Gezinme çubuğunda saati göster",
+    "matchFrameRate": "Kare hızını eşle",
+    "matchFrameRateSub": "Ekranı filmin kare hızına geçirir ve titremeyi giderir",
+    "resumePreroll": "Biraz önceden devam et",
+    "resumePrerollSub": "Devam ederken birkaç saniye geri sarar",
+    "stillWatching": "Hâlâ izliyor musun?",
+    "stillWatchingSub": "Bu kadar otomatik bölümden sonra sor",
+    "segmentIntro": "Jenerik",
+    "segmentOutro": "Kapanış jeneriği",
+    "segmentActionSub": "Bu bölüme gelince ne yapılacağı",
+    "segment": {
+      "skip": "Atla",
+      "ask": "Sor",
+      "none": "Yoksay"
+    }
   },
   "player": {
     "errorTitle": "Oynatma mümkün değil",
@@ -267,7 +286,6 @@
       "playbackSpeed": "Oynatma hızı",
       "quality": "Kalite",
       "episodes": "Bölümler",
-      "subtitleOffset": "Altyazı gecikmesi",
       "aspect": "Ekranı doldur",
       "pip": "Resim içinde resim"
     },
@@ -280,10 +298,9 @@
       "empty": "Bölüm bulunamadı",
       "remaining": "{{minutes}} dk kaldı"
     },
-    "subtitleOffset": "Altyazı gecikmesi",
-    "subtitleOffsetHint": "Oynatmayı değiştirmeden altyazıları kaydırır.",
-    "offsetNone": "Gecikme yok",
-    "offsetReset": "Sıfırla"
+    "stillWatching": "Hâlâ izliyor musun?",
+    "stillWatchingSub": "Sonraki bölüm hazır.",
+    "continue": "Devam et"
   },
   "media": {
     "quality": {
@@ -347,5 +364,15 @@
     "quickConnectStart": "Quick Connect başlatılamadı ({{status}})",
     "quickConnectPoll": "Quick Connect hatası ({{status}})",
     "quickConnectAuth": "Oturum açma başarısız ({{status}})"
+  },
+  "downloads": {
+    "title": "İndirilenler",
+    "empty": "Hiçbir şey indirilmedi",
+    "emptySub": "Bir film, bölüm veya dizide İndir’i seçin.",
+    "ready": "Çevrimdışı hazır",
+    "progress": "İndiriliyor %{{percent}}",
+    "failed": "İndirme başarısız",
+    "hint": "Oynatmak için tamamlanmış bir indirmeyi, kaldırmak için sürmekte olanı seçin.",
+    "unsupported": "Bu cihazda indirme kullanılamıyor."
   }
 }

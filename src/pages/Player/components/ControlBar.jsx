@@ -1,6 +1,5 @@
 import {useTranslation} from 'react-i18next';
 import {
-    Captions,
     Gauge,
     ListVideo,
     Proportions,
@@ -19,7 +18,7 @@ export const ControlBar = ({
                                controls, zone, ctrlIdx, playing, speed, item, group, nextEp, modeBadge,
                                aspectFill, canPip, canFill,
                                onTogglePlay, onSeek, onNext, onOpenMenu, onOpenSpeed, onOpenEpisodes,
-                               onOpenOffset, onToggleAspect, onPip,
+                               onToggleAspect, onPip,
                            }) => {
     const {t} = useTranslation();
     const idxOf = (k) => controls.findIndex((c) => c.key === k);
@@ -59,8 +58,6 @@ export const ControlBar = ({
                 <button data-ctrl="cc" className={`nf-btn${cf('cc')}`} onClick={() => onOpenMenu('tracks')}
                         title={t('player.controls.audioAndSubtitles')}>
                     <Subtitles size={26}/></button>
-                <button data-ctrl="offset" className={`nf-btn${cf('offset')}`} onClick={onOpenOffset}
-                        title={t('player.controls.subtitleOffset')}><Captions size={26}/></button>
                 {canFill && (
                     <button data-ctrl="aspect" className={`nf-btn${cf('aspect')}${aspectFill ? ' on' : ''}`}
                             onClick={onToggleAspect} title={t('player.controls.aspect')}>

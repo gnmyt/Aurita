@@ -164,8 +164,13 @@
       "markedWatched": "देखा हुआ चिह्नित किया गया",
       "markedUnwatched": "अनदेखा के रूप में चिह्नित किया गया",
       "addedToWatchlist": "वॉचलिस्ट में जोड़ा गया",
-      "removedFromWatchlist": "वॉचलिस्ट से हटाया गया"
-    }
+      "removedFromWatchlist": "वॉचलिस्ट से हटाया गया",
+      "downloadStarted_one": "{{count}} आइटम डाउनलोड हो रहा है",
+      "downloadStarted_other": "{{count}} आइटम डाउनलोड हो रहे हैं"
+    },
+    "download": "डाउनलोड",
+    "downloading": "{{percent}}% डाउनलोड हो रहा है",
+    "downloaded": "डाउनलोड हो गया"
   },
   "search": {
     "placeholder": "खोजें…",
@@ -240,7 +245,21 @@
     "screensaver": "स्क्रीनसेवर",
     "screensaverSub": "पाँच मिनट निष्क्रिय रहने पर आर्टवर्क दिखाता है",
     "showClock": "घड़ी",
-    "showClockSub": "नेविगेशन बार में समय दिखाएँ"
+    "showClockSub": "नेविगेशन बार में समय दिखाएँ",
+    "matchFrameRate": "फ़्रेम दर मिलाएँ",
+    "matchFrameRateSub": "डिस्प्ले को फ़िल्म की फ़्रेम दर पर बदलता है और झटके हटाता है",
+    "resumePreroll": "थोड़ा पहले से जारी रखें",
+    "resumePrerollSub": "जारी रखने पर कुछ सेकंड पीछे जाता है",
+    "stillWatching": "अभी भी देख रहे हैं?",
+    "stillWatchingSub": "इतने स्वतः चले एपिसोड के बाद पूछें",
+    "segmentIntro": "इंट्रो",
+    "segmentOutro": "अंतिम क्रेडिट",
+    "segmentActionSub": "यहाँ पहुँचने पर क्या करें",
+    "segment": {
+      "skip": "छोड़ें",
+      "ask": "पूछें",
+      "none": "अनदेखा करें"
+    }
   },
   "player": {
     "errorTitle": "प्लेबैक संभव नहीं",
@@ -267,7 +286,6 @@
       "playbackSpeed": "प्लेबैक गति",
       "quality": "गुणवत्ता",
       "episodes": "एपिसोड",
-      "subtitleOffset": "उपशीर्षक विलंब",
       "aspect": "स्क्रीन भरें",
       "pip": "पिक्चर इन पिक्चर"
     },
@@ -280,10 +298,9 @@
       "empty": "कोई एपिसोड नहीं मिला",
       "remaining": "{{minutes}} मिनट बाकी"
     },
-    "subtitleOffset": "उपशीर्षक विलंब",
-    "subtitleOffsetHint": "प्लेबैक बदले बिना उपशीर्षक खिसकाता है।",
-    "offsetNone": "कोई विलंब नहीं",
-    "offsetReset": "रीसेट"
+    "stillWatching": "अभी भी देख रहे हैं?",
+    "stillWatchingSub": "अगला एपिसोड तैयार है।",
+    "continue": "जारी रखें"
   },
   "media": {
     "quality": {
@@ -347,5 +364,15 @@
     "quickConnectStart": "Quick Connect शुरू नहीं हो सका ({{status}})",
     "quickConnectPoll": "Quick Connect त्रुटि ({{status}})",
     "quickConnectAuth": "साइन इन विफल ({{status}})"
+  },
+  "downloads": {
+    "title": "डाउनलोड",
+    "empty": "कुछ डाउनलोड नहीं",
+    "emptySub": "किसी फ़िल्म, एपिसोड या सीरीज़ पर डाउनलोड चुनें।",
+    "ready": "ऑफ़लाइन तैयार",
+    "progress": "{{percent}}% डाउनलोड हो रहा है",
+    "failed": "डाउनलोड विफल",
+    "hint": "चलाने के लिए पूर्ण डाउनलोड चुनें, हटाने के लिए अपूर्ण।",
+    "unsupported": "इस डिवाइस पर डाउनलोड उपलब्ध नहीं है।"
   }
 }

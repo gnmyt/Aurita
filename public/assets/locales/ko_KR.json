@@ -163,8 +163,13 @@
       "markedWatched": "시청함으로 표시했습니다",
       "markedUnwatched": "시청 안 함으로 표시했습니다",
       "addedToWatchlist": "내가 찜한 목록에 추가했습니다",
-      "removedFromWatchlist": "내가 찜한 목록에서 삭제했습니다"
-    }
+      "removedFromWatchlist": "내가 찜한 목록에서 삭제했습니다",
+      "downloadStarted_one": "{{count}}개 항목 다운로드 중",
+      "downloadStarted_other": "{{count}}개 항목 다운로드 중"
+    },
+    "download": "다운로드",
+    "downloading": "{{percent}}% 다운로드 중",
+    "downloaded": "다운로드됨"
   },
   "search": {
     "placeholder": "검색…",
@@ -239,7 +244,21 @@
     "screensaver": "화면 보호기",
     "screensaverSub": "5분간 조작이 없으면 아트워크 표시",
     "showClock": "시계",
-    "showClockSub": "내비게이션 바에 시간 표시"
+    "showClockSub": "내비게이션 바에 시간 표시",
+    "matchFrameRate": "프레임 레이트 맞춤",
+    "matchFrameRateSub": "화면을 영상의 프레임 레이트로 전환해 끊김을 없앱니다",
+    "resumePreroll": "조금 앞에서 이어보기",
+    "resumePrerollSub": "이어볼 때 몇 초 되감습니다",
+    "stillWatching": "계속 시청 중인가요?",
+    "stillWatchingSub": "자동 재생이 이만큼 이어지면 확인",
+    "segmentIntro": "인트로",
+    "segmentOutro": "엔딩 크레딧",
+    "segmentActionSub": "이 구간에 도달했을 때 동작",
+    "segment": {
+      "skip": "건너뛰기",
+      "ask": "확인",
+      "none": "무시"
+    }
   },
   "player": {
     "errorTitle": "재생할 수 없습니다",
@@ -266,7 +285,6 @@
       "playbackSpeed": "재생 속도",
       "quality": "화질",
       "episodes": "에피소드",
-      "subtitleOffset": "자막 지연",
       "aspect": "화면 채우기",
       "pip": "PIP"
     },
@@ -279,10 +297,9 @@
       "empty": "에피소드를 찾을 수 없습니다",
       "remaining": "{{minutes}}분 남음"
     },
-    "subtitleOffset": "자막 지연",
-    "subtitleOffsetHint": "재생을 바꾸지 않고 자막을 이동합니다.",
-    "offsetNone": "지연 없음",
-    "offsetReset": "초기화"
+    "stillWatching": "계속 시청 중인가요?",
+    "stillWatchingSub": "다음 에피소드가 준비되었습니다.",
+    "continue": "계속"
   },
   "media": {
     "quality": {
@@ -346,5 +363,15 @@
     "quickConnectStart": "Quick Connect를 시작할 수 없습니다({{status}})",
     "quickConnectPoll": "Quick Connect 오류({{status}})",
     "quickConnectAuth": "로그인에 실패했습니다({{status}})"
+  },
+  "downloads": {
+    "title": "다운로드",
+    "empty": "다운로드 없음",
+    "emptySub": "영화, 에피소드 또는 시리즈에서 다운로드를 선택하세요.",
+    "ready": "오프라인 재생 가능",
+    "progress": "{{percent}}% 다운로드 중",
+    "failed": "다운로드 실패",
+    "hint": "완료된 항목은 재생, 진행 중인 항목은 삭제됩니다.",
+    "unsupported": "이 기기에서는 다운로드를 사용할 수 없습니다."
   }
 }

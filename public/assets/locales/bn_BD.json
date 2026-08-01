@@ -164,8 +164,13 @@
       "markedWatched": "দেখা হিসেবে চিহ্নিত হয়েছে",
       "markedUnwatched": "না দেখা হিসেবে চিহ্নিত হয়েছে",
       "addedToWatchlist": "ওয়াচলিস্টে যোগ করা হয়েছে",
-      "removedFromWatchlist": "ওয়াচলিস্ট থেকে সরানো হয়েছে"
-    }
+      "removedFromWatchlist": "ওয়াচলিস্ট থেকে সরানো হয়েছে",
+      "downloadStarted_one": "{{count}}টি আইটেম ডাউনলোড হচ্ছে",
+      "downloadStarted_other": "{{count}}টি আইটেম ডাউনলোড হচ্ছে"
+    },
+    "download": "ডাউনলোড",
+    "downloading": "{{percent}}% ডাউনলোড হচ্ছে",
+    "downloaded": "ডাউনলোড হয়েছে"
   },
   "search": {
     "placeholder": "খুঁজুন…",
@@ -240,7 +245,21 @@
     "screensaver": "স্ক্রিনসেভার",
     "screensaverSub": "পাঁচ মিনিট নিষ্ক্রিয় থাকলে আর্টওয়ার্ক দেখায়",
     "showClock": "ঘড়ি",
-    "showClockSub": "নেভিগেশন বারে সময় দেখান"
+    "showClockSub": "নেভিগেশন বারে সময় দেখান",
+    "matchFrameRate": "ফ্রেম রেট মেলান",
+    "matchFrameRateSub": "ডিসপ্লেকে ছবির ফ্রেম রেটে বদলায় ও ঝাঁকুনি সরায়",
+    "resumePreroll": "একটু আগে থেকে চালান",
+    "resumePrerollSub": "চালিয়ে যাওয়ার সময় কয়েক সেকেন্ড পিছোয়",
+    "stillWatching": "এখনও দেখছেন?",
+    "stillWatchingSub": "এতগুলো স্বয়ংক্রিয় পর্বের পর জিজ্ঞেস করুন",
+    "segmentIntro": "ইন্ট্রো",
+    "segmentOutro": "শেষ ক্রেডিট",
+    "segmentActionSub": "এখানে পৌঁছালে কী হবে",
+    "segment": {
+      "skip": "এড়িয়ে যান",
+      "ask": "জিজ্ঞেস করুন",
+      "none": "উপেক্ষা করুন"
+    }
   },
   "player": {
     "errorTitle": "চালানো যাচ্ছে না",
@@ -267,7 +286,6 @@
       "playbackSpeed": "প্লেব্যাক গতি",
       "quality": "মান",
       "episodes": "পর্বসমূহ",
-      "subtitleOffset": "সাবটাইটেল বিলম্ব",
       "aspect": "স্ক্রিন পূর্ণ করুন",
       "pip": "পিকচার ইন পিকচার"
     },
@@ -280,10 +298,9 @@
       "empty": "কোনো পর্ব পাওয়া যায়নি",
       "remaining": "{{minutes}} মিনিট বাকি"
     },
-    "subtitleOffset": "সাবটাইটেল বিলম্ব",
-    "subtitleOffsetHint": "প্লেব্যাক না বদলে সাবটাইটেল সরায়।",
-    "offsetNone": "কোনো বিলম্ব নেই",
-    "offsetReset": "রিসেট"
+    "stillWatching": "এখনও দেখছেন?",
+    "stillWatchingSub": "পরের পর্ব প্রস্তুত।",
+    "continue": "চালিয়ে যান"
   },
   "media": {
     "quality": {
@@ -347,5 +364,15 @@
     "quickConnectStart": "Quick Connect শুরু করা যায়নি ({{status}})",
     "quickConnectPoll": "Quick Connect ত্রুটি ({{status}})",
     "quickConnectAuth": "সাইন ইন ব্যর্থ ({{status}})"
+  },
+  "downloads": {
+    "title": "ডাউনলোড",
+    "empty": "কিছু ডাউনলোড হয়নি",
+    "emptySub": "যেকোনো সিনেমা, পর্ব বা সিরিজে ডাউনলোড বেছে নিন।",
+    "ready": "অফলাইনে প্রস্তুত",
+    "progress": "{{percent}}% ডাউনলোড হচ্ছে",
+    "failed": "ডাউনলোড ব্যর্থ",
+    "hint": "চালাতে সম্পূর্ণ ডাউনলোড বেছে নিন, সরাতে অসম্পূর্ণটি।",
+    "unsupported": "এই ডিভাইসে ডাউনলোড উপলব্ধ নয়।"
   }
 }

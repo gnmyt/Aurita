@@ -31,6 +31,7 @@ class NativeVideo(
     private var videoWidth = 0
     private var videoHeight = 0
     private var fillEnabled = false
+    private var matchFrameRate = true
 
     private fun ensurePlayer(): ExoPlayer {
         player?.let { return it }
@@ -87,6 +88,10 @@ class NativeVideo(
             .setBackBuffer(30_000, true)
             .setPrioritizeTimeOverSizeThresholds(false)
             .build()
+    }
+
+    fun setMatchFrameRate(enabled: Boolean) {
+        matchFrameRate = enabled
     }
 
     fun load(url: String, positionSeconds: Double, isHls: Boolean, token: String?) {
@@ -159,6 +164,7 @@ class NativeVideo(
     }
 
     fun release() = activity.runOnUiThread {
+        RefreshRate.restore(activity)
         stopTicker()
         videoWidth = 0
         videoHeight = 0
@@ -197,6 +203,10 @@ class NativeVideo(
             videoWidth = size.width
             videoHeight = size.height
             applyScale()
+            if (matchFrameRate) {
+                val fps = player?.videoFormat?.frameRate ?: 0f
+                if (fps > 0f) RefreshRate.apply(activity, fps)
+            }
             emit("resize")
         }
 
