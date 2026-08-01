@@ -18,12 +18,12 @@ def signing = { String env, String prop ->
 
 android {
     namespace 'dev.gnm.aurita'
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         applicationId 'dev.gnm.aurita'
         minSdk 22
-        targetSdk 34
+        targetSdk 36
         versionCode buildVersionCode
         versionName buildVersionName
         multiDexEnabled true

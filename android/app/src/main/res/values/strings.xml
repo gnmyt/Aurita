@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Aurita</string>
-    <string name="search_hint">Filme &amp; Serien in Aurita suchen</string>
+    <string name="search_hint">Search movies &amp; shows in Aurita</string>
 </resources>
