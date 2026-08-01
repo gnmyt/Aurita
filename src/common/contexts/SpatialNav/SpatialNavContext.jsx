@@ -11,6 +11,12 @@ const scrollFocus = (el) => {
     const now = Date.now();
     const behavior = (now - lastScrollAt < 280) ? 'auto' : 'smooth';
     lastScrollAt = now;
+
+    if (el.closest(MODAL_SELECTOR)) {
+        el.scrollIntoView({behavior, block: 'nearest'});
+        return;
+    }
+
     const main = el.closest('.main') || document.querySelector('.main');
 
     const strip = el.closest('.row-track');

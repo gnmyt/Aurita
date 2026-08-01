@@ -1,0 +1,59 @@
+.langpicker
+  position: fixed
+  inset: 0
+  z-index: 300
+  display: flex
+  align-items: center
+  justify-content: center
+  background: rgba(0, 0, 0, .6)
+  animation: ssFade .15s ease
+
+.lang-panel
+  width: min(440px, 86vw)
+  background: var(--bg-elev)
+  border: 1px solid rgba(255, 255, 255, .08)
+  border-radius: 16px
+  padding: 22px 18px
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .6)
+
+.lang-title
+  font-size: 22px
+  font-weight: 800
+  padding: 0 10px
+  line-height: 1.2
+
+.lang-list
+  display: flex
+  flex-direction: column
+  margin-top: 12px
+  max-height: 52vh
+  overflow-y: auto
+
+.lang-opt
+  display: flex
+  align-items: center
+  gap: 16px
+  padding: 14px 12px
+  border-radius: 10px
+  font-size: 18px
+  font-weight: 600
+  color: var(--text)
+  transition: background .14s
+
+.lang-opt-check
+  display: flex
+  flex: 0 0 auto
+  width: 20px
+  color: var(--accent)
+
+.lang-opt-name
+  min-width: 0
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+.lang-opt[data-focused]
+  background: rgba(255, 255, 255, .14)
+
+.lang-opt[data-focused] .lang-opt-check
+  color: #fff

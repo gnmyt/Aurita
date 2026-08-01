@@ -1,7 +1,7 @@
 import "./styles.sass";
 import {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {FastForward, Gauge, Images, Lock, LogOut, SkipForward, Square, Subtitles} from 'lucide-react';
+import {FastForward, Gauge, Images, Languages, Lock, LogOut, SkipForward, Square, Subtitles} from 'lucide-react';
 import {useAutoFocusFirst} from '@/common/contexts/SpatialNav';
 import {
     accountHasPin,
@@ -28,8 +28,10 @@ import Avatar from '@/common/components/Avatar';
 import SettingRow from '@/common/components/SettingRow';
 import PinPad from '@/common/components/PinPad';
 import ConfirmDialog from '@/common/components/ConfirmDialog';
+import LanguagePicker from '@/common/components/LanguagePicker';
 import {toast} from '@/common/utils/toast';
 import {BRAND} from '@/common/utils/brand';
+import i18n, {languages} from '@/i18n';
 
 export const Settings = () => {
     const {t} = useTranslation();
@@ -52,6 +54,7 @@ export const Settings = () => {
     const [pinFlow, setPinFlow] = useState(null);
     const [hasPin, setHasPin] = useState(() => accountHasPin(account?.userId));
     const [confirmSignOut, setConfirmSignOut] = useState(false);
+    const [langPicker, setLangPicker] = useState(false);
 
     useAutoFocusFirst(true);
 
@@ -83,6 +86,7 @@ export const Settings = () => {
     const subSizeKey = SUB_SIZES.find((s) => s.key === subSize)?.labelKey || 'media.subtitleSize.normal';
     const qualityKey = QUALITY_LEVELS.find((q) => q.key === quality)?.labelKey || 'media.quality.auto';
     const onOff = (on) => (on ? t('settings.on') : t('settings.off'));
+    const activeLanguage = languages.find((l) => l.code === i18n.resolvedLanguage);
 
     return (
         <div className="settings">
@@ -123,6 +127,7 @@ export const Settings = () => {
                     onCancel={() => setConfirmSignOut(false)}
                 />
             )}
+            {langPicker && <LanguagePicker onClose={() => setLangPicker(false)}/>}
             <h1 className="settings-head">{t('settings.title')}</h1>
 
             <div className="settings-card">
@@ -148,6 +153,18 @@ export const Settings = () => {
                     chevron
                     danger
                     onSelect={() => setConfirmSignOut(true)}
+                />
+            </div>
+
+            <div className="settings-section">{t('settings.languageSection')}</div>
+            <div className="settings-card">
+                <SettingRow
+                    icon={<Languages size={26}/>}
+                    title={t('settings.appLanguage')}
+                    subtitle={t('settings.appLanguageSub')}
+                    value={activeLanguage?.name}
+                    chevron
+                    onSelect={() => setLangPicker(true)}
                 />
             </div>
 
