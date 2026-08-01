@@ -13,9 +13,6 @@ export const SyncPlay = () => {
     const [loading, setLoading] = useState(true);
 
     const alive = useRef(true);
-    useEffect(() => () => {
-        alive.current = false;
-    }, []);
 
     const refresh = useCallback((silent = false) => {
         if (!silent) setLoading(true);
@@ -27,6 +24,7 @@ export const SyncPlay = () => {
     }, []);
 
     useEffect(() => {
+        alive.current = true;
         refresh();
         const off = onSync('group', (g) => {
             setGroupState(g);
@@ -34,6 +32,7 @@ export const SyncPlay = () => {
         });
         const iv = setInterval(() => refresh(true), 5000);
         return () => {
+            alive.current = false;
             off();
             clearInterval(iv);
         };
