@@ -1,6 +1,7 @@
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 import {BrowserRouter} from 'react-router-dom';
+import '@fontsource-variable/inter';
 import '@/common/styles/default.sass';
 import '@/common/styles/app.sass';
 import '@/common/styles/buttons.sass';
