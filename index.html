@@ -7,7 +7,7 @@
     <title>Aurita</title>
     <script>
       if (window.AuritaNative && window.devicePixelRatio > 1) {
-        var s = 1 / window.devicePixelRatio
+        var s = Math.min(1, 1 / (window.devicePixelRatio * 0.75))
         document
           .querySelector('meta[name=viewport]')
           .setAttribute(
