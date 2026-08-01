@@ -21,7 +21,7 @@ const ProfileButton = ({account, onSelect}) => {
     const {handlers} = useFocusable({onSelect, focusKey: 'nav-profile'});
     return (
         <div className="tn-profile" {...handlers}>
-            <Avatar account={account} size={34} className="tn-avatar"/>
+            <Avatar account={account} size={38} className="tn-avatar"/>
             <ChevronDown size={16} strokeWidth={2.5}/>
         </div>
     );
@@ -34,7 +34,7 @@ export const TopNav = ({views, onOpenProfiles}) => {
     const path = location.pathname;
 
     const items = [
-        {icon: <Search size={22} strokeWidth={2.5}/>, to: '/search', match: '/search'},
+        {icon: <Search size={23} strokeWidth={2.5}/>, to: '/search', match: '/search'},
         {label: t('common.topNav.home'), to: '/', match: '/'},
         {label: t('common.topNav.shorts'), to: '/shorts', match: '/shorts'},
         ...(views || []).map((v) => ({label: v.Name, to: `/library/${v.Id}`, match: `/library/${v.Id}`})),
@@ -69,7 +69,7 @@ export const TopNav = ({views, onOpenProfiles}) => {
                 ))}
             </nav>
             <div className="tn-brand">
-                <AuritaLogo size={32}/>
+                <AuritaLogo size={36}/>
             </div>
         </div>
     );
