@@ -9,7 +9,6 @@ on:
 
 permissions:
   contents: read
-  packages: write
 
 jobs:
   check:
@@ -38,6 +37,9 @@ jobs:
     name: "Build Docker"
     needs: check
     if: github.event_name != 'pull_request'
+    permissions:
+      contents: read
+      packages: write
     uses: ./.github/workflows/build-docker.yml
     with:
       version: dev-${{ github.sha }}
@@ -48,6 +50,8 @@ jobs:
     name: "Build Android TV"
     needs: check
     if: github.event_name != 'pull_request'
+    permissions:
+      contents: write
     uses: ./.github/workflows/build-android.yml
     with:
       version: dev-${{ github.run_number }}

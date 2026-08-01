@@ -131,9 +131,12 @@ jobs:
           TAGS: ${{ inputs.tags }}
         run: |
           TAG_ARGS=""
+          SEEN=""
           while IFS= read -r tag; do
             tag="$(echo "$tag" | tr -d '[:space:]')"
             [ -n "$tag" ] || continue
+            case " $SEEN " in *" $tag "*) continue ;; esac
+            SEEN="$SEEN $tag"
             TAG_ARGS="$TAG_ARGS -t $IMAGE:$tag"
           done <<< "$TAGS"
           if [ -z "$TAG_ARGS" ]; then
