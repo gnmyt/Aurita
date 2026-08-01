@@ -42,17 +42,15 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "${{ github.ref_name }}" \
-            --title "Aurita ${{ steps.get_version.outputs.version }}" \
-            --draft \
-            --notes "Build in progress…" \
-            ${{ steps.get_version.outputs.prerelease == 'true' && '--prerelease' || '' }}
-          ID=$(gh api "repos/${{ github.repository }}/releases" --paginate \
-            --jq '[.[] | select(.tag_name == "${{ github.ref_name }}")][0].id')
-          if [ -z "$ID" ] || [ "$ID" = "null" ]; then
-            echo "Could not find release for tag ${{ github.ref_name }}" >&2
-            exit 1
-          fi
+          ID=$(gh api "repos/${{ github.repository }}/releases" \
+            --method POST \
+            -f tag_name="${{ github.ref_name }}" \
+            -f name="Aurita ${{ steps.get_version.outputs.version }}" \
+            -f body="Build in progress…" \
+            -F draft=true \
+            -F prerelease=${{ steps.get_version.outputs.prerelease }} \
+            --jq .id)
+          echo "Created draft release $ID"
           echo "release_id=$ID" >> "$GITHUB_OUTPUT"
 
   build-docker:
