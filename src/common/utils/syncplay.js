@@ -148,6 +148,14 @@ const handleGroupUpdate = (d) => {
             emit('queue', d.Data);
             break;
         }
+        case 'LibraryAccessDenied':
+            console.warn('[syncplay] library access denied for this group');
+            group = null;
+            queue = null;
+            playlistItemId = null;
+            emit('group', null);
+            stopTimeSync();
+            break;
         case 'GroupDoesNotExist':
         case 'NotInGroup':
             group = null;
@@ -159,8 +167,12 @@ const handleGroupUpdate = (d) => {
     }
 }
 
+const EMPTY_GUID = '00000000000000000000000000000000';
+
 const handleCommand = (d) => {
-    if (d.PlaylistItemId && d.PlaylistItemId !== '00000000000000000000000000000000') playlistItemId = d.PlaylistItemId;
+    const cur = currentQueueItem()?.PlaylistItemId;
+    if (d.PlaylistItemId && d.PlaylistItemId !== EMPTY_GUID && cur && d.PlaylistItemId !== cur) return;
+    if (d.PlaylistItemId && d.PlaylistItemId !== EMPTY_GUID) playlistItemId = d.PlaylistItemId;
     emit('command', d);
 }
 
@@ -187,6 +199,7 @@ export const leaveGroup = () => post('/SyncPlay/Leave');
 export const spSetNewQueue = (itemIds, pos = 0, startTicks = 0) =>
     post('/SyncPlay/SetNewQueue', {PlayingQueue: itemIds, PlayingItemPosition: pos, StartPositionTicks: startTicks});
 export const spSetPlaylistItem = (id) => post('/SyncPlay/SetPlaylistItem', {PlaylistItemId: id});
+export const spSetIgnoreWait = (ignore) => post('/SyncPlay/SetIgnoreWait', {IgnoreWait: !!ignore});
 export const spUnpause = () => post('/SyncPlay/Unpause');
 export const spPause = () => post('/SyncPlay/Pause');
 export const spSeek = (ticks) => post('/SyncPlay/Seek', {PositionTicks: Math.max(0, Math.floor(ticks))});

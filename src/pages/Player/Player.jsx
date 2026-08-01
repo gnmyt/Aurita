@@ -72,6 +72,7 @@ import {
     getQueueItemId,
     getPlaylistItemIdFor,
     spSetPlaylistItem,
+    spSetIgnoreWait,
 } from '@/common/utils/syncplay';
 
 const segmentAt = (segments, sec) => {
@@ -958,6 +959,14 @@ export const Player = () => {
         reveal();
         return () => clearTimeout(hideTimer.current);
     }, [reveal]);
+    useEffect(() => {
+        if (!isInGroup()) return undefined;
+        spSetIgnoreWait(false);
+        return () => {
+            if (isInGroup()) spSetIgnoreWait(true);
+        };
+    }, []);
+
     useEffect(() => onSync('group', (g) => {
         setGroupState(g);
         if (!g || g.State !== 'Waiting') setSyncBusy(false);
