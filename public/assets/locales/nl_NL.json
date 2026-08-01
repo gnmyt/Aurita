@@ -1,0 +1,329 @@
+{
+  "common": {
+    "actions": {
+      "back": "Terug",
+      "cancel": "Annuleren",
+      "confirm": "Bevestigen",
+      "remove": "Verwijderen",
+      "retry": "Opnieuw proberen",
+      "signOut": "Afmelden",
+      "done": "Klaar"
+    },
+    "loader": {
+      "label": "Laden…"
+    },
+    "itemGrid": {
+      "empty": "Geen inhoud gevonden."
+    },
+    "card": {
+      "movie": "Film",
+      "series": "Serie",
+      "seriesWithYear": "Serie · {{year}}",
+      "seasonEpisodes_one": "{{count}} aflevering",
+      "seasonEpisodes_other": "{{count}} afleveringen",
+      "folder": "Map",
+      "episodeCode": "S{{season}}:A{{episode}}"
+    },
+    "topNav": {
+      "home": "Start",
+      "shorts": "Shorts",
+      "syncPlay": "Samen kijken"
+    },
+    "screenSaver": {
+      "locale": "nl-NL"
+    },
+    "trailerOverlay": {
+      "closeHint": "Terug om te sluiten"
+    },
+    "spotlight": {
+      "play": "Afspelen",
+      "watch": "Kijken",
+      "moreInfo": "Meer info"
+    },
+    "cardOptions": {
+      "resume": "Hervatten",
+      "play": "Afspelen",
+      "viewDetails": "Details bekijken",
+      "markUnwatched": "Markeren als niet bekeken",
+      "markWatched": "Markeren als bekeken",
+      "removeFromWatchlist": "Uit kijklijst verwijderen",
+      "addToWatchlist": "Aan kijklijst toevoegen",
+      "removeFromContinueWatching": "Verwijderen uit ‘Verder kijken’",
+      "toast": {
+        "markedUnwatched": "Gemarkeerd als niet bekeken",
+        "markedWatched": "Gemarkeerd als bekeken",
+        "removedFromWatchlist": "Uit kijklijst verwijderd",
+        "addedToWatchlist": "Aan kijklijst toegevoegd",
+        "removedFromContinueWatching": "Verwijderd uit ‘Verder kijken’"
+      }
+    },
+    "pinPad": {
+      "title": {
+        "enter": "Kies een pincode",
+        "confirm": "Pincode bevestigen",
+        "verify": "Voer de pincode in"
+      },
+      "subtitle": {
+        "enter": "Voer met de pijltoetsen een reeks van 4 richtingen in.",
+        "confirm": "Voer dezelfde reeks richtingen nog een keer in.",
+        "verify": "Dit profiel is vergrendeld."
+      },
+      "error": {
+        "mismatch": "De pincodes komen niet overeen. Probeer het opnieuw.",
+        "wrong": "Onjuiste pincode. Probeer het opnieuw."
+      },
+      "forgot": "Pincode vergeten? Houd <1>OK</1> ingedrukt om af te melden."
+    },
+    "profilePicker": {
+      "title": "Wie kijkt er?",
+      "addProfile": "Profiel toevoegen",
+      "manageProfiles": "Profielen beheren",
+      "settings": "Instellingen",
+      "removeTitle": "Profiel verwijderen?",
+      "removeMessage": "‘{{name}}’ wordt van dit apparaat verwijderd."
+    },
+    "serverConnect": {
+      "title": "Verbinding met je server",
+      "subtitle": "Voer het adres van je Jellyfin-server in, bijv. <1>jellyfin.example.com</1>.",
+      "placeholder": "jellyfin.example.com",
+      "connecting": "Verbinden…",
+      "connect": "Verbinden",
+      "unreachable": "Server onbereikbaar. Controleer het adres; geef bij een installatie in een submap het volledige pad op (bijv. jellyfin.example.com/jellyfin).",
+      "failed": "Verbinding mislukt: {{message}}"
+    },
+    "setupWizard": {
+      "addServer": "Nieuwe server toevoegen",
+      "currentServer": "Huidige server",
+      "chooseTitle": "Welke server?",
+      "chooseSubtitle": "Kies de server waarop het nieuwe profiel zich moet aanmelden.",
+      "welcomeTitle": "Welkom bij {{brand}}",
+      "welcomeSubtitle": "Meld je aan met je Jellyfin-account om films en series op het grote scherm te bekijken.",
+      "quickConnectDisabled": "Quick Connect is niet ingeschakeld op {{host}}. Schakel het in bij de serverinstellingen.",
+      "signIn": "Aanmelden",
+      "pairingTitle": "Meld je aan op je telefoon",
+      "pairingStep1": "Open <1>{{host}}</1> op je telefoon of computer en meld je aan.",
+      "pairingStep2": "Ga naar <1>Gebruikersinstellingen <3></3> Quick Connect</1>.",
+      "pairingStep3": "Voer de volgende code in:",
+      "pairingPlaceholder": "— — —",
+      "waiting": "Wachten op bevestiging…",
+      "authorizing": "Aangemeld! Laden…",
+      "expired": "Code verlopen. Vraag een nieuwe code aan.",
+      "newCode": "Nieuwe code",
+      "qrHint": "Scan om de pagina te openen"
+    }
+  },
+  "home": {
+    "continueWatching": "Verder kijken",
+    "nextUp": "Hierna",
+    "watchlist": "Kijklijst",
+    "because": "Omdat je ‘{{name}}’ hebt gekeken",
+    "latestIn": "Nieuw in {{library}}",
+    "suggestions": "Suggesties voor jou"
+  },
+  "library": {
+    "fallbackTitle": "Bibliotheek",
+    "sort": {
+      "name": "Naam (A–Z)",
+      "added": "Onlangs toegevoegd",
+      "year": "Jaar van uitgave",
+      "rating": "Beoordeling",
+      "random": "Willekeurig"
+    },
+    "filter": {
+      "all": "Alles",
+      "unplayed": "Niet bekeken",
+      "fav": "Favorieten"
+    }
+  },
+  "browse": {
+    "person": "Persoon",
+    "genre": "Genre · {{name}}"
+  },
+  "detail": {
+    "errorTitle": "Kon niet worden geladen",
+    "errorSubtitle": "Controleer je verbinding en probeer het opnieuw.",
+    "resume": "Hervatten",
+    "play": "Afspelen",
+    "restart": "Opnieuw beginnen",
+    "playSeries": "Afspelen",
+    "trailer": "Trailer",
+    "watched": "Bekeken",
+    "markWatched": "Markeren als bekeken",
+    "onWatchlist": "Op kijklijst",
+    "watchlist": "Kijklijst",
+    "castAndCrew": "Cast en crew",
+    "extras": "Extra's",
+    "otherVersion": "Andere versie",
+    "similar": "Dit vind je misschien ook leuk",
+    "toast": {
+      "markedWatched": "Gemarkeerd als bekeken",
+      "markedUnwatched": "Gemarkeerd als niet bekeken",
+      "addedToWatchlist": "Aan kijklijst toegevoegd",
+      "removedFromWatchlist": "Uit kijklijst verwijderd"
+    }
+  },
+  "search": {
+    "placeholder": "Zoeken…",
+    "space": "Spatie",
+    "delete": "Wissen",
+    "clear": "Leegmaken",
+    "noResults": "Geen resultaten voor ‘{{query}}’.",
+    "people": "Personen"
+  },
+  "shorts": {
+    "empty": "Geen trailers gevonden.",
+    "loading": "Trailers laden…",
+    "hintWatch": "OK = Kijken",
+    "hintSwitch": "Wisselen",
+    "hintSound": "M = Geluid"
+  },
+  "syncPlay": {
+    "title": "Samen kijken",
+    "yourGroup": "Je groep",
+    "members": "Leden: {{members}} · Status: {{state}}",
+    "leaveGroup": "Groep verlaten",
+    "leaveGroupSub": "Het afspelen wordt niet meer gesynchroniseerd",
+    "groupNote": "Start een film of aflevering: het afspelen wordt met iedereen in de groep gesynchroniseerd. Pauzeren, afspelen en spoelen gelden voor iedereen.",
+    "actions": "Acties",
+    "createGroup": "Nieuwe groep maken",
+    "createGroupSub": "Open een huiskamergroep om samen te kijken",
+    "defaultGroupName": "{{brand}}-huiskamer",
+    "availableGroups": "Beschikbare groepen",
+    "loading": "Laden…",
+    "noGroups": "Geen open groepen",
+    "noGroupsSub": "Maak een nieuwe groep om samen te kijken.",
+    "groupSummary": "{{members}} · {{state}}",
+    "empty": "Leeg",
+    "noMembers": "-"
+  },
+  "settings": {
+    "title": "Profiel en instellingen",
+    "profileFallback": "Profiel",
+    "switchProfile": "Profiel wisselen of toevoegen",
+    "profileLock": "Profielvergrendeling",
+    "profileLockSub": "Pincode voor toegang tot dit profiel",
+    "signOut": "Afmelden",
+    "signOutSub": "Dit profiel op dit apparaat afmelden",
+    "signOutTitle": "Afmelden?",
+    "signOutMessage": "‘{{name}}’ wordt op dit apparaat afgemeld.",
+    "thisProfile": "Dit profiel",
+    "languageSection": "Taal",
+    "appLanguage": "Taal van de app",
+    "appLanguageSub": "Taal van de hele interface",
+    "languageTitle": "Taal kiezen",
+    "playback": "Afspelen",
+    "autoplayNext": "Volgende aflevering automatisch afspelen",
+    "autoplayNextSub": "Aan het eind automatisch doorgaan naar de volgende aflevering",
+    "autoSkipSegments": "Intro en aftiteling automatisch overslaan",
+    "autoSkipSegmentsSub": "Gemarkeerde delen overslaan zonder een toets in te drukken",
+    "autoplayPreviews": "Previews automatisch afspelen",
+    "autoplayPreviewsSub": "Automatisch door aanbevelingen op het startscherm bladeren",
+    "defaultQuality": "Standaard afspeelkwaliteit",
+    "defaultQualitySub": "Kwaliteit waarmee het afspelen begint",
+    "subtitles": "Ondertiteling",
+    "subtitleSize": "Grootte van ondertiteling",
+    "subtitleSizeSub": "Pas de grootte van de ondertiteling aan",
+    "subtitleBackground": "Achtergrond van ondertiteling",
+    "subtitleBackgroundSub": "Toon een gedimde balk achter de ondertiteling",
+    "on": "Aan",
+    "off": "Uit",
+    "footer": "{{brand}} · Een interface voor Jellyfin",
+    "toast": {
+      "pinEnabled": "Profielvergrendeling ingeschakeld",
+      "pinDisabled": "Profielvergrendeling uitgeschakeld"
+    }
+  },
+  "player": {
+    "errorTitle": "Afspelen niet mogelijk",
+    "errorSubtitle": "Deze titel kan momenteel niet op dit apparaat worden afgespeeld.",
+    "version": "Versie",
+    "versionNumbered": "Versie {{number}}",
+    "quality": "Kwaliteit",
+    "qualityWithBandwidth": "{{label}} ({{mbits}} Mbit/s)",
+    "audio": "Audio",
+    "subtitles": "Ondertiteling",
+    "subtitlesOff": "Uit",
+    "skipIntro": "Intro overslaan",
+    "skipOutro": "Aftiteling overslaan",
+    "original": "Origineel",
+    "watching": "Je kijkt naar",
+    "episodeLine": "{{series}} {{season}}: afl. {{episode}}",
+    "speedTitle": "Afspeelsnelheid",
+    "speed": {
+      "normal": "1x (normaal)"
+    },
+    "controls": {
+      "nextEpisode": "Volgende aflevering",
+      "audioAndSubtitles": "Audio en ondertiteling",
+      "playbackSpeed": "Afspeelsnelheid",
+      "quality": "Kwaliteit"
+    },
+    "upNext": {
+      "label": "Hierna over {{seconds}} s",
+      "hint": "OK = Nu afspelen · <1></1> = Sluiten"
+    }
+  },
+  "media": {
+    "quality": {
+      "auto": "Automatisch",
+      "original": "Origineel",
+      "1080": "1080p",
+      "720": "720p HD",
+      "480": "480p",
+      "360": "360p"
+    },
+    "subtitleSize": {
+      "small": "Klein",
+      "normal": "Normaal",
+      "large": "Groot"
+    },
+    "runtime": {
+      "minutes": "{{count}} min",
+      "hoursMinutes": "{{hours}} u {{minutes}} min"
+    },
+    "track": {
+      "audioDescription": "Audiodescriptie",
+      "forced": "Geforceerd",
+      "sdh": "SDH",
+      "stereo": "Stereo",
+      "mono": "Mono"
+    },
+    "language": {
+      "unknown": "Onbekend",
+      "deu": "Duits",
+      "eng": "Engels",
+      "jpn": "Japans",
+      "kor": "Koreaans",
+      "fra": "Frans",
+      "spa": "Spaans",
+      "ita": "Italiaans",
+      "rus": "Russisch",
+      "ukr": "Oekraïens",
+      "zho": "Chinees",
+      "por": "Portugees",
+      "nld": "Nederlands",
+      "pol": "Pools",
+      "tur": "Turks",
+      "ara": "Arabisch",
+      "hin": "Hindi",
+      "swe": "Zweeds",
+      "dan": "Deens",
+      "nor": "Noors",
+      "fin": "Fins",
+      "ces": "Tsjechisch",
+      "hun": "Hongaars",
+      "ell": "Grieks",
+      "heb": "Hebreeuws",
+      "tha": "Thai",
+      "vie": "Vietnamees",
+      "ron": "Roemeens",
+      "bul": "Bulgaars"
+    }
+  },
+  "errors": {
+    "noJellyfinServer": "Geen Jellyfin-server",
+    "quickConnectStart": "Quick Connect kon niet worden gestart ({{status}})",
+    "quickConnectPoll": "Quick Connect-fout ({{status}})",
+    "quickConnectAuth": "Aanmelden mislukt ({{status}})"
+  }
+}

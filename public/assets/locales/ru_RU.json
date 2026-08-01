@@ -1,0 +1,331 @@
+{
+  "common": {
+    "actions": {
+      "back": "Назад",
+      "cancel": "Отмена",
+      "confirm": "Подтвердить",
+      "remove": "Удалить",
+      "retry": "Повторить",
+      "signOut": "Выйти",
+      "done": "Готово"
+    },
+    "loader": {
+      "label": "Загрузка…"
+    },
+    "itemGrid": {
+      "empty": "Ничего не найдено."
+    },
+    "card": {
+      "movie": "Фильм",
+      "series": "Сериал",
+      "seriesWithYear": "Сериал · {{year}}",
+      "seasonEpisodes_one": "{{count}} серия",
+      "seasonEpisodes_few": "{{count}} серии",
+      "seasonEpisodes_many": "{{count}} серий",
+      "seasonEpisodes_other": "{{count}} серии",
+      "folder": "Папка",
+      "episodeCode": "С{{season}}:Э{{episode}}"
+    },
+    "topNav": {
+      "home": "Главная",
+      "shorts": "Shorts",
+      "syncPlay": "Смотреть вместе"
+    },
+    "screenSaver": {
+      "locale": "ru-RU"
+    },
+    "trailerOverlay": {
+      "closeHint": "«Назад» — закрыть"
+    },
+    "spotlight": {
+      "play": "Смотреть",
+      "watch": "Смотреть",
+      "moreInfo": "Подробнее"
+    },
+    "cardOptions": {
+      "resume": "Продолжить",
+      "play": "Смотреть",
+      "viewDetails": "Подробности",
+      "markUnwatched": "Отметить как непросмотренное",
+      "markWatched": "Отметить как просмотренное",
+      "removeFromWatchlist": "Убрать из списка",
+      "addToWatchlist": "Добавить в список",
+      "removeFromContinueWatching": "Убрать из «Продолжить просмотр»",
+      "toast": {
+        "markedUnwatched": "Отмечено как непросмотренное",
+        "markedWatched": "Отмечено как просмотренное",
+        "removedFromWatchlist": "Убрано из списка",
+        "addedToWatchlist": "Добавлено в список",
+        "removedFromContinueWatching": "Убрано из «Продолжить просмотр»"
+      }
+    },
+    "pinPad": {
+      "title": {
+        "enter": "Придумайте PIN-код",
+        "confirm": "Подтвердите PIN-код",
+        "verify": "Введите PIN-код"
+      },
+      "subtitle": {
+        "enter": "Введите последовательность из 4 направлений с помощью стрелок.",
+        "confirm": "Введите ту же последовательность направлений ещё раз.",
+        "verify": "Этот профиль заблокирован."
+      },
+      "error": {
+        "mismatch": "PIN-коды не совпадают. Попробуйте ещё раз.",
+        "wrong": "Неверный PIN-код. Попробуйте ещё раз."
+      },
+      "forgot": "Забыли PIN-код? Удерживайте <1>OK</1>, чтобы выйти."
+    },
+    "profilePicker": {
+      "title": "Кто смотрит?",
+      "addProfile": "Добавить профиль",
+      "manageProfiles": "Управление профилями",
+      "settings": "Настройки",
+      "removeTitle": "Удалить профиль?",
+      "removeMessage": "«{{name}}» будет удалён с этого устройства."
+    },
+    "serverConnect": {
+      "title": "Подключение к серверу",
+      "subtitle": "Введите адрес вашего сервера Jellyfin, например <1>jellyfin.example.com</1>.",
+      "placeholder": "jellyfin.example.com",
+      "connecting": "Подключение…",
+      "connect": "Подключиться",
+      "unreachable": "Сервер недоступен. Проверьте адрес; при установке в подпапку укажите полный путь (например, jellyfin.example.com/jellyfin).",
+      "failed": "Не удалось подключиться: {{message}}"
+    },
+    "setupWizard": {
+      "addServer": "Добавить новый сервер",
+      "currentServer": "Текущий сервер",
+      "chooseTitle": "Какой сервер?",
+      "chooseSubtitle": "Выберите сервер, на который войдёт новый профиль.",
+      "welcomeTitle": "Добро пожаловать в {{brand}}",
+      "welcomeSubtitle": "Войдите в аккаунт Jellyfin, чтобы смотреть фильмы и сериалы на большом экране.",
+      "quickConnectDisabled": "Quick Connect не включён на {{host}}. Включите его в настройках сервера.",
+      "signIn": "Войти",
+      "pairingTitle": "Войдите с телефона",
+      "pairingStep1": "Откройте <1>{{host}}</1> на телефоне или компьютере и войдите.",
+      "pairingStep2": "Перейдите в <1>Настройки пользователя <3></3> Quick Connect</1>.",
+      "pairingStep3": "Введите следующий код:",
+      "pairingPlaceholder": "— — —",
+      "waiting": "Ожидание подтверждения…",
+      "authorizing": "Вход выполнен! Загрузка…",
+      "expired": "Срок действия кода истёк. Запросите новый код.",
+      "newCode": "Новый код",
+      "qrHint": "Отсканируйте, чтобы открыть страницу"
+    }
+  },
+  "home": {
+    "continueWatching": "Продолжить просмотр",
+    "nextUp": "Далее",
+    "watchlist": "Мой список",
+    "because": "Потому что вы смотрели «{{name}}»",
+    "latestIn": "Новое в разделе «{{library}}»",
+    "suggestions": "Рекомендации для вас"
+  },
+  "library": {
+    "fallbackTitle": "Медиатека",
+    "sort": {
+      "name": "Название (А–Я)",
+      "added": "Недавно добавленные",
+      "year": "Год выхода",
+      "rating": "Рейтинг",
+      "random": "Случайно"
+    },
+    "filter": {
+      "all": "Все",
+      "unplayed": "Непросмотренные",
+      "fav": "Избранное"
+    }
+  },
+  "browse": {
+    "person": "Персона",
+    "genre": "Жанр · {{name}}"
+  },
+  "detail": {
+    "errorTitle": "Не удалось загрузить",
+    "errorSubtitle": "Проверьте подключение и попробуйте снова.",
+    "resume": "Продолжить",
+    "play": "Смотреть",
+    "restart": "Сначала",
+    "playSeries": "Смотреть",
+    "trailer": "Трейлер",
+    "watched": "Просмотрено",
+    "markWatched": "Отметить просмотренным",
+    "onWatchlist": "В списке",
+    "watchlist": "Мой список",
+    "castAndCrew": "Актёры и съёмочная группа",
+    "extras": "Дополнительно",
+    "otherVersion": "Другая версия",
+    "similar": "Вам также может понравиться",
+    "toast": {
+      "markedWatched": "Отмечено как просмотренное",
+      "markedUnwatched": "Отмечено как непросмотренное",
+      "addedToWatchlist": "Добавлено в список",
+      "removedFromWatchlist": "Убрано из списка"
+    }
+  },
+  "search": {
+    "placeholder": "Поиск…",
+    "space": "Пробел",
+    "delete": "Удалить",
+    "clear": "Очистить",
+    "noResults": "Ничего не найдено по запросу «{{query}}».",
+    "people": "Персоны"
+  },
+  "shorts": {
+    "empty": "Трейлеры не найдены.",
+    "loading": "Загрузка трейлеров…",
+    "hintWatch": "OK = Смотреть",
+    "hintSwitch": "Переключить",
+    "hintSound": "M = Звук"
+  },
+  "syncPlay": {
+    "title": "Смотреть вместе",
+    "yourGroup": "Ваша группа",
+    "members": "Участники: {{members}} · Состояние: {{state}}",
+    "leaveGroup": "Покинуть группу",
+    "leaveGroupSub": "Воспроизведение больше не будет синхронизироваться",
+    "groupNote": "Запустите фильм или серию: воспроизведение синхронизируется со всеми в группе. Пауза, воспроизведение и перемотка действуют для всех.",
+    "actions": "Действия",
+    "createGroup": "Создать группу",
+    "createGroupSub": "Откройте домашнюю группу для совместного просмотра",
+    "defaultGroupName": "Гостиная {{brand}}",
+    "availableGroups": "Доступные группы",
+    "loading": "Загрузка…",
+    "noGroups": "Открытых групп нет",
+    "noGroupsSub": "Создайте новую группу для совместного просмотра.",
+    "groupSummary": "{{members}} · {{state}}",
+    "empty": "Пусто",
+    "noMembers": "-"
+  },
+  "settings": {
+    "title": "Профиль и настройки",
+    "profileFallback": "Профиль",
+    "switchProfile": "Сменить или добавить профиль",
+    "profileLock": "Блокировка профиля",
+    "profileLockSub": "PIN-код для доступа к профилю",
+    "signOut": "Выйти",
+    "signOutSub": "Выйти из этого профиля на этом устройстве",
+    "signOutTitle": "Выйти?",
+    "signOutMessage": "«{{name}}» выйдет из аккаунта на этом устройстве.",
+    "thisProfile": "Этот профиль",
+    "languageSection": "Язык",
+    "appLanguage": "Язык приложения",
+    "appLanguageSub": "Язык всего интерфейса",
+    "languageTitle": "Выбор языка",
+    "playback": "Воспроизведение",
+    "autoplayNext": "Автовоспроизведение следующей серии",
+    "autoplayNextSub": "Автоматически переходить к следующей серии в конце",
+    "autoSkipSegments": "Автопропуск заставки и титров",
+    "autoSkipSegmentsSub": "Пропускать отмеченные фрагменты без нажатия кнопок",
+    "autoplayPreviews": "Автовоспроизведение превью",
+    "autoplayPreviewsSub": "Автоматически листать рекомендации на главном экране",
+    "defaultQuality": "Качество по умолчанию",
+    "defaultQualitySub": "Качество, с которого начинается воспроизведение",
+    "subtitles": "Субтитры",
+    "subtitleSize": "Размер субтитров",
+    "subtitleSizeSub": "Настройка размера субтитров",
+    "subtitleBackground": "Фон субтитров",
+    "subtitleBackgroundSub": "Показывать затемнённую полосу за субтитрами",
+    "on": "Вкл.",
+    "off": "Выкл.",
+    "footer": "{{brand}} · Интерфейс для Jellyfin",
+    "toast": {
+      "pinEnabled": "Блокировка профиля включена",
+      "pinDisabled": "Блокировка профиля отключена"
+    }
+  },
+  "player": {
+    "errorTitle": "Воспроизведение невозможно",
+    "errorSubtitle": "Этот материал сейчас нельзя воспроизвести на этом устройстве.",
+    "version": "Версия",
+    "versionNumbered": "Версия {{number}}",
+    "quality": "Качество",
+    "qualityWithBandwidth": "{{label}} ({{mbits}} Мбит/с)",
+    "audio": "Аудио",
+    "subtitles": "Субтитры",
+    "subtitlesOff": "Выкл.",
+    "skipIntro": "Пропустить заставку",
+    "skipOutro": "Пропустить титры",
+    "original": "Оригинал",
+    "watching": "Вы смотрите",
+    "episodeLine": "{{series}} {{season}}: сер. {{episode}}",
+    "speedTitle": "Скорость воспроизведения",
+    "speed": {
+      "normal": "1x (обычная)"
+    },
+    "controls": {
+      "nextEpisode": "Следующая серия",
+      "audioAndSubtitles": "Аудио и субтитры",
+      "playbackSpeed": "Скорость воспроизведения",
+      "quality": "Качество"
+    },
+    "upNext": {
+      "label": "Далее через {{seconds}} с",
+      "hint": "OK = Смотреть сейчас · <1></1> = Закрыть"
+    }
+  },
+  "media": {
+    "quality": {
+      "auto": "Автоматически",
+      "original": "Оригинал",
+      "1080": "1080p",
+      "720": "720p HD",
+      "480": "480p",
+      "360": "360p"
+    },
+    "subtitleSize": {
+      "small": "Мелкие",
+      "normal": "Обычные",
+      "large": "Крупные"
+    },
+    "runtime": {
+      "minutes": "{{count}} мин",
+      "hoursMinutes": "{{hours}} ч {{minutes}} мин"
+    },
+    "track": {
+      "audioDescription": "Тифлокомментарий",
+      "forced": "Принудительные",
+      "sdh": "SDH",
+      "stereo": "Стерео",
+      "mono": "Моно"
+    },
+    "language": {
+      "unknown": "Неизвестно",
+      "deu": "Немецкий",
+      "eng": "Английский",
+      "jpn": "Японский",
+      "kor": "Корейский",
+      "fra": "Французский",
+      "spa": "Испанский",
+      "ita": "Итальянский",
+      "rus": "Русский",
+      "ukr": "Украинский",
+      "zho": "Китайский",
+      "por": "Португальский",
+      "nld": "Нидерландский",
+      "pol": "Польский",
+      "tur": "Турецкий",
+      "ara": "Арабский",
+      "hin": "Хинди",
+      "swe": "Шведский",
+      "dan": "Датский",
+      "nor": "Норвежский",
+      "fin": "Финский",
+      "ces": "Чешский",
+      "hun": "Венгерский",
+      "ell": "Греческий",
+      "heb": "Иврит",
+      "tha": "Тайский",
+      "vie": "Вьетнамский",
+      "ron": "Румынский",
+      "bul": "Болгарский"
+    }
+  },
+  "errors": {
+    "noJellyfinServer": "Это не сервер Jellyfin",
+    "quickConnectStart": "Не удалось запустить Quick Connect ({{status}})",
+    "quickConnectPoll": "Ошибка Quick Connect ({{status}})",
+    "quickConnectAuth": "Не удалось войти ({{status}})"
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "common": {
+    "actions": {
+      "back": "Назад",
+      "cancel": "Скасувати",
+      "confirm": "Підтвердити",
+      "remove": "Видалити",
+      "retry": "Спробувати ще раз",
+      "signOut": "Вийти",
+      "done": "Готово"
+    },
+    "loader": {
+      "label": "Завантаження…"
+    },
+    "itemGrid": {
+      "empty": "Вміст не знайдено."
+    },
+    "card": {
+      "movie": "Фільм",
+      "series": "Серіал",
+      "seriesWithYear": "Серіал · {{year}}",
+      "seasonEpisodes_one": "{{count}} серія",
+      "seasonEpisodes_few": "{{count}} серії",
+      "seasonEpisodes_many": "{{count}} серій",
+      "seasonEpisodes_other": "{{count}} серії",
+      "folder": "Тека",
+      "episodeCode": "С{{season}}:Е{{episode}}"
+    },
+    "topNav": {
+      "home": "Головна",
+      "shorts": "Shorts",
+      "syncPlay": "Дивитися разом"
+    },
+    "screenSaver": {
+      "locale": "uk-UA"
+    },
+    "trailerOverlay": {
+      "closeHint": "«Назад» — закрити"
+    },
+    "spotlight": {
+      "play": "Дивитися",
+      "watch": "Дивитися",
+      "moreInfo": "Докладніше"
+    },
+    "cardOptions": {
+      "resume": "Продовжити",
+      "play": "Дивитися",
+      "viewDetails": "Подробиці",
+      "markUnwatched": "Позначити як непереглянуте",
+      "markWatched": "Позначити як переглянуте",
+      "removeFromWatchlist": "Прибрати зі списку",
+      "addToWatchlist": "Додати до списку",
+      "removeFromContinueWatching": "Прибрати з «Продовжити перегляд»",
+      "toast": {
+        "markedUnwatched": "Позначено як непереглянуте",
+        "markedWatched": "Позначено як переглянуте",
+        "removedFromWatchlist": "Прибрано зі списку",
+        "addedToWatchlist": "Додано до списку",
+        "removedFromContinueWatching": "Прибрано з «Продовжити перегляд»"
+      }
+    },
+    "pinPad": {
+      "title": {
+        "enter": "Виберіть PIN-код",
+        "confirm": "Підтвердьте PIN-код",
+        "verify": "Введіть PIN-код"
+      },
+      "subtitle": {
+        "enter": "Введіть послідовність із 4 напрямків за допомогою стрілок.",
+        "confirm": "Введіть ту саму послідовність напрямків ще раз.",
+        "verify": "Цей профіль заблоковано."
+      },
+      "error": {
+        "mismatch": "PIN-коди не збігаються. Спробуйте ще раз.",
+        "wrong": "Неправильний PIN-код. Спробуйте ще раз."
+      },
+      "forgot": "Забули PIN-код? Утримуйте <1>OK</1>, щоб вийти."
+    },
+    "profilePicker": {
+      "title": "Хто дивиться?",
+      "addProfile": "Додати профіль",
+      "manageProfiles": "Керування профілями",
+      "settings": "Налаштування",
+      "removeTitle": "Видалити профіль?",
+      "removeMessage": "«{{name}}» буде видалено з цього пристрою."
+    },
+    "serverConnect": {
+      "title": "Підключення до сервера",
+      "subtitle": "Введіть адресу вашого сервера Jellyfin, напр. <1>jellyfin.example.com</1>.",
+      "placeholder": "jellyfin.example.com",
+      "connecting": "Підключення…",
+      "connect": "Підключитися",
+      "unreachable": "Сервер недоступний. Перевірте адресу; для встановлення в підтеці вкажіть повний шлях (напр. jellyfin.example.com/jellyfin).",
+      "failed": "Не вдалося підключитися: {{message}}"
+    },
+    "setupWizard": {
+      "addServer": "Додати новий сервер",
+      "currentServer": "Поточний сервер",
+      "chooseTitle": "Який сервер?",
+      "chooseSubtitle": "Виберіть сервер, на який має увійти новий профіль.",
+      "welcomeTitle": "Вітаємо в {{brand}}",
+      "welcomeSubtitle": "Увійдіть за допомогою облікового запису Jellyfin, щоб дивитися фільми та серіали на великому екрані.",
+      "quickConnectDisabled": "Quick Connect не увімкнено на {{host}}. Увімкніть його в налаштуваннях сервера.",
+      "signIn": "Увійти",
+      "pairingTitle": "Увійдіть із телефона",
+      "pairingStep1": "Відкрийте <1>{{host}}</1> на телефоні чи комп’ютері та увійдіть.",
+      "pairingStep2": "Перейдіть до <1>Налаштування користувача <3></3> Quick Connect</1>.",
+      "pairingStep3": "Введіть цей код:",
+      "pairingPlaceholder": "— — —",
+      "waiting": "Очікування підтвердження…",
+      "authorizing": "Вхід виконано! Завантаження…",
+      "expired": "Термін дії коду минув. Запросіть новий код.",
+      "newCode": "Новий код",
+      "qrHint": "Скануйте, щоб відкрити сторінку"
+    }
+  },
+  "home": {
+    "continueWatching": "Продовжити перегляд",
+    "nextUp": "Далі",
+    "watchlist": "Мій список",
+    "because": "Тому що ви дивилися «{{name}}»",
+    "latestIn": "Нове в розділі «{{library}}»",
+    "suggestions": "Рекомендації для вас"
+  },
+  "library": {
+    "fallbackTitle": "Медіатека",
+    "sort": {
+      "name": "Назва (А–Я)",
+      "added": "Нещодавно додані",
+      "year": "Рік виходу",
+      "rating": "Рейтинг",
+      "random": "Випадково"
+    },
+    "filter": {
+      "all": "Усі",
+      "unplayed": "Непереглянуті",
+      "fav": "Обране"
+    }
+  },
+  "browse": {
+    "person": "Персона",
+    "genre": "Жанр · {{name}}"
+  },
+  "detail": {
+    "errorTitle": "Не вдалося завантажити",
+    "errorSubtitle": "Перевірте з’єднання та спробуйте ще раз.",
+    "resume": "Продовжити",
+    "play": "Дивитися",
+    "restart": "Спочатку",
+    "playSeries": "Дивитися",
+    "trailer": "Трейлер",
+    "watched": "Переглянуто",
+    "markWatched": "Позначити переглянутим",
+    "onWatchlist": "У списку",
+    "watchlist": "Мій список",
+    "castAndCrew": "Актори та знімальна група",
+    "extras": "Додатково",
+    "otherVersion": "Інша версія",
+    "similar": "Вам також може сподобатися",
+    "toast": {
+      "markedWatched": "Позначено як переглянуте",
+      "markedUnwatched": "Позначено як непереглянуте",
+      "addedToWatchlist": "Додано до списку",
+      "removedFromWatchlist": "Прибрано зі списку"
+    }
+  },
+  "search": {
+    "placeholder": "Пошук…",
+    "space": "Пробіл",
+    "delete": "Видалити",
+    "clear": "Очистити",
+    "noResults": "Немає результатів за запитом «{{query}}».",
+    "people": "Персони"
+  },
+  "shorts": {
+    "empty": "Трейлерів не знайдено.",
+    "loading": "Завантаження трейлерів…",
+    "hintWatch": "OK = Дивитися",
+    "hintSwitch": "Перемкнути",
+    "hintSound": "M = Звук"
+  },
+  "syncPlay": {
+    "title": "Дивитися разом",
+    "yourGroup": "Ваша група",
+    "members": "Учасники: {{members}} · Стан: {{state}}",
+    "leaveGroup": "Покинути групу",
+    "leaveGroupSub": "Відтворення більше не синхронізуватиметься",
+    "groupNote": "Запустіть фільм або серію: відтворення синхронізується з усіма в групі. Пауза, відтворення та перемотування діють для всіх.",
+    "actions": "Дії",
+    "createGroup": "Створити нову групу",
+    "createGroupSub": "Відкрийте домашню групу для спільного перегляду",
+    "defaultGroupName": "Вітальня {{brand}}",
+    "availableGroups": "Доступні групи",
+    "loading": "Завантаження…",
+    "noGroups": "Немає відкритих груп",
+    "noGroupsSub": "Створіть нову групу, щоб дивитися разом.",
+    "groupSummary": "{{members}} · {{state}}",
+    "empty": "Порожньо",
+    "noMembers": "-"
+  },
+  "settings": {
+    "title": "Профіль і налаштування",
+    "profileFallback": "Профіль",
+    "switchProfile": "Змінити або додати профіль",
+    "profileLock": "Блокування профілю",
+    "profileLockSub": "PIN-код для доступу до цього профілю",
+    "signOut": "Вийти",
+    "signOutSub": "Вийти з цього профілю на цьому пристрої",
+    "signOutTitle": "Вийти?",
+    "signOutMessage": "«{{name}}» вийде з облікового запису на цьому пристрої.",
+    "thisProfile": "Цей профіль",
+    "languageSection": "Мова",
+    "appLanguage": "Мова застосунку",
+    "appLanguageSub": "Мова всього інтерфейсу",
+    "languageTitle": "Вибір мови",
+    "playback": "Відтворення",
+    "autoplayNext": "Автовідтворення наступної серії",
+    "autoplayNextSub": "Автоматично переходити до наступної серії наприкінці",
+    "autoSkipSegments": "Автопропуск заставки та титрів",
+    "autoSkipSegmentsSub": "Пропускати позначені фрагменти без натискання кнопок",
+    "autoplayPreviews": "Автовідтворення попереднього перегляду",
+    "autoplayPreviewsSub": "Автоматично гортати рекомендації на головному екрані",
+    "defaultQuality": "Якість відтворення за замовчуванням",
+    "defaultQualitySub": "Якість, з якої починається відтворення",
+    "subtitles": "Субтитри",
+    "subtitleSize": "Розмір субтитрів",
+    "subtitleSizeSub": "Налаштування розміру субтитрів",
+    "subtitleBackground": "Фон субтитрів",
+    "subtitleBackgroundSub": "Показувати затемнену смугу за субтитрами",
+    "on": "Увімк.",
+    "off": "Вимк.",
+    "footer": "{{brand}} · Інтерфейс для Jellyfin",
+    "toast": {
+      "pinEnabled": "Блокування профілю увімкнено",
+      "pinDisabled": "Блокування профілю вимкнено"
+    }
+  },
+  "player": {
+    "errorTitle": "Відтворення неможливе",
+    "errorSubtitle": "Цей матеріал наразі не можна відтворити на цьому пристрої.",
+    "version": "Версія",
+    "versionNumbered": "Версія {{number}}",
+    "quality": "Якість",
+    "qualityWithBandwidth": "{{label}} ({{mbits}} Мбіт/с)",
+    "audio": "Аудіо",
+    "subtitles": "Субтитри",
+    "subtitlesOff": "Вимк.",
+    "skipIntro": "Пропустити заставку",
+    "skipOutro": "Пропустити титри",
+    "original": "Оригінал",
+    "watching": "Ви дивитеся",
+    "episodeLine": "{{series}} {{season}}: сер. {{episode}}",
+    "speedTitle": "Швидкість відтворення",
+    "speed": {
+      "normal": "1x (звичайна)"
+    },
+    "controls": {
+      "nextEpisode": "Наступна серія",
+      "audioAndSubtitles": "Аудіо та субтитри",
+      "playbackSpeed": "Швидкість відтворення",
+      "quality": "Якість"
+    },
+    "upNext": {
+      "label": "Далі через {{seconds}} с",
+      "hint": "OK = Дивитися зараз · <1></1> = Закрити"
+    }
+  },
+  "media": {
+    "quality": {
+      "auto": "Автоматично",
+      "original": "Оригінал",
+      "1080": "1080p",
+      "720": "720p HD",
+      "480": "480p",
+      "360": "360p"
+    },
+    "subtitleSize": {
+      "small": "Малі",
+      "normal": "Звичайні",
+      "large": "Великі"
+    },
+    "runtime": {
+      "minutes": "{{count}} хв",
+      "hoursMinutes": "{{hours}} год {{minutes}} хв"
+    },
+    "track": {
+      "audioDescription": "Тифлокоментар",
+      "forced": "Примусові",
+      "sdh": "SDH",
+      "stereo": "Стерео",
+      "mono": "Моно"
+    },
+    "language": {
+      "unknown": "Невідомо",
+      "deu": "Німецька",
+      "eng": "Англійська",
+      "jpn": "Японська",
+      "kor": "Корейська",
+      "fra": "Французька",
+      "spa": "Іспанська",
+      "ita": "Італійська",
+      "rus": "Російська",
+      "ukr": "Українська",
+      "zho": "Китайська",
+      "por": "Португальська",
+      "nld": "Нідерландська",
+      "pol": "Польська",
+      "tur": "Турецька",
+      "ara": "Арабська",
+      "hin": "Гінді",
+      "swe": "Шведська",
+      "dan": "Данська",
+      "nor": "Норвезька",
+      "fin": "Фінська",
+      "ces": "Чеська",
+      "hun": "Угорська",
+      "ell": "Грецька",
+      "heb": "Іврит",
+      "tha": "Тайська",
+      "vie": "В’єтнамська",
+      "ron": "Румунська",
+      "bul": "Болгарська"
+    }
+  },
+  "errors": {
+    "noJellyfinServer": "Це не сервер Jellyfin",
+    "quickConnectStart": "Не вдалося запустити Quick Connect ({{status}})",
+    "quickConnectPoll": "Помилка Quick Connect ({{status}})",
+    "quickConnectAuth": "Не вдалося увійти ({{status}})"
+  }
+}

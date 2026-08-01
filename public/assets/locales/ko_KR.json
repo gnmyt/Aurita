@@ -1,0 +1,328 @@
+{
+  "common": {
+    "actions": {
+      "back": "뒤로",
+      "cancel": "취소",
+      "confirm": "확인",
+      "remove": "삭제",
+      "retry": "다시 시도",
+      "signOut": "로그아웃",
+      "done": "완료"
+    },
+    "loader": {
+      "label": "불러오는 중…"
+    },
+    "itemGrid": {
+      "empty": "콘텐츠를 찾을 수 없습니다."
+    },
+    "card": {
+      "movie": "영화",
+      "series": "시리즈",
+      "seriesWithYear": "시리즈 · {{year}}",
+      "seasonEpisodes_other": "{{count}}개 에피소드",
+      "folder": "폴더",
+      "episodeCode": "시즌{{season}}:{{episode}}화"
+    },
+    "topNav": {
+      "home": "홈",
+      "shorts": "쇼츠",
+      "syncPlay": "함께 보기"
+    },
+    "screenSaver": {
+      "locale": "ko-KR"
+    },
+    "trailerOverlay": {
+      "closeHint": "뒤로 눌러 닫기"
+    },
+    "spotlight": {
+      "play": "재생",
+      "watch": "시청",
+      "moreInfo": "더 보기"
+    },
+    "cardOptions": {
+      "resume": "이어 보기",
+      "play": "재생",
+      "viewDetails": "상세 정보",
+      "markUnwatched": "시청 안 함으로 표시",
+      "markWatched": "시청함으로 표시",
+      "removeFromWatchlist": "내가 찜한 목록에서 삭제",
+      "addToWatchlist": "내가 찜한 목록에 추가",
+      "removeFromContinueWatching": "‘이어 보기’에서 삭제",
+      "toast": {
+        "markedUnwatched": "시청 안 함으로 표시했습니다",
+        "markedWatched": "시청함으로 표시했습니다",
+        "removedFromWatchlist": "내가 찜한 목록에서 삭제했습니다",
+        "addedToWatchlist": "내가 찜한 목록에 추가했습니다",
+        "removedFromContinueWatching": "‘이어 보기’에서 삭제했습니다"
+      }
+    },
+    "pinPad": {
+      "title": {
+        "enter": "PIN 설정",
+        "confirm": "PIN 확인",
+        "verify": "PIN 입력"
+      },
+      "subtitle": {
+        "enter": "방향키로 4개의 방향 순서를 입력하세요.",
+        "confirm": "같은 방향 순서를 한 번 더 입력하세요.",
+        "verify": "이 프로필은 잠겨 있습니다."
+      },
+      "error": {
+        "mismatch": "PIN이 일치하지 않습니다. 다시 시도하세요.",
+        "wrong": "PIN이 올바르지 않습니다. 다시 시도하세요."
+      },
+      "forgot": "PIN을 잊으셨나요? <1>OK</1>를 길게 눌러 로그아웃하세요."
+    },
+    "profilePicker": {
+      "title": "누가 시청하나요?",
+      "addProfile": "프로필 추가",
+      "manageProfiles": "프로필 관리",
+      "settings": "설정",
+      "removeTitle": "프로필을 삭제할까요?",
+      "removeMessage": "‘{{name}}’이(가) 이 기기에서 삭제됩니다."
+    },
+    "serverConnect": {
+      "title": "서버에 연결",
+      "subtitle": "Jellyfin 서버 주소를 입력하세요. 예: <1>jellyfin.example.com</1>",
+      "placeholder": "jellyfin.example.com",
+      "connecting": "연결 중…",
+      "connect": "연결",
+      "unreachable": "서버에 연결할 수 없습니다. 주소를 확인하세요. 하위 폴더에 설치한 경우 전체 경로를 입력하세요(예: jellyfin.example.com/jellyfin).",
+      "failed": "연결 실패: {{message}}"
+    },
+    "setupWizard": {
+      "addServer": "새 서버 추가",
+      "currentServer": "현재 서버",
+      "chooseTitle": "어느 서버인가요?",
+      "chooseSubtitle": "새 프로필이 로그인할 서버를 선택하세요.",
+      "welcomeTitle": "{{brand}}에 오신 것을 환영합니다",
+      "welcomeSubtitle": "Jellyfin 계정으로 로그인하고 큰 화면에서 영화와 시리즈를 즐겨보세요.",
+      "quickConnectDisabled": "{{host}}에서 Quick Connect가 활성화되어 있지 않습니다. 서버 설정에서 활성화하세요.",
+      "signIn": "로그인",
+      "pairingTitle": "휴대폰에서 로그인",
+      "pairingStep1": "휴대폰이나 컴퓨터에서 <1>{{host}}</1>을(를) 열고 로그인하세요.",
+      "pairingStep2": "<1>사용자 설정 <3></3> Quick Connect</1>로 이동하세요.",
+      "pairingStep3": "다음 코드를 입력하세요:",
+      "pairingPlaceholder": "— — —",
+      "waiting": "확인을 기다리는 중…",
+      "authorizing": "로그인되었습니다! 불러오는 중…",
+      "expired": "코드가 만료되었습니다. 새 코드를 요청하세요.",
+      "newCode": "새 코드",
+      "qrHint": "스캔하여 페이지 열기"
+    }
+  },
+  "home": {
+    "continueWatching": "이어 보기",
+    "nextUp": "다음 에피소드",
+    "watchlist": "내가 찜한 목록",
+    "because": "‘{{name}}’을(를) 시청하셨기 때문에",
+    "latestIn": "{{library}}의 새로운 콘텐츠",
+    "suggestions": "회원님을 위한 추천"
+  },
+  "library": {
+    "fallbackTitle": "라이브러리",
+    "sort": {
+      "name": "이름(가나다순)",
+      "added": "최근 추가순",
+      "year": "개봉 연도",
+      "rating": "평점",
+      "random": "무작위"
+    },
+    "filter": {
+      "all": "전체",
+      "unplayed": "시청 안 함",
+      "fav": "즐겨찾기"
+    }
+  },
+  "browse": {
+    "person": "인물",
+    "genre": "장르 · {{name}}"
+  },
+  "detail": {
+    "errorTitle": "불러올 수 없습니다",
+    "errorSubtitle": "연결 상태를 확인한 후 다시 시도하세요.",
+    "resume": "이어 보기",
+    "play": "재생",
+    "restart": "처음부터 재생",
+    "playSeries": "재생",
+    "trailer": "예고편",
+    "watched": "시청함",
+    "markWatched": "시청함으로 표시",
+    "onWatchlist": "찜한 목록에 있음",
+    "watchlist": "내가 찜한 목록",
+    "castAndCrew": "출연진 및 제작진",
+    "extras": "부가 영상",
+    "otherVersion": "다른 버전",
+    "similar": "이런 작품도 좋아하실 거예요",
+    "toast": {
+      "markedWatched": "시청함으로 표시했습니다",
+      "markedUnwatched": "시청 안 함으로 표시했습니다",
+      "addedToWatchlist": "내가 찜한 목록에 추가했습니다",
+      "removedFromWatchlist": "내가 찜한 목록에서 삭제했습니다"
+    }
+  },
+  "search": {
+    "placeholder": "검색…",
+    "space": "스페이스",
+    "delete": "삭제",
+    "clear": "지우기",
+    "noResults": "‘{{query}}’에 대한 검색 결과가 없습니다.",
+    "people": "인물"
+  },
+  "shorts": {
+    "empty": "예고편을 찾을 수 없습니다.",
+    "loading": "예고편을 불러오는 중…",
+    "hintWatch": "OK = 시청",
+    "hintSwitch": "전환",
+    "hintSound": "M = 소리"
+  },
+  "syncPlay": {
+    "title": "함께 보기",
+    "yourGroup": "내 그룹",
+    "members": "참여자: {{members}} · 상태: {{state}}",
+    "leaveGroup": "그룹 나가기",
+    "leaveGroupSub": "재생이 더 이상 동기화되지 않습니다",
+    "groupNote": "영화나 에피소드를 재생하면 그룹의 모든 사람과 재생이 동기화됩니다. 일시정지, 재생, 탐색이 모두에게 적용됩니다.",
+    "actions": "작업",
+    "createGroup": "새 그룹 만들기",
+    "createGroupSub": "함께 보기 위한 거실 그룹을 엽니다",
+    "defaultGroupName": "{{brand}} 거실",
+    "availableGroups": "참여 가능한 그룹",
+    "loading": "불러오는 중…",
+    "noGroups": "열려 있는 그룹이 없습니다",
+    "noGroupsSub": "함께 보려면 새 그룹을 만드세요.",
+    "groupSummary": "{{members}} · {{state}}",
+    "empty": "비어 있음",
+    "noMembers": "-"
+  },
+  "settings": {
+    "title": "프로필 및 설정",
+    "profileFallback": "프로필",
+    "switchProfile": "프로필 전환 또는 추가",
+    "profileLock": "프로필 잠금",
+    "profileLockSub": "이 프로필에 접근하기 위한 PIN",
+    "signOut": "로그아웃",
+    "signOutSub": "이 기기에서 이 프로필을 로그아웃합니다",
+    "signOutTitle": "로그아웃할까요?",
+    "signOutMessage": "‘{{name}}’이(가) 이 기기에서 로그아웃됩니다.",
+    "thisProfile": "이 프로필",
+    "languageSection": "언어",
+    "appLanguage": "앱 언어",
+    "appLanguageSub": "인터페이스 전체에 사용되는 언어",
+    "languageTitle": "언어 선택",
+    "playback": "재생",
+    "autoplayNext": "다음 에피소드 자동 재생",
+    "autoplayNextSub": "에피소드가 끝나면 자동으로 다음 에피소드로 넘어갑니다",
+    "autoSkipSegments": "오프닝 및 엔딩 자동 건너뛰기",
+    "autoSkipSegmentsSub": "표시된 구간을 버튼 조작 없이 건너뜁니다",
+    "autoplayPreviews": "미리보기 자동 재생",
+    "autoplayPreviewsSub": "홈 화면의 추천 콘텐츠를 자동으로 넘깁니다",
+    "defaultQuality": "기본 재생 화질",
+    "defaultQualitySub": "재생을 시작할 때의 화질",
+    "subtitles": "자막",
+    "subtitleSize": "자막 크기",
+    "subtitleSizeSub": "자막 크기를 조정합니다",
+    "subtitleBackground": "자막 배경",
+    "subtitleBackgroundSub": "자막 뒤에 어두운 배경 막대를 표시합니다",
+    "on": "켬",
+    "off": "끔",
+    "footer": "{{brand}} · Jellyfin을 위한 인터페이스",
+    "toast": {
+      "pinEnabled": "프로필 잠금을 활성화했습니다",
+      "pinDisabled": "프로필 잠금을 비활성화했습니다"
+    }
+  },
+  "player": {
+    "errorTitle": "재생할 수 없습니다",
+    "errorSubtitle": "이 콘텐츠는 현재 이 기기에서 재생할 수 없습니다.",
+    "version": "버전",
+    "versionNumbered": "버전 {{number}}",
+    "quality": "화질",
+    "qualityWithBandwidth": "{{label}}({{mbits}} Mbit/s)",
+    "audio": "오디오",
+    "subtitles": "자막",
+    "subtitlesOff": "끔",
+    "skipIntro": "오프닝 건너뛰기",
+    "skipOutro": "엔딩 건너뛰기",
+    "original": "원본",
+    "watching": "시청 중",
+    "episodeLine": "{{series}} {{season}}: {{episode}}화",
+    "speedTitle": "재생 속도",
+    "speed": {
+      "normal": "1x(기본)"
+    },
+    "controls": {
+      "nextEpisode": "다음 에피소드",
+      "audioAndSubtitles": "오디오 및 자막",
+      "playbackSpeed": "재생 속도",
+      "quality": "화질"
+    },
+    "upNext": {
+      "label": "{{seconds}}초 후 다음 에피소드",
+      "hint": "OK = 지금 재생 · <1></1> = 닫기"
+    }
+  },
+  "media": {
+    "quality": {
+      "auto": "자동",
+      "original": "원본",
+      "1080": "1080p",
+      "720": "720p HD",
+      "480": "480p",
+      "360": "360p"
+    },
+    "subtitleSize": {
+      "small": "작게",
+      "normal": "보통",
+      "large": "크게"
+    },
+    "runtime": {
+      "minutes": "{{count}}분",
+      "hoursMinutes": "{{hours}}시간 {{minutes}}분"
+    },
+    "track": {
+      "audioDescription": "화면 해설",
+      "forced": "강제",
+      "sdh": "SDH",
+      "stereo": "스테레오",
+      "mono": "모노"
+    },
+    "language": {
+      "unknown": "알 수 없음",
+      "deu": "독일어",
+      "eng": "영어",
+      "jpn": "일본어",
+      "kor": "한국어",
+      "fra": "프랑스어",
+      "spa": "스페인어",
+      "ita": "이탈리아어",
+      "rus": "러시아어",
+      "ukr": "우크라이나어",
+      "zho": "중국어",
+      "por": "포르투갈어",
+      "nld": "네덜란드어",
+      "pol": "폴란드어",
+      "tur": "튀르키예어",
+      "ara": "아랍어",
+      "hin": "힌디어",
+      "swe": "스웨덴어",
+      "dan": "덴마크어",
+      "nor": "노르웨이어",
+      "fin": "핀란드어",
+      "ces": "체코어",
+      "hun": "헝가리어",
+      "ell": "그리스어",
+      "heb": "히브리어",
+      "tha": "태국어",
+      "vie": "베트남어",
+      "ron": "루마니아어",
+      "bul": "불가리아어"
+    }
+  },
+  "errors": {
+    "noJellyfinServer": "Jellyfin 서버가 아닙니다",
+    "quickConnectStart": "Quick Connect를 시작할 수 없습니다({{status}})",
+    "quickConnectPoll": "Quick Connect 오류({{status}})",
+    "quickConnectAuth": "로그인에 실패했습니다({{status}})"
+  }
+}

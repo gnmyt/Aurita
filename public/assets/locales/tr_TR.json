@@ -1,0 +1,329 @@
+{
+  "common": {
+    "actions": {
+      "back": "Geri",
+      "cancel": "İptal",
+      "confirm": "Onayla",
+      "remove": "Kaldır",
+      "retry": "Tekrar dene",
+      "signOut": "Çıkış yap",
+      "done": "Tamam"
+    },
+    "loader": {
+      "label": "Yükleniyor…"
+    },
+    "itemGrid": {
+      "empty": "İçerik bulunamadı."
+    },
+    "card": {
+      "movie": "Film",
+      "series": "Dizi",
+      "seriesWithYear": "Dizi · {{year}}",
+      "seasonEpisodes_one": "{{count}} bölüm",
+      "seasonEpisodes_other": "{{count}} bölüm",
+      "folder": "Klasör",
+      "episodeCode": "S{{season}}:B{{episode}}"
+    },
+    "topNav": {
+      "home": "Ana sayfa",
+      "shorts": "Shorts",
+      "syncPlay": "Birlikte izle"
+    },
+    "screenSaver": {
+      "locale": "tr-TR"
+    },
+    "trailerOverlay": {
+      "closeHint": "Kapatmak için Geri"
+    },
+    "spotlight": {
+      "play": "Oynat",
+      "watch": "İzle",
+      "moreInfo": "Daha fazla bilgi"
+    },
+    "cardOptions": {
+      "resume": "Devam et",
+      "play": "Oynat",
+      "viewDetails": "Ayrıntıları gör",
+      "markUnwatched": "İzlenmedi olarak işaretle",
+      "markWatched": "İzlendi olarak işaretle",
+      "removeFromWatchlist": "Listemden kaldır",
+      "addToWatchlist": "Listeme ekle",
+      "removeFromContinueWatching": "“İzlemeye devam et”ten kaldır",
+      "toast": {
+        "markedUnwatched": "İzlenmedi olarak işaretlendi",
+        "markedWatched": "İzlendi olarak işaretlendi",
+        "removedFromWatchlist": "Listemden kaldırıldı",
+        "addedToWatchlist": "Listeme eklendi",
+        "removedFromContinueWatching": "“İzlemeye devam et”ten kaldırıldı"
+      }
+    },
+    "pinPad": {
+      "title": {
+        "enter": "Bir PIN seçin",
+        "confirm": "PIN’i onaylayın",
+        "verify": "PIN’i girin"
+      },
+      "subtitle": {
+        "enter": "Ok tuşlarını kullanarak 4 yönden oluşan bir dizi girin.",
+        "confirm": "Aynı yön dizisini bir kez daha girin.",
+        "verify": "Bu profil kilitli."
+      },
+      "error": {
+        "mismatch": "PIN’ler eşleşmiyor. Lütfen tekrar deneyin.",
+        "wrong": "Yanlış PIN. Lütfen tekrar deneyin."
+      },
+      "forgot": "PIN’inizi mi unuttunuz? Çıkış yapmak için <1>OK</1> tuşunu basılı tutun."
+    },
+    "profilePicker": {
+      "title": "Kim izliyor?",
+      "addProfile": "Profil ekle",
+      "manageProfiles": "Profilleri yönet",
+      "settings": "Ayarlar",
+      "removeTitle": "Profil kaldırılsın mı?",
+      "removeMessage": "“{{name}}” bu cihazdan kaldırılacak."
+    },
+    "serverConnect": {
+      "title": "Sunucunuza bağlanın",
+      "subtitle": "Jellyfin sunucunuzun adresini girin, örn. <1>jellyfin.example.com</1>.",
+      "placeholder": "jellyfin.example.com",
+      "connecting": "Bağlanılıyor…",
+      "connect": "Bağlan",
+      "unreachable": "Sunucuya ulaşılamıyor. Adresi kontrol edin; alt klasördeki kurulumlar için tam yolu girin (örn. jellyfin.example.com/jellyfin).",
+      "failed": "Bağlantı başarısız: {{message}}"
+    },
+    "setupWizard": {
+      "addServer": "Yeni sunucu ekle",
+      "currentServer": "Geçerli sunucu",
+      "chooseTitle": "Hangi sunucu?",
+      "chooseSubtitle": "Yeni profilin oturum açacağı sunucuyu seçin.",
+      "welcomeTitle": "{{brand}} uygulamasına hoş geldiniz",
+      "welcomeSubtitle": "Film ve dizilerin keyfini büyük ekranda çıkarmak için Jellyfin hesabınızla oturum açın.",
+      "quickConnectDisabled": "{{host}} üzerinde Quick Connect etkin değil. Lütfen sunucu ayarlarından etkinleştirin.",
+      "signIn": "Oturum aç",
+      "pairingTitle": "Telefonunuzda oturum açın",
+      "pairingStep1": "Telefonunuzda veya bilgisayarınızda <1>{{host}}</1> adresini açıp oturum açın.",
+      "pairingStep2": "<1>Kullanıcı ayarları <3></3> Quick Connect</1> bölümüne gidin.",
+      "pairingStep3": "Aşağıdaki kodu girin:",
+      "pairingPlaceholder": "— — —",
+      "waiting": "Onay bekleniyor…",
+      "authorizing": "Oturum açıldı! Yükleniyor…",
+      "expired": "Kodun süresi doldu. Lütfen yeni bir kod isteyin.",
+      "newCode": "Yeni kod",
+      "qrHint": "Sayfayı açmak için tarayın"
+    }
+  },
+  "home": {
+    "continueWatching": "İzlemeye devam et",
+    "nextUp": "Sırada",
+    "watchlist": "Listem",
+    "because": "“{{name}}” izlediğiniz için",
+    "latestIn": "{{library}} kitaplığında yeni",
+    "suggestions": "Size özel öneriler"
+  },
+  "library": {
+    "fallbackTitle": "Kitaplık",
+    "sort": {
+      "name": "Ad (A–Z)",
+      "added": "Son eklenenler",
+      "year": "Çıkış yılı",
+      "rating": "Puan",
+      "random": "Rastgele"
+    },
+    "filter": {
+      "all": "Tümü",
+      "unplayed": "İzlenmemiş",
+      "fav": "Favoriler"
+    }
+  },
+  "browse": {
+    "person": "Kişi",
+    "genre": "Tür · {{name}}"
+  },
+  "detail": {
+    "errorTitle": "Yüklenemedi",
+    "errorSubtitle": "Lütfen bağlantınızı kontrol edip tekrar deneyin.",
+    "resume": "Devam et",
+    "play": "Oynat",
+    "restart": "Baştan başlat",
+    "playSeries": "Oynat",
+    "trailer": "Fragman",
+    "watched": "İzlendi",
+    "markWatched": "İzlendi olarak işaretle",
+    "onWatchlist": "Listemde",
+    "watchlist": "Listem",
+    "castAndCrew": "Oyuncular ve ekip",
+    "extras": "Ekstralar",
+    "otherVersion": "Diğer sürüm",
+    "similar": "Bunları da beğenebilirsiniz",
+    "toast": {
+      "markedWatched": "İzlendi olarak işaretlendi",
+      "markedUnwatched": "İzlenmedi olarak işaretlendi",
+      "addedToWatchlist": "Listeme eklendi",
+      "removedFromWatchlist": "Listemden kaldırıldı"
+    }
+  },
+  "search": {
+    "placeholder": "Ara…",
+    "space": "Boşluk",
+    "delete": "Sil",
+    "clear": "Temizle",
+    "noResults": "“{{query}}” için sonuç yok.",
+    "people": "Kişiler"
+  },
+  "shorts": {
+    "empty": "Fragman bulunamadı.",
+    "loading": "Fragmanlar yükleniyor…",
+    "hintWatch": "OK = İzle",
+    "hintSwitch": "Değiştir",
+    "hintSound": "M = Ses"
+  },
+  "syncPlay": {
+    "title": "Birlikte izle",
+    "yourGroup": "Grubunuz",
+    "members": "Üyeler: {{members}} · Durum: {{state}}",
+    "leaveGroup": "Gruptan ayrıl",
+    "leaveGroupSub": "Oynatma artık eşitlenmeyecek",
+    "groupNote": "Bir film veya bölüm başlatın: oynatma gruptaki herkesle eşitlenir. Duraklatma, oynatma ve ileri sarma herkes için geçerlidir.",
+    "actions": "İşlemler",
+    "createGroup": "Yeni grup oluştur",
+    "createGroupSub": "Birlikte izlemek için bir oturma odası grubu açın",
+    "defaultGroupName": "{{brand}} oturma odası",
+    "availableGroups": "Kullanılabilir gruplar",
+    "loading": "Yükleniyor…",
+    "noGroups": "Açık grup yok",
+    "noGroupsSub": "Birlikte izlemek için yeni bir grup oluşturun.",
+    "groupSummary": "{{members}} · {{state}}",
+    "empty": "Boş",
+    "noMembers": "-"
+  },
+  "settings": {
+    "title": "Profil ve ayarlar",
+    "profileFallback": "Profil",
+    "switchProfile": "Profil değiştir veya ekle",
+    "profileLock": "Profil kilidi",
+    "profileLockSub": "Bu profile erişmek için PIN",
+    "signOut": "Çıkış yap",
+    "signOutSub": "Bu profilden bu cihazda çıkış yap",
+    "signOutTitle": "Çıkış yapılsın mı?",
+    "signOutMessage": "“{{name}}” bu cihazda oturumu kapatacak.",
+    "thisProfile": "Bu profil",
+    "languageSection": "Dil",
+    "appLanguage": "Uygulama dili",
+    "appLanguageSub": "Arayüzün tamamında kullanılan dil",
+    "languageTitle": "Dil seçin",
+    "playback": "Oynatma",
+    "autoplayNext": "Sonraki bölümü otomatik oynat",
+    "autoplayNextSub": "Bölüm bitince otomatik olarak sonraki bölüme geç",
+    "autoSkipSegments": "Jenerik ve kapanışı otomatik atla",
+    "autoSkipSegmentsSub": "İşaretli bölümleri tuşa basmadan atla",
+    "autoplayPreviews": "Önizlemeleri otomatik oynat",
+    "autoplayPreviewsSub": "Ana ekrandaki önerileri otomatik olarak sırayla göster",
+    "defaultQuality": "Varsayılan oynatma kalitesi",
+    "defaultQualitySub": "Oynatmanın başlayacağı kalite",
+    "subtitles": "Altyazılar",
+    "subtitleSize": "Altyazı boyutu",
+    "subtitleSizeSub": "Altyazıların boyutunu ayarlayın",
+    "subtitleBackground": "Altyazı arka planı",
+    "subtitleBackgroundSub": "Altyazıların arkasında karartılmış bir şerit göster",
+    "on": "Açık",
+    "off": "Kapalı",
+    "footer": "{{brand}} · Jellyfin için bir arayüz",
+    "toast": {
+      "pinEnabled": "Profil kilidi etkinleştirildi",
+      "pinDisabled": "Profil kilidi devre dışı bırakıldı"
+    }
+  },
+  "player": {
+    "errorTitle": "Oynatma mümkün değil",
+    "errorSubtitle": "Bu içerik şu anda bu cihazda oynatılamıyor.",
+    "version": "Sürüm",
+    "versionNumbered": "Sürüm {{number}}",
+    "quality": "Kalite",
+    "qualityWithBandwidth": "{{label}} ({{mbits}} Mbit/sn)",
+    "audio": "Ses",
+    "subtitles": "Altyazılar",
+    "subtitlesOff": "Kapalı",
+    "skipIntro": "Jeneriği atla",
+    "skipOutro": "Kapanışı atla",
+    "original": "Orijinal",
+    "watching": "İzliyorsunuz",
+    "episodeLine": "{{series}} {{season}}: Böl. {{episode}}",
+    "speedTitle": "Oynatma hızı",
+    "speed": {
+      "normal": "1x (Normal)"
+    },
+    "controls": {
+      "nextEpisode": "Sonraki bölüm",
+      "audioAndSubtitles": "Ses ve altyazılar",
+      "playbackSpeed": "Oynatma hızı",
+      "quality": "Kalite"
+    },
+    "upNext": {
+      "label": "{{seconds}} sn içinde sırada",
+      "hint": "OK = Şimdi oynat · <1></1> = Kapat"
+    }
+  },
+  "media": {
+    "quality": {
+      "auto": "Otomatik",
+      "original": "Orijinal",
+      "1080": "1080p",
+      "720": "720p HD",
+      "480": "480p",
+      "360": "360p"
+    },
+    "subtitleSize": {
+      "small": "Küçük",
+      "normal": "Normal",
+      "large": "Büyük"
+    },
+    "runtime": {
+      "minutes": "{{count}} dk",
+      "hoursMinutes": "{{hours}} sa {{minutes}} dk"
+    },
+    "track": {
+      "audioDescription": "Sesli betimleme",
+      "forced": "Zorunlu",
+      "sdh": "SDH",
+      "stereo": "Stereo",
+      "mono": "Mono"
+    },
+    "language": {
+      "unknown": "Bilinmiyor",
+      "deu": "Almanca",
+      "eng": "İngilizce",
+      "jpn": "Japonca",
+      "kor": "Korece",
+      "fra": "Fransızca",
+      "spa": "İspanyolca",
+      "ita": "İtalyanca",
+      "rus": "Rusça",
+      "ukr": "Ukraynaca",
+      "zho": "Çince",
+      "por": "Portekizce",
+      "nld": "Felemenkçe",
+      "pol": "Lehçe",
+      "tur": "Türkçe",
+      "ara": "Arapça",
+      "hin": "Hintçe",
+      "swe": "İsveççe",
+      "dan": "Danca",
+      "nor": "Norveççe",
+      "fin": "Fince",
+      "ces": "Çekçe",
+      "hun": "Macarca",
+      "ell": "Yunanca",
+      "heb": "İbranice",
+      "tha": "Tayca",
+      "vie": "Vietnamca",
+      "ron": "Romence",
+      "bul": "Bulgarca"
+    }
+  },
+  "errors": {
+    "noJellyfinServer": "Jellyfin sunucusu değil",
+    "quickConnectStart": "Quick Connect başlatılamadı ({{status}})",
+    "quickConnectPoll": "Quick Connect hatası ({{status}})",
+    "quickConnectAuth": "Oturum açma başarısız ({{status}})"
+  }
+}

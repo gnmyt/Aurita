@@ -1,0 +1,329 @@
+{
+  "common": {
+    "actions": {
+      "back": "वापस",
+      "cancel": "रद्द करें",
+      "confirm": "पुष्टि करें",
+      "remove": "हटाएँ",
+      "retry": "फिर कोशिश करें",
+      "signOut": "साइन आउट",
+      "done": "पूर्ण"
+    },
+    "loader": {
+      "label": "लोड हो रहा है…"
+    },
+    "itemGrid": {
+      "empty": "कोई सामग्री नहीं मिली।"
+    },
+    "card": {
+      "movie": "फ़िल्म",
+      "series": "सीरीज़",
+      "seriesWithYear": "सीरीज़ · {{year}}",
+      "seasonEpisodes_one": "{{count}} एपिसोड",
+      "seasonEpisodes_other": "{{count}} एपिसोड",
+      "folder": "फ़ोल्डर",
+      "episodeCode": "सी{{season}}:ए{{episode}}"
+    },
+    "topNav": {
+      "home": "होम",
+      "shorts": "शॉर्ट्स",
+      "syncPlay": "साथ देखें"
+    },
+    "screenSaver": {
+      "locale": "hi-IN"
+    },
+    "trailerOverlay": {
+      "closeHint": "बंद करने के लिए वापस"
+    },
+    "spotlight": {
+      "play": "चलाएँ",
+      "watch": "देखें",
+      "moreInfo": "और जानकारी"
+    },
+    "cardOptions": {
+      "resume": "जारी रखें",
+      "play": "चलाएँ",
+      "viewDetails": "विवरण देखें",
+      "markUnwatched": "अनदेखा के रूप में चिह्नित करें",
+      "markWatched": "देखा हुआ चिह्नित करें",
+      "removeFromWatchlist": "वॉचलिस्ट से हटाएँ",
+      "addToWatchlist": "वॉचलिस्ट में जोड़ें",
+      "removeFromContinueWatching": "“देखना जारी रखें” से हटाएँ",
+      "toast": {
+        "markedUnwatched": "अनदेखा के रूप में चिह्नित किया गया",
+        "markedWatched": "देखा हुआ चिह्नित किया गया",
+        "removedFromWatchlist": "वॉचलिस्ट से हटाया गया",
+        "addedToWatchlist": "वॉचलिस्ट में जोड़ा गया",
+        "removedFromContinueWatching": "“देखना जारी रखें” से हटाया गया"
+      }
+    },
+    "pinPad": {
+      "title": {
+        "enter": "एक पिन चुनें",
+        "confirm": "पिन की पुष्टि करें",
+        "verify": "पिन दर्ज करें"
+      },
+      "subtitle": {
+        "enter": "ऐरो कुंजियों से 4 दिशाओं का क्रम दर्ज करें।",
+        "confirm": "वही दिशा क्रम एक बार और दर्ज करें।",
+        "verify": "यह प्रोफ़ाइल लॉक है।"
+      },
+      "error": {
+        "mismatch": "पिन मेल नहीं खाते। कृपया फिर कोशिश करें।",
+        "wrong": "गलत पिन। कृपया फिर कोशिश करें।"
+      },
+      "forgot": "पिन भूल गए? साइन आउट करने के लिए <1>OK</1> दबाए रखें।"
+    },
+    "profilePicker": {
+      "title": "कौन देख रहा है?",
+      "addProfile": "प्रोफ़ाइल जोड़ें",
+      "manageProfiles": "प्रोफ़ाइल प्रबंधित करें",
+      "settings": "सेटिंग्स",
+      "removeTitle": "प्रोफ़ाइल हटाएँ?",
+      "removeMessage": "“{{name}}” को इस डिवाइस से हटा दिया जाएगा।"
+    },
+    "serverConnect": {
+      "title": "अपने सर्वर से कनेक्ट करें",
+      "subtitle": "अपने Jellyfin सर्वर का पता दर्ज करें, जैसे <1>jellyfin.example.com</1>।",
+      "placeholder": "jellyfin.example.com",
+      "connecting": "कनेक्ट हो रहा है…",
+      "connect": "कनेक्ट करें",
+      "unreachable": "सर्वर तक नहीं पहुँच सके। पता जाँचें; सबफ़ोल्डर में इंस्टॉल होने पर पूरा पथ दर्ज करें (जैसे jellyfin.example.com/jellyfin)।",
+      "failed": "कनेक्शन विफल: {{message}}"
+    },
+    "setupWizard": {
+      "addServer": "नया सर्वर जोड़ें",
+      "currentServer": "मौजूदा सर्वर",
+      "chooseTitle": "कौन सा सर्वर?",
+      "chooseSubtitle": "वह सर्वर चुनें जिसमें नई प्रोफ़ाइल साइन इन करेगी।",
+      "welcomeTitle": "{{brand}} में आपका स्वागत है",
+      "welcomeSubtitle": "बड़े स्क्रीन पर फ़िल्में और शो देखने के लिए अपने Jellyfin खाते से साइन इन करें।",
+      "quickConnectDisabled": "{{host}} पर Quick Connect सक्षम नहीं है। कृपया इसे सर्वर सेटिंग्स में सक्षम करें।",
+      "signIn": "साइन इन",
+      "pairingTitle": "अपने फ़ोन पर साइन इन करें",
+      "pairingStep1": "अपने फ़ोन या कंप्यूटर पर <1>{{host}}</1> खोलें और साइन इन करें।",
+      "pairingStep2": "<1>उपयोगकर्ता सेटिंग्स <3></3> Quick Connect</1> पर जाएँ।",
+      "pairingStep3": "यह कोड दर्ज करें:",
+      "pairingPlaceholder": "— — —",
+      "waiting": "पुष्टि की प्रतीक्षा…",
+      "authorizing": "साइन इन हो गया! लोड हो रहा है…",
+      "expired": "कोड की अवधि समाप्त। कृपया नया कोड लें।",
+      "newCode": "नया कोड",
+      "qrHint": "पेज खोलने के लिए स्कैन करें"
+    }
+  },
+  "home": {
+    "continueWatching": "देखना जारी रखें",
+    "nextUp": "आगे",
+    "watchlist": "वॉचलिस्ट",
+    "because": "क्योंकि आपने “{{name}}” देखा",
+    "latestIn": "{{library}} में नया",
+    "suggestions": "आपके लिए सुझाव"
+  },
+  "library": {
+    "fallbackTitle": "लाइब्रेरी",
+    "sort": {
+      "name": "नाम (A–Z)",
+      "added": "हाल ही में जोड़े गए",
+      "year": "रिलीज़ वर्ष",
+      "rating": "रेटिंग",
+      "random": "क्रमरहित"
+    },
+    "filter": {
+      "all": "सभी",
+      "unplayed": "बिना देखे",
+      "fav": "पसंदीदा"
+    }
+  },
+  "browse": {
+    "person": "व्यक्ति",
+    "genre": "शैली · {{name}}"
+  },
+  "detail": {
+    "errorTitle": "लोड नहीं हो सका",
+    "errorSubtitle": "कृपया अपना कनेक्शन जाँचें और फिर कोशिश करें।",
+    "resume": "जारी रखें",
+    "play": "चलाएँ",
+    "restart": "शुरू से चलाएँ",
+    "playSeries": "चलाएँ",
+    "trailer": "ट्रेलर",
+    "watched": "देखा गया",
+    "markWatched": "देखा हुआ चिह्नित करें",
+    "onWatchlist": "वॉचलिस्ट में",
+    "watchlist": "वॉचलिस्ट",
+    "castAndCrew": "कलाकार और क्रू",
+    "extras": "अतिरिक्त",
+    "otherVersion": "अन्य संस्करण",
+    "similar": "आपको यह भी पसंद आ सकता है",
+    "toast": {
+      "markedWatched": "देखा हुआ चिह्नित किया गया",
+      "markedUnwatched": "अनदेखा के रूप में चिह्नित किया गया",
+      "addedToWatchlist": "वॉचलिस्ट में जोड़ा गया",
+      "removedFromWatchlist": "वॉचलिस्ट से हटाया गया"
+    }
+  },
+  "search": {
+    "placeholder": "खोजें…",
+    "space": "स्पेस",
+    "delete": "मिटाएँ",
+    "clear": "साफ़ करें",
+    "noResults": "“{{query}}” के लिए कोई परिणाम नहीं।",
+    "people": "लोग"
+  },
+  "shorts": {
+    "empty": "कोई ट्रेलर नहीं मिला।",
+    "loading": "ट्रेलर लोड हो रहे हैं…",
+    "hintWatch": "OK = देखें",
+    "hintSwitch": "बदलें",
+    "hintSound": "M = ध्वनि"
+  },
+  "syncPlay": {
+    "title": "साथ देखें",
+    "yourGroup": "आपका समूह",
+    "members": "सदस्य: {{members}} · स्थिति: {{state}}",
+    "leaveGroup": "समूह छोड़ें",
+    "leaveGroupSub": "प्लेबैक अब सिंक नहीं होगा",
+    "groupNote": "कोई फ़िल्म या एपिसोड चलाएँ: प्लेबैक समूह के सभी लोगों के साथ सिंक होता है। रोकना, चलाना और आगे-पीछे करना सभी पर लागू होता है।",
+    "actions": "कार्रवाइयाँ",
+    "createGroup": "नया समूह बनाएँ",
+    "createGroupSub": "साथ देखने के लिए एक लिविंग-रूम समूह खोलें",
+    "defaultGroupName": "{{brand}} लिविंग रूम",
+    "availableGroups": "उपलब्ध समूह",
+    "loading": "लोड हो रहा है…",
+    "noGroups": "कोई खुला समूह नहीं",
+    "noGroupsSub": "साथ देखने के लिए नया समूह बनाएँ।",
+    "groupSummary": "{{members}} · {{state}}",
+    "empty": "खाली",
+    "noMembers": "-"
+  },
+  "settings": {
+    "title": "प्रोफ़ाइल और सेटिंग्स",
+    "profileFallback": "प्रोफ़ाइल",
+    "switchProfile": "प्रोफ़ाइल बदलें या जोड़ें",
+    "profileLock": "प्रोफ़ाइल लॉक",
+    "profileLockSub": "इस प्रोफ़ाइल तक पहुँच के लिए पिन",
+    "signOut": "साइन आउट",
+    "signOutSub": "इस डिवाइस से इस प्रोफ़ाइल को साइन आउट करें",
+    "signOutTitle": "साइन आउट करें?",
+    "signOutMessage": "“{{name}}” को इस डिवाइस से साइन आउट कर दिया जाएगा।",
+    "thisProfile": "यह प्रोफ़ाइल",
+    "languageSection": "भाषा",
+    "appLanguage": "ऐप की भाषा",
+    "appLanguageSub": "पूरे इंटरफ़ेस में उपयोग होने वाली भाषा",
+    "languageTitle": "भाषा चुनें",
+    "playback": "प्लेबैक",
+    "autoplayNext": "अगला एपिसोड अपने आप चलाएँ",
+    "autoplayNextSub": "अंत में अपने आप अगले एपिसोड पर जाएँ",
+    "autoSkipSegments": "इंट्रो और क्रेडिट अपने आप छोड़ें",
+    "autoSkipSegmentsSub": "चिह्नित हिस्सों को बिना बटन दबाए छोड़ें",
+    "autoplayPreviews": "पूर्वावलोकन अपने आप चलाएँ",
+    "autoplayPreviewsSub": "होम स्क्रीन पर सुझाव अपने आप बदलते रहें",
+    "defaultQuality": "डिफ़ॉल्ट प्लेबैक गुणवत्ता",
+    "defaultQualitySub": "वह गुणवत्ता जिससे प्लेबैक शुरू होता है",
+    "subtitles": "उपशीर्षक",
+    "subtitleSize": "उपशीर्षक आकार",
+    "subtitleSizeSub": "उपशीर्षकों का आकार समायोजित करें",
+    "subtitleBackground": "उपशीर्षक पृष्ठभूमि",
+    "subtitleBackgroundSub": "उपशीर्षकों के पीछे गहरी पट्टी दिखाएँ",
+    "on": "चालू",
+    "off": "बंद",
+    "footer": "{{brand}} · Jellyfin के लिए एक इंटरफ़ेस",
+    "toast": {
+      "pinEnabled": "प्रोफ़ाइल लॉक सक्षम",
+      "pinDisabled": "प्रोफ़ाइल लॉक अक्षम"
+    }
+  },
+  "player": {
+    "errorTitle": "प्लेबैक संभव नहीं",
+    "errorSubtitle": "यह शीर्षक अभी इस डिवाइस पर नहीं चलाया जा सकता।",
+    "version": "संस्करण",
+    "versionNumbered": "संस्करण {{number}}",
+    "quality": "गुणवत्ता",
+    "qualityWithBandwidth": "{{label}} ({{mbits}} Mbit/s)",
+    "audio": "ऑडियो",
+    "subtitles": "उपशीर्षक",
+    "subtitlesOff": "बंद",
+    "skipIntro": "इंट्रो छोड़ें",
+    "skipOutro": "क्रेडिट छोड़ें",
+    "original": "मूल",
+    "watching": "आप देख रहे हैं",
+    "episodeLine": "{{series}} {{season}}: एपि. {{episode}}",
+    "speedTitle": "प्लेबैक गति",
+    "speed": {
+      "normal": "1x (सामान्य)"
+    },
+    "controls": {
+      "nextEpisode": "अगला एपिसोड",
+      "audioAndSubtitles": "ऑडियो और उपशीर्षक",
+      "playbackSpeed": "प्लेबैक गति",
+      "quality": "गुणवत्ता"
+    },
+    "upNext": {
+      "label": "{{seconds}} सेकंड में आगे",
+      "hint": "OK = अभी चलाएँ · <1></1> = बंद करें"
+    }
+  },
+  "media": {
+    "quality": {
+      "auto": "स्वचालित",
+      "original": "मूल",
+      "1080": "1080p",
+      "720": "720p HD",
+      "480": "480p",
+      "360": "360p"
+    },
+    "subtitleSize": {
+      "small": "छोटा",
+      "normal": "सामान्य",
+      "large": "बड़ा"
+    },
+    "runtime": {
+      "minutes": "{{count}} मि",
+      "hoursMinutes": "{{hours}} घं {{minutes}} मि"
+    },
+    "track": {
+      "audioDescription": "ऑडियो विवरण",
+      "forced": "अनिवार्य",
+      "sdh": "SDH",
+      "stereo": "स्टीरियो",
+      "mono": "मोनो"
+    },
+    "language": {
+      "unknown": "अज्ञात",
+      "deu": "जर्मन",
+      "eng": "अंग्रेज़ी",
+      "jpn": "जापानी",
+      "kor": "कोरियाई",
+      "fra": "फ़्रेंच",
+      "spa": "स्पेनिश",
+      "ita": "इतालवी",
+      "rus": "रूसी",
+      "ukr": "यूक्रेनी",
+      "zho": "चीनी",
+      "por": "पुर्तगाली",
+      "nld": "डच",
+      "pol": "पोलिश",
+      "tur": "तुर्की",
+      "ara": "अरबी",
+      "hin": "हिन्दी",
+      "swe": "स्वीडिश",
+      "dan": "डेनिश",
+      "nor": "नॉर्वेजियन",
+      "fin": "फ़िनिश",
+      "ces": "चेक",
+      "hun": "हंगेरियन",
+      "ell": "यूनानी",
+      "heb": "हिब्रू",
+      "tha": "थाई",
+      "vie": "वियतनामी",
+      "ron": "रोमानियाई",
+      "bul": "बल्गेरियाई"
+    }
+  },
+  "errors": {
+    "noJellyfinServer": "यह Jellyfin सर्वर नहीं है",
+    "quickConnectStart": "Quick Connect शुरू नहीं हो सका ({{status}})",
+    "quickConnectPoll": "Quick Connect त्रुटि ({{status}})",
+    "quickConnectAuth": "साइन इन विफल ({{status}})"
+  }
+}

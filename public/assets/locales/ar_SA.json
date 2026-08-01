@@ -1,0 +1,333 @@
+{
+  "common": {
+    "actions": {
+      "back": "رجوع",
+      "cancel": "إلغاء",
+      "confirm": "تأكيد",
+      "remove": "إزالة",
+      "retry": "إعادة المحاولة",
+      "signOut": "تسجيل الخروج",
+      "done": "تم"
+    },
+    "loader": {
+      "label": "جارٍ التحميل…"
+    },
+    "itemGrid": {
+      "empty": "لم يتم العثور على محتوى."
+    },
+    "card": {
+      "movie": "فيلم",
+      "series": "مسلسل",
+      "seriesWithYear": "مسلسل · {{year}}",
+      "seasonEpisodes_zero": "لا توجد حلقات",
+      "seasonEpisodes_one": "حلقة واحدة",
+      "seasonEpisodes_two": "حلقتان",
+      "seasonEpisodes_few": "{{count}} حلقات",
+      "seasonEpisodes_many": "{{count}} حلقة",
+      "seasonEpisodes_other": "{{count}} حلقة",
+      "folder": "مجلد",
+      "episodeCode": "م{{season}}:ح{{episode}}"
+    },
+    "topNav": {
+      "home": "الرئيسية",
+      "shorts": "مقاطع قصيرة",
+      "syncPlay": "المشاهدة معًا"
+    },
+    "screenSaver": {
+      "locale": "ar-SA"
+    },
+    "trailerOverlay": {
+      "closeHint": "اضغط رجوع للإغلاق"
+    },
+    "spotlight": {
+      "play": "تشغيل",
+      "watch": "مشاهدة",
+      "moreInfo": "مزيد من المعلومات"
+    },
+    "cardOptions": {
+      "resume": "متابعة",
+      "play": "تشغيل",
+      "viewDetails": "عرض التفاصيل",
+      "markUnwatched": "تحديد كغير مُشاهَد",
+      "markWatched": "تحديد كمُشاهَد",
+      "removeFromWatchlist": "إزالة من قائمتي",
+      "addToWatchlist": "إضافة إلى قائمتي",
+      "removeFromContinueWatching": "إزالة من «متابعة المشاهدة»",
+      "toast": {
+        "markedUnwatched": "تم التحديد كغير مُشاهَد",
+        "markedWatched": "تم التحديد كمُشاهَد",
+        "removedFromWatchlist": "تمت الإزالة من قائمتي",
+        "addedToWatchlist": "تمت الإضافة إلى قائمتي",
+        "removedFromContinueWatching": "تمت الإزالة من «متابعة المشاهدة»"
+      }
+    },
+    "pinPad": {
+      "title": {
+        "enter": "اختر رمز PIN",
+        "confirm": "تأكيد رمز PIN",
+        "verify": "أدخل رمز PIN"
+      },
+      "subtitle": {
+        "enter": "أدخل تسلسلاً من 4 اتجاهات باستخدام مفاتيح الأسهم.",
+        "confirm": "أدخل التسلسل نفسه مرة أخرى.",
+        "verify": "هذا الملف الشخصي مقفل."
+      },
+      "error": {
+        "mismatch": "رمزا PIN غير متطابقين. حاول مرة أخرى.",
+        "wrong": "رمز PIN غير صحيح. حاول مرة أخرى."
+      },
+      "forgot": "هل نسيت رمز PIN؟ اضغط مع الاستمرار على <1>OK</1> لتسجيل الخروج."
+    },
+    "profilePicker": {
+      "title": "من يشاهد؟",
+      "addProfile": "إضافة ملف شخصي",
+      "manageProfiles": "إدارة الملفات الشخصية",
+      "settings": "الإعدادات",
+      "removeTitle": "إزالة الملف الشخصي؟",
+      "removeMessage": "ستتم إزالة «{{name}}» من هذا الجهاز."
+    },
+    "serverConnect": {
+      "title": "الاتصال بخادمك",
+      "subtitle": "أدخل عنوان خادم Jellyfin الخاص بك، مثل <1>jellyfin.example.com</1>.",
+      "placeholder": "jellyfin.example.com",
+      "connecting": "جارٍ الاتصال…",
+      "connect": "اتصال",
+      "unreachable": "تعذّر الوصول إلى الخادم. تحقق من العنوان؛ وإذا كان التثبيت داخل مجلد فرعي فأدخل المسار الكامل (مثل jellyfin.example.com/jellyfin).",
+      "failed": "فشل الاتصال: {{message}}"
+    },
+    "setupWizard": {
+      "addServer": "إضافة خادم جديد",
+      "currentServer": "الخادم الحالي",
+      "chooseTitle": "أي خادم؟",
+      "chooseSubtitle": "اختر الخادم الذي سيسجّل الملف الشخصي الجديد الدخول إليه.",
+      "welcomeTitle": "مرحبًا بك في {{brand}}",
+      "welcomeSubtitle": "سجّل الدخول بحساب Jellyfin للاستمتاع بالأفلام والمسلسلات على الشاشة الكبيرة.",
+      "quickConnectDisabled": "ميزة Quick Connect غير مفعّلة على {{host}}. يُرجى تفعيلها من إعدادات الخادم.",
+      "signIn": "تسجيل الدخول",
+      "pairingTitle": "سجّل الدخول من هاتفك",
+      "pairingStep1": "افتح <1>{{host}}</1> على هاتفك أو حاسوبك وسجّل الدخول.",
+      "pairingStep2": "انتقل إلى <1>إعدادات المستخدم <3></3> Quick Connect</1>.",
+      "pairingStep3": "أدخل الرمز التالي:",
+      "pairingPlaceholder": "— — —",
+      "waiting": "في انتظار التأكيد…",
+      "authorizing": "تم تسجيل الدخول! جارٍ التحميل…",
+      "expired": "انتهت صلاحية الرمز. يُرجى طلب رمز جديد.",
+      "newCode": "رمز جديد",
+      "qrHint": "امسح الرمز لفتح الصفحة"
+    }
+  },
+  "home": {
+    "continueWatching": "متابعة المشاهدة",
+    "nextUp": "التالي",
+    "watchlist": "قائمتي",
+    "because": "لأنك شاهدت «{{name}}»",
+    "latestIn": "جديد في {{library}}",
+    "suggestions": "اقتراحات لك"
+  },
+  "library": {
+    "fallbackTitle": "المكتبة",
+    "sort": {
+      "name": "الاسم (أ–ي)",
+      "added": "أُضيف حديثًا",
+      "year": "سنة الإصدار",
+      "rating": "التقييم",
+      "random": "عشوائي"
+    },
+    "filter": {
+      "all": "الكل",
+      "unplayed": "غير مُشاهَد",
+      "fav": "المفضلة"
+    }
+  },
+  "browse": {
+    "person": "شخص",
+    "genre": "النوع · {{name}}"
+  },
+  "detail": {
+    "errorTitle": "تعذّر التحميل",
+    "errorSubtitle": "يُرجى التحقق من الاتصال والمحاولة مرة أخرى.",
+    "resume": "متابعة",
+    "play": "تشغيل",
+    "restart": "البدء من جديد",
+    "playSeries": "تشغيل",
+    "trailer": "الإعلان التشويقي",
+    "watched": "تمت المشاهدة",
+    "markWatched": "تحديد كمُشاهَد",
+    "onWatchlist": "في قائمتي",
+    "watchlist": "قائمتي",
+    "castAndCrew": "طاقم العمل",
+    "extras": "إضافات",
+    "otherVersion": "إصدار آخر",
+    "similar": "قد يعجبك أيضًا",
+    "toast": {
+      "markedWatched": "تم التحديد كمُشاهَد",
+      "markedUnwatched": "تم التحديد كغير مُشاهَد",
+      "addedToWatchlist": "تمت الإضافة إلى قائمتي",
+      "removedFromWatchlist": "تمت الإزالة من قائمتي"
+    }
+  },
+  "search": {
+    "placeholder": "بحث…",
+    "space": "مسافة",
+    "delete": "حذف",
+    "clear": "مسح",
+    "noResults": "لا توجد نتائج لـ «{{query}}».",
+    "people": "أشخاص"
+  },
+  "shorts": {
+    "empty": "لم يتم العثور على إعلانات تشويقية.",
+    "loading": "جارٍ تحميل الإعلانات التشويقية…",
+    "hintWatch": "OK = مشاهدة",
+    "hintSwitch": "تبديل",
+    "hintSound": "M = الصوت"
+  },
+  "syncPlay": {
+    "title": "المشاهدة معًا",
+    "yourGroup": "مجموعتك",
+    "members": "الأعضاء: {{members}} · الحالة: {{state}}",
+    "leaveGroup": "مغادرة المجموعة",
+    "leaveGroupSub": "لن تتم مزامنة التشغيل بعد الآن",
+    "groupNote": "شغّل فيلمًا أو حلقة: تتم مزامنة التشغيل مع جميع أعضاء المجموعة. الإيقاف المؤقت والتشغيل والتقديم تنطبق على الجميع.",
+    "actions": "الإجراءات",
+    "createGroup": "إنشاء مجموعة جديدة",
+    "createGroupSub": "أنشئ مجموعة لغرفة المعيشة للمشاهدة معًا",
+    "defaultGroupName": "غرفة معيشة {{brand}}",
+    "availableGroups": "المجموعات المتاحة",
+    "loading": "جارٍ التحميل…",
+    "noGroups": "لا توجد مجموعات مفتوحة",
+    "noGroupsSub": "أنشئ مجموعة جديدة للمشاهدة معًا.",
+    "groupSummary": "{{members}} · {{state}}",
+    "empty": "فارغة",
+    "noMembers": "-"
+  },
+  "settings": {
+    "title": "الملف الشخصي والإعدادات",
+    "profileFallback": "الملف الشخصي",
+    "switchProfile": "تبديل ملف شخصي أو إضافته",
+    "profileLock": "قفل الملف الشخصي",
+    "profileLockSub": "رمز PIN للوصول إلى هذا الملف الشخصي",
+    "signOut": "تسجيل الخروج",
+    "signOutSub": "تسجيل خروج هذا الملف الشخصي من هذا الجهاز",
+    "signOutTitle": "تسجيل الخروج؟",
+    "signOutMessage": "سيتم تسجيل خروج «{{name}}» من هذا الجهاز.",
+    "thisProfile": "هذا الملف الشخصي",
+    "languageSection": "اللغة",
+    "appLanguage": "لغة التطبيق",
+    "appLanguageSub": "اللغة المستخدمة في الواجهة بأكملها",
+    "languageTitle": "اختيار اللغة",
+    "playback": "التشغيل",
+    "autoplayNext": "تشغيل الحلقة التالية تلقائيًا",
+    "autoplayNextSub": "الانتقال تلقائيًا إلى الحلقة التالية عند النهاية",
+    "autoSkipSegments": "تخطي المقدمة والنهاية تلقائيًا",
+    "autoSkipSegmentsSub": "تخطي المقاطع المحددة دون الضغط على أي زر",
+    "autoplayPreviews": "تشغيل المعاينات تلقائيًا",
+    "autoplayPreviewsSub": "تصفّح التوصيات تلقائيًا في الشاشة الرئيسية",
+    "defaultQuality": "جودة التشغيل الافتراضية",
+    "defaultQualitySub": "الجودة التي يبدأ بها التشغيل",
+    "subtitles": "الترجمة",
+    "subtitleSize": "حجم الترجمة",
+    "subtitleSizeSub": "ضبط حجم نص الترجمة",
+    "subtitleBackground": "خلفية الترجمة",
+    "subtitleBackgroundSub": "إظهار شريط معتم خلف الترجمة",
+    "on": "مفعّل",
+    "off": "متوقف",
+    "footer": "{{brand}} · واجهة لخادم Jellyfin",
+    "toast": {
+      "pinEnabled": "تم تفعيل قفل الملف الشخصي",
+      "pinDisabled": "تم إيقاف قفل الملف الشخصي"
+    }
+  },
+  "player": {
+    "errorTitle": "التشغيل غير ممكن",
+    "errorSubtitle": "لا يمكن تشغيل هذا العنوان على هذا الجهاز حاليًا.",
+    "version": "الإصدار",
+    "versionNumbered": "الإصدار {{number}}",
+    "quality": "الجودة",
+    "qualityWithBandwidth": "{{label}} ({{mbits}} ميغابت/ث)",
+    "audio": "الصوت",
+    "subtitles": "الترجمة",
+    "subtitlesOff": "إيقاف",
+    "skipIntro": "تخطي المقدمة",
+    "skipOutro": "تخطي النهاية",
+    "original": "الأصلي",
+    "watching": "أنت تشاهد",
+    "episodeLine": "{{series}} {{season}}: الحلقة {{episode}}",
+    "speedTitle": "سرعة التشغيل",
+    "speed": {
+      "normal": "1x (عادية)"
+    },
+    "controls": {
+      "nextEpisode": "الحلقة التالية",
+      "audioAndSubtitles": "الصوت والترجمة",
+      "playbackSpeed": "سرعة التشغيل",
+      "quality": "الجودة"
+    },
+    "upNext": {
+      "label": "التالي بعد {{seconds}} ثانية",
+      "hint": "OK = التشغيل الآن · <1></1> = إغلاق"
+    }
+  },
+  "media": {
+    "quality": {
+      "auto": "تلقائي",
+      "original": "الأصلي",
+      "1080": "1080p",
+      "720": "720p HD",
+      "480": "480p",
+      "360": "360p"
+    },
+    "subtitleSize": {
+      "small": "صغير",
+      "normal": "عادي",
+      "large": "كبير"
+    },
+    "runtime": {
+      "minutes": "{{count}} دقيقة",
+      "hoursMinutes": "{{hours}} ساعة {{minutes}} دقيقة"
+    },
+    "track": {
+      "audioDescription": "الوصف الصوتي",
+      "forced": "إجباري",
+      "sdh": "SDH",
+      "stereo": "ستيريو",
+      "mono": "أحادي"
+    },
+    "language": {
+      "unknown": "غير معروفة",
+      "deu": "الألمانية",
+      "eng": "الإنجليزية",
+      "jpn": "اليابانية",
+      "kor": "الكورية",
+      "fra": "الفرنسية",
+      "spa": "الإسبانية",
+      "ita": "الإيطالية",
+      "rus": "الروسية",
+      "ukr": "الأوكرانية",
+      "zho": "الصينية",
+      "por": "البرتغالية",
+      "nld": "الهولندية",
+      "pol": "البولندية",
+      "tur": "التركية",
+      "ara": "العربية",
+      "hin": "الهندية",
+      "swe": "السويدية",
+      "dan": "الدنماركية",
+      "nor": "النرويجية",
+      "fin": "الفنلندية",
+      "ces": "التشيكية",
+      "hun": "المجرية",
+      "ell": "اليونانية",
+      "heb": "العبرية",
+      "tha": "التايلاندية",
+      "vie": "الفيتنامية",
+      "ron": "الرومانية",
+      "bul": "البلغارية"
+    }
+  },
+  "errors": {
+    "noJellyfinServer": "ليس خادم Jellyfin",
+    "quickConnectStart": "تعذّر بدء Quick Connect ({{status}})",
+    "quickConnectPoll": "خطأ في Quick Connect ({{status}})",
+    "quickConnectAuth": "فشل تسجيل الدخول ({{status}})"
+  }
+}

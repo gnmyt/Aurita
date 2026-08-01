@@ -1,0 +1,330 @@
+{
+  "common": {
+    "actions": {
+      "back": "Indietro",
+      "cancel": "Annulla",
+      "confirm": "Conferma",
+      "remove": "Rimuovi",
+      "retry": "Riprova",
+      "signOut": "Esci",
+      "done": "Fatto"
+    },
+    "loader": {
+      "label": "Caricamento…"
+    },
+    "itemGrid": {
+      "empty": "Nessun contenuto trovato."
+    },
+    "card": {
+      "movie": "Film",
+      "series": "Serie",
+      "seriesWithYear": "Serie · {{year}}",
+      "seasonEpisodes_one": "{{count}} episodio",
+      "seasonEpisodes_many": "{{count}} episodi",
+      "seasonEpisodes_other": "{{count}} episodi",
+      "folder": "Cartella",
+      "episodeCode": "S{{season}}:E{{episode}}"
+    },
+    "topNav": {
+      "home": "Home",
+      "shorts": "Shorts",
+      "syncPlay": "Guarda insieme"
+    },
+    "screenSaver": {
+      "locale": "it-IT"
+    },
+    "trailerOverlay": {
+      "closeHint": "Indietro per chiudere"
+    },
+    "spotlight": {
+      "play": "Riproduci",
+      "watch": "Guarda",
+      "moreInfo": "Altre info"
+    },
+    "cardOptions": {
+      "resume": "Riprendi",
+      "play": "Riproduci",
+      "viewDetails": "Vedi dettagli",
+      "markUnwatched": "Segna come non visto",
+      "markWatched": "Segna come visto",
+      "removeFromWatchlist": "Rimuovi dalla lista",
+      "addToWatchlist": "Aggiungi alla lista",
+      "removeFromContinueWatching": "Rimuovi da «Continua a guardare»",
+      "toast": {
+        "markedUnwatched": "Segnato come non visto",
+        "markedWatched": "Segnato come visto",
+        "removedFromWatchlist": "Rimosso dalla lista",
+        "addedToWatchlist": "Aggiunto alla lista",
+        "removedFromContinueWatching": "Rimosso da «Continua a guardare»"
+      }
+    },
+    "pinPad": {
+      "title": {
+        "enter": "Scegli un PIN",
+        "confirm": "Conferma PIN",
+        "verify": "Inserisci il PIN"
+      },
+      "subtitle": {
+        "enter": "Inserisci una sequenza di 4 direzioni con i tasti freccia.",
+        "confirm": "Inserisci di nuovo la stessa sequenza di direzioni.",
+        "verify": "Questo profilo è bloccato."
+      },
+      "error": {
+        "mismatch": "I PIN non coincidono. Riprova.",
+        "wrong": "PIN errato. Riprova."
+      },
+      "forgot": "PIN dimenticato? Tieni premuto <1>OK</1> per uscire."
+    },
+    "profilePicker": {
+      "title": "Chi sta guardando?",
+      "addProfile": "Aggiungi profilo",
+      "manageProfiles": "Gestisci profili",
+      "settings": "Impostazioni",
+      "removeTitle": "Rimuovere il profilo?",
+      "removeMessage": "«{{name}}» verrà rimosso da questo dispositivo."
+    },
+    "serverConnect": {
+      "title": "Connettiti al tuo server",
+      "subtitle": "Inserisci l’indirizzo del tuo server Jellyfin, ad es. <1>jellyfin.example.com</1>.",
+      "placeholder": "jellyfin.example.com",
+      "connecting": "Connessione…",
+      "connect": "Connetti",
+      "unreachable": "Server irraggiungibile. Controlla l’indirizzo; per installazioni in una sottocartella inserisci il percorso completo (ad es. jellyfin.example.com/jellyfin).",
+      "failed": "Connessione non riuscita: {{message}}"
+    },
+    "setupWizard": {
+      "addServer": "Aggiungi nuovo server",
+      "currentServer": "Server attuale",
+      "chooseTitle": "Quale server?",
+      "chooseSubtitle": "Scegli il server su cui deve accedere il nuovo profilo.",
+      "welcomeTitle": "Benvenuto in {{brand}}",
+      "welcomeSubtitle": "Accedi con il tuo account Jellyfin per goderti film e serie sul grande schermo.",
+      "quickConnectDisabled": "Quick Connect non è attivo su {{host}}. Attivalo nelle impostazioni del server.",
+      "signIn": "Accedi",
+      "pairingTitle": "Accedi dal telefono",
+      "pairingStep1": "Apri <1>{{host}}</1> sul telefono o sul computer e accedi.",
+      "pairingStep2": "Vai su <1>Impostazioni utente <3></3> Quick Connect</1>.",
+      "pairingStep3": "Inserisci il codice seguente:",
+      "pairingPlaceholder": "— — —",
+      "waiting": "In attesa di conferma…",
+      "authorizing": "Accesso eseguito! Caricamento…",
+      "expired": "Codice scaduto. Richiedi un nuovo codice.",
+      "newCode": "Nuovo codice",
+      "qrHint": "Scansiona per aprire la pagina"
+    }
+  },
+  "home": {
+    "continueWatching": "Continua a guardare",
+    "nextUp": "Prossimo",
+    "watchlist": "La mia lista",
+    "because": "Perché hai visto «{{name}}»",
+    "latestIn": "Novità in {{library}}",
+    "suggestions": "Consigliati per te"
+  },
+  "library": {
+    "fallbackTitle": "Libreria",
+    "sort": {
+      "name": "Nome (A–Z)",
+      "added": "Aggiunti di recente",
+      "year": "Anno di uscita",
+      "rating": "Valutazione",
+      "random": "Casuale"
+    },
+    "filter": {
+      "all": "Tutti",
+      "unplayed": "Non visti",
+      "fav": "Preferiti"
+    }
+  },
+  "browse": {
+    "person": "Persona",
+    "genre": "Genere · {{name}}"
+  },
+  "detail": {
+    "errorTitle": "Impossibile caricare",
+    "errorSubtitle": "Controlla la connessione e riprova.",
+    "resume": "Riprendi",
+    "play": "Riproduci",
+    "restart": "Ricomincia",
+    "playSeries": "Riproduci",
+    "trailer": "Trailer",
+    "watched": "Visto",
+    "markWatched": "Segna come visto",
+    "onWatchlist": "Nella lista",
+    "watchlist": "La mia lista",
+    "castAndCrew": "Cast e troupe",
+    "extras": "Extra",
+    "otherVersion": "Altra versione",
+    "similar": "Potrebbe piacerti anche",
+    "toast": {
+      "markedWatched": "Segnato come visto",
+      "markedUnwatched": "Segnato come non visto",
+      "addedToWatchlist": "Aggiunto alla lista",
+      "removedFromWatchlist": "Rimosso dalla lista"
+    }
+  },
+  "search": {
+    "placeholder": "Cerca…",
+    "space": "Spazio",
+    "delete": "Cancella",
+    "clear": "Svuota",
+    "noResults": "Nessun risultato per «{{query}}».",
+    "people": "Persone"
+  },
+  "shorts": {
+    "empty": "Nessun trailer trovato.",
+    "loading": "Caricamento trailer…",
+    "hintWatch": "OK = Guarda",
+    "hintSwitch": "Cambia",
+    "hintSound": "M = Audio"
+  },
+  "syncPlay": {
+    "title": "Guarda insieme",
+    "yourGroup": "Il tuo gruppo",
+    "members": "Membri: {{members}} · Stato: {{state}}",
+    "leaveGroup": "Esci dal gruppo",
+    "leaveGroupSub": "La riproduzione non sarà più sincronizzata",
+    "groupNote": "Avvia un film o un episodio: la riproduzione viene sincronizzata con tutto il gruppo. Pausa, riproduzione e avanzamento valgono per tutti.",
+    "actions": "Azioni",
+    "createGroup": "Crea nuovo gruppo",
+    "createGroupSub": "Apri un gruppo salotto per guardare insieme",
+    "defaultGroupName": "Salotto {{brand}}",
+    "availableGroups": "Gruppi disponibili",
+    "loading": "Caricamento…",
+    "noGroups": "Nessun gruppo aperto",
+    "noGroupsSub": "Crea un nuovo gruppo per guardare insieme.",
+    "groupSummary": "{{members}} · {{state}}",
+    "empty": "Vuoto",
+    "noMembers": "-"
+  },
+  "settings": {
+    "title": "Profilo e impostazioni",
+    "profileFallback": "Profilo",
+    "switchProfile": "Cambia o aggiungi un profilo",
+    "profileLock": "Blocco profilo",
+    "profileLockSub": "PIN per accedere a questo profilo",
+    "signOut": "Esci",
+    "signOutSub": "Disconnetti questo profilo da questo dispositivo",
+    "signOutTitle": "Uscire?",
+    "signOutMessage": "«{{name}}» verrà disconnesso da questo dispositivo.",
+    "thisProfile": "Questo profilo",
+    "languageSection": "Lingua",
+    "appLanguage": "Lingua dell’app",
+    "appLanguageSub": "Lingua usata in tutta l’interfaccia",
+    "languageTitle": "Scegli la lingua",
+    "playback": "Riproduzione",
+    "autoplayNext": "Riproduci automaticamente l’episodio successivo",
+    "autoplayNextSub": "Passa automaticamente all’episodio successivo alla fine",
+    "autoSkipSegments": "Salta automaticamente sigla e titoli di coda",
+    "autoSkipSegmentsSub": "Salta le sezioni contrassegnate senza premere alcun tasto",
+    "autoplayPreviews": "Riproduci automaticamente le anteprime",
+    "autoplayPreviewsSub": "Scorri automaticamente i consigli nella schermata iniziale",
+    "defaultQuality": "Qualità di riproduzione predefinita",
+    "defaultQualitySub": "Qualità con cui inizia la riproduzione",
+    "subtitles": "Sottotitoli",
+    "subtitleSize": "Dimensione dei sottotitoli",
+    "subtitleSizeSub": "Regola la dimensione dei sottotitoli",
+    "subtitleBackground": "Sfondo dei sottotitoli",
+    "subtitleBackgroundSub": "Mostra una barra scurita dietro i sottotitoli",
+    "on": "Attivo",
+    "off": "Disattivo",
+    "footer": "{{brand}} · Un’interfaccia per Jellyfin",
+    "toast": {
+      "pinEnabled": "Blocco profilo attivato",
+      "pinDisabled": "Blocco profilo disattivato"
+    }
+  },
+  "player": {
+    "errorTitle": "Riproduzione non possibile",
+    "errorSubtitle": "Questo titolo al momento non può essere riprodotto su questo dispositivo.",
+    "version": "Versione",
+    "versionNumbered": "Versione {{number}}",
+    "quality": "Qualità",
+    "qualityWithBandwidth": "{{label}} ({{mbits}} Mbit/s)",
+    "audio": "Audio",
+    "subtitles": "Sottotitoli",
+    "subtitlesOff": "Disattivati",
+    "skipIntro": "Salta sigla",
+    "skipOutro": "Salta titoli di coda",
+    "original": "Originale",
+    "watching": "Stai guardando",
+    "episodeLine": "{{series}} {{season}}: ep. {{episode}}",
+    "speedTitle": "Velocità di riproduzione",
+    "speed": {
+      "normal": "1x (Normale)"
+    },
+    "controls": {
+      "nextEpisode": "Episodio successivo",
+      "audioAndSubtitles": "Audio e sottotitoli",
+      "playbackSpeed": "Velocità di riproduzione",
+      "quality": "Qualità"
+    },
+    "upNext": {
+      "label": "Prossimo tra {{seconds}} s",
+      "hint": "OK = Riproduci ora · <1></1> = Ignora"
+    }
+  },
+  "media": {
+    "quality": {
+      "auto": "Automatica",
+      "original": "Originale",
+      "1080": "1080p",
+      "720": "720p HD",
+      "480": "480p",
+      "360": "360p"
+    },
+    "subtitleSize": {
+      "small": "Piccoli",
+      "normal": "Normali",
+      "large": "Grandi"
+    },
+    "runtime": {
+      "minutes": "{{count}} min",
+      "hoursMinutes": "{{hours}} h {{minutes}} min"
+    },
+    "track": {
+      "audioDescription": "Audiodescrizione",
+      "forced": "Forzati",
+      "sdh": "SDH",
+      "stereo": "Stereo",
+      "mono": "Mono"
+    },
+    "language": {
+      "unknown": "Sconosciuta",
+      "deu": "Tedesco",
+      "eng": "Inglese",
+      "jpn": "Giapponese",
+      "kor": "Coreano",
+      "fra": "Francese",
+      "spa": "Spagnolo",
+      "ita": "Italiano",
+      "rus": "Russo",
+      "ukr": "Ucraino",
+      "zho": "Cinese",
+      "por": "Portoghese",
+      "nld": "Olandese",
+      "pol": "Polacco",
+      "tur": "Turco",
+      "ara": "Arabo",
+      "hin": "Hindi",
+      "swe": "Svedese",
+      "dan": "Danese",
+      "nor": "Norvegese",
+      "fin": "Finlandese",
+      "ces": "Ceco",
+      "hun": "Ungherese",
+      "ell": "Greco",
+      "heb": "Ebraico",
+      "tha": "Thai",
+      "vie": "Vietnamita",
+      "ron": "Rumeno",
+      "bul": "Bulgaro"
+    }
+  },
+  "errors": {
+    "noJellyfinServer": "Non è un server Jellyfin",
+    "quickConnectStart": "Impossibile avviare Quick Connect ({{status}})",
+    "quickConnectPoll": "Errore Quick Connect ({{status}})",
+    "quickConnectAuth": "Accesso non riuscito ({{status}})"
+  }
+}

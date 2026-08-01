@@ -1,0 +1,328 @@
+{
+  "common": {
+    "actions": {
+      "back": "戻る",
+      "cancel": "キャンセル",
+      "confirm": "確認",
+      "remove": "削除",
+      "retry": "再試行",
+      "signOut": "サインアウト",
+      "done": "完了"
+    },
+    "loader": {
+      "label": "読み込み中…"
+    },
+    "itemGrid": {
+      "empty": "コンテンツが見つかりません。"
+    },
+    "card": {
+      "movie": "映画",
+      "series": "シリーズ",
+      "seriesWithYear": "シリーズ · {{year}}",
+      "seasonEpisodes_other": "{{count}}エピソード",
+      "folder": "フォルダー",
+      "episodeCode": "S{{season}}:E{{episode}}"
+    },
+    "topNav": {
+      "home": "ホーム",
+      "shorts": "ショート",
+      "syncPlay": "一緒に見る"
+    },
+    "screenSaver": {
+      "locale": "ja-JP"
+    },
+    "trailerOverlay": {
+      "closeHint": "戻るで閉じる"
+    },
+    "spotlight": {
+      "play": "再生",
+      "watch": "見る",
+      "moreInfo": "詳細"
+    },
+    "cardOptions": {
+      "resume": "続きから再生",
+      "play": "再生",
+      "viewDetails": "詳細を見る",
+      "markUnwatched": "未視聴にする",
+      "markWatched": "視聴済みにする",
+      "removeFromWatchlist": "マイリストから削除",
+      "addToWatchlist": "マイリストに追加",
+      "removeFromContinueWatching": "「続きを見る」から削除",
+      "toast": {
+        "markedUnwatched": "未視聴にしました",
+        "markedWatched": "視聴済みにしました",
+        "removedFromWatchlist": "マイリストから削除しました",
+        "addedToWatchlist": "マイリストに追加しました",
+        "removedFromContinueWatching": "「続きを見る」から削除しました"
+      }
+    },
+    "pinPad": {
+      "title": {
+        "enter": "PINを設定",
+        "confirm": "PINを確認",
+        "verify": "PINを入力"
+      },
+      "subtitle": {
+        "enter": "方向キーで4方向の並びを入力してください。",
+        "confirm": "同じ方向の並びをもう一度入力してください。",
+        "verify": "このプロフィールはロックされています。"
+      },
+      "error": {
+        "mismatch": "PINが一致しません。もう一度お試しください。",
+        "wrong": "PINが違います。もう一度お試しください。"
+      },
+      "forgot": "PINをお忘れですか？ <1>OK</1> を長押しでサインアウトします。"
+    },
+    "profilePicker": {
+      "title": "誰が見ますか？",
+      "addProfile": "プロフィールを追加",
+      "manageProfiles": "プロフィールを管理",
+      "settings": "設定",
+      "removeTitle": "プロフィールを削除しますか？",
+      "removeMessage": "「{{name}}」をこのデバイスから削除します。"
+    },
+    "serverConnect": {
+      "title": "サーバーに接続",
+      "subtitle": "Jellyfinサーバーのアドレスを入力してください（例: <1>jellyfin.example.com</1>）。",
+      "placeholder": "jellyfin.example.com",
+      "connecting": "接続中…",
+      "connect": "接続",
+      "unreachable": "サーバーに接続できません。アドレスを確認してください。サブフォルダーにインストールしている場合は、完全なパスを入力してください（例: jellyfin.example.com/jellyfin）。",
+      "failed": "接続に失敗しました: {{message}}"
+    },
+    "setupWizard": {
+      "addServer": "新しいサーバーを追加",
+      "currentServer": "現在のサーバー",
+      "chooseTitle": "どのサーバーですか？",
+      "chooseSubtitle": "新しいプロフィールがサインインするサーバーを選択してください。",
+      "welcomeTitle": "{{brand}}へようこそ",
+      "welcomeSubtitle": "Jellyfinアカウントでサインインして、大画面で映画やドラマをお楽しみください。",
+      "quickConnectDisabled": "{{host}}ではQuick Connectが有効になっていません。サーバー設定で有効にしてください。",
+      "signIn": "サインイン",
+      "pairingTitle": "スマホでサインイン",
+      "pairingStep1": "スマホまたはパソコンで <1>{{host}}</1> を開いてサインインします。",
+      "pairingStep2": "<1>ユーザー設定 <3></3> Quick Connect</1> を開きます。",
+      "pairingStep3": "次のコードを入力します:",
+      "pairingPlaceholder": "— — —",
+      "waiting": "確認を待っています…",
+      "authorizing": "サインインしました。読み込み中…",
+      "expired": "コードの有効期限が切れました。新しいコードを取得してください。",
+      "newCode": "新しいコード",
+      "qrHint": "スキャンしてページを開く"
+    }
+  },
+  "home": {
+    "continueWatching": "続きを見る",
+    "nextUp": "次のエピソード",
+    "watchlist": "マイリスト",
+    "because": "「{{name}}」を見たあなたへ",
+    "latestIn": "{{library}}の新着",
+    "suggestions": "あなたへのおすすめ"
+  },
+  "library": {
+    "fallbackTitle": "ライブラリ",
+    "sort": {
+      "name": "名前（A–Z）",
+      "added": "最近追加された順",
+      "year": "公開年",
+      "rating": "評価",
+      "random": "ランダム"
+    },
+    "filter": {
+      "all": "すべて",
+      "unplayed": "未視聴",
+      "fav": "お気に入り"
+    }
+  },
+  "browse": {
+    "person": "人物",
+    "genre": "ジャンル · {{name}}"
+  },
+  "detail": {
+    "errorTitle": "読み込めませんでした",
+    "errorSubtitle": "接続を確認して、もう一度お試しください。",
+    "resume": "続きから再生",
+    "play": "再生",
+    "restart": "最初から再生",
+    "playSeries": "再生",
+    "trailer": "予告編",
+    "watched": "視聴済み",
+    "markWatched": "視聴済みにする",
+    "onWatchlist": "マイリスト登録済み",
+    "watchlist": "マイリスト",
+    "castAndCrew": "キャストとスタッフ",
+    "extras": "特典映像",
+    "otherVersion": "別バージョン",
+    "similar": "こちらもおすすめ",
+    "toast": {
+      "markedWatched": "視聴済みにしました",
+      "markedUnwatched": "未視聴にしました",
+      "addedToWatchlist": "マイリストに追加しました",
+      "removedFromWatchlist": "マイリストから削除しました"
+    }
+  },
+  "search": {
+    "placeholder": "検索…",
+    "space": "スペース",
+    "delete": "削除",
+    "clear": "クリア",
+    "noResults": "「{{query}}」に一致する結果はありません。",
+    "people": "人物"
+  },
+  "shorts": {
+    "empty": "予告編が見つかりません。",
+    "loading": "予告編を読み込み中…",
+    "hintWatch": "OK = 見る",
+    "hintSwitch": "切り替え",
+    "hintSound": "M = 音声"
+  },
+  "syncPlay": {
+    "title": "一緒に見る",
+    "yourGroup": "あなたのグループ",
+    "members": "メンバー: {{members}} · 状態: {{state}}",
+    "leaveGroup": "グループから退出",
+    "leaveGroupSub": "再生は同期されなくなります",
+    "groupNote": "映画やエピソードを再生すると、グループ全員と再生が同期されます。一時停止・再生・シークは全員に適用されます。",
+    "actions": "操作",
+    "createGroup": "新しいグループを作成",
+    "createGroupSub": "一緒に見るためのリビンググループを作成します",
+    "defaultGroupName": "{{brand}}リビング",
+    "availableGroups": "参加できるグループ",
+    "loading": "読み込み中…",
+    "noGroups": "公開中のグループはありません",
+    "noGroupsSub": "新しいグループを作成して一緒に見ましょう。",
+    "groupSummary": "{{members}} · {{state}}",
+    "empty": "なし",
+    "noMembers": "-"
+  },
+  "settings": {
+    "title": "プロフィールと設定",
+    "profileFallback": "プロフィール",
+    "switchProfile": "プロフィールを切り替え・追加",
+    "profileLock": "プロフィールロック",
+    "profileLockSub": "このプロフィールにアクセスするためのPIN",
+    "signOut": "サインアウト",
+    "signOutSub": "このデバイスでこのプロフィールからサインアウトします",
+    "signOutTitle": "サインアウトしますか？",
+    "signOutMessage": "「{{name}}」はこのデバイスからサインアウトされます。",
+    "thisProfile": "このプロフィール",
+    "languageSection": "言語",
+    "appLanguage": "アプリの言語",
+    "appLanguageSub": "インターフェイス全体で使用される言語",
+    "languageTitle": "言語を選択",
+    "playback": "再生",
+    "autoplayNext": "次のエピソードを自動再生",
+    "autoplayNextSub": "エピソードの終わりに自動で次へ進みます",
+    "autoSkipSegments": "オープニングとエンドロールを自動スキップ",
+    "autoSkipSegmentsSub": "マークされた区間をボタン操作なしでスキップします",
+    "autoplayPreviews": "プレビューを自動再生",
+    "autoplayPreviewsSub": "ホーム画面のおすすめを自動的に切り替えます",
+    "defaultQuality": "デフォルトの再生画質",
+    "defaultQualitySub": "再生開始時の画質",
+    "subtitles": "字幕",
+    "subtitleSize": "字幕のサイズ",
+    "subtitleSizeSub": "字幕のサイズを調整します",
+    "subtitleBackground": "字幕の背景",
+    "subtitleBackgroundSub": "字幕の背後に暗い帯を表示します",
+    "on": "オン",
+    "off": "オフ",
+    "footer": "{{brand}} · Jellyfin向けインターフェイス",
+    "toast": {
+      "pinEnabled": "プロフィールロックを有効にしました",
+      "pinDisabled": "プロフィールロックを無効にしました"
+    }
+  },
+  "player": {
+    "errorTitle": "再生できません",
+    "errorSubtitle": "このタイトルは現在このデバイスでは再生できません。",
+    "version": "バージョン",
+    "versionNumbered": "バージョン{{number}}",
+    "quality": "画質",
+    "qualityWithBandwidth": "{{label}}（{{mbits}} Mbit/s）",
+    "audio": "音声",
+    "subtitles": "字幕",
+    "subtitlesOff": "オフ",
+    "skipIntro": "オープニングをスキップ",
+    "skipOutro": "エンドロールをスキップ",
+    "original": "オリジナル",
+    "watching": "視聴中",
+    "episodeLine": "{{series}} {{season}}: 第{{episode}}話",
+    "speedTitle": "再生速度",
+    "speed": {
+      "normal": "1x（標準）"
+    },
+    "controls": {
+      "nextEpisode": "次のエピソード",
+      "audioAndSubtitles": "音声と字幕",
+      "playbackSpeed": "再生速度",
+      "quality": "画質"
+    },
+    "upNext": {
+      "label": "{{seconds}}秒後に次のエピソード",
+      "hint": "OK = すぐに再生 · <1></1> = 閉じる"
+    }
+  },
+  "media": {
+    "quality": {
+      "auto": "自動",
+      "original": "オリジナル",
+      "1080": "1080p",
+      "720": "720p HD",
+      "480": "480p",
+      "360": "360p"
+    },
+    "subtitleSize": {
+      "small": "小",
+      "normal": "標準",
+      "large": "大"
+    },
+    "runtime": {
+      "minutes": "{{count}}分",
+      "hoursMinutes": "{{hours}}時間{{minutes}}分"
+    },
+    "track": {
+      "audioDescription": "音声解説",
+      "forced": "強制",
+      "sdh": "SDH",
+      "stereo": "ステレオ",
+      "mono": "モノラル"
+    },
+    "language": {
+      "unknown": "不明",
+      "deu": "ドイツ語",
+      "eng": "英語",
+      "jpn": "日本語",
+      "kor": "韓国語",
+      "fra": "フランス語",
+      "spa": "スペイン語",
+      "ita": "イタリア語",
+      "rus": "ロシア語",
+      "ukr": "ウクライナ語",
+      "zho": "中国語",
+      "por": "ポルトガル語",
+      "nld": "オランダ語",
+      "pol": "ポーランド語",
+      "tur": "トルコ語",
+      "ara": "アラビア語",
+      "hin": "ヒンディー語",
+      "swe": "スウェーデン語",
+      "dan": "デンマーク語",
+      "nor": "ノルウェー語",
+      "fin": "フィンランド語",
+      "ces": "チェコ語",
+      "hun": "ハンガリー語",
+      "ell": "ギリシャ語",
+      "heb": "ヘブライ語",
+      "tha": "タイ語",
+      "vie": "ベトナム語",
+      "ron": "ルーマニア語",
+      "bul": "ブルガリア語"
+    }
+  },
+  "errors": {
+    "noJellyfinServer": "Jellyfinサーバーではありません",
+    "quickConnectStart": "Quick Connectを開始できませんでした（{{status}}）",
+    "quickConnectPoll": "Quick Connectエラー（{{status}}）",
+    "quickConnectAuth": "サインインに失敗しました（{{status}}）"
+  }
+}

@@ -1,0 +1,329 @@
+{
+  "common": {
+    "actions": {
+      "back": "Tillbaka",
+      "cancel": "Avbryt",
+      "confirm": "Bekräfta",
+      "remove": "Ta bort",
+      "retry": "Försök igen",
+      "signOut": "Logga ut",
+      "done": "Klar"
+    },
+    "loader": {
+      "label": "Läser in…"
+    },
+    "itemGrid": {
+      "empty": "Inget innehåll hittades."
+    },
+    "card": {
+      "movie": "Film",
+      "series": "Serie",
+      "seriesWithYear": "Serie · {{year}}",
+      "seasonEpisodes_one": "{{count}} avsnitt",
+      "seasonEpisodes_other": "{{count}} avsnitt",
+      "folder": "Mapp",
+      "episodeCode": "S{{season}}:A{{episode}}"
+    },
+    "topNav": {
+      "home": "Start",
+      "shorts": "Shorts",
+      "syncPlay": "Titta tillsammans"
+    },
+    "screenSaver": {
+      "locale": "sv-SE"
+    },
+    "trailerOverlay": {
+      "closeHint": "Tillbaka för att stänga"
+    },
+    "spotlight": {
+      "play": "Spela",
+      "watch": "Titta",
+      "moreInfo": "Mer info"
+    },
+    "cardOptions": {
+      "resume": "Fortsätt",
+      "play": "Spela",
+      "viewDetails": "Visa detaljer",
+      "markUnwatched": "Markera som osedd",
+      "markWatched": "Markera som sedd",
+      "removeFromWatchlist": "Ta bort från listan",
+      "addToWatchlist": "Lägg till i listan",
+      "removeFromContinueWatching": "Ta bort från ”Fortsätt titta”",
+      "toast": {
+        "markedUnwatched": "Markerad som osedd",
+        "markedWatched": "Markerad som sedd",
+        "removedFromWatchlist": "Borttagen från listan",
+        "addedToWatchlist": "Tillagd i listan",
+        "removedFromContinueWatching": "Borttagen från ”Fortsätt titta”"
+      }
+    },
+    "pinPad": {
+      "title": {
+        "enter": "Välj en PIN-kod",
+        "confirm": "Bekräfta PIN-kod",
+        "verify": "Ange PIN-kod"
+      },
+      "subtitle": {
+        "enter": "Ange en sekvens med 4 riktningar med piltangenterna.",
+        "confirm": "Ange samma sekvens med riktningar en gång till.",
+        "verify": "Den här profilen är låst."
+      },
+      "error": {
+        "mismatch": "PIN-koderna stämmer inte. Försök igen.",
+        "wrong": "Fel PIN-kod. Försök igen."
+      },
+      "forgot": "Glömt PIN-koden? Håll in <1>OK</1> för att logga ut."
+    },
+    "profilePicker": {
+      "title": "Vem tittar?",
+      "addProfile": "Lägg till profil",
+      "manageProfiles": "Hantera profiler",
+      "settings": "Inställningar",
+      "removeTitle": "Ta bort profil?",
+      "removeMessage": "”{{name}}” tas bort från den här enheten."
+    },
+    "serverConnect": {
+      "title": "Anslut till din server",
+      "subtitle": "Ange adressen till din Jellyfin-server, t.ex. <1>jellyfin.example.com</1>.",
+      "placeholder": "jellyfin.example.com",
+      "connecting": "Ansluter…",
+      "connect": "Anslut",
+      "unreachable": "Servern kan inte nås. Kontrollera adressen; för installationer i en undermapp anger du hela sökvägen (t.ex. jellyfin.example.com/jellyfin).",
+      "failed": "Anslutningen misslyckades: {{message}}"
+    },
+    "setupWizard": {
+      "addServer": "Lägg till ny server",
+      "currentServer": "Aktuell server",
+      "chooseTitle": "Vilken server?",
+      "chooseSubtitle": "Välj servern som den nya profilen ska logga in på.",
+      "welcomeTitle": "Välkommen till {{brand}}",
+      "welcomeSubtitle": "Logga in med ditt Jellyfin-konto för att njuta av filmer och serier på stora skärmen.",
+      "quickConnectDisabled": "Quick Connect är inte aktiverat på {{host}}. Aktivera det i serverinställningarna.",
+      "signIn": "Logga in",
+      "pairingTitle": "Logga in på din telefon",
+      "pairingStep1": "Öppna <1>{{host}}</1> på telefonen eller datorn och logga in.",
+      "pairingStep2": "Gå till <1>Användarinställningar <3></3> Quick Connect</1>.",
+      "pairingStep3": "Ange följande kod:",
+      "pairingPlaceholder": "— — —",
+      "waiting": "Väntar på bekräftelse…",
+      "authorizing": "Inloggad! Läser in…",
+      "expired": "Koden har gått ut. Begär en ny kod.",
+      "newCode": "Ny kod",
+      "qrHint": "Skanna för att öppna sidan"
+    }
+  },
+  "home": {
+    "continueWatching": "Fortsätt titta",
+    "nextUp": "Nästa",
+    "watchlist": "Min lista",
+    "because": "Eftersom du såg ”{{name}}”",
+    "latestIn": "Nytt i {{library}}",
+    "suggestions": "Förslag till dig"
+  },
+  "library": {
+    "fallbackTitle": "Bibliotek",
+    "sort": {
+      "name": "Namn (A–Ö)",
+      "added": "Nyligen tillagt",
+      "year": "Utgivningsår",
+      "rating": "Betyg",
+      "random": "Slumpmässigt"
+    },
+    "filter": {
+      "all": "Alla",
+      "unplayed": "Osedda",
+      "fav": "Favoriter"
+    }
+  },
+  "browse": {
+    "person": "Person",
+    "genre": "Genre · {{name}}"
+  },
+  "detail": {
+    "errorTitle": "Kunde inte läsas in",
+    "errorSubtitle": "Kontrollera din anslutning och försök igen.",
+    "resume": "Fortsätt",
+    "play": "Spela",
+    "restart": "Börja om",
+    "playSeries": "Spela",
+    "trailer": "Trailer",
+    "watched": "Sedd",
+    "markWatched": "Markera som sedd",
+    "onWatchlist": "I listan",
+    "watchlist": "Min lista",
+    "castAndCrew": "Skådespelare och team",
+    "extras": "Extramaterial",
+    "otherVersion": "Annan version",
+    "similar": "Du kanske också gillar",
+    "toast": {
+      "markedWatched": "Markerad som sedd",
+      "markedUnwatched": "Markerad som osedd",
+      "addedToWatchlist": "Tillagd i listan",
+      "removedFromWatchlist": "Borttagen från listan"
+    }
+  },
+  "search": {
+    "placeholder": "Sök…",
+    "space": "Mellanslag",
+    "delete": "Radera",
+    "clear": "Rensa",
+    "noResults": "Inga resultat för ”{{query}}”.",
+    "people": "Personer"
+  },
+  "shorts": {
+    "empty": "Inga trailers hittades.",
+    "loading": "Läser in trailers…",
+    "hintWatch": "OK = Titta",
+    "hintSwitch": "Byt",
+    "hintSound": "M = Ljud"
+  },
+  "syncPlay": {
+    "title": "Titta tillsammans",
+    "yourGroup": "Din grupp",
+    "members": "Medlemmar: {{members}} · Status: {{state}}",
+    "leaveGroup": "Lämna gruppen",
+    "leaveGroupSub": "Uppspelningen synkroniseras inte längre",
+    "groupNote": "Starta en film eller ett avsnitt: uppspelningen synkroniseras med alla i gruppen. Paus, uppspelning och spolning gäller för alla.",
+    "actions": "Åtgärder",
+    "createGroup": "Skapa ny grupp",
+    "createGroupSub": "Öppna en vardagsrumsgrupp för att titta tillsammans",
+    "defaultGroupName": "{{brand}} vardagsrum",
+    "availableGroups": "Tillgängliga grupper",
+    "loading": "Läser in…",
+    "noGroups": "Inga öppna grupper",
+    "noGroupsSub": "Skapa en ny grupp för att titta tillsammans.",
+    "groupSummary": "{{members}} · {{state}}",
+    "empty": "Tom",
+    "noMembers": "-"
+  },
+  "settings": {
+    "title": "Profil och inställningar",
+    "profileFallback": "Profil",
+    "switchProfile": "Byt eller lägg till en profil",
+    "profileLock": "Profillås",
+    "profileLockSub": "PIN-kod för åtkomst till den här profilen",
+    "signOut": "Logga ut",
+    "signOutSub": "Logga ut den här profilen från den här enheten",
+    "signOutTitle": "Logga ut?",
+    "signOutMessage": "”{{name}}” loggas ut från den här enheten.",
+    "thisProfile": "Den här profilen",
+    "languageSection": "Språk",
+    "appLanguage": "Appens språk",
+    "appLanguageSub": "Språk som används i hela gränssnittet",
+    "languageTitle": "Välj språk",
+    "playback": "Uppspelning",
+    "autoplayNext": "Spela nästa avsnitt automatiskt",
+    "autoplayNextSub": "Fortsätt automatiskt till nästa avsnitt vid slutet",
+    "autoSkipSegments": "Hoppa över intro och eftertexter automatiskt",
+    "autoSkipSegmentsSub": "Hoppa över markerade avsnitt utan knapptryck",
+    "autoplayPreviews": "Spela förhandsvisningar automatiskt",
+    "autoplayPreviewsSub": "Bläddra automatiskt genom rekommendationerna på startskärmen",
+    "defaultQuality": "Standardkvalitet för uppspelning",
+    "defaultQualitySub": "Kvalitet som uppspelningen startar med",
+    "subtitles": "Undertexter",
+    "subtitleSize": "Storlek på undertexter",
+    "subtitleSizeSub": "Justera storleken på undertexterna",
+    "subtitleBackground": "Bakgrund för undertexter",
+    "subtitleBackgroundSub": "Visa en nedtonad ruta bakom undertexterna",
+    "on": "På",
+    "off": "Av",
+    "footer": "{{brand}} · Ett gränssnitt för Jellyfin",
+    "toast": {
+      "pinEnabled": "Profillås aktiverat",
+      "pinDisabled": "Profillås inaktiverat"
+    }
+  },
+  "player": {
+    "errorTitle": "Uppspelning är inte möjlig",
+    "errorSubtitle": "Den här titeln kan inte spelas upp på den här enheten just nu.",
+    "version": "Version",
+    "versionNumbered": "Version {{number}}",
+    "quality": "Kvalitet",
+    "qualityWithBandwidth": "{{label}} ({{mbits}} Mbit/s)",
+    "audio": "Ljud",
+    "subtitles": "Undertexter",
+    "subtitlesOff": "Av",
+    "skipIntro": "Hoppa över intro",
+    "skipOutro": "Hoppa över eftertexter",
+    "original": "Original",
+    "watching": "Du tittar på",
+    "episodeLine": "{{series}} {{season}}: avsnitt {{episode}}",
+    "speedTitle": "Uppspelningshastighet",
+    "speed": {
+      "normal": "1x (normal)"
+    },
+    "controls": {
+      "nextEpisode": "Nästa avsnitt",
+      "audioAndSubtitles": "Ljud och undertexter",
+      "playbackSpeed": "Uppspelningshastighet",
+      "quality": "Kvalitet"
+    },
+    "upNext": {
+      "label": "Nästa om {{seconds}} s",
+      "hint": "OK = Spela nu · <1></1> = Stäng"
+    }
+  },
+  "media": {
+    "quality": {
+      "auto": "Automatisk",
+      "original": "Original",
+      "1080": "1080p",
+      "720": "720p HD",
+      "480": "480p",
+      "360": "360p"
+    },
+    "subtitleSize": {
+      "small": "Liten",
+      "normal": "Normal",
+      "large": "Stor"
+    },
+    "runtime": {
+      "minutes": "{{count}} min",
+      "hoursMinutes": "{{hours}} tim {{minutes}} min"
+    },
+    "track": {
+      "audioDescription": "Syntolkning",
+      "forced": "Tvingade",
+      "sdh": "SDH",
+      "stereo": "Stereo",
+      "mono": "Mono"
+    },
+    "language": {
+      "unknown": "Okänt",
+      "deu": "Tyska",
+      "eng": "Engelska",
+      "jpn": "Japanska",
+      "kor": "Koreanska",
+      "fra": "Franska",
+      "spa": "Spanska",
+      "ita": "Italienska",
+      "rus": "Ryska",
+      "ukr": "Ukrainska",
+      "zho": "Kinesiska",
+      "por": "Portugisiska",
+      "nld": "Nederländska",
+      "pol": "Polska",
+      "tur": "Turkiska",
+      "ara": "Arabiska",
+      "hin": "Hindi",
+      "swe": "Svenska",
+      "dan": "Danska",
+      "nor": "Norska",
+      "fin": "Finska",
+      "ces": "Tjeckiska",
+      "hun": "Ungerska",
+      "ell": "Grekiska",
+      "heb": "Hebreiska",
+      "tha": "Thailändska",
+      "vie": "Vietnamesiska",
+      "ron": "Rumänska",
+      "bul": "Bulgariska"
+    }
+  },
+  "errors": {
+    "noJellyfinServer": "Ingen Jellyfin-server",
+    "quickConnectStart": "Quick Connect kunde inte startas ({{status}})",
+    "quickConnectPoll": "Quick Connect-fel ({{status}})",
+    "quickConnectAuth": "Inloggningen misslyckades ({{status}})"
+  }
+}

@@ -1,0 +1,328 @@
+{
+  "common": {
+    "actions": {
+      "back": "Quay lại",
+      "cancel": "Huỷ",
+      "confirm": "Xác nhận",
+      "remove": "Xoá",
+      "retry": "Thử lại",
+      "signOut": "Đăng xuất",
+      "done": "Xong"
+    },
+    "loader": {
+      "label": "Đang tải…"
+    },
+    "itemGrid": {
+      "empty": "Không tìm thấy nội dung."
+    },
+    "card": {
+      "movie": "Phim lẻ",
+      "series": "Phim bộ",
+      "seriesWithYear": "Phim bộ · {{year}}",
+      "seasonEpisodes_other": "{{count}} tập",
+      "folder": "Thư mục",
+      "episodeCode": "P{{season}}:T{{episode}}"
+    },
+    "topNav": {
+      "home": "Trang chủ",
+      "shorts": "Shorts",
+      "syncPlay": "Xem cùng nhau"
+    },
+    "screenSaver": {
+      "locale": "vi-VN"
+    },
+    "trailerOverlay": {
+      "closeHint": "Quay lại để đóng"
+    },
+    "spotlight": {
+      "play": "Phát",
+      "watch": "Xem",
+      "moreInfo": "Thông tin thêm"
+    },
+    "cardOptions": {
+      "resume": "Xem tiếp",
+      "play": "Phát",
+      "viewDetails": "Xem chi tiết",
+      "markUnwatched": "Đánh dấu là chưa xem",
+      "markWatched": "Đánh dấu là đã xem",
+      "removeFromWatchlist": "Xoá khỏi danh sách xem",
+      "addToWatchlist": "Thêm vào danh sách xem",
+      "removeFromContinueWatching": "Xoá khỏi “Xem tiếp”",
+      "toast": {
+        "markedUnwatched": "Đã đánh dấu là chưa xem",
+        "markedWatched": "Đã đánh dấu là đã xem",
+        "removedFromWatchlist": "Đã xoá khỏi danh sách xem",
+        "addedToWatchlist": "Đã thêm vào danh sách xem",
+        "removedFromContinueWatching": "Đã xoá khỏi “Xem tiếp”"
+      }
+    },
+    "pinPad": {
+      "title": {
+        "enter": "Chọn mã PIN",
+        "confirm": "Xác nhận mã PIN",
+        "verify": "Nhập mã PIN"
+      },
+      "subtitle": {
+        "enter": "Nhập chuỗi gồm 4 hướng bằng các phím mũi tên.",
+        "confirm": "Nhập lại đúng chuỗi hướng đó một lần nữa.",
+        "verify": "Hồ sơ này đang bị khoá."
+      },
+      "error": {
+        "mismatch": "Mã PIN không khớp. Vui lòng thử lại.",
+        "wrong": "Mã PIN không đúng. Vui lòng thử lại."
+      },
+      "forgot": "Quên mã PIN? Giữ <1>OK</1> để đăng xuất."
+    },
+    "profilePicker": {
+      "title": "Ai đang xem?",
+      "addProfile": "Thêm hồ sơ",
+      "manageProfiles": "Quản lý hồ sơ",
+      "settings": "Cài đặt",
+      "removeTitle": "Xoá hồ sơ?",
+      "removeMessage": "“{{name}}” sẽ bị xoá khỏi thiết bị này."
+    },
+    "serverConnect": {
+      "title": "Kết nối tới máy chủ của bạn",
+      "subtitle": "Nhập địa chỉ máy chủ Jellyfin của bạn, ví dụ <1>jellyfin.example.com</1>.",
+      "placeholder": "jellyfin.example.com",
+      "connecting": "Đang kết nối…",
+      "connect": "Kết nối",
+      "unreachable": "Không kết nối được máy chủ. Hãy kiểm tra địa chỉ; nếu cài trong thư mục con, hãy nhập đường dẫn đầy đủ (ví dụ jellyfin.example.com/jellyfin).",
+      "failed": "Kết nối thất bại: {{message}}"
+    },
+    "setupWizard": {
+      "addServer": "Thêm máy chủ mới",
+      "currentServer": "Máy chủ hiện tại",
+      "chooseTitle": "Máy chủ nào?",
+      "chooseSubtitle": "Chọn máy chủ mà hồ sơ mới sẽ đăng nhập.",
+      "welcomeTitle": "Chào mừng đến với {{brand}}",
+      "welcomeSubtitle": "Đăng nhập bằng tài khoản Jellyfin để thưởng thức phim và series trên màn hình lớn.",
+      "quickConnectDisabled": "Quick Connect chưa được bật trên {{host}}. Vui lòng bật trong cài đặt máy chủ.",
+      "signIn": "Đăng nhập",
+      "pairingTitle": "Đăng nhập trên điện thoại",
+      "pairingStep1": "Mở <1>{{host}}</1> trên điện thoại hoặc máy tính và đăng nhập.",
+      "pairingStep2": "Vào <1>Cài đặt người dùng <3></3> Quick Connect</1>.",
+      "pairingStep3": "Nhập mã sau:",
+      "pairingPlaceholder": "— — —",
+      "waiting": "Đang chờ xác nhận…",
+      "authorizing": "Đã đăng nhập! Đang tải…",
+      "expired": "Mã đã hết hạn. Vui lòng lấy mã mới.",
+      "newCode": "Mã mới",
+      "qrHint": "Quét để mở trang"
+    }
+  },
+  "home": {
+    "continueWatching": "Xem tiếp",
+    "nextUp": "Tiếp theo",
+    "watchlist": "Danh sách xem",
+    "because": "Vì bạn đã xem “{{name}}”",
+    "latestIn": "Mới trong {{library}}",
+    "suggestions": "Gợi ý cho bạn"
+  },
+  "library": {
+    "fallbackTitle": "Thư viện",
+    "sort": {
+      "name": "Tên (A–Z)",
+      "added": "Mới thêm gần đây",
+      "year": "Năm phát hành",
+      "rating": "Đánh giá",
+      "random": "Ngẫu nhiên"
+    },
+    "filter": {
+      "all": "Tất cả",
+      "unplayed": "Chưa xem",
+      "fav": "Yêu thích"
+    }
+  },
+  "browse": {
+    "person": "Nhân vật",
+    "genre": "Thể loại · {{name}}"
+  },
+  "detail": {
+    "errorTitle": "Không thể tải",
+    "errorSubtitle": "Vui lòng kiểm tra kết nối và thử lại.",
+    "resume": "Xem tiếp",
+    "play": "Phát",
+    "restart": "Xem từ đầu",
+    "playSeries": "Phát",
+    "trailer": "Trailer",
+    "watched": "Đã xem",
+    "markWatched": "Đánh dấu là đã xem",
+    "onWatchlist": "Có trong danh sách xem",
+    "watchlist": "Danh sách xem",
+    "castAndCrew": "Diễn viên và ê-kíp",
+    "extras": "Nội dung thêm",
+    "otherVersion": "Phiên bản khác",
+    "similar": "Có thể bạn cũng thích",
+    "toast": {
+      "markedWatched": "Đã đánh dấu là đã xem",
+      "markedUnwatched": "Đã đánh dấu là chưa xem",
+      "addedToWatchlist": "Đã thêm vào danh sách xem",
+      "removedFromWatchlist": "Đã xoá khỏi danh sách xem"
+    }
+  },
+  "search": {
+    "placeholder": "Tìm kiếm…",
+    "space": "Dấu cách",
+    "delete": "Xoá",
+    "clear": "Xoá hết",
+    "noResults": "Không có kết quả cho “{{query}}”.",
+    "people": "Nhân vật"
+  },
+  "shorts": {
+    "empty": "Không tìm thấy trailer.",
+    "loading": "Đang tải trailer…",
+    "hintWatch": "OK = Xem",
+    "hintSwitch": "Chuyển",
+    "hintSound": "M = Âm thanh"
+  },
+  "syncPlay": {
+    "title": "Xem cùng nhau",
+    "yourGroup": "Nhóm của bạn",
+    "members": "Thành viên: {{members}} · Trạng thái: {{state}}",
+    "leaveGroup": "Rời nhóm",
+    "leaveGroupSub": "Phát lại sẽ không còn được đồng bộ",
+    "groupNote": "Hãy mở một bộ phim hoặc một tập: phát lại sẽ được đồng bộ với mọi người trong nhóm. Tạm dừng, phát và tua áp dụng cho tất cả.",
+    "actions": "Thao tác",
+    "createGroup": "Tạo nhóm mới",
+    "createGroupSub": "Mở một nhóm phòng khách để cùng xem",
+    "defaultGroupName": "Phòng khách {{brand}}",
+    "availableGroups": "Nhóm khả dụng",
+    "loading": "Đang tải…",
+    "noGroups": "Không có nhóm nào đang mở",
+    "noGroupsSub": "Tạo nhóm mới để cùng xem.",
+    "groupSummary": "{{members}} · {{state}}",
+    "empty": "Trống",
+    "noMembers": "-"
+  },
+  "settings": {
+    "title": "Hồ sơ và cài đặt",
+    "profileFallback": "Hồ sơ",
+    "switchProfile": "Đổi hoặc thêm hồ sơ",
+    "profileLock": "Khoá hồ sơ",
+    "profileLockSub": "Mã PIN để truy cập hồ sơ này",
+    "signOut": "Đăng xuất",
+    "signOutSub": "Đăng xuất hồ sơ này khỏi thiết bị này",
+    "signOutTitle": "Đăng xuất?",
+    "signOutMessage": "“{{name}}” sẽ được đăng xuất khỏi thiết bị này.",
+    "thisProfile": "Hồ sơ này",
+    "languageSection": "Ngôn ngữ",
+    "appLanguage": "Ngôn ngữ ứng dụng",
+    "appLanguageSub": "Ngôn ngữ dùng trong toàn bộ giao diện",
+    "languageTitle": "Chọn ngôn ngữ",
+    "playback": "Phát lại",
+    "autoplayNext": "Tự động phát tập tiếp theo",
+    "autoplayNextSub": "Tự động chuyển sang tập tiếp theo khi kết thúc",
+    "autoSkipSegments": "Tự động bỏ qua giới thiệu và phần cuối",
+    "autoSkipSegmentsSub": "Bỏ qua các đoạn được đánh dấu mà không cần bấm phím",
+    "autoplayPreviews": "Tự động phát bản xem trước",
+    "autoplayPreviewsSub": "Tự động lướt qua các đề xuất trên màn hình chính",
+    "defaultQuality": "Chất lượng phát mặc định",
+    "defaultQualitySub": "Chất lượng khi bắt đầu phát",
+    "subtitles": "Phụ đề",
+    "subtitleSize": "Cỡ phụ đề",
+    "subtitleSizeSub": "Điều chỉnh cỡ chữ phụ đề",
+    "subtitleBackground": "Nền phụ đề",
+    "subtitleBackgroundSub": "Hiển thị dải nền tối phía sau phụ đề",
+    "on": "Bật",
+    "off": "Tắt",
+    "footer": "{{brand}} · Giao diện dành cho Jellyfin",
+    "toast": {
+      "pinEnabled": "Đã bật khoá hồ sơ",
+      "pinDisabled": "Đã tắt khoá hồ sơ"
+    }
+  },
+  "player": {
+    "errorTitle": "Không thể phát",
+    "errorSubtitle": "Hiện không thể phát nội dung này trên thiết bị này.",
+    "version": "Phiên bản",
+    "versionNumbered": "Phiên bản {{number}}",
+    "quality": "Chất lượng",
+    "qualityWithBandwidth": "{{label}} ({{mbits}} Mbit/s)",
+    "audio": "Âm thanh",
+    "subtitles": "Phụ đề",
+    "subtitlesOff": "Tắt",
+    "skipIntro": "Bỏ qua giới thiệu",
+    "skipOutro": "Bỏ qua phần cuối",
+    "original": "Gốc",
+    "watching": "Bạn đang xem",
+    "episodeLine": "{{series}} {{season}}: Tập {{episode}}",
+    "speedTitle": "Tốc độ phát",
+    "speed": {
+      "normal": "1x (Bình thường)"
+    },
+    "controls": {
+      "nextEpisode": "Tập tiếp theo",
+      "audioAndSubtitles": "Âm thanh và phụ đề",
+      "playbackSpeed": "Tốc độ phát",
+      "quality": "Chất lượng"
+    },
+    "upNext": {
+      "label": "Tiếp theo sau {{seconds}} giây",
+      "hint": "OK = Phát ngay · <1></1> = Bỏ qua"
+    }
+  },
+  "media": {
+    "quality": {
+      "auto": "Tự động",
+      "original": "Gốc",
+      "1080": "1080p",
+      "720": "720p HD",
+      "480": "480p",
+      "360": "360p"
+    },
+    "subtitleSize": {
+      "small": "Nhỏ",
+      "normal": "Vừa",
+      "large": "Lớn"
+    },
+    "runtime": {
+      "minutes": "{{count}} phút",
+      "hoursMinutes": "{{hours}} giờ {{minutes}} phút"
+    },
+    "track": {
+      "audioDescription": "Thuyết minh mô tả",
+      "forced": "Bắt buộc",
+      "sdh": "SDH",
+      "stereo": "Stereo",
+      "mono": "Mono"
+    },
+    "language": {
+      "unknown": "Không rõ",
+      "deu": "Tiếng Đức",
+      "eng": "Tiếng Anh",
+      "jpn": "Tiếng Nhật",
+      "kor": "Tiếng Hàn",
+      "fra": "Tiếng Pháp",
+      "spa": "Tiếng Tây Ban Nha",
+      "ita": "Tiếng Ý",
+      "rus": "Tiếng Nga",
+      "ukr": "Tiếng Ukraina",
+      "zho": "Tiếng Trung",
+      "por": "Tiếng Bồ Đào Nha",
+      "nld": "Tiếng Hà Lan",
+      "pol": "Tiếng Ba Lan",
+      "tur": "Tiếng Thổ Nhĩ Kỳ",
+      "ara": "Tiếng Ả Rập",
+      "hin": "Tiếng Hindi",
+      "swe": "Tiếng Thuỵ Điển",
+      "dan": "Tiếng Đan Mạch",
+      "nor": "Tiếng Na Uy",
+      "fin": "Tiếng Phần Lan",
+      "ces": "Tiếng Séc",
+      "hun": "Tiếng Hungary",
+      "ell": "Tiếng Hy Lạp",
+      "heb": "Tiếng Do Thái",
+      "tha": "Tiếng Thái",
+      "vie": "Tiếng Việt",
+      "ron": "Tiếng Romania",
+      "bul": "Tiếng Bulgaria"
+    }
+  },
+  "errors": {
+    "noJellyfinServer": "Không phải máy chủ Jellyfin",
+    "quickConnectStart": "Không thể khởi động Quick Connect ({{status}})",
+    "quickConnectPoll": "Lỗi Quick Connect ({{status}})",
+    "quickConnectAuth": "Đăng nhập thất bại ({{status}})"
+  }
+}

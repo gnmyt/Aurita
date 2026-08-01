@@ -1,0 +1,328 @@
+{
+  "common": {
+    "actions": {
+      "back": "返回",
+      "cancel": "取消",
+      "confirm": "确认",
+      "remove": "移除",
+      "retry": "重试",
+      "signOut": "退出登录",
+      "done": "完成"
+    },
+    "loader": {
+      "label": "加载中…"
+    },
+    "itemGrid": {
+      "empty": "未找到内容。"
+    },
+    "card": {
+      "movie": "电影",
+      "series": "剧集",
+      "seriesWithYear": "剧集 · {{year}}",
+      "seasonEpisodes_other": "{{count}} 集",
+      "folder": "文件夹",
+      "episodeCode": "第{{season}}季第{{episode}}集"
+    },
+    "topNav": {
+      "home": "首页",
+      "shorts": "短视频",
+      "syncPlay": "一起看"
+    },
+    "screenSaver": {
+      "locale": "zh-CN"
+    },
+    "trailerOverlay": {
+      "closeHint": "按返回关闭"
+    },
+    "spotlight": {
+      "play": "播放",
+      "watch": "观看",
+      "moreInfo": "更多信息"
+    },
+    "cardOptions": {
+      "resume": "继续播放",
+      "play": "播放",
+      "viewDetails": "查看详情",
+      "markUnwatched": "标记为未观看",
+      "markWatched": "标记为已观看",
+      "removeFromWatchlist": "从待看列表移除",
+      "addToWatchlist": "添加到待看列表",
+      "removeFromContinueWatching": "从“继续观看”中移除",
+      "toast": {
+        "markedUnwatched": "已标记为未观看",
+        "markedWatched": "已标记为已观看",
+        "removedFromWatchlist": "已从待看列表移除",
+        "addedToWatchlist": "已添加到待看列表",
+        "removedFromContinueWatching": "已从“继续观看”中移除"
+      }
+    },
+    "pinPad": {
+      "title": {
+        "enter": "设置 PIN 码",
+        "confirm": "确认 PIN 码",
+        "verify": "输入 PIN 码"
+      },
+      "subtitle": {
+        "enter": "使用方向键输入由 4 个方向组成的序列。",
+        "confirm": "再次输入相同的方向序列。",
+        "verify": "此配置文件已锁定。"
+      },
+      "error": {
+        "mismatch": "PIN 码不一致，请重试。",
+        "wrong": "PIN 码错误，请重试。"
+      },
+      "forgot": "忘记 PIN 码？长按 <1>OK</1> 退出登录。"
+    },
+    "profilePicker": {
+      "title": "谁在观看？",
+      "addProfile": "添加配置文件",
+      "manageProfiles": "管理配置文件",
+      "settings": "设置",
+      "removeTitle": "移除配置文件？",
+      "removeMessage": "“{{name}}”将从此设备移除。"
+    },
+    "serverConnect": {
+      "title": "连接到你的服务器",
+      "subtitle": "输入你的 Jellyfin 服务器地址，例如 <1>jellyfin.example.com</1>。",
+      "placeholder": "jellyfin.example.com",
+      "connecting": "连接中…",
+      "connect": "连接",
+      "unreachable": "无法连接服务器。请检查地址；如果安装在子目录中，请输入完整路径（例如 jellyfin.example.com/jellyfin）。",
+      "failed": "连接失败：{{message}}"
+    },
+    "setupWizard": {
+      "addServer": "添加新服务器",
+      "currentServer": "当前服务器",
+      "chooseTitle": "选择哪个服务器？",
+      "chooseSubtitle": "选择新配置文件要登录的服务器。",
+      "welcomeTitle": "欢迎使用 {{brand}}",
+      "welcomeSubtitle": "使用你的 Jellyfin 账号登录，在大屏幕上欣赏电影和剧集。",
+      "quickConnectDisabled": "{{host}} 未启用 Quick Connect。请在服务器设置中启用。",
+      "signIn": "登录",
+      "pairingTitle": "在手机上登录",
+      "pairingStep1": "在手机或电脑上打开 <1>{{host}}</1> 并登录。",
+      "pairingStep2": "前往<1>用户设置 <3></3> Quick Connect</1>。",
+      "pairingStep3": "输入以下代码：",
+      "pairingPlaceholder": "— — —",
+      "waiting": "等待确认…",
+      "authorizing": "已登录！加载中…",
+      "expired": "代码已过期，请重新获取。",
+      "newCode": "新代码",
+      "qrHint": "扫码打开页面"
+    }
+  },
+  "home": {
+    "continueWatching": "继续观看",
+    "nextUp": "接下来",
+    "watchlist": "待看列表",
+    "because": "因为你看过“{{name}}”",
+    "latestIn": "{{library}}中的新增内容",
+    "suggestions": "为你推荐"
+  },
+  "library": {
+    "fallbackTitle": "媒体库",
+    "sort": {
+      "name": "名称（A–Z）",
+      "added": "最近添加",
+      "year": "上映年份",
+      "rating": "评分",
+      "random": "随机"
+    },
+    "filter": {
+      "all": "全部",
+      "unplayed": "未观看",
+      "fav": "收藏"
+    }
+  },
+  "browse": {
+    "person": "人物",
+    "genre": "类型 · {{name}}"
+  },
+  "detail": {
+    "errorTitle": "无法加载",
+    "errorSubtitle": "请检查网络连接后重试。",
+    "resume": "继续播放",
+    "play": "播放",
+    "restart": "从头播放",
+    "playSeries": "播放",
+    "trailer": "预告片",
+    "watched": "已观看",
+    "markWatched": "标记为已观看",
+    "onWatchlist": "已在待看列表",
+    "watchlist": "待看列表",
+    "castAndCrew": "演职人员",
+    "extras": "花絮",
+    "otherVersion": "其他版本",
+    "similar": "你可能还喜欢",
+    "toast": {
+      "markedWatched": "已标记为已观看",
+      "markedUnwatched": "已标记为未观看",
+      "addedToWatchlist": "已添加到待看列表",
+      "removedFromWatchlist": "已从待看列表移除"
+    }
+  },
+  "search": {
+    "placeholder": "搜索…",
+    "space": "空格",
+    "delete": "删除",
+    "clear": "清除",
+    "noResults": "没有找到与“{{query}}”相关的结果。",
+    "people": "人物"
+  },
+  "shorts": {
+    "empty": "未找到预告片。",
+    "loading": "正在加载预告片…",
+    "hintWatch": "OK = 观看",
+    "hintSwitch": "切换",
+    "hintSound": "M = 声音"
+  },
+  "syncPlay": {
+    "title": "一起看",
+    "yourGroup": "你的群组",
+    "members": "成员：{{members}} · 状态：{{state}}",
+    "leaveGroup": "离开群组",
+    "leaveGroupSub": "播放将不再同步",
+    "groupNote": "开始播放电影或剧集：播放会与群组中的所有人同步。暂停、播放和快进对所有人生效。",
+    "actions": "操作",
+    "createGroup": "创建新群组",
+    "createGroupSub": "创建一个客厅群组，一起观看",
+    "defaultGroupName": "{{brand}} 客厅",
+    "availableGroups": "可加入的群组",
+    "loading": "加载中…",
+    "noGroups": "暂无开放的群组",
+    "noGroupsSub": "创建一个新群组，一起观看。",
+    "groupSummary": "{{members}} · {{state}}",
+    "empty": "空",
+    "noMembers": "-"
+  },
+  "settings": {
+    "title": "配置文件与设置",
+    "profileFallback": "配置文件",
+    "switchProfile": "切换或添加配置文件",
+    "profileLock": "配置文件锁",
+    "profileLockSub": "访问此配置文件所需的 PIN 码",
+    "signOut": "退出登录",
+    "signOutSub": "在此设备上退出该配置文件",
+    "signOutTitle": "退出登录？",
+    "signOutMessage": "“{{name}}”将在此设备上退出登录。",
+    "thisProfile": "此配置文件",
+    "languageSection": "语言",
+    "appLanguage": "应用语言",
+    "appLanguageSub": "整个界面使用的语言",
+    "languageTitle": "选择语言",
+    "playback": "播放",
+    "autoplayNext": "自动播放下一集",
+    "autoplayNextSub": "在结尾自动继续播放下一集",
+    "autoSkipSegments": "自动跳过片头和片尾",
+    "autoSkipSegmentsSub": "无需按键即可跳过标记的片段",
+    "autoplayPreviews": "自动播放预览",
+    "autoplayPreviewsSub": "在主页自动轮播推荐内容",
+    "defaultQuality": "默认播放画质",
+    "defaultQualitySub": "开始播放时使用的画质",
+    "subtitles": "字幕",
+    "subtitleSize": "字幕大小",
+    "subtitleSizeSub": "调整字幕的大小",
+    "subtitleBackground": "字幕背景",
+    "subtitleBackgroundSub": "在字幕后显示暗色背景条",
+    "on": "开",
+    "off": "关",
+    "footer": "{{brand}} · 适用于 Jellyfin 的界面",
+    "toast": {
+      "pinEnabled": "已启用配置文件锁",
+      "pinDisabled": "已停用配置文件锁"
+    }
+  },
+  "player": {
+    "errorTitle": "无法播放",
+    "errorSubtitle": "此内容目前无法在此设备上播放。",
+    "version": "版本",
+    "versionNumbered": "版本 {{number}}",
+    "quality": "画质",
+    "qualityWithBandwidth": "{{label}}（{{mbits}} Mbit/s）",
+    "audio": "音轨",
+    "subtitles": "字幕",
+    "subtitlesOff": "关闭",
+    "skipIntro": "跳过片头",
+    "skipOutro": "跳过片尾",
+    "original": "原声",
+    "watching": "正在观看",
+    "episodeLine": "{{series}} {{season}}：第 {{episode}} 集",
+    "speedTitle": "播放速度",
+    "speed": {
+      "normal": "1x（正常）"
+    },
+    "controls": {
+      "nextEpisode": "下一集",
+      "audioAndSubtitles": "音轨与字幕",
+      "playbackSpeed": "播放速度",
+      "quality": "画质"
+    },
+    "upNext": {
+      "label": "{{seconds}} 秒后播放下一集",
+      "hint": "OK = 立即播放 · <1></1> = 关闭"
+    }
+  },
+  "media": {
+    "quality": {
+      "auto": "自动",
+      "original": "原始画质",
+      "1080": "1080p",
+      "720": "720p HD",
+      "480": "480p",
+      "360": "360p"
+    },
+    "subtitleSize": {
+      "small": "小",
+      "normal": "标准",
+      "large": "大"
+    },
+    "runtime": {
+      "minutes": "{{count}} 分钟",
+      "hoursMinutes": "{{hours}} 小时 {{minutes}} 分钟"
+    },
+    "track": {
+      "audioDescription": "音频描述",
+      "forced": "强制",
+      "sdh": "SDH",
+      "stereo": "立体声",
+      "mono": "单声道"
+    },
+    "language": {
+      "unknown": "未知",
+      "deu": "德语",
+      "eng": "英语",
+      "jpn": "日语",
+      "kor": "韩语",
+      "fra": "法语",
+      "spa": "西班牙语",
+      "ita": "意大利语",
+      "rus": "俄语",
+      "ukr": "乌克兰语",
+      "zho": "中文",
+      "por": "葡萄牙语",
+      "nld": "荷兰语",
+      "pol": "波兰语",
+      "tur": "土耳其语",
+      "ara": "阿拉伯语",
+      "hin": "印地语",
+      "swe": "瑞典语",
+      "dan": "丹麦语",
+      "nor": "挪威语",
+      "fin": "芬兰语",
+      "ces": "捷克语",
+      "hun": "匈牙利语",
+      "ell": "希腊语",
+      "heb": "希伯来语",
+      "tha": "泰语",
+      "vie": "越南语",
+      "ron": "罗马尼亚语",
+      "bul": "保加利亚语"
+    }
+  },
+  "errors": {
+    "noJellyfinServer": "不是 Jellyfin 服务器",
+    "quickConnectStart": "无法启动 Quick Connect（{{status}}）",
+    "quickConnectPoll": "Quick Connect 错误（{{status}}）",
+    "quickConnectAuth": "登录失败（{{status}}）"
+  }
+}

@@ -1,0 +1,328 @@
+{
+  "common": {
+    "actions": {
+      "back": "Kembali",
+      "cancel": "Batal",
+      "confirm": "Konfirmasi",
+      "remove": "Hapus",
+      "retry": "Coba lagi",
+      "signOut": "Keluar",
+      "done": "Selesai"
+    },
+    "loader": {
+      "label": "Memuat…"
+    },
+    "itemGrid": {
+      "empty": "Konten tidak ditemukan."
+    },
+    "card": {
+      "movie": "Film",
+      "series": "Serial",
+      "seriesWithYear": "Serial · {{year}}",
+      "seasonEpisodes_other": "{{count}} episode",
+      "folder": "Folder",
+      "episodeCode": "M{{season}}:E{{episode}}"
+    },
+    "topNav": {
+      "home": "Beranda",
+      "shorts": "Shorts",
+      "syncPlay": "Nonton bareng"
+    },
+    "screenSaver": {
+      "locale": "id-ID"
+    },
+    "trailerOverlay": {
+      "closeHint": "Kembali untuk menutup"
+    },
+    "spotlight": {
+      "play": "Putar",
+      "watch": "Tonton",
+      "moreInfo": "Info selengkapnya"
+    },
+    "cardOptions": {
+      "resume": "Lanjutkan",
+      "play": "Putar",
+      "viewDetails": "Lihat detail",
+      "markUnwatched": "Tandai belum ditonton",
+      "markWatched": "Tandai sudah ditonton",
+      "removeFromWatchlist": "Hapus dari daftar tonton",
+      "addToWatchlist": "Tambahkan ke daftar tonton",
+      "removeFromContinueWatching": "Hapus dari “Lanjutkan menonton”",
+      "toast": {
+        "markedUnwatched": "Ditandai belum ditonton",
+        "markedWatched": "Ditandai sudah ditonton",
+        "removedFromWatchlist": "Dihapus dari daftar tonton",
+        "addedToWatchlist": "Ditambahkan ke daftar tonton",
+        "removedFromContinueWatching": "Dihapus dari “Lanjutkan menonton”"
+      }
+    },
+    "pinPad": {
+      "title": {
+        "enter": "Pilih PIN",
+        "confirm": "Konfirmasi PIN",
+        "verify": "Masukkan PIN"
+      },
+      "subtitle": {
+        "enter": "Masukkan urutan 4 arah menggunakan tombol panah.",
+        "confirm": "Masukkan urutan arah yang sama sekali lagi.",
+        "verify": "Profil ini terkunci."
+      },
+      "error": {
+        "mismatch": "PIN tidak cocok. Silakan coba lagi.",
+        "wrong": "PIN salah. Silakan coba lagi."
+      },
+      "forgot": "Lupa PIN? Tahan <1>OK</1> untuk keluar."
+    },
+    "profilePicker": {
+      "title": "Siapa yang menonton?",
+      "addProfile": "Tambah profil",
+      "manageProfiles": "Kelola profil",
+      "settings": "Pengaturan",
+      "removeTitle": "Hapus profil?",
+      "removeMessage": "“{{name}}” akan dihapus dari perangkat ini."
+    },
+    "serverConnect": {
+      "title": "Hubungkan ke server Anda",
+      "subtitle": "Masukkan alamat server Jellyfin Anda, mis. <1>jellyfin.example.com</1>.",
+      "placeholder": "jellyfin.example.com",
+      "connecting": "Menghubungkan…",
+      "connect": "Hubungkan",
+      "unreachable": "Server tidak dapat dijangkau. Periksa alamatnya; untuk pemasangan di subfolder, masukkan jalur lengkap (mis. jellyfin.example.com/jellyfin).",
+      "failed": "Koneksi gagal: {{message}}"
+    },
+    "setupWizard": {
+      "addServer": "Tambah server baru",
+      "currentServer": "Server saat ini",
+      "chooseTitle": "Server yang mana?",
+      "chooseSubtitle": "Pilih server tempat profil baru akan masuk.",
+      "welcomeTitle": "Selamat datang di {{brand}}",
+      "welcomeSubtitle": "Masuk dengan akun Jellyfin Anda untuk menikmati film dan serial di layar besar.",
+      "quickConnectDisabled": "Quick Connect tidak aktif di {{host}}. Aktifkan di pengaturan server.",
+      "signIn": "Masuk",
+      "pairingTitle": "Masuk lewat ponsel",
+      "pairingStep1": "Buka <1>{{host}}</1> di ponsel atau komputer Anda, lalu masuk.",
+      "pairingStep2": "Buka <1>Pengaturan pengguna <3></3> Quick Connect</1>.",
+      "pairingStep3": "Masukkan kode berikut:",
+      "pairingPlaceholder": "— — —",
+      "waiting": "Menunggu konfirmasi…",
+      "authorizing": "Berhasil masuk! Memuat…",
+      "expired": "Kode kedaluwarsa. Silakan minta kode baru.",
+      "newCode": "Kode baru",
+      "qrHint": "Pindai untuk membuka halaman"
+    }
+  },
+  "home": {
+    "continueWatching": "Lanjutkan menonton",
+    "nextUp": "Berikutnya",
+    "watchlist": "Daftar tonton",
+    "because": "Karena Anda menonton “{{name}}”",
+    "latestIn": "Baru di {{library}}",
+    "suggestions": "Saran untuk Anda"
+  },
+  "library": {
+    "fallbackTitle": "Pustaka",
+    "sort": {
+      "name": "Nama (A–Z)",
+      "added": "Baru ditambahkan",
+      "year": "Tahun rilis",
+      "rating": "Peringkat",
+      "random": "Acak"
+    },
+    "filter": {
+      "all": "Semua",
+      "unplayed": "Belum ditonton",
+      "fav": "Favorit"
+    }
+  },
+  "browse": {
+    "person": "Orang",
+    "genre": "Genre · {{name}}"
+  },
+  "detail": {
+    "errorTitle": "Tidak dapat dimuat",
+    "errorSubtitle": "Periksa koneksi Anda lalu coba lagi.",
+    "resume": "Lanjutkan",
+    "play": "Putar",
+    "restart": "Mulai dari awal",
+    "playSeries": "Putar",
+    "trailer": "Trailer",
+    "watched": "Sudah ditonton",
+    "markWatched": "Tandai sudah ditonton",
+    "onWatchlist": "Ada di daftar tonton",
+    "watchlist": "Daftar tonton",
+    "castAndCrew": "Pemeran dan kru",
+    "extras": "Ekstra",
+    "otherVersion": "Versi lain",
+    "similar": "Anda mungkin juga suka",
+    "toast": {
+      "markedWatched": "Ditandai sudah ditonton",
+      "markedUnwatched": "Ditandai belum ditonton",
+      "addedToWatchlist": "Ditambahkan ke daftar tonton",
+      "removedFromWatchlist": "Dihapus dari daftar tonton"
+    }
+  },
+  "search": {
+    "placeholder": "Cari…",
+    "space": "Spasi",
+    "delete": "Hapus",
+    "clear": "Bersihkan",
+    "noResults": "Tidak ada hasil untuk “{{query}}”.",
+    "people": "Orang"
+  },
+  "shorts": {
+    "empty": "Trailer tidak ditemukan.",
+    "loading": "Memuat trailer…",
+    "hintWatch": "OK = Tonton",
+    "hintSwitch": "Ganti",
+    "hintSound": "M = Suara"
+  },
+  "syncPlay": {
+    "title": "Nonton bareng",
+    "yourGroup": "Grup Anda",
+    "members": "Anggota: {{members}} · Status: {{state}}",
+    "leaveGroup": "Keluar dari grup",
+    "leaveGroupSub": "Pemutaran tidak akan disinkronkan lagi",
+    "groupNote": "Mulai film atau episode: pemutaran disinkronkan dengan semua orang di grup. Jeda, putar, dan geser berlaku untuk semua.",
+    "actions": "Tindakan",
+    "createGroup": "Buat grup baru",
+    "createGroupSub": "Buka grup ruang keluarga untuk menonton bersama",
+    "defaultGroupName": "Ruang keluarga {{brand}}",
+    "availableGroups": "Grup yang tersedia",
+    "loading": "Memuat…",
+    "noGroups": "Tidak ada grup terbuka",
+    "noGroupsSub": "Buat grup baru untuk menonton bersama.",
+    "groupSummary": "{{members}} · {{state}}",
+    "empty": "Kosong",
+    "noMembers": "-"
+  },
+  "settings": {
+    "title": "Profil dan pengaturan",
+    "profileFallback": "Profil",
+    "switchProfile": "Ganti atau tambah profil",
+    "profileLock": "Kunci profil",
+    "profileLockSub": "PIN untuk mengakses profil ini",
+    "signOut": "Keluar",
+    "signOutSub": "Keluarkan profil ini dari perangkat ini",
+    "signOutTitle": "Keluar?",
+    "signOutMessage": "“{{name}}” akan dikeluarkan dari perangkat ini.",
+    "thisProfile": "Profil ini",
+    "languageSection": "Bahasa",
+    "appLanguage": "Bahasa aplikasi",
+    "appLanguageSub": "Bahasa yang digunakan di seluruh antarmuka",
+    "languageTitle": "Pilih bahasa",
+    "playback": "Pemutaran",
+    "autoplayNext": "Putar otomatis episode berikutnya",
+    "autoplayNextSub": "Otomatis lanjut ke episode berikutnya di akhir",
+    "autoSkipSegments": "Lewati intro & kredit otomatis",
+    "autoSkipSegmentsSub": "Lewati bagian yang ditandai tanpa menekan tombol",
+    "autoplayPreviews": "Putar pratinjau otomatis",
+    "autoplayPreviewsSub": "Gulir otomatis rekomendasi di layar beranda",
+    "defaultQuality": "Kualitas pemutaran default",
+    "defaultQualitySub": "Kualitas saat pemutaran dimulai",
+    "subtitles": "Subtitel",
+    "subtitleSize": "Ukuran subtitel",
+    "subtitleSizeSub": "Sesuaikan ukuran subtitel",
+    "subtitleBackground": "Latar subtitel",
+    "subtitleBackgroundSub": "Tampilkan bilah gelap di belakang subtitel",
+    "on": "Aktif",
+    "off": "Nonaktif",
+    "footer": "{{brand}} · Antarmuka untuk Jellyfin",
+    "toast": {
+      "pinEnabled": "Kunci profil diaktifkan",
+      "pinDisabled": "Kunci profil dinonaktifkan"
+    }
+  },
+  "player": {
+    "errorTitle": "Tidak dapat diputar",
+    "errorSubtitle": "Judul ini saat ini tidak dapat diputar di perangkat ini.",
+    "version": "Versi",
+    "versionNumbered": "Versi {{number}}",
+    "quality": "Kualitas",
+    "qualityWithBandwidth": "{{label}} ({{mbits}} Mbit/s)",
+    "audio": "Audio",
+    "subtitles": "Subtitel",
+    "subtitlesOff": "Nonaktif",
+    "skipIntro": "Lewati intro",
+    "skipOutro": "Lewati kredit",
+    "original": "Asli",
+    "watching": "Anda sedang menonton",
+    "episodeLine": "{{series}} {{season}}: Ep. {{episode}}",
+    "speedTitle": "Kecepatan pemutaran",
+    "speed": {
+      "normal": "1x (Normal)"
+    },
+    "controls": {
+      "nextEpisode": "Episode berikutnya",
+      "audioAndSubtitles": "Audio & subtitel",
+      "playbackSpeed": "Kecepatan pemutaran",
+      "quality": "Kualitas"
+    },
+    "upNext": {
+      "label": "Berikutnya dalam {{seconds}} dtk",
+      "hint": "OK = Putar sekarang · <1></1> = Tutup"
+    }
+  },
+  "media": {
+    "quality": {
+      "auto": "Otomatis",
+      "original": "Asli",
+      "1080": "1080p",
+      "720": "720p HD",
+      "480": "480p",
+      "360": "360p"
+    },
+    "subtitleSize": {
+      "small": "Kecil",
+      "normal": "Normal",
+      "large": "Besar"
+    },
+    "runtime": {
+      "minutes": "{{count}} mnt",
+      "hoursMinutes": "{{hours}} jam {{minutes}} mnt"
+    },
+    "track": {
+      "audioDescription": "Deskripsi audio",
+      "forced": "Dipaksa",
+      "sdh": "SDH",
+      "stereo": "Stereo",
+      "mono": "Mono"
+    },
+    "language": {
+      "unknown": "Tidak diketahui",
+      "deu": "Jerman",
+      "eng": "Inggris",
+      "jpn": "Jepang",
+      "kor": "Korea",
+      "fra": "Prancis",
+      "spa": "Spanyol",
+      "ita": "Italia",
+      "rus": "Rusia",
+      "ukr": "Ukraina",
+      "zho": "Tionghoa",
+      "por": "Portugis",
+      "nld": "Belanda",
+      "pol": "Polandia",
+      "tur": "Turki",
+      "ara": "Arab",
+      "hin": "Hindi",
+      "swe": "Swedia",
+      "dan": "Denmark",
+      "nor": "Norwegia",
+      "fin": "Finlandia",
+      "ces": "Ceko",
+      "hun": "Hungaria",
+      "ell": "Yunani",
+      "heb": "Ibrani",
+      "tha": "Thai",
+      "vie": "Vietnam",
+      "ron": "Rumania",
+      "bul": "Bulgaria"
+    }
+  },
+  "errors": {
+    "noJellyfinServer": "Bukan server Jellyfin",
+    "quickConnectStart": "Quick Connect tidak dapat dimulai ({{status}})",
+    "quickConnectPoll": "Kesalahan Quick Connect ({{status}})",
+    "quickConnectAuth": "Gagal masuk ({{status}})"
+  }
+}
