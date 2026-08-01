@@ -97,6 +97,19 @@ const candidateScore = (dir, entry, {cr, cc, curInNav, curInModal, vertical}) =>
     return score;
 }
 
+const leftmostInTrack = (entries, track) => {
+    let bestId = null;
+    let bestLeft = Infinity;
+    for (const [id, entry] of entries) {
+        if (!entry.el || !track.contains(entry.el)) continue;
+        if (entry.el.offsetLeft < bestLeft) {
+            bestLeft = entry.el.offsetLeft;
+            bestId = id;
+        }
+    }
+    return bestId;
+}
+
 export const SpatialProvider = ({children}) => {
     const registry = useRef(new Map());
     const currentId = useRef(null);
@@ -192,7 +205,14 @@ export const SpatialProvider = ({children}) => {
                 best = id;
             }
         }
-        if (best != null) focusId(best);
+        if (best == null) return;
+        if (flags.vertical) {
+            const bestTrack = registry.current.get(best)?.el?.closest('.row-track');
+            if (bestTrack && bestTrack !== cur.el.closest('.row-track')) {
+                best = leftmostInTrack(registry.current, bestTrack) ?? best;
+            }
+        }
+        focusId(best);
     }, [focusId, focusFirstContent]);
 
     const select = useCallback(() => {
