@@ -1,8 +1,12 @@
-export const Loader = ({label = 'Lädt…'}) => {
+import {useTranslation} from 'react-i18next';
+
+export const Loader = ({label}) => {
+    const {t} = useTranslation();
+    const text = label === undefined ? t('common.loader.label') : label;
     return (
         <div className="page-loader">
             <div className="spinner"/>
-            {label && <div className="page-loader-text">{label}</div>}
+            {text && <div className="page-loader-text">{text}</div>}
         </div>
     );
 }

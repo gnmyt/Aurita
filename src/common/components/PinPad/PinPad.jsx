@@ -1,11 +1,13 @@
 import "./styles.sass";
 import {useCallback, useEffect, useRef, useState} from 'react';
+import {Trans, useTranslation} from 'react-i18next';
 import Dpad from '@/common/components/Dpad';
 
 const DIR = {ArrowUp: 'U', ArrowDown: 'D', ArrowLeft: 'L', ArrowRight: 'R'};
 const LEN = 4;
 
 export const PinPad = ({mode = 'verify', expected, eyebrow, onComplete, onSuccess, onCancel, onForgot}) => {
+    const {t} = useTranslation();
     const [step, setStep] = useState(mode === 'create' ? 'enter' : 'verify');
     const [first, setFirst] = useState('');
     const [entry, setEntry] = useState('');
@@ -37,14 +39,14 @@ export const PinPad = ({mode = 'verify', expected, eyebrow, onComplete, onSucces
             else {
                 setStep('enter');
                 setFirst('');
-                fail('PINs stimmen nicht überein. Erneut versuchen.');
+                fail(t('common.pinPad.error.mismatch'));
             }
         } else if (seq === expected) {
             onSuccess?.();
         } else {
-            fail('Falsche PIN. Bitte erneut versuchen.');
+            fail(t('common.pinPad.error.wrong'));
         }
-    }, [mode, step, first, expected, onComplete, onSuccess]);
+    }, [mode, step, first, expected, onComplete, onSuccess, t]);
 
     useEffect(() => {
         const onKey = (e) => {
@@ -97,16 +99,8 @@ export const PinPad = ({mode = 'verify', expected, eyebrow, onComplete, onSucces
         return () => clearTimeout(t);
     }, [entry, submit]);
 
-    const titles = {
-        enter: 'Wähle eine PIN',
-        confirm: 'PIN bestätigen',
-        verify: 'PIN eingeben',
-    };
-    const subs = {
-        enter: 'Gib mit den Pfeiltasten eine Folge aus 4 Richtungen ein.',
-        confirm: 'Gib dieselbe Richtungs-Folge noch einmal ein.',
-        verify: 'Dieses Profil ist gesperrt.',
-    };
+    const title = t(`common.pinPad.title.${step}`);
+    const sub = t(`common.pinPad.subtitle.${step}`);
 
     return (
         <div className="pin-screen">
@@ -114,8 +108,8 @@ export const PinPad = ({mode = 'verify', expected, eyebrow, onComplete, onSucces
                 <div className="pin-dpad"><Dpad flash={flash}/></div>
                 <div className="pin-info">
                     {eyebrow && <div className="pin-eyebrow">{eyebrow}</div>}
-                    <h1 className="pin-title">{titles[step]}</h1>
-                    <div className="pin-sub">{subs[step]}</div>
+                    <h1 className="pin-title">{title}</h1>
+                    <div className="pin-sub">{sub}</div>
                     <div className="pin-boxes">
                         {Array.from({length: LEN}).map((_, i) => {
                             const filled = i < entry.length;
@@ -128,8 +122,11 @@ export const PinPad = ({mode = 'verify', expected, eyebrow, onComplete, onSucces
                         })}
                     </div>
                     <div className={`pin-error${error ? ' show' : ''}`}>{error || ' '}</div>
-                    {onForgot &&
-                        <div className="pin-forgot">PIN vergessen? <b>OK</b> gedrückt halten zum Abmelden.</div>}
+                    {onForgot && (
+                        <div className="pin-forgot">
+                            <Trans i18nKey="common.pinPad.forgot" components={{1: <b/>}}/>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

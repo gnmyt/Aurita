@@ -1,5 +1,6 @@
 import "./styles.sass";
 import {useEffect, useRef, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {useNavigate} from 'react-router-dom';
 import {Delete, Space, X} from 'lucide-react';
 import Card from '@/common/components/Card';
@@ -21,6 +22,7 @@ const Key = ({label, Icon, wide, onSelect, focusKey}) => {
 }
 
 export const Search = () => {
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const openItem = useOpenItem();
     const [query, setQuery] = useState('');
@@ -75,7 +77,7 @@ export const Search = () => {
                 <div className="search-box">
                     {query
                         ? <span>{query}</span>
-                        : <span className="ph">Suchen…</span>}
+                        : <span className="ph">{t('search.placeholder')}</span>}
                     <span className="cursor"/>
                 </div>
                 <div className="kb-grid">
@@ -83,19 +85,19 @@ export const Search = () => {
                         <Key key={k} label={k} focusKey={i === 0 ? 'search-first' : undefined}
                              onSelect={() => setQuery((q) => q + k)}/>
                     ))}
-                    <Key Icon={Space} label="Leer" wide onSelect={() => setQuery((q) => q + ' ')}/>
-                    <Key Icon={Delete} label="Löschen" wide onSelect={() => setQuery((q) => q.slice(0, -1))}/>
-                    <Key Icon={X} label="Leeren" wide onSelect={() => setQuery('')}/>
+                    <Key Icon={Space} label={t('search.space')} wide onSelect={() => setQuery((q) => q + ' ')}/>
+                    <Key Icon={Delete} label={t('search.delete')} wide onSelect={() => setQuery((q) => q.slice(0, -1))}/>
+                    <Key Icon={X} label={t('search.clear')} wide onSelect={() => setQuery('')}/>
                 </div>
             </div>
             <div className="search-results">
                 {searched && results.length === 0 ? (
-                    <div className="empty">Keine Treffer für „{query}".</div>
+                    <div className="empty">{t('search.noResults', {query})}</div>
                 ) : (
                     <>
                         {people.length > 0 && (
                             <div className="row" style={{marginBottom: 18}}>
-                                <div className="row-title" style={{padding: '0 0 8px'}}>Personen</div>
+                                <div className="row-title" style={{padding: '0 0 8px'}}>{t('search.people')}</div>
                                 <div className="row-track" style={{padding: '8px 0'}}>
                                     {people.map((p) => (
                                         <PersonCard key={p.Id} person={p}

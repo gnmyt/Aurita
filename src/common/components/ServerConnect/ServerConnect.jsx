@@ -1,5 +1,6 @@
 import "./styles.sass";
 import {useEffect, useRef, useState} from 'react';
+import {Trans, useTranslation} from 'react-i18next';
 import {ArrowRight, Delete, Globe, X} from 'lucide-react';
 import AuritaLogo from '@/common/components/AuritaLogo';
 import {useAutoFocusFirst, useFocusable} from '@/common/contexts/SpatialNav';
@@ -28,6 +29,7 @@ const ConnectButton = ({label, Icon, primary, onSelect, focusKey}) => {
 }
 
 export const ServerConnect = ({onDone, onCancel}) => {
+    const {t} = useTranslation();
     const [url, setUrl] = useState('');
     const [status, setStatus] = useState('idle');
     const [error, setError] = useState('');
@@ -63,8 +65,8 @@ export const ServerConnect = ({onDone, onCancel}) => {
         } catch (e) {
             setStatus('idle');
             setError(e.name === 'TimeoutError' || e.name === 'TypeError'
-                ? 'Server nicht erreichbar. Prüfe die Adresse, bei Installationen in einem Unterordner den vollständigen Pfad angeben (z. B. jellyfin.example.com/jellyfin).'
-                : `Verbindung fehlgeschlagen: ${e.message}`);
+                ? t('common.serverConnect.unreachable')
+                : t('common.serverConnect.failed', {message: e.message}));
         }
     };
 
@@ -74,20 +76,19 @@ export const ServerConnect = ({onDone, onCancel}) => {
             <div className="wizard-card connect">
                 <div className="connect-left">
                     <div className="wizard-logo"><AuritaLogo size={72}/></div>
-                    <h1 className="wizard-title">Mit deinem Server verbinden</h1>
+                    <h1 className="wizard-title">{t('common.serverConnect.title')}</h1>
                     <p className="wizard-sub">
-                        Gib die Adresse deines Jellyfin-Servers ein,
-                        z.&thinsp;B. <strong>jellyfin.example.com</strong>.
+                        <Trans i18nKey="common.serverConnect.subtitle" components={{1: <strong/>}}/>
                     </p>
                     <div className="search-box connect-input">
                         <Globe size={22} className="connect-input-icon"/>
                         {url
                             ? <span><bdi>{url}</bdi></span>
-                            : <span className="ph">jellyfin.example.com</span>}
+                            : <span className="ph">{t('common.serverConnect.placeholder')}</span>}
                         <span className="cursor"/>
                     </div>
                     <div className="connect-status">
-                        {status === 'checking' && <><span className="spinner small"/> Verbinde…</>}
+                        {status === 'checking' && <><span className="spinner small"/> {t('common.serverConnect.connecting')}</>}
                         {error && <span className="status-warn">{error}</span>}
                     </div>
                     <div className="wizard-actions">
@@ -95,10 +96,10 @@ export const ServerConnect = ({onDone, onCancel}) => {
                             primary
                             focusKey="server-connect"
                             Icon={ArrowRight}
-                            label={status === 'checking' ? 'Verbinde…' : 'Verbinden'}
+                            label={status === 'checking' ? t('common.serverConnect.connecting') : t('common.serverConnect.connect')}
                             onSelect={connect}
                         />
-                        {onCancel && <ConnectButton label="Abbrechen" onSelect={onCancel}/>}
+                        {onCancel && <ConnectButton label={t('common.actions.cancel')} onSelect={onCancel}/>}
                     </div>
                 </div>
                 <div className="connect-right">

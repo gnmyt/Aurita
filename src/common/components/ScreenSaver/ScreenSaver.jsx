@@ -1,5 +1,6 @@
 import "./styles.sass";
 import {useEffect, useRef, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {useLocation} from 'react-router-dom';
 import {useCached} from '@/common/utils/cache';
 import {backdropUrl, getSpotlight} from '@/common/utils/jellyfin';
@@ -8,6 +9,7 @@ const IDLE_MS = 5 * 60 * 1000;
 const SLIDE_MS = 9000;
 
 export const ScreenSaver = () => {
+    const {t} = useTranslation();
     const location = useLocation();
     const [active, setActive] = useState(false);
     const [idx, setIdx] = useState(0);
@@ -65,8 +67,9 @@ export const ScreenSaver = () => {
 
     const item = items[idx % items.length];
     const bg = backdropUrl(item, 1920);
-    const time = now.toLocaleTimeString('de-DE', {hour: '2-digit', minute: '2-digit'});
-    const date = now.toLocaleDateString('de-DE', {weekday: 'long', day: 'numeric', month: 'long'});
+    const locale = t('common.screenSaver.locale');
+    const time = now.toLocaleTimeString(locale, {hour: '2-digit', minute: '2-digit'});
+    const date = now.toLocaleDateString(locale, {weekday: 'long', day: 'numeric', month: 'long'});
 
     return (
         <div className="screensaver">

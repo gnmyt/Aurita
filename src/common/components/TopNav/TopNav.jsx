@@ -1,5 +1,6 @@
 import "./styles.sass";
 import {useEffect, useRef, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {ChevronDown, Search} from 'lucide-react';
 import {useFocusable} from '@/common/contexts/SpatialNav';
@@ -27,16 +28,17 @@ const ProfileButton = ({account, onSelect}) => {
 }
 
 export const TopNav = ({views, onOpenProfiles}) => {
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const location = useLocation();
     const path = location.pathname;
 
     const items = [
         {icon: <Search size={22} strokeWidth={2.5}/>, to: '/search', match: '/search'},
-        {label: 'Start', to: '/', match: '/'},
-        {label: 'Shorts', to: '/shorts', match: '/shorts'},
+        {label: t('common.topNav.home'), to: '/', match: '/'},
+        {label: t('common.topNav.shorts'), to: '/shorts', match: '/shorts'},
         ...(views || []).map((v) => ({label: v.Name, to: `/library/${v.Id}`, match: `/library/${v.Id}`})),
-        {label: 'Gemeinsam', to: '/syncplay', match: '/syncplay'},
+        {label: t('common.topNav.syncPlay'), to: '/syncplay', match: '/syncplay'},
     ];
 
     const itemsRef = useRef(null);

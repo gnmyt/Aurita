@@ -1,4 +1,5 @@
 import {useParams, useSearchParams} from 'react-router-dom';
+import {useTranslation} from 'react-i18next';
 import ItemGrid from '@/common/components/ItemGrid';
 import {useAutoFocusFirst} from '@/common/contexts/SpatialNav';
 import {useCached} from '@/common/utils/cache';
@@ -6,6 +7,7 @@ import {useOpenItem} from '@/common/utils/navigation';
 import {getItems} from '@/common/utils/jellyfin';
 
 export const Browse = ({mode}) => {
+    const {t} = useTranslation();
     const {id, name} = useParams();
     const [params] = useSearchParams();
     const parent = params.get('parent');
@@ -22,8 +24,8 @@ export const Browse = ({mode}) => {
     useAutoFocusFirst(!!items && items.length > 0);
 
     const title = mode === 'person'
-        ? decodeURIComponent(name || 'Person')
-        : `Genre · ${decodeURIComponent(name || '')}`;
+        ? (name ? decodeURIComponent(name) : t('browse.person'))
+        : t('browse.genre', {name: decodeURIComponent(name || '')});
 
     return (
         <div className="page">

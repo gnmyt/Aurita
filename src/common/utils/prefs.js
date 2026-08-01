@@ -1,7 +1,7 @@
 export const SUB_SIZES = [
-    {key: 'small', label: 'Klein', px: '24px'},
-    {key: 'normal', label: 'Normal', px: '30px'},
-    {key: 'large', label: 'Groß', px: '40px'},
+    {key: 'small', labelKey: 'media.subtitleSize.small', px: '24px'},
+    {key: 'normal', labelKey: 'media.subtitleSize.normal', px: '30px'},
+    {key: 'large', labelKey: 'media.subtitleSize.large', px: '40px'},
 ];
 
 export const getSubSize = () => {

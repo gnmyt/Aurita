@@ -26,7 +26,7 @@ export const UPNEXT_LEAD = 25;
 export const SPEEDS = [
     {v: 0.5, label: '0.5x'},
     {v: 0.75, label: '0.75x'},
-    {v: 1, label: '1x (Normal)'},
+    {v: 1, labelKey: 'player.speed.normal'},
     {v: 1.25, label: '1.25x'},
     {v: 1.5, label: '1.5x'},
 ];

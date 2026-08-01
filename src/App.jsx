@@ -1,5 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
+import i18n from '@/i18n';
 import {SpatialProvider, useSpatial} from '@/common/contexts/SpatialNav';
 import TopNav from '@/common/components/TopNav';
 import Home from '@/pages/Home';
@@ -146,6 +147,14 @@ const Shell = () => {
 
 const App = () => {
     const [phase, setPhase] = useState('loading');
+    const [translationsLoaded, setTranslationsLoaded] = useState(i18n.isInitialized);
+
+    useEffect(() => {
+        if (i18n.isInitialized) return undefined;
+        const done = () => setTranslationsLoaded(true);
+        i18n.on('initialized', done);
+        return () => i18n.off('initialized', done);
+    }, []);
 
     useEffect(() => {
         restoreSession().then((ok) => {
@@ -166,21 +175,23 @@ const App = () => {
         }).catch(() => setPhase('welcome'));
     }, []);
 
+    const booting = phase === 'loading' || !translationsLoaded;
+
     return (
         <SpatialProvider>
-            {phase === 'loading' && (
+            {booting && (
                 <div className="loading-screen">
                     <div className="yt-big"><AuritaLogo size={84}/></div>
                     <div className="spinner"/>
                 </div>
             )}
-            {phase === 'welcome' && (
+            {!booting && phase === 'welcome' && (
                 <SetupWizard onComplete={() => {
                     markProfilePicked();
                     window.location.reload();
                 }}/>
             )}
-            {phase === 'picker' && (
+            {!booting && phase === 'picker' && (
                 <ProfilePicker
                     onPick={(id) => {
                         markProfilePicked();
@@ -195,10 +206,10 @@ const App = () => {
                     onEmpty={() => setPhase('welcome')}
                 />
             )}
-            {phase === 'add' && (
+            {!booting && phase === 'add' && (
                 <SetupWizard addMode onComplete={() => window.location.reload()} onCancel={() => setPhase('picker')}/>
             )}
-            {phase === 'lock' && (() => {
+            {!booting && phase === 'lock' && (() => {
                 const active = getActiveAccount();
                 return (
                     <PinPad
@@ -217,7 +228,7 @@ const App = () => {
                     />
                 );
             })()}
-            {phase === 'ready' && <Shell/>}
+            {!booting && phase === 'ready' && <Shell/>}
             <Toaster/>
         </SpatialProvider>
     );

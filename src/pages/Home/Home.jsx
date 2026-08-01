@@ -1,3 +1,4 @@
+import {useTranslation} from 'react-i18next';
 import Row from '@/common/components/Row';
 import Spotlight from '@/common/components/Spotlight';
 import Loader from '@/common/components/Loader';
@@ -16,6 +17,7 @@ import {
 } from '@/common/utils/jellyfin';
 
 export const Home = () => {
+    const {t} = useTranslation();
     const openItem = useOpenItem();
 
     const {data, loading} = useCached('home', async () => {
@@ -51,16 +53,16 @@ export const Home = () => {
     return (
         <div className="page" style={{paddingTop: 0}}>
             <Spotlight items={spotlight}/>
-            <Row title="Weiterschauen" items={resume} onSelect={openItem} poster/>
-            <Row title="Als Nächstes" items={nextUp} onSelect={openItem} poster/>
-            <Row title="Merkliste" items={favorites} onSelect={openItem}/>
+            <Row title={t('home.continueWatching')} items={resume} onSelect={openItem} poster/>
+            <Row title={t('home.nextUp')} items={nextUp} onSelect={openItem} poster/>
+            <Row title={t('home.watchlist')} items={favorites} onSelect={openItem}/>
             {becauseName && because.length > 0 && (
-                <Row title={`Weil du „${becauseName}" gesehen hast`} items={because} onSelect={openItem}/>
+                <Row title={t('home.because', {name: becauseName})} items={because} onSelect={openItem}/>
             )}
             {views.map((v) => (
-                <Row key={v.Id} title={`Neu in ${v.Name}`} items={latest[v.Id]} onSelect={openItem}/>
+                <Row key={v.Id} title={t('home.latestIn', {library: v.Name})} items={latest[v.Id]} onSelect={openItem}/>
             ))}
-            <Row title="Vorschläge für dich" items={suggestions} onSelect={openItem}/>
+            <Row title={t('home.suggestions')} items={suggestions} onSelect={openItem}/>
         </div>
     );
 }

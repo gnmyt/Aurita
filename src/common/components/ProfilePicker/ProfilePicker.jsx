@@ -1,5 +1,6 @@
 import "./styles.sass";
 import {useEffect, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {Check, Pencil, Plus, Settings, X} from 'lucide-react';
 import {isBackKey, useFocusable, useKeyTrap, useSpatial} from '@/common/contexts/SpatialNav';
 import {
@@ -29,18 +30,20 @@ const ProfileTile = ({account, serverLabel, manage, onSelect, focusKey}) => {
 }
 
 const AddTile = ({onSelect, focusKey}) => {
+    const {t} = useTranslation();
     const {handlers} = useFocusable({onSelect, focusKey});
     return (
         <div className="profile-tile add" {...handlers}>
             <div className="profile-avatar-wrap">
                 <div className="avatar add"><Plus size={56} strokeWidth={2.5}/></div>
             </div>
-            <span className="profile-name">Profil hinzufügen</span>
+            <span className="profile-name">{t('common.profilePicker.addProfile')}</span>
         </div>
     );
 }
 
 export const ProfilePicker = ({onPick, onAdd, onClose, onEmpty, onSettings}) => {
+    const {t} = useTranslation();
     const [accounts, setAccounts] = useState(getAccounts);
     const [manage, setManage] = useState(false);
     const [pinFor, setPinFor] = useState(null);
@@ -119,7 +122,7 @@ export const ProfilePicker = ({onPick, onAdd, onClose, onEmpty, onSettings}) => 
     return (
         <div className="picker">
             <div className="wizard-bg"/>
-            <h1 className="picker-title">Wer schaut?</h1>
+            <h1 className="picker-title">{t('common.profilePicker.title')}</h1>
             <div className="picker-grid">
                 {accounts.map((a, i) => (
                     <ProfileTile
@@ -136,15 +139,15 @@ export const ProfilePicker = ({onPick, onAdd, onClose, onEmpty, onSettings}) => 
             <div className="picker-foot">
                 <ManageButton manage={manage} onSelect={() => setManage((m) => !m)}/>
                 {onSettings && !manage && (
-                    <FootButton icon={<Settings size={18}/>} label="Einstellungen"
+                    <FootButton icon={<Settings size={18}/>} label={t('common.profilePicker.settings')}
                                 focusKey="profile-settings" onSelect={onSettings}/>
                 )}
             </div>
             {confirmDel && (
                 <ConfirmDialog
-                    title="Profil entfernen?"
-                    message={`„${confirmDel.name}" wird von diesem Gerät entfernt.`}
-                    confirmLabel="Entfernen"
+                    title={t('common.profilePicker.removeTitle')}
+                    message={t('common.profilePicker.removeMessage', {name: confirmDel.name})}
+                    confirmLabel={t('common.actions.remove')}
                     danger
                     onConfirm={() => doRemove(confirmDel.userId)}
                     onCancel={() => {
@@ -168,11 +171,12 @@ const FootButton = ({icon, label, onSelect, focusKey}) => {
 }
 
 const ManageButton = ({manage, onSelect}) => {
+    const {t} = useTranslation();
     return (
         <FootButton
             focusKey="profile-manage"
             icon={manage ? <Check size={18}/> : <Pencil size={18}/>}
-            label={manage ? 'Fertig' : 'Profile verwalten'}
+            label={manage ? t('common.actions.done') : t('common.profilePicker.manageProfiles')}
             onSelect={onSelect}
         />
     );

@@ -1,5 +1,6 @@
 import "./styles.sass";
 import {useEffect, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {useNavigate} from 'react-router-dom';
 import {Info, Play} from 'lucide-react';
 import {useFocusable, useSpatialFocus} from '@/common/contexts/SpatialNav';
@@ -18,6 +19,7 @@ const HeroButton = ({label, Icon, primary, onSelect, focusKey}) => {
 }
 
 export const Spotlight = ({items}) => {
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const cur = useSpatialFocus();
     const [idx, setIdx] = useState(0);
@@ -55,8 +57,8 @@ export const Spotlight = ({items}) => {
                 {item.Overview && <div className="spotlight-overview">{item.Overview}</div>}
                 <div className="spotlight-actions">
                     <HeroButton primary focusKey="spot-play" Icon={Play}
-                                label={item.Type === 'Movie' ? 'Abspielen' : 'Ansehen'} onSelect={play}/>
-                    <HeroButton focusKey="spot-info" Icon={Info} label="Mehr Infos" onSelect={info}/>
+                                label={item.Type === 'Movie' ? t('common.spotlight.play') : t('common.spotlight.watch')} onSelect={play}/>
+                    <HeroButton focusKey="spot-info" Icon={Info} label={t('common.spotlight.moreInfo')} onSelect={info}/>
                 </div>
             </div>
             <div className="spotlight-dots">

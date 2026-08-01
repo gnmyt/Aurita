@@ -1,3 +1,5 @@
+import i18n from '@/i18n';
+
 export const TICKS_PER_SEC = 10000000;
 const ticksToSec = (ticks) => (ticks || 0) / TICKS_PER_SEC;
 
@@ -16,6 +18,6 @@ export const fmtDuration = (ticks) => (ticks ? fmtClock(ticksToSec(ticks)) : nul
 export const fmtRuntime = (ticks) => {
     if (!ticks) return null;
     const min = Math.round(ticksToSec(ticks) / 60);
-    if (min < 60) return `${min} Min.`;
-    return `${Math.floor(min / 60)} Std. ${min % 60} Min.`;
+    if (min < 60) return i18n.t('media.runtime.minutes', {count: min});
+    return i18n.t('media.runtime.hoursMinutes', {hours: Math.floor(min / 60), minutes: min % 60});
 }

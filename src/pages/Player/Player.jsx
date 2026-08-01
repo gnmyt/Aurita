@@ -1,5 +1,6 @@
 import "./styles.sass";
 import {useCallback, useEffect, useRef, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {useNavigate, useParams, useSearchParams} from 'react-router-dom';
 import Hls from 'hls.js';
 import {SkipForward} from 'lucide-react';
@@ -73,11 +74,11 @@ const chapterAt = (chapters, sec) => {
     return cur;
 }
 
-const versionLabels = (item) => {
+const versionLabels = (item, t) => {
     return (item?.MediaSources || []).map((ms, i) => ({
         label: ms.Name
             || [ms.Width && `${ms.Width}×${ms.Height}`, (ms.Container || '').toUpperCase()].filter(Boolean).join(' ')
-            || `Version ${i + 1}`,
+            || t('player.versionNumbered', {number: i + 1}),
     }));
 }
 
@@ -108,21 +109,25 @@ const applyVolumeCommand = (v, name, args) => {
 }
 
 const buildMenuCols = ({
-                           menuMode, versions, versionIdx, changeVersion, quality, changeQuality,
+                           t, menuMode, versions, versionIdx, changeVersion, quality, changeQuality,
                            audios, audioIndex, changeAudio, subs, activeSub, chooseSub,
                        }) => {
     const cols = [];
     if (menuMode === 'quality') {
         if (versions.length > 1) {
             cols.push({
-                key: 'version', title: 'Version',
+                key: 'version', title: t('player.version'),
                 rows: versions.map((vv, i) => ({label: vv.label, on: i === versionIdx, sel: () => changeVersion(i)})),
             });
         }
         cols.push({
-            key: 'quality', title: 'Qualität',
+            key: 'quality', title: t('player.quality'),
             rows: QUALITY_LEVELS.map((q) => ({
-                label: q.label + (q.key === 'auto' && getBandwidth() ? ` (${Math.round(getBandwidth() / 1e6)} Mbit/s)` : ''),
+                label: q.key === 'auto' && getBandwidth()
+                    ? t('player.qualityWithBandwidth', {
+                        label: t(q.labelKey), mbits: Math.round(getBandwidth() / 1e6),
+                    })
+                    : t(q.labelKey),
                 on: quality === q.key, sel: () => changeQuality(q.key),
             })),
         });
@@ -130,14 +135,14 @@ const buildMenuCols = ({
     }
     if (audios.length > 1) {
         cols.push({
-            key: 'audio', title: 'Audio',
+            key: 'audio', title: t('player.audio'),
             rows: audios.map((a) => ({label: a.label, on: a.index === audioIndex, sel: () => changeAudio(a.index)})),
         });
     }
     cols.push({
-        key: 'subs', title: 'Untertitel',
+        key: 'subs', title: t('player.subtitles'),
         rows: [
-            {label: 'Aus', on: activeSub === -1, sel: () => chooseSub(-1)},
+            {label: t('player.subtitlesOff'), on: activeSub === -1, sel: () => chooseSub(-1)},
             ...subs.map((s, i) => ({label: s.label, on: activeSub === i, sel: () => chooseSub(i)})),
         ],
     });
@@ -149,13 +154,16 @@ const isUpNextActive = ({autoplayNext, nextEp, upNextDismissed, duration, time})
     return autoplayNext && !!nextEp && !upNextDismissed && duration > 0 && left <= UPNEXT_LEAD && left > 0;
 }
 
-const episodeLine = (item) => {
+const episodeLine = (item, t) => {
     return item?.Type === 'Episode'
-        ? `${item.SeriesName} ${item.ParentIndexNumber}: Ep. ${item.IndexNumber}`
+        ? t('player.episodeLine', {
+            series: item.SeriesName, season: item.ParentIndexNumber, episode: item.IndexNumber,
+        })
         : (item?.ProductionYear || '');
 }
 
 export const Player = () => {
+    const {t} = useTranslation();
     const {id} = useParams();
     const navigate = useNavigate();
     const [params] = useSearchParams();
@@ -583,12 +591,12 @@ export const Player = () => {
     const autoplayNext = getPref('autoplayNext');
     const upNextActive = isUpNextActive({autoplayNext, nextEp, upNextDismissed, duration, time});
 
-    const versions = versionLabels(item);
+    const versions = versionLabels(item, t);
     const chapters = (item?.Chapters && item.Chapters.length > 1 && item.Chapters.length <= 100)
         ? item.Chapters : [];
 
     const cols = buildMenuCols({
-        menuMode, versions, versionIdx, changeVersion, quality, changeQuality,
+        t, menuMode, versions, versionIdx, changeVersion, quality, changeQuality,
         audios, audioIndex, changeAudio, subs, activeSub, chooseSub,
     });
 
@@ -900,11 +908,11 @@ export const Player = () => {
         };
     }, [id, navigate, exit, reveal]);
 
-    const segLabel = activeSegment?.Type === 'Outro' ? 'Abspann überspringen' : 'Intro überspringen';
-    const qualityLabel = QUALITY_LEVELS.find((q) => q.key === quality)?.label || 'Automatisch';
-    const modeBadge = streamInfo?.mode === 'transcode' ? qualityLabel : 'Original';
+    const segLabel = activeSegment?.Type === 'Outro' ? t('player.skipOutro') : t('player.skipIntro');
+    const qualityKey = QUALITY_LEVELS.find((q) => q.key === quality)?.labelKey || 'media.quality.auto';
+    const modeBadge = streamInfo?.mode === 'transcode' ? t(qualityKey) : t('player.original');
     const currentCue = subCues.find((c) => time >= c.start && time <= c.end)?.text || '';
-    const epLine = episodeLine(item);
+    const epLine = episodeLine(item, t);
     const showPausedCard = !playing && !menuOpen && !scrubbing && !buffering;
 
     return (
@@ -984,11 +992,10 @@ export const Player = () => {
 
             {playbackError && (
                 <div className="player-error">
-                    <div className="player-error-title">Wiedergabe nicht möglich</div>
-                    <div className="player-error-sub">Dieser Titel kann auf diesem Gerät gerade nicht abgespielt
-                        werden.
-                    </div>
-                    <button type="button" className="btn primary" onClick={exit}>Zurück</button>
+                    <div className="player-error-title">{t('player.errorTitle')}</div>
+                    <div className="player-error-sub">{t('player.errorSubtitle')}</div>
+                    <button type="button" className="btn primary"
+                            onClick={exit}>{t('common.actions.back')}</button>
                 </div>
             )}
 

@@ -1,3 +1,4 @@
+import i18n from '@/i18n';
 import {api, authHeader, getDeviceId, getToken, getUserId, SERVER_URL} from './client';
 
 export const streamUrl = (item, mediaSourceId) => {
@@ -10,12 +11,12 @@ export const streamUrl = (item, mediaSourceId) => {
 }
 
 export const QUALITY_LEVELS = [
-    {key: 'auto', label: 'Automatisch'},
-    {key: 'original', label: 'Original'},
-    {key: '1080', label: '1080p', bitrate: 8000000},
-    {key: '720', label: '720p HD', bitrate: 4000000},
-    {key: '480', label: '480p', bitrate: 1500000},
-    {key: '360', label: '360p', bitrate: 800000},
+    {key: 'auto', labelKey: 'media.quality.auto'},
+    {key: 'original', labelKey: 'media.quality.original'},
+    {key: '1080', labelKey: 'media.quality.1080', bitrate: 8000000},
+    {key: '720', labelKey: 'media.quality.720', bitrate: 4000000},
+    {key: '480', labelKey: 'media.quality.480', bitrate: 1500000},
+    {key: '360', labelKey: 'media.quality.360', bitrate: 800000},
 ];
 
 let _bandwidth = Number(localStorage.getItem('jf_bandwidth')) || 0;
@@ -215,32 +216,33 @@ export const reportStop = (itemId, positionTicks) => {
 
 export {TICKS_PER_SEC} from '@/common/utils/time';
 
-const LANG_NAMES = {
-    deu: 'Deutsch', ger: 'Deutsch', eng: 'Englisch', jpn: 'Japanisch', kor: 'Koreanisch',
-    fra: 'Französisch', fre: 'Französisch', spa: 'Spanisch', ita: 'Italienisch', rus: 'Russisch',
-    ukr: 'Ukrainisch', zho: 'Chinesisch', chi: 'Chinesisch', por: 'Portugiesisch', nld: 'Niederländisch',
-    dut: 'Niederländisch', pol: 'Polnisch', tur: 'Türkisch', ara: 'Arabisch', hin: 'Hindi',
-    swe: 'Schwedisch', dan: 'Dänisch', nor: 'Norwegisch', fin: 'Finnisch', ces: 'Tschechisch',
-    cze: 'Tschechisch', hun: 'Ungarisch', ell: 'Griechisch', gre: 'Griechisch', heb: 'Hebräisch',
-    tha: 'Thai', vie: 'Vietnamesisch', ron: 'Rumänisch', rum: 'Rumänisch', bul: 'Bulgarisch',
+const LANG_KEYS = {
+    deu: 'deu', ger: 'deu', eng: 'eng', jpn: 'jpn', kor: 'kor',
+    fra: 'fra', fre: 'fra', spa: 'spa', ita: 'ita', rus: 'rus',
+    ukr: 'ukr', zho: 'zho', chi: 'zho', por: 'por', nld: 'nld',
+    dut: 'nld', pol: 'pol', tur: 'tur', ara: 'ara', hin: 'hin',
+    swe: 'swe', dan: 'dan', nor: 'nor', fin: 'fin', ces: 'ces',
+    cze: 'ces', hun: 'hun', ell: 'ell', gre: 'ell', heb: 'heb',
+    tha: 'tha', vie: 'vie', ron: 'ron', rum: 'ron', bul: 'bul',
 };
 
 const langName = (code) => {
-    if (!code) return 'Unbekannt';
-    return LANG_NAMES[code.toLowerCase()] || code.toUpperCase();
+    if (!code) return i18n.t('media.language.unknown');
+    const key = LANG_KEYS[code.toLowerCase()];
+    return key ? i18n.t(`media.language.${key}`) : code.toUpperCase();
 }
 
 const channelDesc = (s) => {
     const cl = (s.ChannelLayout || '').toLowerCase();
     if (cl.includes('7.1')) return '7.1';
     if (cl.includes('5.1')) return '5.1';
-    if (cl.includes('stereo')) return 'Stereo';
-    if (cl.includes('mono')) return 'Mono';
+    if (cl.includes('stereo')) return i18n.t('media.track.stereo');
+    if (cl.includes('mono')) return i18n.t('media.track.mono');
     switch (s.Channels) {
         case 1:
-            return 'Mono';
+            return i18n.t('media.track.mono');
         case 2:
-            return 'Stereo';
+            return i18n.t('media.track.stereo');
         case 6:
             return '5.1';
         case 8:
@@ -296,7 +298,7 @@ export const audioTracks = (mediaSource) => {
     return disambiguate(streams.map((s) => {
         const lang = s.Language || '';
         const extra = [];
-        if (isAudioDescription(s)) extra.push('Audiodeskription');
+        if (isAudioDescription(s)) extra.push(i18n.t('media.track.audioDescription'));
         else if (byLang[lang] > 1) {
             const ch = channelDesc(s);
             if (ch) extra.push(ch);
@@ -317,8 +319,8 @@ export const subtitleTracks = (mediaSource, itemId) => {
         .filter((s) => s.Type === 'Subtitle' && s.IsTextSubtitleStream)
         .map((s) => {
             const flags = [];
-            if (s.IsForced) flags.push('Erzwungen');
-            if (s.IsHearingImpaired) flags.push('SDH');
+            if (s.IsForced) flags.push(i18n.t('media.track.forced'));
+            if (s.IsHearingImpaired) flags.push(i18n.t('media.track.sdh'));
             return {
                 index: s.Index,
                 label: langName(s.Language) + (flags.length ? ` · ${flags.join(' · ')}` : ''),

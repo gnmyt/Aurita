@@ -1,5 +1,6 @@
 import "./styles.sass";
 import {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {FastForward, Gauge, Images, Lock, LogOut, SkipForward, Square, Subtitles} from 'lucide-react';
 import {useAutoFocusFirst} from '@/common/contexts/SpatialNav';
 import {
@@ -31,6 +32,7 @@ import {toast} from '@/common/utils/toast';
 import {BRAND} from '@/common/utils/brand';
 
 export const Settings = () => {
+    const {t} = useTranslation();
     const account = getActiveAccount();
     const [subSize, setSubSizeState] = useState(getSubSize());
     const [subBg, setSubBgState] = useState(getSubBg());
@@ -78,8 +80,9 @@ export const Settings = () => {
         setQuality(next);
     };
 
-    const subSizeLabel = SUB_SIZES.find((s) => s.key === subSize)?.label || 'Normal';
-    const qualityLabel = QUALITY_LEVELS.find((q) => q.key === quality)?.label || 'Automatisch';
+    const subSizeKey = SUB_SIZES.find((s) => s.key === subSize)?.labelKey || 'media.subtitleSize.normal';
+    const qualityKey = QUALITY_LEVELS.find((q) => q.key === quality)?.labelKey || 'media.quality.auto';
+    const onOff = (on) => (on ? t('settings.on') : t('settings.off'));
 
     return (
         <div className="settings">
@@ -91,7 +94,7 @@ export const Settings = () => {
                         setAccountPin(account.userId, pin);
                         setHasPin(true);
                         setPinFlow(null);
-                        toast('Profilsperre aktiviert');
+                        toast(t('settings.toast.pinEnabled'));
                     }}
                     onCancel={() => setPinFlow(null)}
                 />
@@ -105,100 +108,100 @@ export const Settings = () => {
                         clearAccountPin(account.userId);
                         setHasPin(false);
                         setPinFlow(null);
-                        toast('Profilsperre deaktiviert');
+                        toast(t('settings.toast.pinDisabled'));
                     }}
                     onCancel={() => setPinFlow(null)}
                 />
             )}
             {confirmSignOut && (
                 <ConfirmDialog
-                    title="Abmelden?"
-                    message={`„${account?.name || 'Dieses Profil'}" wird von diesem Gerät abgemeldet.`}
-                    confirmLabel="Abmelden"
+                    title={t('settings.signOutTitle')}
+                    message={t('settings.signOutMessage', {name: account?.name || t('settings.thisProfile')})}
+                    confirmLabel={t('common.actions.signOut')}
                     danger
                     onConfirm={doSignOut}
                     onCancel={() => setConfirmSignOut(false)}
                 />
             )}
-            <h1 className="settings-head">Profil und Einstellungen</h1>
+            <h1 className="settings-head">{t('settings.title')}</h1>
 
             <div className="settings-card">
                 <SettingRow
                     leading={<Avatar account={account} size={48}/>}
-                    title={account?.name || 'Profil'}
-                    subtitle="Profil wechseln oder hinzufügen"
+                    title={account?.name || t('settings.profileFallback')}
+                    subtitle={t('settings.switchProfile')}
                     chevron
                     focusKey="settings-first"
                     onSelect={openProfiles}
                 />
                 <SettingRow
                     icon={<Lock size={26}/>}
-                    title="Profilsperre"
-                    subtitle="PIN für den Zugriff auf dieses Profil"
-                    value={hasPin ? 'An' : 'Aus'}
+                    title={t('settings.profileLock')}
+                    subtitle={t('settings.profileLockSub')}
+                    value={onOff(hasPin)}
                     onSelect={() => setPinFlow(hasPin ? 'remove' : 'create')}
                 />
                 <SettingRow
                     icon={<LogOut size={26}/>}
-                    title="Abmelden"
-                    subtitle="Dieses Profil von diesem Gerät abmelden"
+                    title={t('settings.signOut')}
+                    subtitle={t('settings.signOutSub')}
                     chevron
                     danger
                     onSelect={() => setConfirmSignOut(true)}
                 />
             </div>
 
-            <div className="settings-section">Wiedergabe</div>
+            <div className="settings-section">{t('settings.playback')}</div>
             <div className="settings-card">
                 <SettingRow
                     icon={<SkipForward size={26}/>}
-                    title="Nächste Folge automatisch abspielen"
-                    subtitle="Am Ende automatisch zur nächsten Folge wechseln"
-                    value={prefs.autoplayNext ? 'An' : 'Aus'}
+                    title={t('settings.autoplayNext')}
+                    subtitle={t('settings.autoplayNextSub')}
+                    value={onOff(prefs.autoplayNext)}
                     onSelect={() => togglePref('autoplayNext')}
                 />
                 <SettingRow
                     icon={<FastForward size={26}/>}
-                    title="Intro & Abspann automatisch überspringen"
-                    subtitle="Markierte Abschnitte ohne Tastendruck überspringen"
-                    value={prefs.autoSkipSegments ? 'An' : 'Aus'}
+                    title={t('settings.autoSkipSegments')}
+                    subtitle={t('settings.autoSkipSegmentsSub')}
+                    value={onOff(prefs.autoSkipSegments)}
                     onSelect={() => togglePref('autoSkipSegments')}
                 />
                 <SettingRow
                     icon={<Images size={26}/>}
-                    title="Vorschau automatisch abspielen"
-                    subtitle="Empfehlungen auf der Startseite automatisch durchblättern"
-                    value={prefs.autoplayPreviews ? 'An' : 'Aus'}
+                    title={t('settings.autoplayPreviews')}
+                    subtitle={t('settings.autoplayPreviewsSub')}
+                    value={onOff(prefs.autoplayPreviews)}
                     onSelect={() => togglePref('autoplayPreviews')}
                 />
                 <SettingRow
                     icon={<Gauge size={26}/>}
-                    title="Standard-Wiedergabequalität"
-                    subtitle="Qualität, mit der die Wiedergabe startet"
-                    value={qualityLabel}
+                    title={t('settings.defaultQuality')}
+                    subtitle={t('settings.defaultQualitySub')}
+                    value={t(qualityKey)}
                     onSelect={cycleQuality}
                 />
             </div>
 
-            <div className="settings-section">Untertitel</div>
+            <div className="settings-section">{t('settings.subtitles')}</div>
             <div className="settings-card">
                 <SettingRow
                     icon={<Subtitles size={26}/>}
-                    title="Untertitelgröße"
-                    subtitle="Größe der Untertitel anpassen"
-                    value={subSizeLabel}
+                    title={t('settings.subtitleSize')}
+                    subtitle={t('settings.subtitleSizeSub')}
+                    value={t(subSizeKey)}
                     onSelect={cycleSubSize}
                 />
                 <SettingRow
                     icon={<Square size={26}/>}
-                    title="Untertitel-Hintergrund"
-                    subtitle="Abgedunkelten Balken hinter Untertiteln anzeigen"
-                    value={subBg ? 'An' : 'Aus'}
+                    title={t('settings.subtitleBackground')}
+                    subtitle={t('settings.subtitleBackgroundSub')}
+                    value={onOff(subBg)}
                     onSelect={toggleSubBg}
                 />
             </div>
 
-            <div className="settings-foot">{BRAND} · Oberfläche für Jellyfin</div>
+            <div className="settings-foot">{t('settings.footer', {brand: BRAND})}</div>
         </div>
     );
 }

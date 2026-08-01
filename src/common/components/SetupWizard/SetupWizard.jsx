@@ -1,5 +1,6 @@
 import "./styles.sass";
 import {useCallback, useEffect, useRef, useState} from 'react';
+import {Trans, useTranslation} from 'react-i18next';
 import {QRCodeSVG} from 'qrcode.react';
 import {ArrowRight, Check, ChevronRight, Plus, RefreshCw, Server, Smartphone} from 'lucide-react';
 import AuritaLogo from '@/common/components/AuritaLogo';
@@ -27,6 +28,7 @@ const WizardButton = ({label, Icon, primary, onSelect, focusKey}) => {
 }
 
 const ServerChoice = ({server, current, add, onSelect, focusKey}) => {
+    const {t} = useTranslation();
     const {handlers} = useFocusable({onSelect, focusKey});
     return (
         <div className={`server-choice${add ? ' add' : ''}`} {...handlers}>
@@ -35,11 +37,11 @@ const ServerChoice = ({server, current, add, onSelect, focusKey}) => {
             </div>
             <div className="server-choice-text">
         <span className="server-choice-name">
-          {add ? 'Neuen Server hinzufügen' : (server.name || server.url.replace(/^https?:\/\//, ''))}
+          {add ? t('common.setupWizard.addServer') : (server.name || server.url.replace(/^https?:\/\//, ''))}
         </span>
                 {!add && <span className="server-choice-url">{server.url.replace(/^https?:\/\//, '')}</span>}
             </div>
-            {current && <span className="server-choice-badge">Aktueller Server</span>}
+            {current && <span className="server-choice-badge">{t('common.setupWizard.currentServer')}</span>}
         </div>
     );
 }
@@ -50,6 +52,7 @@ const prettyCode = (code) => {
 }
 
 export const SetupWizard = ({onComplete, addMode = false, onCancel}) => {
+    const {t} = useTranslation();
     const servers = getServers();
     const currentServerId = getActiveAccount()?.serverId;
     const [server, setServer] = useState(() => {
@@ -148,10 +151,8 @@ export const SetupWizard = ({onComplete, addMode = false, onCancel}) => {
             <div className="wizard" data-modal>
                 <div className="wizard-bg"/>
                 <div className="wizard-card choose">
-                    <h1 className="wizard-title">Auf welchem Server?</h1>
-                    <p className="wizard-sub">
-                        Wähle den Server, auf dem sich das neue Profil anmelden soll.
-                    </p>
+                    <h1 className="wizard-title">{t('common.setupWizard.chooseTitle')}</h1>
+                    <p className="wizard-sub">{t('common.setupWizard.chooseSubtitle')}</p>
                     <div className="wizard-servers">
                         {sorted.map((s, i) => (
                             <ServerChoice
@@ -166,7 +167,7 @@ export const SetupWizard = ({onComplete, addMode = false, onCancel}) => {
                     </div>
                     {addMode && (
                         <div className="wizard-actions">
-                            <WizardButton label="Abbrechen" onSelect={onCancel}/>
+                            <WizardButton label={t('common.actions.cancel')} onSelect={onCancel}/>
                         </div>
                     )}
                 </div>
@@ -183,15 +184,11 @@ export const SetupWizard = ({onComplete, addMode = false, onCancel}) => {
             {step === 'welcome' && (
                 <div className="wizard-card welcome">
                     <div className="wizard-logo"><AuritaLogo size={96}/></div>
-                    <h1 className="wizard-title">Willkommen bei {BRAND}</h1>
-                    <p className="wizard-sub">
-                        Melde dich mit deinem Jellyfin-Konto an, um Filme und Serien
-                        auf dem großen Bildschirm zu genießen.
-                    </p>
+                    <h1 className="wizard-title">{t('common.setupWizard.welcomeTitle', {brand: BRAND})}</h1>
+                    <p className="wizard-sub">{t('common.setupWizard.welcomeSubtitle')}</p>
                     {enabled === false ? (
                         <div className="wizard-error">
-                            Schnellverbindung ist auf {serverHost} nicht aktiviert.
-                            Bitte aktiviere sie in den Server-Einstellungen.
+                            {t('common.setupWizard.quickConnectDisabled', {host: serverHost})}
                         </div>
                     ) : (
                         <div className="wizard-actions">
@@ -199,7 +196,7 @@ export const SetupWizard = ({onComplete, addMode = false, onCancel}) => {
                                 primary
                                 focusKey="wizard-start"
                                 Icon={ArrowRight}
-                                label={enabled === null ? 'Verbinde…' : 'Anmelden'}
+                                label={enabled === null ? t('common.serverConnect.connecting') : t('common.setupWizard.signIn')}
                                 onSelect={() => {
                                     if (enabled) startPairing(server);
                                 }}
@@ -213,21 +210,24 @@ export const SetupWizard = ({onComplete, addMode = false, onCancel}) => {
             {step === 'pairing' && (
                 <div className="wizard-card pairing">
                     <div className="pairing-left">
-                        <h1 className="wizard-title">Auf dem Handy anmelden</h1>
+                        <h1 className="wizard-title">{t('common.setupWizard.pairingTitle')}</h1>
                         <ol className="wizard-steps">
-                            <li>Öffne <strong>{serverHost}</strong> auf deinem Handy oder Computer und melde dich an.
+                            <li>
+                                <Trans i18nKey="common.setupWizard.pairingStep1" values={{host: serverHost}}
+                                       components={{1: <strong/>}}/>
                             </li>
-                            <li>Gehe zu <strong>Benutzer&shy;einstellungen <ChevronRight className="bc-arrow"
-                                                                                         size={15}/> Schnellverbindung</strong>.
+                            <li>
+                                <Trans i18nKey="common.setupWizard.pairingStep2"
+                                       components={{1: <strong/>, 3: <ChevronRight className="bc-arrow" size={15}/>}}/>
                             </li>
-                            <li>Gib den folgenden Code ein:</li>
+                            <li>{t('common.setupWizard.pairingStep3')}</li>
                         </ol>
-                        <div className="pairing-code">{pairing ? prettyCode(pairing.Code) : '— — —'}</div>
+                        <div className="pairing-code">{pairing ? prettyCode(pairing.Code) : t('common.setupWizard.pairingPlaceholder')}</div>
                         <div className="pairing-status">
-                            {status === 'waiting' && <><span className="spinner small"/> Warte auf Bestätigung…</>}
-                            {status === 'authorizing' && <><Check size={20}/> Angemeldet! Lade…</>}
+                            {status === 'waiting' && <><span className="spinner small"/> {t('common.setupWizard.waiting')}</>}
+                            {status === 'authorizing' && <><Check size={20}/> {t('common.setupWizard.authorizing')}</>}
                             {status === 'expired' &&
-                                <span className="status-warn">Code abgelaufen. Bitte neuen Code anfordern.</span>}
+                                <span className="status-warn">{t('common.setupWizard.expired')}</span>}
                             {status === 'error' && <span className="status-warn">{error}</span>}
                         </div>
                         <div className="wizard-actions">
@@ -235,11 +235,11 @@ export const SetupWizard = ({onComplete, addMode = false, onCancel}) => {
                                 primary={status === 'expired' || status === 'error'}
                                 focusKey="wizard-refresh"
                                 Icon={RefreshCw}
-                                label="Neuer Code"
+                                label={t('common.setupWizard.newCode')}
                                 onSelect={() => startPairing(server)}
                             />
                             <WizardButton
-                                label="Zurück"
+                                label={t('common.actions.back')}
                                 onSelect={() => {
                                     stopPolling();
                                     autoStartedRef.current = false;
@@ -256,7 +256,7 @@ export const SetupWizard = ({onComplete, addMode = false, onCancel}) => {
                             <QRCodeSVG value={qrTarget} size={208} bgColor="#ffffff" fgColor="#0f0f0f" level="M"
                                        includeMargin/>
                         </div>
-                        <div className="qr-hint"><Smartphone size={16}/> Scannen, um die Seite zu öffnen</div>
+                        <div className="qr-hint"><Smartphone size={16}/> {t('common.setupWizard.qrHint')}</div>
                     </div>
                 </div>
             )}

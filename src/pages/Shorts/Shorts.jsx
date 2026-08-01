@@ -1,5 +1,6 @@
 import "./styles.sass";
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {useNavigate} from 'react-router-dom';
 import {ChevronDown, ChevronUp, Play, Star, Volume2, VolumeX} from 'lucide-react';
 import {useCached} from '@/common/utils/cache';
@@ -10,6 +11,7 @@ import {getTrailerMovies} from '@/common/utils/jellyfin';
 const BATCH = 60;
 
 export const Shorts = () => {
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const {data: initial} = useCached('shorts', () => getTrailerMovies(BATCH));
     const [extra, setExtra] = useState([]);
@@ -119,9 +121,9 @@ export const Shorts = () => {
     if (!ready) {
         return initial && !initial.length
             ? <div className="page">
-                <div className="empty">Keine Trailer gefunden.</div>
+                <div className="empty">{t('shorts.empty')}</div>
             </div>
-            : <div className="page"><Loader label="Trailer werden geladen…"/></div>;
+            : <div className="page"><Loader label={t('shorts.loading')}/></div>;
     }
 
     const cur = list[idx];
@@ -146,11 +148,11 @@ export const Shorts = () => {
                             </div>
                             {cur.overview && <div className="shorts-overview">{cur.overview}</div>}
                             <div className="shorts-hint">
-                                <span><Play className="inline-ico" size={15} fill="currentColor"/> OK = Ansehen</span>
+                                <span><Play className="inline-ico" size={15} fill="currentColor"/> {t('shorts.hintWatch')}</span>
                                 <span><ChevronUp className="inline-ico" size={15}/><ChevronDown className="inline-ico"
-                                                                                                size={15}/> Wechseln</span>
+                                                                                                size={15}/> {t('shorts.hintSwitch')}</span>
                                 <span>{muted ? <VolumeX className="inline-ico" size={15}/> :
-                                    <Volume2 className="inline-ico" size={15}/>} M = Ton</span>
+                                    <Volume2 className="inline-ico" size={15}/>} {t('shorts.hintSound')}</span>
                             </div>
                         </div>
                     </div>

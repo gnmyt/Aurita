@@ -1,5 +1,6 @@
 import "./styles.sass";
 import {useCallback, useEffect, useMemo, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {useNavigate} from 'react-router-dom';
 import {Check, Heart, Info, Play, Plus, X} from 'lucide-react';
 import {isBackKey, useFocusable, useKeyTrap, useSpatial} from '@/common/contexts/SpatialNav';
@@ -19,6 +20,7 @@ const Opt = ({icon, label, onSelect, focusKey, danger}) => {
 }
 
 export const CardOptionsProvider = ({children}) => {
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const spatial = useSpatial();
     const [item, setItem] = useState(null);
@@ -70,35 +72,38 @@ export const CardOptionsProvider = ({children}) => {
             opts.push({
                 id: 'play',
                 icon: <Play size={24}/>,
-                label: inProgress ? 'Fortsetzen' : 'Abspielen',
+                label: inProgress ? t('common.cardOptions.resume') : t('common.cardOptions.play'),
                 sel: () => go(`/play/${item.Id}`)
             });
         }
         opts.push({
             id: 'details',
             icon: <Info size={24}/>,
-            label: 'Details ansehen',
+            label: t('common.cardOptions.viewDetails'),
             sel: () => go(isEpisode && item.SeriesId ? `/detail/${item.SeriesId}` : `/detail/${item.Id}`)
         });
         opts.push({
             id: 'played',
             icon: played ? <Check size={24}/> : <Plus size={24}/>,
-            label: played ? 'Als ungesehen markieren' : 'Als gesehen markieren',
-            sel: () => act(() => setPlayed(item.Id, !played), 'home', played ? 'Als ungesehen markiert' : 'Als gesehen markiert')
+            label: played ? t('common.cardOptions.markUnwatched') : t('common.cardOptions.markWatched'),
+            sel: () => act(() => setPlayed(item.Id, !played), 'home',
+                played ? t('common.cardOptions.toast.markedUnwatched') : t('common.cardOptions.toast.markedWatched'))
         });
         opts.push({
             id: 'fav',
             icon: <Heart size={24} fill={fav ? 'currentColor' : 'none'}/>,
-            label: fav ? 'Aus Merkliste entfernen' : 'Zur Merkliste',
-            sel: () => act(() => setFavorite(item.Id, !fav), 'home', fav ? 'Aus Merkliste entfernt' : 'Zur Merkliste hinzugefügt')
+            label: fav ? t('common.cardOptions.removeFromWatchlist') : t('common.cardOptions.addToWatchlist'),
+            sel: () => act(() => setFavorite(item.Id, !fav), 'home',
+                fav ? t('common.cardOptions.toast.removedFromWatchlist') : t('common.cardOptions.toast.addedToWatchlist'))
         });
         if (inProgress) {
             opts.push({
                 id: 'remove',
                 icon: <X size={24}/>,
-                label: 'Aus „Weiterschauen" entfernen',
+                label: t('common.cardOptions.removeFromContinueWatching'),
                 danger: true,
-                sel: () => act(() => removeFromResume(item.Id), 'home', 'Aus „Weiterschauen" entfernt')
+                sel: () => act(() => removeFromResume(item.Id), 'home',
+                    t('common.cardOptions.toast.removedFromContinueWatching'))
             });
         }
     }
@@ -113,7 +118,9 @@ export const CardOptionsProvider = ({children}) => {
                         <div
                             className="co-title">{item.Type === 'Episode' ? (item.SeriesName || item.Name) : item.Name}</div>
                         {item.Type === 'Episode' && item.IndexNumber != null && (
-                            <div className="co-sub">S{item.ParentIndexNumber}:E{item.IndexNumber} · {item.Name}</div>
+                            <div className="co-sub">
+                                {t('common.card.episodeCode', {season: item.ParentIndexNumber, episode: item.IndexNumber})} · {item.Name}
+                            </div>
                         )}
                         <div className="co-list">
                             {opts.map((o, i) => (

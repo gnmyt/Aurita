@@ -1,10 +1,12 @@
 import "./styles.sass";
 import {useRef} from 'react';
+import {useTranslation} from 'react-i18next';
 import {CornerUpLeft} from 'lucide-react';
 import {ARROW_KEYS, isBackKey, isOkKey, useKeyTrap} from '@/common/contexts/SpatialNav';
 import {togglePlayerMute, useYouTubePlayer} from '@/common/utils/youtube';
 
 export const TrailerOverlay = ({youtubeId, onClose}) => {
+    const {t} = useTranslation();
     const stageRef = useRef(null);
     const closeRef = useRef(onClose);
     closeRef.current = onClose;
@@ -35,7 +37,7 @@ export const TrailerOverlay = ({youtubeId, onClose}) => {
     return (
         <div className="trailer-overlay">
             <div className="trailer-stage" ref={stageRef}/>
-            <div className="trailer-hint"><CornerUpLeft className="inline-ico" size={15}/> Zurück zum Schließen</div>
+            <div className="trailer-hint"><CornerUpLeft className="inline-ico" size={15}/> {t('common.trailerOverlay.closeHint')}</div>
         </div>
     );
 }

@@ -1,6 +1,8 @@
+import {BRAND} from '@/common/utils/brand';
+
 export const AuritaLogo = ({size = 28}) => {
     return (
-        <svg width={size} height={size} viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-label="Aurita">
+        <svg width={size} height={size} viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-label={BRAND}>
             <defs>
                 <linearGradient id="au-grad" gradientUnits="userSpaceOnUse" x1="120" y1="120" x2="420" y2="420">
                     <stop offset="0" stopColor="#F25CA8"/>

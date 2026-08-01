@@ -1,5 +1,6 @@
 import "./styles.sass";
 import {useEffect, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {useNavigate, useParams} from 'react-router-dom';
 import {Check, Clapperboard, Heart, Play, Plus, RotateCcw, Star} from 'lucide-react';
 import Card from '@/common/components/Card';
@@ -24,12 +25,12 @@ import {
     setPlayed,
 } from '@/common/utils/jellyfin';
 
-const extraLabel = (extra, base = '') => {
+const extraLabel = (extra, base, fallback) => {
     const name = extra.Name || '';
     if (name.length > base.length && name.toLowerCase().startsWith(base.toLowerCase())) {
-        return name.slice(base.length).replace(/^[\s\-–—:·]+/, '') || 'Weitere Version';
+        return name.slice(base.length).replace(/^[\s\-–—:·]+/, '') || fallback;
     }
-    return name === base ? 'Weitere Version' : name;
+    return name === base ? fallback : name;
 }
 
 const Button = ({label, Icon, primary, active, onSelect, focusKey}) => {
@@ -52,6 +53,7 @@ const SeasonTab = ({season, active, onSelect}) => {
 }
 
 export const Detail = () => {
+    const {t} = useTranslation();
     const {id} = useParams();
     const navigate = useNavigate();
     const openItem = useOpenItem();
@@ -144,15 +146,15 @@ export const Detail = () => {
             return (
                 <div className="page">
                     <div className="page-error">
-                        <div className="page-error-title">Konnte nicht geladen werden</div>
-                        <div className="page-error-sub">Bitte prüfe deine Verbindung und versuche es erneut.</div>
+                        <div className="page-error-title">{t('detail.errorTitle')}</div>
+                        <div className="page-error-sub">{t('detail.errorSubtitle')}</div>
                         <div className="page-error-actions">
-                            <Button primary focusKey="detail-retry" Icon={RotateCcw} label="Erneut versuchen"
+                            <Button primary focusKey="detail-retry" Icon={RotateCcw} label={t('common.actions.retry')}
                                     onSelect={() => {
                                         setLoadError(false);
                                         setReloadKey((k) => k + 1);
                                     }}/>
-                            <Button label="Zurück" onSelect={() => navigate(-1)}/>
+                            <Button label={t('common.actions.back')} onSelect={() => navigate(-1)}/>
                         </div>
                     </div>
                 </div>
@@ -180,7 +182,7 @@ export const Detail = () => {
     const toggleWatched = async () => {
         const next = !played;
         setPlayedState(next);
-        toast(next ? 'Als gesehen markiert' : 'Als ungesehen markiert');
+        toast(next ? t('detail.toast.markedWatched') : t('detail.toast.markedUnwatched'));
         try {
             await setPlayed(item.Id, next);
         } catch {
@@ -190,7 +192,7 @@ export const Detail = () => {
     const toggleFav = async () => {
         const next = !fav;
         setFavState(next);
-        toast(next ? 'Zur Merkliste hinzugefügt' : 'Aus Merkliste entfernt');
+        toast(next ? t('detail.toast.addedToWatchlist') : t('detail.toast.removedFromWatchlist'));
         try {
             await setFavorite(item.Id, next);
         } catch {
@@ -217,25 +219,25 @@ export const Detail = () => {
                     <div className="detail-actions">
                         {isPlayable && (
                             <Button primary focusKey="detail-play" Icon={Play}
-                                    label={hasResume ? 'Fortsetzen' : 'Abspielen'}
+                                    label={hasResume ? t('detail.resume') : t('detail.play')}
                                     onSelect={() => navigate(`/play/${item.Id}`)}/>
                         )}
                         {isPlayable && hasResume && (
-                            <Button focusKey="detail-restart" Icon={RotateCcw} label="Von vorn"
+                            <Button focusKey="detail-restart" Icon={RotateCcw} label={t('detail.restart')}
                                     onSelect={() => navigate(`/play/${item.Id}?restart=1`)}/>
                         )}
                         {item.Type === 'Series' && (
-                            <Button primary focusKey="detail-play" Icon={Play} label="Wiedergabe"
+                            <Button primary focusKey="detail-play" Icon={Play} label={t('detail.playSeries')}
                                     onSelect={playSeries}/>
                         )}
                         {trailerId && (
-                            <Button focusKey="detail-trailer" Icon={Clapperboard} label="Trailer"
+                            <Button focusKey="detail-trailer" Icon={Clapperboard} label={t('detail.trailer')}
                                     onSelect={() => setShowTrailer(true)}/>
                         )}
                         <Button Icon={played ? Check : Plus} active={played}
-                                label={played ? 'Gesehen' : 'Gesehen markieren'} onSelect={toggleWatched}/>
+                                label={played ? t('detail.watched') : t('detail.markWatched')} onSelect={toggleWatched}/>
                         <Button Icon={Heart} active={fav}
-                                label={fav ? 'Vorgemerkt' : 'Merkliste'} onSelect={toggleFav}/>
+                                label={fav ? t('detail.onWatchlist') : t('detail.watchlist')} onSelect={toggleFav}/>
                     </div>
                 </div>
             </div>
@@ -261,7 +263,7 @@ export const Detail = () => {
 
             {cast.length > 0 && (
                 <div className="row" style={{marginTop: 28}}>
-                    <div className="row-title">Besetzung & Crew</div>
+                    <div className="row-title">{t('detail.castAndCrew')}</div>
                     <div className="row-track">
                         {cast.map((p) => (
                             <PersonCard key={p.Id + (p.Role || '')} person={p}
@@ -273,10 +275,10 @@ export const Detail = () => {
 
             {extras.length > 0 && (
                 <div className="row" style={{marginTop: 24}}>
-                    <div className="row-title">Extras</div>
+                    <div className="row-title">{t('detail.extras')}</div>
                     <div className="row-track">
                         {extras.map((ex) => (
-                            <Card key={ex.Id} item={ex} poster={false} title={extraLabel(ex, item.Name)}
+                            <Card key={ex.Id} item={ex} poster={false} title={extraLabel(ex, item.Name || '', t('detail.otherVersion'))}
                                   onSelect={() => navigate(`/play/${ex.Id}`)}/>
                         ))}
                     </div>
@@ -285,7 +287,7 @@ export const Detail = () => {
 
             {similar.length > 0 && (
                 <div className="row" style={{marginTop: 12}}>
-                    <div className="row-title">Das könnte dir auch gefallen</div>
+                    <div className="row-title">{t('detail.similar')}</div>
                     <div className="row-track">
                         {similar.map((s) => (
                             <Card key={s.Id} item={s} onSelect={() => openItem(s)}/>

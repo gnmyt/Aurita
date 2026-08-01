@@ -1,16 +1,18 @@
 import "./styles.sass";
 import {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {ARROW_KEYS, BACK_KEYS, isBackKey, isOkKey, OK_KEYS, useKeyTrap} from '@/common/contexts/SpatialNav';
 
 export const ConfirmDialog = ({
                                   title,
                                   message,
-                                  confirmLabel = 'Bestätigen',
-                                  cancelLabel = 'Abbrechen',
+                                  confirmLabel,
+                                  cancelLabel,
                                   danger,
                                   onConfirm,
                                   onCancel
                               }) => {
+    const {t} = useTranslation();
     const [idx, setIdx] = useState(0);
 
     useKeyTrap((e) => {
@@ -29,9 +31,10 @@ export const ConfirmDialog = ({
                 <div className="confirm-title">{title}</div>
                 {message && <div className="confirm-msg">{message}</div>}
                 <div className="confirm-actions">
-                    <div className={`confirm-btn${idx === 0 ? ' focused' : ''}`}>{cancelLabel}</div>
                     <div
-                        className={`confirm-btn${danger ? ' danger' : ''}${idx === 1 ? ' focused' : ''}`}>{confirmLabel}</div>
+                        className={`confirm-btn${idx === 0 ? ' focused' : ''}`}>{cancelLabel || t('common.actions.cancel')}</div>
+                    <div
+                        className={`confirm-btn${danger ? ' danger' : ''}${idx === 1 ? ' focused' : ''}`}>{confirmLabel || t('common.actions.confirm')}</div>
                 </div>
             </div>
         </div>

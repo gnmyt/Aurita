@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {useNavigate, useParams} from 'react-router-dom';
 import {ArrowDownUp, Filter} from 'lucide-react';
 import ItemGrid from '@/common/components/ItemGrid';
@@ -8,16 +9,16 @@ import {useOpenItem} from '@/common/utils/navigation';
 import {getGenres, getItem, getItems} from '@/common/utils/jellyfin';
 
 const SORTS = [
-    {key: 'name', label: 'Name (A–Z)', SortBy: 'SortName', SortOrder: 'Ascending'},
-    {key: 'added', label: 'Zuletzt hinzugefügt', SortBy: 'DateCreated', SortOrder: 'Descending'},
-    {key: 'year', label: 'Erscheinungsjahr', SortBy: 'PremiereDate,ProductionYear', SortOrder: 'Descending'},
-    {key: 'rating', label: 'Bewertung', SortBy: 'CommunityRating', SortOrder: 'Descending'},
-    {key: 'random', label: 'Zufällig', SortBy: 'Random'},
+    {key: 'name', labelKey: 'library.sort.name', SortBy: 'SortName', SortOrder: 'Ascending'},
+    {key: 'added', labelKey: 'library.sort.added', SortBy: 'DateCreated', SortOrder: 'Descending'},
+    {key: 'year', labelKey: 'library.sort.year', SortBy: 'PremiereDate,ProductionYear', SortOrder: 'Descending'},
+    {key: 'rating', labelKey: 'library.sort.rating', SortBy: 'CommunityRating', SortOrder: 'Descending'},
+    {key: 'random', labelKey: 'library.sort.random', SortBy: 'Random'},
 ];
 const FILTERS = [
-    {key: 'all', label: 'Alle'},
-    {key: 'unplayed', label: 'Ungesehen', Filters: 'IsUnplayed'},
-    {key: 'fav', label: 'Favoriten', Filters: 'IsFavorite'},
+    {key: 'all', labelKey: 'library.filter.all'},
+    {key: 'unplayed', labelKey: 'library.filter.unplayed', Filters: 'IsUnplayed'},
+    {key: 'fav', labelKey: 'library.filter.fav', Filters: 'IsFavorite'},
 ];
 
 const Pill = ({label, Icon, onSelect, focusKey, active}) => {
@@ -30,6 +31,7 @@ const Pill = ({label, Icon, onSelect, focusKey, active}) => {
 }
 
 export const Library = () => {
+    const {t} = useTranslation();
     const {id} = useParams();
     const navigate = useNavigate();
     const openItem = useOpenItem();
@@ -64,12 +66,12 @@ export const Library = () => {
 
     return (
         <div className="page">
-            <div className="page-title">{parent?.Name || 'Bibliothek'}</div>
+            <div className="page-title">{parent?.Name || t('library.fallbackTitle')}</div>
 
             <div className="lib-toolbar">
-                <Pill focusKey="lib-sort" Icon={ArrowDownUp} label={SORTS[sortIdx].label}
+                <Pill focusKey="lib-sort" Icon={ArrowDownUp} label={t(SORTS[sortIdx].labelKey)}
                       onSelect={() => setSortIdx((i) => (i + 1) % SORTS.length)}/>
-                <Pill focusKey="lib-filter" Icon={Filter} label={FILTERS[filterIdx].label}
+                <Pill focusKey="lib-filter" Icon={Filter} label={t(FILTERS[filterIdx].labelKey)}
                       active={filterIdx !== 0}
                       onSelect={() => setFilterIdx((i) => (i + 1) % FILTERS.length)}/>
                 {genres.slice(0, 12).map((g) => (

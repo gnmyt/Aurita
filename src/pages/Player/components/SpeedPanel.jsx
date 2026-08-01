@@ -1,9 +1,11 @@
+import {useTranslation} from 'react-i18next';
 import {SPEEDS} from '../utils';
 
 export const SpeedPanel = ({speedIdx}) => {
+    const {t} = useTranslation();
     return (
         <div className="speed-panel">
-            <div className="speed-title">Playback Speed</div>
+            <div className="speed-title">{t('player.speedTitle')}</div>
             <div className="speed-track">
                 <div className="speed-line"/>
                 {SPEEDS.map((s, i) => (
@@ -11,7 +13,7 @@ export const SpeedPanel = ({speedIdx}) => {
                         <div className="speed-dotwrap">
                             <div className="speed-dot"/>
                         </div>
-                        <div className="speed-label">{s.label}</div>
+                        <div className="speed-label">{s.labelKey ? t(s.labelKey) : s.label}</div>
                     </div>
                 ))}
             </div>

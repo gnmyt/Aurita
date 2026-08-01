@@ -1,5 +1,6 @@
 import "./styles.sass";
 import {memo} from 'react';
+import {useTranslation} from 'react-i18next';
 import {Check, Heart} from 'lucide-react';
 import {useFocusable} from '@/common/contexts/SpatialNav';
 import {useCardOptions} from '@/common/contexts/CardOptions';
@@ -10,6 +11,7 @@ import {fmtDuration} from '@/common/utils/time';
 import {BLANK_POSTER} from '@/common/utils/media';
 
 const CardInner = ({item, onSelect, poster, focusKey, title: titleOverride}) => {
+    const {t} = useTranslation();
     const cardOpts = useCardOptions();
     const canOptions = cardOpts && ['Movie', 'Series', 'Episode', 'Season'].includes(item?.Type);
     const {focused, handlers} = useFocusable({
@@ -34,16 +36,18 @@ const CardInner = ({item, onSelect, poster, focusKey, title: titleOverride}) => 
     if (item.Type === 'Episode') {
         title = item.SeriesName || item.Name;
         const se = item.ParentIndexNumber != null && item.IndexNumber != null
-            ? `S${item.ParentIndexNumber}:E${item.IndexNumber} · ` : '';
+            ? `${t('common.card.episodeCode', {season: item.ParentIndexNumber, episode: item.IndexNumber})} · ` : '';
         sub = `${se}${item.Name}`;
     } else if (item.Type === 'Movie') {
-        sub = item.ProductionYear ? String(item.ProductionYear) : 'Film';
+        sub = item.ProductionYear ? String(item.ProductionYear) : t('common.card.movie');
     } else if (item.Type === 'Series') {
-        sub = item.ProductionYear ? `Serie · ${item.ProductionYear}` : 'Serie';
+        sub = item.ProductionYear
+            ? t('common.card.seriesWithYear', {year: item.ProductionYear})
+            : t('common.card.series');
     } else if (item.Type === 'Season') {
-        sub = `${item.ChildCount || ''} Folgen`.trim();
+        sub = item.ChildCount ? t('common.card.seasonEpisodes', {count: item.ChildCount}) : '';
     } else if (item.IsFolder) {
-        sub = 'Ordner';
+        sub = t('common.card.folder');
     }
 
     if (titleOverride != null) title = titleOverride;
@@ -87,7 +91,9 @@ const CardInner = ({item, onSelect, poster, focusKey, title: titleOverride}) => 
                 {unplayed > 0 && <div className="card-badge count">{unplayed}</div>}
                 {dur && <div className="card-duration">{dur}</div>}
                 {isPoster && item.Type === 'Episode' && item.ParentIndexNumber != null && item.IndexNumber != null && (
-                    <div className="card-se">S{item.ParentIndexNumber}:E{item.IndexNumber}</div>
+                    <div className="card-se">
+                        {t('common.card.episodeCode', {season: item.ParentIndexNumber, episode: item.IndexNumber})}
+                    </div>
                 )}
                 {pct > 1 && pct < 99 && (
                     <div className="card-progress">

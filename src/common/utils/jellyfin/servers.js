@@ -1,3 +1,5 @@
+import i18n from '@/i18n';
+
 const PINNED = (window.AURITA_CONFIG?.serverUrl || '').replace(/\/+$/, '');
 const PINNED_SERVER = PINNED ? {id: 'pinned', url: PINNED, name: ''} : null;
 
@@ -39,7 +41,7 @@ const checkServer = async (url) => {
     const res = await fetch(`${url}/System/Info/Public`, {signal: AbortSignal.timeout(8000)});
     if (!res.ok) throw new Error(`Server antwortet mit Status ${res.status}`);
     const info = await res.json();
-    if (!info?.Id) throw new Error('Kein Jellyfin-Server');
+    if (!info?.Id) throw new Error(i18n.t('errors.noJellyfinServer'));
     return info;
 }
 

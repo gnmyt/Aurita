@@ -1,3 +1,4 @@
+import i18n from '@/i18n';
 import {authHeader, upsertAccount} from './client';
 
 export const quickConnectEnabled = async (server) => {
@@ -17,7 +18,7 @@ export const quickConnectInitiate = async (server) => {
         method: 'POST',
         headers: {'X-Emby-Authorization': authHeader(null)},
     });
-    if (!r.ok) throw new Error('Quick Connect konnte nicht gestartet werden (' + r.status + ')');
+    if (!r.ok) throw new Error(i18n.t('errors.quickConnectStart', {status: r.status}));
     return r.json();
 }
 
@@ -26,7 +27,7 @@ export const quickConnectPoll = async (server, secret) => {
         headers: {'X-Emby-Authorization': authHeader(null)},
     });
     if (r.status === 404) return null;
-    if (!r.ok) throw new Error('Quick Connect Fehler (' + r.status + ')');
+    if (!r.ok) throw new Error(i18n.t('errors.quickConnectPoll', {status: r.status}));
     return r.json();
 }
 
@@ -39,7 +40,7 @@ export const authenticateWithQuickConnect = async (server, secret) => {
         },
         body: JSON.stringify({Secret: secret}),
     });
-    if (!r.ok) throw new Error('Anmeldung fehlgeschlagen (' + r.status + ')');
+    if (!r.ok) throw new Error(i18n.t('errors.quickConnectAuth', {status: r.status}));
     const data = await r.json();
     upsertAccount({
         userId: data.User.Id,

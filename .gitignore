@@ -11,6 +11,9 @@ dist
 dist-ssr
 *.local
 
+docs/.vitepress/cache
+docs/.vitepress/dist
+
 .vscode/*
 !.vscode/extensions.json
 .idea
