@@ -47,7 +47,12 @@ jobs:
             --draft \
             --notes "Build in progress…" \
             ${{ steps.get_version.outputs.prerelease == 'true' && '--prerelease' || '' }}
-          ID=$(gh api "repos/${{ github.repository }}/releases/tags/${{ github.ref_name }}" --jq .id)
+          ID=$(gh api "repos/${{ github.repository }}/releases" --paginate \
+            --jq '[.[] | select(.tag_name == "${{ github.ref_name }}")][0].id')
+          if [ -z "$ID" ] || [ "$ID" = "null" ]; then
+            echo "Could not find release for tag ${{ github.ref_name }}" >&2
+            exit 1
+          fi
           echo "release_id=$ID" >> "$GITHUB_OUTPUT"
 
   build-docker:
@@ -94,11 +99,14 @@ jobs:
         with:
           script: |
             const repo = { owner: context.repo.owner, repo: context.repo.repo };
-            try {
-              await github.rest.repos.deleteRelease({ ...repo, release_id: ${{ needs.create-release.outputs.release_id }} });
-              console.log('Release deleted');
-            } catch (e) {
-              console.log('Failed to delete release:', e.message);
+            const releaseId = Number('${{ needs.create-release.outputs.release_id }}');
+            if (releaseId) {
+              try {
+                await github.rest.repos.deleteRelease({ ...repo, release_id: releaseId });
+                console.log('Release deleted');
+              } catch (e) {
+                console.log('Failed to delete release:', e.message);
+              }
             }
             try {
               await github.rest.git.deleteRef({ ...repo, ref: 'tags/${{ github.ref_name }}' });
