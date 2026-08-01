@@ -5,7 +5,7 @@ const ticksToSec = (ticks) => (ticks || 0) / TICKS_PER_SEC;
 
 export const fmtClock = (sec) => {
     if (!isFinite(sec)) return '0:00';
-    sec = Math.floor(sec);
+    sec = Math.max(0, Math.floor(sec));
     const h = Math.floor(sec / 3600);
     const m = Math.floor((sec % 3600) / 60);
     const s = sec % 60;

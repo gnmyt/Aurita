@@ -79,13 +79,22 @@ const directionInfo = (dir, cr, cc, r) => {
     }
 }
 
+const entryFlags = (entry) => {
+    if (entry._flags) return entry._flags;
+    entry._flags = {
+        inNav: !!entry.el.closest('.topnav'),
+        inModal: !!entry.el.closest(MODAL_SELECTOR),
+    };
+    return entry._flags;
+}
+
 const candidateScore = (dir, entry, {cr, cc, curInNav, curInModal, vertical}) => {
     if (!entry.el) return null;
+    const {inNav: candInNav, inModal: candInModal} = entryFlags(entry);
+    if (curInModal && !candInModal) return null;
+    if (curInNav && (vertical ? candInNav : !candInNav)) return null;
     const r = entry.el.getBoundingClientRect();
     if (r.width === 0 && r.height === 0) return null;
-    if (curInModal && !entry.el.closest(MODAL_SELECTOR)) return null;
-    const candInNav = !!entry.el.closest('.topnav');
-    if (curInNav && (vertical ? candInNav : !candInNav)) return null;
     const {inDir, primary, cross} = directionInfo(dir, cr, cc, r);
     if (!inDir || primary <= 0) return null;
     const overlap = vertical
@@ -127,7 +136,7 @@ export const SpatialProvider = ({children}) => {
     };
 
     const register = useCallback((id, data) => {
-        registry.current.set(id, data);
+        registry.current.set(id, {...data, _flags: null});
     }, []);
 
     const unregister = useCallback((id) => {

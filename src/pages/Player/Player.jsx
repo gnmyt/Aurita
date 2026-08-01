@@ -43,6 +43,7 @@ import {
     trickplayInfo,
 } from '@/common/utils/jellyfin';
 import {onRemote} from '@/common/utils/remote';
+import {getNativeVideo, isNativePlayerAvailable, releaseNativeVideo} from '@/common/utils/nativePlayer';
 import {isBackKey} from '@/common/contexts/SpatialNav';
 import {
     getAudioLang,
@@ -198,8 +199,14 @@ export const Player = () => {
     const speedRef = useRef(1);
     const versionRef = useRef(0);
     const subStreamRef = useRef(null);
+    const streamRef = useRef(null);
+    const itemRef = useRef(null);
+    const autoplayNextRef = useRef(false);
+    const goNextRef = useRef(null);
+    const exitRef = useRef(null);
     const seekReadyRef = useRef(null);
     const readyPendingRef = useRef(null);
+    const [nativeVideo] = useState(() => (isNativePlayerAvailable() ? getNativeVideo() : null));
     const idRef = useRef(id);
     idRef.current = id;
 
@@ -324,9 +331,14 @@ export const Player = () => {
                 ?? auds.find((a) => a.isDefault)?.index ?? auds[0]?.index ?? null;
             audioRef.current = chosen;
             setAudioIndex(chosen);
+            resolved.audioStreamIndex = chosen ?? undefined;
+            resolved.subtitleStreamIndex = subStreamRef.current ?? undefined;
+            streamRef.current = resolved;
             setStreamInfo(resolved);
         } catch {
-            setStreamInfo({url: streamUrl(it), isHls: false});
+            const fallback = {url: streamUrl(it), isHls: false, mode: 'direct'};
+            streamRef.current = fallback;
+            setStreamInfo(fallback);
         }
     }, []);
 
@@ -381,7 +393,6 @@ export const Player = () => {
                     }
                 }
             }
-            reportStart(it.Id, restart ? 0 : (it.UserData?.PlaybackPositionTicks || 0));
             getMediaSegments(it.Id).then((s) => {
                 if (alive) setSegments(s);
             });
@@ -401,7 +412,61 @@ export const Player = () => {
     }, [id, restart, loadStream]);
 
     useEffect(() => {
-        if (!streamInfo?.url || !videoRef.current) return;
+        if (!nativeVideo || !streamInfo?.url) return;
+        videoRef.current = nativeVideo;
+        const onEvent = (e) => {
+            switch (e.type) {
+                case 'timeupdate':
+                    setTime(nativeVideo.currentTime);
+                    setBuffered(nativeVideo.buffered.end(0) || 0);
+                    break;
+                case 'loadedmetadata':
+                    setDuration(nativeVideo.duration);
+                    setBuffering(false);
+                    break;
+                case 'playing':
+                    setPlaying(true);
+                    setBuffering(false);
+                    break;
+                case 'pause':
+                    setPlaying(false);
+                    break;
+                case 'waiting':
+                    setBuffering(true);
+                    break;
+                case 'ended':
+                    if (autoplayNextRef.current) goNextRef.current?.(); else exitRef.current?.();
+                    break;
+                case 'error':
+                    if (!fallbackRef.current()) setPlaybackError(true);
+                    break;
+                default:
+                    break;
+            }
+        };
+        const types = ['timeupdate', 'loadedmetadata', 'playing', 'pause', 'waiting', 'ended', 'error', 'seeked'];
+        types.forEach((t) => nativeVideo.addEventListener(t, onEvent));
+        nativeVideo.playbackRate = speedRef.current;
+        nativeVideo.load(streamInfo.url, {
+            positionSeconds: seekRef.current || 0,
+            isHls: !!streamInfo.isHls,
+        });
+        return () => {
+            types.forEach((t) => nativeVideo.removeEventListener(t, onEvent));
+        };
+    }, [streamInfo, nativeVideo]);
+
+    useEffect(() => {
+        if (!nativeVideo) return undefined;
+        document.documentElement.classList.add('native-video');
+        return () => {
+            document.documentElement.classList.remove('native-video');
+            releaseNativeVideo();
+        };
+    }, [nativeVideo]);
+
+    useEffect(() => {
+        if (!streamInfo?.url || nativeVideo || !videoRef.current) return;
         const v = videoRef.current;
         const seekTo = seekRef.current;
         if (hlsRef.current) {
@@ -473,15 +538,25 @@ export const Player = () => {
     }, [streamInfo]);
 
     useEffect(() => {
+        itemRef.current = item;
+    }, [item]);
+
+    useEffect(() => {
+        const it = itemRef.current;
+        if (!streamInfo || !it) return;
+        reportStart(it.Id, Math.floor((seekRef.current || 0) * TICKS_PER_SEC), streamInfo);
+    }, [streamInfo]);
+
+    useEffect(() => {
         if (!item) return;
         const iv = setInterval(() => {
             const v = videoRef.current;
-            if (v && !v.paused) reportProgress(item.Id, Math.floor(v.currentTime * TICKS_PER_SEC), false);
+            if (v && !v.paused) reportProgress(item.Id, Math.floor(v.currentTime * TICKS_PER_SEC), false, streamRef.current);
         }, 10000);
         return () => {
             clearInterval(iv);
             const v = videoRef.current;
-            if (v) reportStop(item.Id, Math.floor(v.currentTime * TICKS_PER_SEC));
+            if (v) reportStop(item.Id, Math.floor(v.currentTime * TICKS_PER_SEC), streamRef.current);
             if (sessionRef.current) {
                 stopEncoding(sessionRef.current);
                 sessionRef.current = null;
@@ -724,6 +799,9 @@ export const Player = () => {
     };
 
     const autoplayNext = getPref('autoplayNext');
+    autoplayNextRef.current = autoplayNext;
+    goNextRef.current = goNext;
+    exitRef.current = exit;
     const upNextActive = isUpNextActive({autoplayNext, nextEp, upNextDismissed, duration, time});
 
     const versions = versionLabels(item, t);
@@ -1088,8 +1166,8 @@ export const Player = () => {
     const showPausedCard = !playing && !pop && !scrubbing && !buffering && !syncWaiting;
 
     return (
-        <div className="player-root" onMouseMove={reveal}>
-            <video
+        <div className={`player-root${nativeVideo ? ' native' : ''}`} onMouseMove={reveal}>
+            {!nativeVideo && <video
                 ref={videoRef}
                 crossOrigin="anonymous"
                 preload="auto"
@@ -1154,7 +1232,7 @@ export const Player = () => {
                         setPlaybackError(true);
                     }
                 }}
-            />
+            />}
             {buffering && !playbackError && <div className="player-spinner"/>}
 
             {playbackError && (

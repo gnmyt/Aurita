@@ -29,7 +29,9 @@ export const ScrubBar = ({zone, duration, time, buffered, scrubbing, scrubTime, 
                     </>
                 )}
             </div>
-            <span className="nf-time">{fmt(scrubbing ? scrubTime : (duration - time))}</span>
+            <span className="nf-time">
+                {scrubbing ? fmt(scrubTime) : (duration > 0 ? fmt(duration - time) : '')}
+            </span>
         </div>
     );
 }

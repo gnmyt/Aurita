@@ -6,7 +6,6 @@ plugins {
 def buildVersionCode = (System.getenv('VERSION_CODE') ?: '1').toInteger()
 def buildVersionName = System.getenv('VERSION_NAME') ?: '1.0.0'
 
-// Signing comes from the environment (CI) or from an untracked key.properties (local).
 def keyProps = new Properties()
 def keyPropsFile = rootProject.file('key.properties')
 if (keyPropsFile.exists()) {
@@ -45,8 +44,6 @@ android {
             signingConfig signingConfigs.release
         }
 
-        // DEV_SERVER_URL makes the WebView load the Vite dev server instead of
-        // the bundled assets, so `npm run dev:tv` gets hot reload on the TV.
         debug {
             resValue 'string', 'dev_server_url', System.getenv('DEV_SERVER_URL') ?: ''
         }
@@ -66,9 +63,14 @@ android {
     }
 }
 
+def media3Version = '1.4.1'
+
 dependencies {
     implementation 'androidx.webkit:webkit:1.11.0'
     implementation 'androidx.core:core:1.13.1'
     implementation 'androidx.tvprovider:tvprovider:1.0.0'
     implementation 'androidx.work:work-runtime:2.9.1'
+
+    implementation "androidx.media3:media3-exoplayer:$media3Version"
+    implementation "androidx.media3:media3-exoplayer-hls:$media3Version"
 }

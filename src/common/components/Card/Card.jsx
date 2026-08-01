@@ -5,6 +5,7 @@ import {Check, Heart} from 'lucide-react';
 import {useFocusable} from '@/common/contexts/SpatialNav';
 import {useCardOptions} from '@/common/contexts/CardOptions';
 import {useVideoPreview} from './utils/useVideoPreview';
+import {useSettledFocus} from './utils/useSettledFocus';
 import {logoUrl, posterImage, wideImage} from '@/common/utils/jellyfin';
 import {getPref} from '@/common/utils/prefs';
 import {fmtDuration} from '@/common/utils/time';
@@ -24,8 +25,9 @@ const CardInner = ({item, onSelect, poster, focusKey, title: titleOverride}) => 
     });
     const isPoster = poster ?? (item.Type !== 'Episode');
     const img = isPoster ? posterImage(item, 400) : wideImage(item, 500);
-    const wide = isPoster && focused ? wideImage(item, 800) : null;
-    const logo = isPoster && focused ? logoUrl(item, 360) : null;
+    const expanded = useSettledFocus(focused);
+    const wide = isPoster && expanded ? wideImage(item, 800) : null;
+    const logo = isPoster && expanded ? logoUrl(item, 360) : null;
 
     const ud = item.UserData || {};
     const pct = ud.PlayedPercentage || (ud.PlaybackPositionTicks && item.RunTimeTicks
@@ -76,10 +78,10 @@ const CardInner = ({item, onSelect, poster, focusKey, title: titleOverride}) => 
                 )}
                 {isPoster && wide && (
                     <>
-                        <img className="card-wide-img" src={wide} alt="" loading="lazy"/>
+                        <img className="card-wide-img" src={wide} alt="" decoding="async"/>
                         <div className="card-expand">
                             {logo
-                                ? <img className="card-expand-logo" src={logo} alt={title}/>
+                                ? <img className="card-expand-logo" src={logo} alt={title} decoding="async"/>
                                 : <div className="card-expand-title">{title}</div>}
                             {sub && <div className="card-expand-sub">{sub}</div>}
                         </div>

@@ -1,5 +1,6 @@
 import i18n from '@/i18n';
 import {api, authHeader, getDeviceId, getToken, getUserId, SERVER_URL} from './client';
+import {buildDeviceProfile} from './deviceProfile';
 
 export const streamUrl = (item, mediaSourceId) => {
     const u = new URL(`${SERVER_URL}/Videos/${item.Id}/stream`);
@@ -65,96 +66,24 @@ export const bitrateForQuality = (qkey) => {
     return lvl?.bitrate || 100000000;
 }
 
-const CODEC_TESTS = {
-    video: [
-        ['h264', ['video/mp4; codecs="avc1.640028"']],
-        ['hevc', ['video/mp4; codecs="hvc1.1.6.L93.B0"', 'video/mp4; codecs="hev1.1.6.L93.B0"']],
-        ['vp9', ['video/mp4; codecs="vp09.00.10.08"']],
-        ['av1', ['video/mp4; codecs="av01.0.05M.08"']],
-    ],
-    audio: [
-        ['aac', ['audio/mp4; codecs="mp4a.40.2"']],
-        ['mp3', ['audio/mpeg']],
-        ['ac3', ['audio/mp4; codecs="ac-3"', 'audio/mp4; codecs="mp4a.a5"']],
-        ['eac3', ['audio/mp4; codecs="ec-3"', 'audio/mp4; codecs="mp4a.a6"']],
-        ['opus', ['audio/mp4; codecs="opus"', 'audio/webm; codecs="opus"']],
-        ['flac', ['audio/mp4; codecs="flac"', 'audio/ogg; codecs="flac"']],
-    ],
-    webmVideo: [
-        ['vp8', ['video/webm; codecs="vp8"']],
-        ['vp9', ['video/webm; codecs="vp9"']],
-        ['av1', ['video/webm; codecs="av01.0.05M.08"']],
-    ],
-    webmAudio: [
-        ['opus', ['audio/webm; codecs="opus"']],
-        ['vorbis', ['audio/webm; codecs="vorbis"']],
-    ],
-};
-
-let _codecCaps = null;
-
-const detectCodecs = () => {
-    if (_codecCaps) return _codecCaps;
-    let probe;
-    try {
-        probe = document.createElement('video');
-    } catch {
-        probe = null;
-    }
-    const supports = (type) => {
-        try {
-            if (probe && probe.canPlayType(type) !== '') return true;
-        } catch {
-        }
-        try {
-            if (window.MediaSource?.isTypeSupported(type)) return true;
-        } catch {
-        }
-        return false;
-    };
-    const detect = (tests) => tests.filter(([, types]) => types.some(supports)).map(([codec]) => codec);
-    const caps = Object.fromEntries(Object.entries(CODEC_TESTS).map(([group, tests]) => [group, detect(tests)]));
-    if (!caps.video.includes('h264')) caps.video.push('h264');
-    if (!caps.audio.includes('aac')) caps.audio.push('aac');
-    _codecCaps = caps;
-    return _codecCaps;
-}
-
-const deviceProfile = (maxBitrate, {forceTranscode = false} = {}) => {
-    const caps = detectCodecs();
-    const directPlay = forceTranscode ? [] : [
-        {Container: 'mp4,m4v,mov', Type: 'Video', VideoCodec: caps.video.join(','), AudioCodec: caps.audio.join(',')},
-        ...(caps.webmVideo.length
-            ? [{
-                Container: 'webm',
-                Type: 'Video',
-                VideoCodec: caps.webmVideo.join(','),
-                AudioCodec: (caps.webmAudio.join(',') || 'opus')
-            }]
-            : []),
-    ];
-    return {
-        MaxStreamingBitrate: maxBitrate,
-        MaxStaticBitrate: maxBitrate,
-        DirectPlayProfiles: directPlay,
-        TranscodingProfiles: [
-            {
-                Container: 'ts', Type: 'Video', VideoCodec: 'h264', AudioCodec: 'aac,mp3',
-                Protocol: 'hls', Context: 'Streaming', MinSegments: 1, BreakOnNonKeyFrames: true, MaxAudioChannels: '2',
-            },
-        ],
-        SubtitleProfiles: [{Format: 'vtt', Method: 'External'}],
-    };
-}
-
-export const getPlaybackInfo = async (itemId, {maxBitrate, mediaSourceId, audioStreamIndex, forceTranscode} = {}) => {
+export const getPlaybackInfo = async (itemId, {
+    maxBitrate, mediaSourceId, audioStreamIndex, subtitleStreamIndex, startTimeTicks, forceTranscode,
+} = {}) => {
     const params = {userId: getUserId()};
     if (maxBitrate) params.maxStreamingBitrate = maxBitrate;
     if (mediaSourceId) params.mediaSourceId = mediaSourceId;
     if (audioStreamIndex != null) params.audioStreamIndex = audioStreamIndex;
+    if (subtitleStreamIndex != null) params.subtitleStreamIndex = subtitleStreamIndex;
+    if (startTimeTicks) params.startTimeTicks = startTimeTicks;
+    params.autoOpenLiveStream = true;
+    params.enableDirectPlay = !forceTranscode;
+    params.enableDirectStream = !forceTranscode;
+    params.enableTranscoding = true;
+    params.allowVideoStreamCopy = !forceTranscode;
+    params.allowAudioStreamCopy = !forceTranscode;
     return api(`/Items/${itemId}/PlaybackInfo`, params, {
         method: 'POST',
-        body: JSON.stringify({DeviceProfile: deviceProfile(maxBitrate || 200000000, {forceTranscode})}),
+        body: JSON.stringify({DeviceProfile: buildDeviceProfile(maxBitrate || 200000000, {forceTranscode})}),
     });
 }
 
@@ -163,7 +92,9 @@ export const resolveStream = (item, info) => {
     const playSessionId = info?.PlaySessionId;
     if (!ms) return {url: streamUrl(item), isHls: false, mode: 'direct'};
     if (ms.SupportsDirectPlay) {
-        return {url: streamUrl(item, ms.Id), isHls: false, mediaSource: ms, playSessionId, mode: 'direct'};
+        const u = new URL(streamUrl(item, ms.Id));
+        if (playSessionId) u.searchParams.set('PlaySessionId', playSessionId);
+        return {url: u.toString(), isHls: false, mediaSource: ms, playSessionId, mode: 'direct'};
     }
     if (ms.TranscodingUrl) {
         const isHls = (ms.TranscodingSubProtocol || '').toLowerCase() === 'hls' || ms.TranscodingUrl.includes('m3u8');
@@ -185,31 +116,39 @@ export const stopEncoding = (playSessionId) => {
     });
 }
 
-export const reportStart = (itemId, positionTicks = 0) => {
+const PLAY_METHOD = {direct: 'DirectPlay', directstream: 'DirectStream', transcode: 'Transcode'};
+
+const playbackBody = (itemId, positionTicks, stream, extra = {}) => ({
+    ItemId: itemId,
+    PositionTicks: Math.max(0, Math.floor(positionTicks || 0)),
+    PlayMethod: PLAY_METHOD[stream?.mode] || 'DirectPlay',
+    PlaySessionId: stream?.playSessionId,
+    MediaSourceId: stream?.mediaSource?.Id || itemId,
+    AudioStreamIndex: stream?.audioStreamIndex,
+    SubtitleStreamIndex: stream?.subtitleStreamIndex,
+    ...extra,
+});
+
+export const reportStart = (itemId, positionTicks = 0, stream = null) => {
     return api('/Sessions/Playing', {}, {
         method: 'POST',
-        body: JSON.stringify({ItemId: itemId, PositionTicks: positionTicks, PlayMethod: 'DirectPlay'}),
+        body: JSON.stringify(playbackBody(itemId, positionTicks, stream, {CanSeek: true})),
     }).catch(() => {
     });
 }
 
-export const reportProgress = (itemId, positionTicks, paused = false) => {
+export const reportProgress = (itemId, positionTicks, paused = false, stream = null) => {
     return api('/Sessions/Playing/Progress', {}, {
         method: 'POST',
-        body: JSON.stringify({
-            ItemId: itemId,
-            PositionTicks: positionTicks,
-            IsPaused: paused,
-            PlayMethod: 'DirectPlay'
-        }),
+        body: JSON.stringify(playbackBody(itemId, positionTicks, stream, {IsPaused: paused, CanSeek: true})),
     }).catch(() => {
     });
 }
 
-export const reportStop = (itemId, positionTicks) => {
+export const reportStop = (itemId, positionTicks, stream = null) => {
     return api('/Sessions/Playing/Stopped', {}, {
         method: 'POST',
-        body: JSON.stringify({ItemId: itemId, PositionTicks: positionTicks}),
+        body: JSON.stringify(playbackBody(itemId, positionTicks, stream)),
     }).catch(() => {
     });
 }

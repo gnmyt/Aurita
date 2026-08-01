@@ -30,13 +30,22 @@ export const SPEEDS = [
     {v: 1.25, label: '1.25x'},
     {v: 1.5, label: '1.5x'},
 ];
+
+const deviceMemoryGb = (typeof navigator !== 'undefined' && navigator.deviceMemory) || 0;
+const bufferBudget = () => {
+    if (deviceMemoryGb && deviceMemoryGb <= 2) return {size: 100, length: 120, back: 30};
+    if (deviceMemoryGb && deviceMemoryGb <= 4) return {size: 250, length: 300, back: 60};
+    return {size: 600, length: 600, back: 90};
+};
+const BUDGET = bufferBudget();
+
 export const HLS_CONFIG = {
     enableWorker: true,
     lowLatencyMode: false,
-    maxBufferLength: 60,
-    maxMaxBufferLength: 1800,
-    maxBufferSize: 400 * 1000 * 1000,
-    backBufferLength: 90,
+    maxBufferLength: BUDGET.length,
+    maxMaxBufferLength: BUDGET.length * 2,
+    maxBufferSize: BUDGET.size * 1000 * 1000,
+    backBufferLength: BUDGET.back,
     fragLoadingMaxRetry: 8,
     fragLoadingRetryDelay: 500,
     fragLoadingMaxRetryTimeout: 64000,

@@ -6,7 +6,11 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.graphics.Color;
 import android.view.KeyEvent;
+import android.view.SurfaceView;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.CookieManager;
@@ -38,6 +42,8 @@ public class MainActivity extends Activity {
     private static final String DOMAIN = "appassets.androidplatform.net";
 
     private WebView webView;
+    private SurfaceView videoSurface;
+    private NativeVideo nativeVideo;
 
     private String devServer;
 
@@ -102,7 +108,20 @@ public class MainActivity extends Activity {
             }
         });
 
-        setContentView(webView);
+        videoSurface = new SurfaceView(this);
+        videoSurface.setVisibility(View.GONE);
+
+        webView.setBackgroundColor(Color.TRANSPARENT);
+
+        FrameLayout root = new FrameLayout(this);
+        root.addView(videoSurface, new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        root.addView(webView, new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        setContentView(root);
+
+        nativeVideo = new NativeVideo(this, videoSurface, webView);
+
         hideSystemUi();
 
         webView.loadUrl(startUrlFor(getIntent()));
@@ -202,6 +221,10 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        if (nativeVideo != null) {
+            nativeVideo.release();
+            nativeVideo = null;
+        }
         if (webView != null) {
             webView.destroy();
             webView = null;
@@ -214,6 +237,51 @@ public class MainActivity extends Activity {
         public void setAuth(String server, String userId, String token) {
             JellyfinClient.INSTANCE.saveAuth(getApplicationContext(), server, userId, token);
             triggerTvSyncNow();
+        }
+
+        @JavascriptInterface
+        public String getPlayerCapabilities() {
+            try {
+                return PlayerCapabilities.INSTANCE.toJson(MainActivity.this);
+            } catch (Throwable t) {
+                android.util.Log.w("Aurita", "capability probe failed", t);
+                return null;
+            }
+        }
+
+        @JavascriptInterface
+        public void videoLoad(String url, double positionSeconds, boolean isHls, String token) {
+            nativeVideo.load(url, positionSeconds, isHls, token);
+        }
+
+        @JavascriptInterface
+        public void videoPlay() {
+            nativeVideo.play();
+        }
+
+        @JavascriptInterface
+        public void videoPause() {
+            nativeVideo.pause();
+        }
+
+        @JavascriptInterface
+        public void videoSeek(double seconds) {
+            nativeVideo.seek(seconds);
+        }
+
+        @JavascriptInterface
+        public void videoRate(double rate) {
+            nativeVideo.setPlaybackRate((float) rate);
+        }
+
+        @JavascriptInterface
+        public void videoVolume(double volume) {
+            nativeVideo.setVolume((float) volume);
+        }
+
+        @JavascriptInterface
+        public void videoRelease() {
+            nativeVideo.release();
         }
     }
 
