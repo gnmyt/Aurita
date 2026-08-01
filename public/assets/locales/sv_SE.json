@@ -256,11 +256,17 @@
       "nextEpisode": "Nästa avsnitt",
       "audioAndSubtitles": "Ljud och undertexter",
       "playbackSpeed": "Uppspelningshastighet",
-      "quality": "Kvalitet"
+      "quality": "Kvalitet",
+      "episodes": "Avsnitt"
     },
     "upNext": {
       "label": "Nästa om {{seconds}} s",
       "hint": "OK = Spela nu · <1></1> = Stäng"
+    },
+    "episodes": {
+      "title": "Avsnitt",
+      "empty": "Inga avsnitt hittades",
+      "remaining": "{{minutes}} min kvar"
     }
   },
   "media": {

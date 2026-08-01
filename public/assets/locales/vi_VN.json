@@ -255,11 +255,17 @@
       "nextEpisode": "Tập tiếp theo",
       "audioAndSubtitles": "Âm thanh và phụ đề",
       "playbackSpeed": "Tốc độ phát",
-      "quality": "Chất lượng"
+      "quality": "Chất lượng",
+      "episodes": "Các tập"
     },
     "upNext": {
       "label": "Tiếp theo sau {{seconds}} giây",
       "hint": "OK = Phát ngay · <1></1> = Bỏ qua"
+    },
+    "episodes": {
+      "title": "Các tập",
+      "empty": "Không tìm thấy tập nào",
+      "remaining": "Còn {{minutes}} phút"
     }
   },
   "media": {

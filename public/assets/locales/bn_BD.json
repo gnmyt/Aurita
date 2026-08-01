@@ -256,11 +256,17 @@
       "nextEpisode": "পরের পর্ব",
       "audioAndSubtitles": "অডিও ও সাবটাইটেল",
       "playbackSpeed": "প্লেব্যাক গতি",
-      "quality": "মান"
+      "quality": "মান",
+      "episodes": "পর্বসমূহ"
     },
     "upNext": {
       "label": "{{seconds}} সেকেন্ড পর এরপর",
       "hint": "OK = এখনই চালান · <1></1> = বন্ধ করুন"
+    },
+    "episodes": {
+      "title": "পর্বসমূহ",
+      "empty": "কোনো পর্ব পাওয়া যায়নি",
+      "remaining": "{{minutes}} মিনিট বাকি"
     }
   },
   "media": {

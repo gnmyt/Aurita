@@ -255,11 +255,17 @@
       "nextEpisode": "Episode berikutnya",
       "audioAndSubtitles": "Audio & subtitel",
       "playbackSpeed": "Kecepatan pemutaran",
-      "quality": "Kualitas"
+      "quality": "Kualitas",
+      "episodes": "Episode"
     },
     "upNext": {
       "label": "Berikutnya dalam {{seconds}} dtk",
       "hint": "OK = Putar sekarang · <1></1> = Tutup"
+    },
+    "episodes": {
+      "title": "Episode",
+      "empty": "Tidak ada episode ditemukan",
+      "remaining": "Sisa {{minutes}} mnt"
     }
   },
   "media": {

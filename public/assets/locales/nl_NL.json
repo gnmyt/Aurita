@@ -256,11 +256,17 @@
       "nextEpisode": "Volgende aflevering",
       "audioAndSubtitles": "Audio en ondertiteling",
       "playbackSpeed": "Afspeelsnelheid",
-      "quality": "Kwaliteit"
+      "quality": "Kwaliteit",
+      "episodes": "Afleveringen"
     },
     "upNext": {
       "label": "Hierna over {{seconds}} s",
       "hint": "OK = Nu afspelen · <1></1> = Sluiten"
+    },
+    "episodes": {
+      "title": "Afleveringen",
+      "empty": "Geen afleveringen gevonden",
+      "remaining": "Nog {{minutes}} min"
     }
   },
   "media": {

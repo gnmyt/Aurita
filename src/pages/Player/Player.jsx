@@ -11,13 +11,16 @@ import {UpNext} from './components/UpNext';
 import {PausedCard} from './components/PausedCard';
 import {ScrubBar} from './components/ScrubBar';
 import {ControlBar} from './components/ControlBar';
+import {EpisodePanel} from './components/EpisodePanel';
 import {
     audioTracks,
     bitrateForQuality,
     getBandwidth,
+    getEpisodes,
     getItem,
     getMediaSegments,
     getNextEpisode,
+    getSeasons,
     getPlaybackInfo,
     QUALITY_LEVELS,
     reportProgress,
@@ -109,11 +112,11 @@ const applyVolumeCommand = (v, name, args) => {
 }
 
 const buildMenuCols = ({
-                           t, menuMode, versions, versionIdx, changeVersion, quality, changeQuality,
+                           t, mode, versions, versionIdx, changeVersion, quality, changeQuality,
                            audios, audioIndex, changeAudio, subs, activeSub, chooseSub,
                        }) => {
     const cols = [];
-    if (menuMode === 'quality') {
+    if (mode === 'quality') {
         if (versions.length > 1) {
             cols.push({
                 key: 'version', title: t('player.version'),
@@ -210,9 +213,7 @@ export const Player = () => {
     const [buffering, setBuffering] = useState(true);
     const [playbackError, setPlaybackError] = useState(false);
     const [showControls, setShowControls] = useState(true);
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [menuMode, setMenuMode] = useState('tracks');
-    const [speedOpen, setSpeedOpen] = useState(false);
+    const [pop, setPop] = useState(null);
     const [speed, setSpeed] = useState(1);
     const [speedIdx, setSpeedIdx] = useState(2);
     const [menuCol, setMenuCol] = useState(0);
@@ -220,9 +221,16 @@ export const Player = () => {
     const [zone, setZone] = useState('controls');
     const [ctrlIdx, setCtrlIdx] = useState(0);
     const [upNextDismissed, setUpNextDismissed] = useState(false);
+    const [seasons, setSeasons] = useState([]);
+    const [seasonIdx, setSeasonIdx] = useState(0);
+    const [episodes, setEpisodes] = useState([]);
+    const [epIdx, setEpIdx] = useState(0);
+    const epCache = useRef(new Map());
+    const epReqRef = useRef(0);
+    const openingRef = useRef(false);
+    const seasonsSeriesRef = useRef(null);
 
     const hideTimer = useRef(null);
-    const menuRowRef = useRef(null);
 
     const reveal = useCallback(() => {
         setShowControls(true);
@@ -309,10 +317,20 @@ export const Player = () => {
         triedTranscodeRef.current = false;
         versionRef.current = 0;
         setVersionIdx(0);
+
+        setPop(null);
+        setEpisodes([]);
+        epCache.current.clear();
+        epReqRef.current++;
         (async () => {
             const it = await getItem(id);
             if (!alive) return;
             setItem(it);
+
+            if (it.SeriesId !== seasonsSeriesRef.current) {
+                seasonsSeriesRef.current = it.SeriesId;
+                setSeasons([]);
+            }
             setTrick(trickplayInfo(it, it.MediaSources?.[0]?.Id));
             let resumeSecs = restart ? 0 : (it.UserData?.PlaybackPositionTicks || 0) / TICKS_PER_SEC;
             if (isInGroup()) {
@@ -473,11 +491,69 @@ export const Player = () => {
         if (v) v.playbackRate = val;
     }, []);
 
+
+    const pickSpeed = useCallback((i) => {
+        const n = Math.max(0, Math.min(SPEEDS.length - 1, i));
+        setSpeedIdx(n);
+        changeSpeed(SPEEDS[n].v);
+        reveal();
+    }, [changeSpeed, reveal]);
+
+    const loadSeason = useCallback(async (seriesId, season, focusId) => {
+        if (!season) return;
+        const apply = (eps) => {
+            setEpisodes(eps);
+            setEpIdx(Math.max(0, eps.findIndex((e) => e.Id === focusId)));
+        };
+        const cached = epCache.current.get(season.Id);
+        if (cached) {
+            apply(cached);
+            return;
+        }
+        const token = ++epReqRef.current;
+        const eps = (await getEpisodes(seriesId, season.Id).catch(() => [])) || [];
+        epCache.current.set(season.Id, eps);
+        if (token === epReqRef.current) apply(eps);
+    }, []);
+
+    const openEpisodes = useCallback(async () => {
+        if (item?.Type !== 'Episode' || !item.SeriesId || openingRef.current) return;
+        openingRef.current = true;
+        reveal();
+        try {
+            let list = seasons;
+            if (!list.length) {
+                list = (await getSeasons(item.SeriesId).catch(() => [])) || [];
+                setSeasons(list);
+            }
+            const idx = Math.max(0, list.findIndex((s) => s.Id === item.SeasonId));
+            setSeasonIdx(idx);
+            await loadSeason(item.SeriesId, list[idx], item.Id);
+            setPop('episodes');
+            reveal();
+        } finally {
+            openingRef.current = false;
+        }
+    }, [item, seasons, reveal, loadSeason]);
+
+    const pickSeason = useCallback((i) => {
+        if (!item?.SeriesId || i === seasonIdx || i < 0 || i >= seasons.length) return;
+        setSeasonIdx(i);
+        loadSeason(item.SeriesId, seasons[i], null);
+        reveal();
+    }, [item, seasons, seasonIdx, loadSeason, reveal]);
+
+    const playEpisode = useCallback((i) => {
+        const ep = episodes[i];
+        if (!ep) return;
+        setPop(null);
+        if (ep.Id !== item?.Id) navigate(`/play/${ep.Id}`, {replace: true});
+    }, [episodes, item, navigate]);
+
     const openSpeed = useCallback(() => {
-        setMenuOpen(false);
         const i = SPEEDS.findIndex((s) => s.v === speedRef.current);
         setSpeedIdx(i < 0 ? 2 : i);
-        setSpeedOpen(true);
+        setPop('speed');
         reveal();
     }, [reveal]);
 
@@ -596,7 +672,7 @@ export const Player = () => {
         ? item.Chapters : [];
 
     const cols = buildMenuCols({
-        t, menuMode, versions, versionIdx, changeVersion, quality, changeQuality,
+        t, mode: pop, versions, versionIdx, changeVersion, quality, changeQuality,
         audios, audioIndex, changeAudio, subs, activeSub, chooseSub,
     });
 
@@ -606,8 +682,7 @@ export const Player = () => {
                 {rows: QUALITY_LEVELS.map((q) => ({on: quality === q.key}))}]
             : [...(audios.length > 1 ? [{rows: audios.map((a) => ({on: a.index === audioIndex}))}] : []),
                 {rows: [{on: activeSub === -1}, ...subs.map((_, i) => ({on: activeSub === i}))]}];
-        setMenuMode(mode);
-        setMenuOpen(true);
+        setPop(mode);
         setMenuCol(0);
         setMenuRow(Math.max(0, next[0].rows.findIndex((r) => r.on)));
     };
@@ -617,6 +692,7 @@ export const Player = () => {
         {key: 'rew', act: () => seek(-10)},
         {key: 'fwd', act: () => seek(10)},
         ...(nextEp ? [{key: 'next', act: goNext}] : []),
+        ...(item?.Type === 'Episode' ? [{key: 'eps', act: openEpisodes}] : []),
         {key: 'cc', act: () => openMenu('tracks')},
         {key: 'speed', act: openSpeed},
         {key: 'gear', act: () => openMenu('quality')},
@@ -647,8 +723,28 @@ export const Player = () => {
                 col.rows[menuRow]?.sel();
             } else if (isBackKey(e)) {
                 stop();
-                setMenuOpen(false);
+                setPop(null);
             }
+        };
+
+        const handleEpisodesKey = (e, stop) => {
+            if (e.key === 'ArrowUp') {
+                stop();
+                setEpIdx((i) => Math.max(0, i - 1));
+            } else if (e.key === 'ArrowDown') {
+                stop();
+                setEpIdx((i) => Math.max(0, Math.min(episodes.length - 1, i + 1)));
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                stop();
+                pickSeason(seasonIdx + (e.key === 'ArrowLeft' ? -1 : 1));
+            } else if (e.key === 'Enter' || e.key === ' ') {
+                stop();
+                playEpisode(epIdx);
+            } else if (isBackKey(e)) {
+                stop();
+                setPop(null);
+            }
+            reveal();
         };
 
         const stepSpeed = (dir) => {
@@ -668,7 +764,7 @@ export const Player = () => {
                 stepSpeed(1);
             } else if (['Enter', ' ', 'k', 'ArrowDown', 'Escape', 'Backspace', 'GoBack'].includes(e.key)) {
                 stop();
-                setSpeedOpen(false);
+                setPop(null);
             }
         };
 
@@ -767,12 +863,16 @@ export const Player = () => {
                 e.preventDefault();
                 e.stopPropagation();
             };
-            if (menuOpen) {
+            if (pop === 'tracks' || pop === 'quality') {
                 handleMenuKey(e, stop);
                 return;
             }
-            if (speedOpen) {
+            if (pop === 'speed') {
                 handleSpeedKey(e, stop);
+                return;
+            }
+            if (pop === 'episodes') {
+                handleEpisodesKey(e, stop);
                 return;
             }
 
@@ -795,10 +895,6 @@ export const Player = () => {
         window.addEventListener('keydown', h, true);
         return () => window.removeEventListener('keydown', h, true);
     }, []);
-
-    useEffect(() => {
-        if (menuOpen) menuRowRef.current?.scrollIntoView({block: 'nearest'});
-    }, [menuOpen, menuCol, menuRow]);
 
     useEffect(() => {
         reveal();
@@ -913,7 +1009,7 @@ export const Player = () => {
     const modeBadge = streamInfo?.mode === 'transcode' ? t(qualityKey) : t('player.original');
     const currentCue = subCues.find((c) => time >= c.start && time <= c.end)?.text || '';
     const epLine = episodeLine(item, t);
-    const showPausedCard = !playing && !menuOpen && !scrubbing && !buffering;
+    const showPausedCard = !playing && !pop && !scrubbing && !buffering;
 
     return (
         <div className="player-root" onMouseMove={reveal}>
@@ -1002,25 +1098,34 @@ export const Player = () => {
             {showPausedCard && <PausedCard item={item} epLine={epLine}/>}
 
             {currentCue && (
-                <div className={`sub-overlay${showControls && !menuOpen ? ' raised' : ''}`}>
+                <div className={`sub-overlay${showControls && !pop ? ' raised' : ''}`}>
                     <div>{currentCue}</div>
                 </div>
             )}
 
-            {activeSegment && !menuOpen && (
+            {activeSegment && !pop && (
                 <button type="button" className="skip-btn" onClick={skipSegment}>
                     <SkipForward size={20}/> {segLabel}
                 </button>
             )}
 
-            {upNextActive && !menuOpen && <UpNext nextEp={nextEp} secondsLeft={Math.ceil(duration - time)}/>}
+            {upNextActive && !pop && <UpNext nextEp={nextEp} secondsLeft={Math.ceil(duration - time)}/>}
 
-            {speedOpen && <SpeedPanel speedIdx={speedIdx}/>}
+            {pop === 'speed' && <SpeedPanel anchor="speed" speedIdx={speedIdx} onPick={pickSpeed}/>}
 
-            {menuOpen && <TrackMenu cols={cols} menuCol={menuCol} menuRow={menuRow} menuRowRef={menuRowRef}/>}
+            {(pop === 'tracks' || pop === 'quality') && (
+                <TrackMenu anchor={pop === 'quality' ? 'gear' : 'cc'} cols={cols}
+                           menuCol={menuCol} menuRow={menuRow}/>
+            )}
+
+            {pop === 'episodes' && (
+                <EpisodePanel anchor="eps" seasons={seasons} seasonIdx={seasonIdx} episodes={episodes} epIdx={epIdx}
+                              currentId={item?.Id}
+                              onPickSeason={pickSeason} onPickEpisode={playEpisode}/>
+            )}
 
             <div
-                className={`player-overlay${showControls || scrubbing || zone === 'controls' || menuOpen ? '' : ' hidden'}`}>
+                className={`player-overlay${showControls || scrubbing || zone === 'controls' || pop ? '' : ' hidden'}`}>
                 <ScrubBar zone={zone} duration={duration} time={time} buffered={buffered}
                           scrubbing={scrubbing} scrubTime={scrubTime}
                           chapters={chapters} chapterAt={(sec) => chapterAt(chapters, sec)} trick={trick}/>
@@ -1029,7 +1134,7 @@ export const Player = () => {
                             playing={playing} speed={speed} item={item} group={group} nextEp={nextEp}
                             modeBadge={modeBadge}
                             onTogglePlay={togglePlay} onSeek={seek} onNext={goNext} onOpenMenu={openMenu}
-                            onOpenSpeed={openSpeed}/>
+                            onOpenSpeed={openSpeed} onOpenEpisodes={openEpisodes}/>
             </div>
         </div>
     );

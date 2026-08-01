@@ -255,11 +255,17 @@
       "nextEpisode": "次のエピソード",
       "audioAndSubtitles": "音声と字幕",
       "playbackSpeed": "再生速度",
-      "quality": "画質"
+      "quality": "画質",
+      "episodes": "エピソード"
     },
     "upNext": {
       "label": "{{seconds}}秒後に次のエピソード",
       "hint": "OK = すぐに再生 · <1></1> = 閉じる"
+    },
+    "episodes": {
+      "title": "エピソード",
+      "empty": "エピソードが見つかりません",
+      "remaining": "残り{{minutes}}分"
     }
   },
   "media": {

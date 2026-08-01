@@ -257,11 +257,17 @@
       "nextEpisode": "Episodio successivo",
       "audioAndSubtitles": "Audio e sottotitoli",
       "playbackSpeed": "Velocità di riproduzione",
-      "quality": "Qualità"
+      "quality": "Qualità",
+      "episodes": "Episodi"
     },
     "upNext": {
       "label": "Prossimo tra {{seconds}} s",
       "hint": "OK = Riproduci ora · <1></1> = Ignora"
+    },
+    "episodes": {
+      "title": "Episodi",
+      "empty": "Nessun episodio trovato",
+      "remaining": "{{minutes}} min rimanenti"
     }
   },
   "media": {

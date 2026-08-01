@@ -255,11 +255,17 @@
       "nextEpisode": "下一集",
       "audioAndSubtitles": "音轨与字幕",
       "playbackSpeed": "播放速度",
-      "quality": "画质"
+      "quality": "画质",
+      "episodes": "剧集"
     },
     "upNext": {
       "label": "{{seconds}} 秒后播放下一集",
       "hint": "OK = 立即播放 · <1></1> = 关闭"
+    },
+    "episodes": {
+      "title": "剧集",
+      "empty": "未找到剧集",
+      "remaining": "还剩 {{minutes}} 分钟"
     }
   },
   "media": {

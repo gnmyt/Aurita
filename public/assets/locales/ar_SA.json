@@ -260,11 +260,17 @@
       "nextEpisode": "الحلقة التالية",
       "audioAndSubtitles": "الصوت والترجمة",
       "playbackSpeed": "سرعة التشغيل",
-      "quality": "الجودة"
+      "quality": "الجودة",
+      "episodes": "الحلقات"
     },
     "upNext": {
       "label": "التالي بعد {{seconds}} ثانية",
       "hint": "OK = التشغيل الآن · <1></1> = إغلاق"
+    },
+    "episodes": {
+      "title": "الحلقات",
+      "empty": "لم يتم العثور على حلقات",
+      "remaining": "بقيت {{minutes}} دقيقة"
     }
   },
   "media": {

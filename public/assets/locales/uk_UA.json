@@ -258,11 +258,17 @@
       "nextEpisode": "Наступна серія",
       "audioAndSubtitles": "Аудіо та субтитри",
       "playbackSpeed": "Швидкість відтворення",
-      "quality": "Якість"
+      "quality": "Якість",
+      "episodes": "Серії"
     },
     "upNext": {
       "label": "Далі через {{seconds}} с",
       "hint": "OK = Дивитися зараз · <1></1> = Закрити"
+    },
+    "episodes": {
+      "title": "Серії",
+      "empty": "Серій не знайдено",
+      "remaining": "Залишилось {{minutes}} хв"
     }
   },
   "media": {

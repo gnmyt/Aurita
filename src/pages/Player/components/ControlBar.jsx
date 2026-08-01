@@ -1,9 +1,9 @@
 import {useTranslation} from 'react-i18next';
-import {Gauge, Pause, Play, RotateCcw, RotateCw, Settings, SkipForward, Subtitles, Users} from 'lucide-react';
+import {Gauge, ListVideo, Pause, Play, RotateCcw, RotateCw, Settings, SkipForward, Subtitles, Users} from 'lucide-react';
 
 export const ControlBar = ({
                                controls, zone, ctrlIdx, playing, speed, item, group, nextEp, modeBadge,
-                               onTogglePlay, onSeek, onNext, onOpenMenu, onOpenSpeed,
+                               onTogglePlay, onSeek, onNext, onOpenMenu, onOpenSpeed, onOpenEpisodes,
                            }) => {
     const {t} = useTranslation();
     const idxOf = (k) => controls.findIndex((c) => c.key === k);
@@ -11,12 +11,14 @@ export const ControlBar = ({
     return (
         <div className="nf-controls">
             <div className="nf-left">
-                <button className={`nf-btn play${cf('play')}`} onClick={onTogglePlay}>
+                <button data-ctrl="play" className={`nf-btn play${cf('play')}`} onClick={onTogglePlay}>
                     {playing ? <Pause size={30} fill="currentColor"/> : <Play size={30} fill="currentColor"/>}
                 </button>
-                <button className={`nf-btn${cf('rew')}`} onClick={() => onSeek(-10)}><RotateCcw size={26}/><span
+                <button data-ctrl="rew" className={`nf-btn${cf('rew')}`} onClick={() => onSeek(-10)}><RotateCcw
+                    size={26}/><span
                     className="nf-skipnum">10</span></button>
-                <button className={`nf-btn${cf('fwd')}`} onClick={() => onSeek(10)}><RotateCw size={26}/><span
+                <button data-ctrl="fwd" className={`nf-btn${cf('fwd')}`} onClick={() => onSeek(10)}><RotateCw
+                    size={26}/><span
                     className="nf-skipnum">10</span></button>
             </div>
 
@@ -30,14 +32,23 @@ export const ControlBar = ({
             </div>
 
             <div className="nf-right">
-                {nextEp && <button className={`nf-btn${cf('next')}`} onClick={onNext} title={t('player.controls.nextEpisode')}><SkipForward
-                    size={26} fill="currentColor"/></button>}
-                <button className={`nf-btn${cf('cc')}`} onClick={() => onOpenMenu('tracks')} title={t('player.controls.audioAndSubtitles')}>
+                {nextEp &&
+                    <button data-ctrl="next" className={`nf-btn${cf('next')}`} onClick={onNext}
+                            title={t('player.controls.nextEpisode')}><SkipForward
+                        size={26} fill="currentColor"/></button>}
+                {item?.Type === 'Episode' && (
+                    <button data-ctrl="eps" className={`nf-btn${cf('eps')}`} onClick={onOpenEpisodes}
+                            title={t('player.controls.episodes')}><ListVideo size={26}/></button>
+                )}
+                <button data-ctrl="cc" className={`nf-btn${cf('cc')}`} onClick={() => onOpenMenu('tracks')}
+                        title={t('player.controls.audioAndSubtitles')}>
                     <Subtitles size={26}/></button>
-                <button className={`nf-btn${cf('speed')}`} onClick={onOpenSpeed} title={t('player.controls.playbackSpeed')}>
-                    <Gauge size={26}/>{speed !== 1 && <span className="nf-skipnum">{speed}x</span>}
+                <button data-ctrl="speed" className={`nf-btn${cf('speed')}`} onClick={onOpenSpeed}
+                        title={t('player.controls.playbackSpeed')}>
+                    {speed === 1 ? <Gauge size={26}/> : <span className="nf-speedval">{speed}x</span>}
                 </button>
-                <button className={`nf-btn${cf('gear')}`} onClick={() => onOpenMenu('quality')} title={t('player.controls.quality')}>
+                <button data-ctrl="gear" className={`nf-btn${cf('gear')}`} onClick={() => onOpenMenu('quality')}
+                        title={t('player.controls.quality')}>
                     <Settings size={24}/></button>
                 <span className="nf-mode">{modeBadge}</span>
             </div>

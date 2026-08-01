@@ -256,11 +256,17 @@
       "nextEpisode": "Sonraki bölüm",
       "audioAndSubtitles": "Ses ve altyazılar",
       "playbackSpeed": "Oynatma hızı",
-      "quality": "Kalite"
+      "quality": "Kalite",
+      "episodes": "Bölümler"
     },
     "upNext": {
       "label": "{{seconds}} sn içinde sırada",
       "hint": "OK = Şimdi oynat · <1></1> = Kapat"
+    },
+    "episodes": {
+      "title": "Bölümler",
+      "empty": "Bölüm bulunamadı",
+      "remaining": "{{minutes}} dk kaldı"
     }
   },
   "media": {

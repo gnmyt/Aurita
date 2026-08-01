@@ -255,11 +255,17 @@
       "nextEpisode": "다음 에피소드",
       "audioAndSubtitles": "오디오 및 자막",
       "playbackSpeed": "재생 속도",
-      "quality": "화질"
+      "quality": "화질",
+      "episodes": "에피소드"
     },
     "upNext": {
       "label": "{{seconds}}초 후 다음 에피소드",
       "hint": "OK = 지금 재생 · <1></1> = 닫기"
+    },
+    "episodes": {
+      "title": "에피소드",
+      "empty": "에피소드를 찾을 수 없습니다",
+      "remaining": "{{minutes}}분 남음"
     }
   },
   "media": {

@@ -256,11 +256,17 @@
       "nextEpisode": "अगला एपिसोड",
       "audioAndSubtitles": "ऑडियो और उपशीर्षक",
       "playbackSpeed": "प्लेबैक गति",
-      "quality": "गुणवत्ता"
+      "quality": "गुणवत्ता",
+      "episodes": "एपिसोड"
     },
     "upNext": {
       "label": "{{seconds}} सेकंड में आगे",
       "hint": "OK = अभी चलाएँ · <1></1> = बंद करें"
+    },
+    "episodes": {
+      "title": "एपिसोड",
+      "empty": "कोई एपिसोड नहीं मिला",
+      "remaining": "{{minutes}} मिनट बाकी"
     }
   },
   "media": {

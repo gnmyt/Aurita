@@ -256,11 +256,17 @@
       "nextEpisode": "Next episode",
       "audioAndSubtitles": "Audio & subtitles",
       "playbackSpeed": "Playback speed",
-      "quality": "Quality"
+      "quality": "Quality",
+      "episodes": "Episodes"
     },
     "upNext": {
       "label": "Up next in {{seconds}}s",
       "hint": "OK = Play now · <1></1> = Dismiss"
+    },
+    "episodes": {
+      "title": "Episodes",
+      "empty": "No episodes found",
+      "remaining": "{{minutes}} min left"
     }
   },
   "media": {

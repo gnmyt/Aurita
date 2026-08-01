@@ -1,15 +1,16 @@
 import {useTranslation} from 'react-i18next';
 import {SPEEDS} from '../utils';
+import {Popover} from './Popover';
 
-export const SpeedPanel = ({speedIdx}) => {
+export const SpeedPanel = ({anchor, speedIdx, onPick}) => {
     const {t} = useTranslation();
     return (
-        <div className="speed-panel">
-            <div className="speed-title">{t('player.speedTitle')}</div>
+        <Popover anchor={anchor} variant="speed" title={t('player.speedTitle')}>
             <div className="speed-track">
                 <div className="speed-line"/>
                 {SPEEDS.map((s, i) => (
-                    <div key={s.v} className={`speed-stop${i === speedIdx ? ' active' : ''}`}>
+                    <div key={s.v} onClick={() => onPick(i)}
+                         className={`speed-stop${i === speedIdx ? ' active' : ''}`}>
                         <div className="speed-dotwrap">
                             <div className="speed-dot"/>
                         </div>
@@ -17,6 +18,6 @@ export const SpeedPanel = ({speedIdx}) => {
                     </div>
                 ))}
             </div>
-        </div>
+        </Popover>
     );
 }

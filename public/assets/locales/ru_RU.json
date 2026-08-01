@@ -258,11 +258,17 @@
       "nextEpisode": "Следующая серия",
       "audioAndSubtitles": "Аудио и субтитры",
       "playbackSpeed": "Скорость воспроизведения",
-      "quality": "Качество"
+      "quality": "Качество",
+      "episodes": "Серии"
     },
     "upNext": {
       "label": "Далее через {{seconds}} с",
       "hint": "OK = Смотреть сейчас · <1></1> = Закрыть"
+    },
+    "episodes": {
+      "title": "Серии",
+      "empty": "Серии не найдены",
+      "remaining": "Осталось {{minutes}} мин"
     }
   },
   "media": {
