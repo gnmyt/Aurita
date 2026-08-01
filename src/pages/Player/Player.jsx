@@ -201,6 +201,7 @@ export const Player = () => {
     const subStreamRef = useRef(null);
     const streamRef = useRef(null);
     const itemRef = useRef(null);
+    const segmentsRef = useRef([]);
     const autoplayNextRef = useRef(false);
     const goNextRef = useRef(null);
     const exitRef = useRef(null);
@@ -414,25 +415,60 @@ export const Player = () => {
     useEffect(() => {
         if (!nativeVideo || !streamInfo?.url) return;
         videoRef.current = nativeVideo;
+        let announced = false;
         const onEvent = (e) => {
             switch (e.type) {
                 case 'timeupdate':
                     setTime(nativeVideo.currentTime);
                     setBuffered(nativeVideo.buffered.end(0) || 0);
+                    if (getPref('autoSkipSegments')) {
+                        const seg = segmentAt(segmentsRef.current, nativeVideo.currentTime);
+                        if (seg) nativeVideo.currentTime = (seg.EndTicks / TICKS_PER_SEC) - 0.2;
+                    }
                     break;
                 case 'loadedmetadata':
                     setDuration(nativeVideo.duration);
                     setBuffering(false);
+                    if (isInGroup() && !announced) {
+                        announced = true;
+                        nativeVideo.pause();
+                        reportReady(false);
+                    }
                     break;
                 case 'playing':
                     setPlaying(true);
                     setBuffering(false);
+                    clearTimeout(bufTimerRef.current);
+                    clearTimeout(stallTimerRef.current);
+                    if (isInGroup() && bufferingRef.current) {
+                        bufferingRef.current = false;
+                        reportReady(true);
+                    }
                     break;
                 case 'pause':
                     setPlaying(false);
                     break;
                 case 'waiting':
                     setBuffering(true);
+                    if (streamInfo.mode !== 'transcode') {
+                        clearTimeout(stallTimerRef.current);
+                        stallTimerRef.current = setTimeout(() => {
+                            if (!nativeVideo.paused && nativeVideo.readyState < 3) fallbackRef.current();
+                        }, DIRECT_STALL_MS);
+                    }
+                    if (!isInGroup()) break;
+                    clearTimeout(bufTimerRef.current);
+                    bufTimerRef.current = setTimeout(() => {
+                        if (!nativeVideo.paused && nativeVideo.readyState < 3 && !bufferingRef.current) {
+                            bufferingRef.current = true;
+                            spBuffering({
+                                When: serverNowIso(),
+                                PositionTicks: Math.floor(nativeVideo.currentTime * TICKS_PER_SEC),
+                                IsPlaying: true,
+                                PlaylistItemId: getPlaylistItemId(),
+                            });
+                        }
+                    }, 800);
                     break;
                 case 'ended':
                     if (autoplayNextRef.current) goNextRef.current?.(); else exitRef.current?.();
@@ -451,7 +487,10 @@ export const Player = () => {
             positionSeconds: seekRef.current || 0,
             isHls: !!streamInfo.isHls,
         });
+        if (isInGroup()) nativeVideo.pause();
         return () => {
+            clearTimeout(bufTimerRef.current);
+            clearTimeout(stallTimerRef.current);
             types.forEach((t) => nativeVideo.removeEventListener(t, onEvent));
         };
     }, [streamInfo, nativeVideo]);
@@ -540,6 +579,10 @@ export const Player = () => {
     useEffect(() => {
         itemRef.current = item;
     }, [item]);
+
+    useEffect(() => {
+        segmentsRef.current = segments;
+    }, [segments]);
 
     useEffect(() => {
         const it = itemRef.current;
